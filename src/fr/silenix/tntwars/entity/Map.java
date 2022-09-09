@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.bukkit.Location;
 
+import Enum.EtatTNT;
+
 public class Map {
 	
 	private int NbEquipe;
@@ -14,6 +16,21 @@ public class Map {
 	private Location LocationVisite;
 	private Location LocationMapBorne1;
 	private Location LocationMapBorne2;
+	
+	
+	
+	public Map(int NbEquipe, String Nom, Location LocationSalleMort, ArrayList<Location> LocationSpawnEquipeArray, ArrayList<Tnt> TntArray, Location LocationVisite, Location LocationMapBorne1,Location LocationMapBorne2) {
+		NbEquipe = this.NbEquipe;
+		Nom = this.Nom;
+		LocationSalleMort = this.LocationSalleMort;
+		LocationSpawnEquipeArray = this.LocationSpawnEquipeArray;
+		TntArray = this.TntArray;
+		LocationVisite = this.LocationVisite;
+		LocationMapBorne1 = this.LocationMapBorne1;
+		LocationMapBorne2 = this.LocationMapBorne2;
+	}
+	
+	
 	
 	
 	
