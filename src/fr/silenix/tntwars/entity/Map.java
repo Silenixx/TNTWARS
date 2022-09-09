@@ -14,6 +14,9 @@ public class Map {
 	private Location LocationVisite;
 	private Location LocationMapBorne1;
 	private Location LocationMapBorne2;
+	
+	
+	
 	public int getNbEquipe() {
 		return NbEquipe;
 	}

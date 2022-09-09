@@ -1,17 +1,26 @@
 package fr.silenix.tntwars.entity;
 
-import org.bukkit.scoreboard.Team;
+//import org.bukkit.scoreboard.Team;
 
 public class Equipe {
 
     private String Couleur;
-    
-    private Team ScoreBoardTeam;
-    
+    //private Team ScoreBoardTeam;
     private boolean IsAlive;
 
 
-    public String getCouleur() {
+    
+    
+    
+    public Equipe(String Couleur, boolean IsAlive) {
+		Couleur = this.Couleur;
+		IsAlive = this.IsAlive;
+	}
+    
+    
+	
+
+	public String getCouleur() {
         return Couleur;
     }
  
@@ -19,13 +28,13 @@ public class Equipe {
         this.Couleur = couleur;
     }
 
-    public Team getScoreBoardTeam() {
+    /*public Team getScoreBoardTeam() {
         return ScoreBoardTeam;
     }
  
     public void setScoreBoardTeam(Team scoreBoardTeam) {
         this.ScoreBoardTeam = scoreBoardTeam;
-    }
+    }*/
 
     public boolean getIsAlive() {
         return IsAlive;

@@ -3,9 +3,9 @@ package fr.silenix.tntwars.entity;
 import org.bukkit.entity.Player;
 
 public class Joueur {
-
-	private Equipe Equipe;
+	
 	private Player Player;
+	private Equipe Equipe;
 	private Kit Kit;
 	
 	
