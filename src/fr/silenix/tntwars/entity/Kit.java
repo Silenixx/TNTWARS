@@ -2,6 +2,7 @@ package fr.silenix.tntwars.entity;
 
 import java.util.ArrayList;
 
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 
@@ -18,11 +19,28 @@ public class Kit {
 	private boolean IsVisible;
 	
 	
+	
+	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,float PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible) {
+		Nom = this.Nom;
+		Helmet = this.Helmet;
+		Chestplate = this.Chestplate;
+		Legging = this.Legging;
+		Boots = this.Boots;
+		PointVie = this.PointVie;
+		ItemsArray = this.ItemsArray;
+		Potioneffect = this.Potioneffect;
+		IsVisible = this.IsVisible;
+		
+	}
+	
+	
+	
+	
 	public String getNom() {
 		return Nom;
 	}
-	public void setNom(String nom) {
-		Nom = nom;
+	public void setNom(String Nom) {
+		Nom = Nom;
 	}
 	public ItemStack getHelmet() {
 		return Helmet;

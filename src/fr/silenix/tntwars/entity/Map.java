@@ -12,19 +12,19 @@ public class Map {
 	private String Nom;
 	private Location LocationSalleMort;
 	private ArrayList<Location> LocationSpawnEquipeArray;
-	private ArrayList<Tnt> TntArray;
+	private ArrayList<Location> LocationTntArray;
 	private Location LocationVisite;
 	private Location LocationMapBorne1;
 	private Location LocationMapBorne2;
 	
 	
 	
-	public Map(int NbEquipe, String Nom, Location LocationSalleMort, ArrayList<Location> LocationSpawnEquipeArray, ArrayList<Tnt> TntArray, Location LocationVisite, Location LocationMapBorne1,Location LocationMapBorne2) {
+	public Map(int NbEquipe, String Nom, Location LocationSalleMort, ArrayList<Location> LocationSpawnEquipeArray, ArrayList<Location> LocationTntArray, Location LocationVisite, Location LocationMapBorne1,Location LocationMapBorne2) {
 		NbEquipe = this.NbEquipe;
 		Nom = this.Nom;
 		LocationSalleMort = this.LocationSalleMort;
 		LocationSpawnEquipeArray = this.LocationSpawnEquipeArray;
-		TntArray = this.TntArray;
+		LocationTntArray = this.LocationTntArray;
 		LocationVisite = this.LocationVisite;
 		LocationMapBorne1 = this.LocationMapBorne1;
 		LocationMapBorne2 = this.LocationMapBorne2;
@@ -58,11 +58,11 @@ public class Map {
 	public void setLocationSpawnEquipeArray(ArrayList<Location> locationSpawnEquipeArray) {
 		LocationSpawnEquipeArray = locationSpawnEquipeArray;
 	}
-	public ArrayList<Tnt> getTntArray() {
-		return TntArray;
+	public ArrayList<Location> getTntArray() {
+		return LocationTntArray;
 	}
-	public void setTntArray(ArrayList<Tnt> tntArray) {
-		TntArray = tntArray;
+	public void setTntArray(ArrayList<Location> LocationtntArray) {
+		LocationTntArray = LocationtntArray;
 	}
 	public Location getLocationVisite() {
 		return LocationVisite;

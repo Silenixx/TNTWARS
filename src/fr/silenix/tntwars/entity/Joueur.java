@@ -1,5 +1,6 @@
 package fr.silenix.tntwars.entity;
 
+
 import org.bukkit.entity.Player;
 
 public class Joueur {
@@ -8,6 +9,13 @@ public class Joueur {
 	private Equipe Equipe;
 	private Kit Kit;
 	
+	
+	
+	public Joueur(Player Player, Equipe Equipe, Kit Kit) {
+		Player = this.Player;
+		Equipe = this.Equipe;
+		Kit = this.Kit;
+	}
 	
 	
 	
