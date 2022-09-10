@@ -5,14 +5,14 @@ import org.bukkit.entity.Player;
 
 public class Joueur {
 	
-	private Player Player;
+	private Player player;
 	private Equipe Equipe;
 	private Kit Kit;
 	
 	
 	
 	public Joueur(Player Player, Equipe Equipe, Kit Kit) {
-		Player = this.Player;
+		Player = this.player;
 		Equipe = this.Equipe;
 		Kit = this.Kit;
 	}
@@ -26,9 +26,9 @@ public class Joueur {
 		Equipe = equipe;
 	}
 	public Player getPlayer() {
-		return Player;
+		return player;
 	}
-	public void setPlayer(Player player) {
+	public void setPlayer(Player Player) {
 		Player = player;
 	}
 	public Kit getKit() {

@@ -1,8 +1,16 @@
 package Enum;
 
+
+
 public enum EtatPartie {
 AttenteJoueur,
-PreLancement,
+Lancement,
+Prejeu,
 JeuEnCours,
-FinJeu
+FinJeu;
+
+
+
+
+
 }
