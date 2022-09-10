@@ -7,7 +7,6 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -159,7 +158,7 @@ public class main extends JavaPlugin{
 	    for(int i=0; i < listeJoueurs.size(); i++) {
 			Joueur joueur = listeJoueurs.get(i);
 			if (joueur.getEquipe() == Equipe ) {
-				nombre_joueur = nombre_joueur+1;
+				nombre_joueur ++;
 			} 
 				
 	    }
