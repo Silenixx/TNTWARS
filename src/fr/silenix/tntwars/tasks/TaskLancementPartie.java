@@ -90,9 +90,9 @@ public class TaskLancementPartie extends BukkitRunnable{
 						
 					}
 				
-				GStarting start = new GStarting(main);
+				TaskDebutPartie start = new TaskDebutPartie(main);
 				start.runTaskTimer(main, 0, 20);
-				main.setState(GState.PREPLAYING);
+				main.setState(EtatPartie.Prejeu);
 				
 				
 				/*GGameCycle cycle = new GGameCycle(main);

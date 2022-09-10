@@ -153,6 +153,66 @@ public class main extends JavaPlugin{
 		
 	}
 	
+	
+	public int getSize(Equipe Equipe) {
+		int nombre_joueur = 0;
+	    for(int i=0; i < listeJoueurs.size(); i++) {
+			Joueur joueur = listeJoueurs.get(i);
+			if (joueur.getEquipe() == Equipe ) {
+				nombre_joueur = nombre_joueur+1;
+			} 
+				
+	    }
+	    return nombre_joueur; 
+	}
+	
+	public void AutoAddTeam(int NbEquipe) {
+		
+		
+		for(int i=0; i < listeJoueurs.size(); i++) {
+			Joueur joueur = getJoueur().get(i);
+			
+			if(joueur.getEquipe()!= Sans_Equipe) {
+					return;
+			}
+			switch(NbEquipe) {
+				case 1:
+				
+				
+				if(getSize(Equipe_bleu) < getSize(Equipe_rouge)) {
+		
+					joueur.setEquipe(Equipe_bleu);
+
+					return;
+				}
+				
+				
+				if(getSize(Equipe_bleu) > getSize(Equipe_rouge)) {
+		
+					joueur.setEquipe(Equipe_rouge);
+					return;
+				}
+				
+				if(getSize(Equipe_bleu) == getSize(Equipe_rouge)) {
+		
+					joueur.setEquipe(Equipe_bleu);
+					return;
+				}
+				
+				
+			}
+			
+		}
+		
+
+
+	}
+
+	public void SpawnTeleportation() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 
 	
 }

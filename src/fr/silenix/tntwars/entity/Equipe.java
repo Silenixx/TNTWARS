@@ -43,6 +43,15 @@ public class Equipe {
     public void setIsAlive(boolean isAlive) {
         this.IsAlive = isAlive;
     }
+    
+    
+
 
 
 }
+
+
+
+
+
+
