@@ -108,7 +108,7 @@ public class main extends JavaPlugin{
 	public void onEnable() {
 	PluginManager pm = getServer().getPluginManager();
 	
-	
+	isState(EtatPartie.AttenteJoueur);
 	
 
 	

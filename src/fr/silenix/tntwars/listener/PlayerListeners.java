@@ -49,13 +49,19 @@ public class PlayerListeners implements Listener{
 		 
 		 Player player = event.getPlayer();
 		 Joueur joueur = new Joueur(player,main.Sans_Equipe,main.Sans_Kit);
-		
-		  
+		 
+		 player.setInvulnerable(false);
+		 player.setExp(0);
+		 player.setInvisible(false);
+		 
+		 player.setFoodLevel(20);
+		 player.setHealth(20);
+		 player.setGameMode(GameMode.ADVENTURE);
 		 main.listeJoueurs.add(joueur);
 	 
 	 
 	 
-		 joueur.getPlayer().getInventory().clear();
+		 player.getInventory().clear();
 	 
 	 
 	 
@@ -75,7 +81,7 @@ public class PlayerListeners implements Listener{
 				customNS.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
 				
 				customnetherstar.setItemMeta(customNS);
-				joueur.getPlayer().getInventory().setItem(4,customnetherstar);
+				player.getInventory().setItem(4,customnetherstar);
 				
 				
 				ItemStack customcompasse = new ItemStack(Material.COMPASS,1);
@@ -87,7 +93,7 @@ public class PlayerListeners implements Listener{
 				customC2.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
 				
 				customcompasse.setItemMeta(customC2);
-				joueur.getPlayer().getInventory().setItem(8,customcompasse);
+				player.getInventory().setItem(8,customcompasse);
 				
 				
 				
@@ -101,7 +107,7 @@ public class PlayerListeners implements Listener{
 				customB.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
 				
 				custombed.setItemMeta(customB);
-				joueur.getPlayer().getInventory().setItem(0,custombed);
+				player.getInventory().setItem(0,custombed);
 			}
 		 
 		 
