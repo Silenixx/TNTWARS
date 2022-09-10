@@ -71,7 +71,7 @@ public class TaskDebutPartie extends BukkitRunnable{
 					Joueur joueur = main.getJoueur().get(i);
 					
 					
-					main.SpawnTeleportation();
+					main.SpawnTeleportation(joueur);
 					
 					
 					
@@ -81,23 +81,22 @@ public class TaskDebutPartie extends BukkitRunnable{
 					
 					if(joueur.getKit()==main.Sans_Kit) {
 						
-						joueur.setKit(fefeezfe);
+						joueur.setKit(main.Guerrier);
 					}
 					
 					
 					
-					main.GamePlay(player);
+					main.GamePlay(joueur);
 					
 					
 					
 					
-					}
+				}
 				
 				
 				
-				main.CheckWinBlue();
+				main.CheckWin();
 					
-				main.CheckWinRed();
 					
 				
 					

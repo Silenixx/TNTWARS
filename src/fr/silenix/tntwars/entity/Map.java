@@ -52,14 +52,14 @@ public class Map {
 	public void setLocationSalleMort(Location locationSalleMort) {
 		LocationSalleMort = locationSalleMort;
 	}
-	public ArrayList<Location> getLocationSpawnEquipeArray() {
-		return LocationSpawnEquipeArray;
+	public Location getLocationSpawnEquipeArray(int equipe) {
+		return LocationSpawnEquipeArray.get(equipe);
 	}
 	public void setLocationSpawnEquipeArray(ArrayList<Location> locationSpawnEquipeArray) {
 		LocationSpawnEquipeArray = locationSpawnEquipeArray;
 	}
-	public ArrayList<Location> getTntArray() {
-		return LocationTntArray;
+	public Location getLocationTntArray(int tnt) {
+		return LocationTntArray.get(tnt);
 	}
 	public void setTntArray(ArrayList<Location> LocationtntArray) {
 		LocationTntArray = LocationtntArray;

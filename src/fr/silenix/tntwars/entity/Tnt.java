@@ -6,14 +6,14 @@ import Enum.EtatTNT;
 
 public class Tnt {
 	private Equipe Equipe;
-	private int Timer;
+	private int Vie;
 	private EtatTNT Etat;
 	
 	
 	
-	public Tnt(Equipe Equipe, int Timer, EtatTNT Etat) {
+	public Tnt(Equipe Equipe, int Vie, EtatTNT Etat) {
 		Equipe = this.Equipe;
-		Timer = this.Timer;
+		Vie = this.Vie;
 		Etat = this.Etat;
 	}
 	
@@ -27,11 +27,11 @@ public class Tnt {
 	public void setEquipe(Equipe equipe) {
 		Equipe = equipe;
 	}
-	public int getTimer() {
-		return Timer;
+	public int getVie() {
+		return Vie;
 	}
-	public void setTimer(int timer) {
-		Timer = timer;
+	public void setVie(int vie) {
+		Vie = vie;
 	}
 	public EtatTNT getEtat() {
 		return Etat;
