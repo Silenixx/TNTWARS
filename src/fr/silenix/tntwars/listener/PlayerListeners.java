@@ -47,7 +47,11 @@ public class PlayerListeners implements Listener{
      public void onPlayerJoin(PlayerJoinEvent event) {
 		 
 		 Player player = event.getPlayer();
-		 Joueur joueur = new Joueur(player,main.Sans_Equipe,main.Sans_Kit); //kit par défaut est le sans kit
+		 Joueur joueur = new Joueur(p,main.Sans_Equipe,main.Sans_Kit).stream()//kit par défaut est le sans kit
+				  .filter(p -> player.getName().equals(p.getPlayer().getName()))
+				  .findAny()
+				  .orElse(null));
+		  
 		 main.listeJoueurs.add(joueur);
 	 
 	 
