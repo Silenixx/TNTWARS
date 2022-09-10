@@ -49,6 +49,8 @@ public class PlayerListeners implements Listener{
 		 
 		 Player player = event.getPlayer();
 		 Joueur joueur = new Joueur(player,main.Sans_Equipe,main.Sans_Kit);
+		 main.listeJoueurs.add(joueur);
+		 
 		 
 		 player.setInvulnerable(false);
 		 player.setExp(0);
@@ -57,7 +59,7 @@ public class PlayerListeners implements Listener{
 		 player.setFoodLevel(20);
 		 player.setHealth(20);
 		 player.setGameMode(GameMode.ADVENTURE);
-		 main.listeJoueurs.add(joueur);
+		 
 	 
 	 
 	 
@@ -113,22 +115,22 @@ public class PlayerListeners implements Listener{
 		 
 		 
 		 if(main.isState(EtatPartie.FinJeu)) {
-			 	joueur.getPlayer().setGameMode(GameMode.SPECTATOR);
-			 	joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eLe jeu est terminé, revenez pour la partie suivante !");
+			 	player.setGameMode(GameMode.SPECTATOR);
+			 	player.sendMessage("§6[§eTntWars§6] §eLe jeu est terminé, revenez pour la partie suivante !");
 		 	}
 		 
 		 
 		 if(main.isState(EtatPartie.AttenteJoueur) || main.isState(EtatPartie.Lancement)) {
-			 	joueur.getPlayer().teleport(main.spawn_general);
+			 	player.teleport(main.spawn_general);
 			
-			 	joueur.getPlayer().setInvisible(false);
+			 	player.setInvisible(false);
 				
 				/*if(!main.getPlayer().contains(player)) {
 					main.players.add(player);
 						
 				}*/
 				
-			 	joueur.getPlayer().setGameMode(GameMode.ADVENTURE);
+			 	player.setGameMode(GameMode.ADVENTURE);
 				event.setJoinMessage("§6[§eTntWars§6] §6" + player.getName()+ " §evient de se connecter à la partie.   §5<§d"+ main.listeJoueurs.size()+"§5/§d"+ Bukkit.getMaxPlayers()+"§5>");
 			
 			
@@ -177,13 +179,14 @@ public class PlayerListeners implements Listener{
 		public void onInteract(PlayerInteractEvent event) {
 			
 			Player player = event.getPlayer();
+			Player player2 = event.getPlayer();
 			//Action action = event.getAction();
 			ItemStack it = event.getItem();
 			Block block = event.getClickedBlock();
 			
 			
 			Joueur joueur = main.listeJoueurs.stream()
-					  .filter(p -> player.getName().equals(p.getPlayer().getName()))
+					  .filter(p -> player2.getName().equals(p.getPlayer().getName()))
 					  .findAny()
 					  .orElse(null);
 			
