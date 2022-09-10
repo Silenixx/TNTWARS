@@ -3,6 +3,7 @@ package fr.silenix.tntwars;
 import java.util.ArrayList;
 
 
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -11,17 +12,14 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
-
 import Enum.EtatPartie;
 import Enum.EtatTNT;
-
 import fr.silenix.tntwars.entity.Equipe;
 import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.entity.Kit;
@@ -174,7 +172,7 @@ public class main extends JavaPlugin{
 	    for(int i=0; i < listeJoueurs.size(); i++) {
 			Joueur joueur = listeJoueurs.get(i);
 			if (joueur.getEquipe() == Equipe ) {
-				nombre_joueur = nombre_joueur+1;
+				nombre_joueur ++;
 			} 
 				
 	    }

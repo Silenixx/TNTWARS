@@ -2,7 +2,6 @@ package fr.silenix.tntwars.entity;
 
 import java.util.ArrayList;
 
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 
@@ -39,8 +38,8 @@ public class Kit {
 	public String getNom() {
 		return Nom;
 	}
-	public void setNom(String Nom) {
-		Nom = Nom;
+	public void setNom(String nom) {
+		Nom = nom;
 	}
 	public ItemStack getHelmet() {
 		return Helmet;
