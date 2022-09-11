@@ -1,9 +1,6 @@
 package fr.silenix.tntwars;
 
 import java.util.ArrayList;
-
-
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +10,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -93,8 +91,8 @@ public class main extends JavaPlugin{
 	
 	
 	
-	public List<Joueur> getJoueur(){
-		return listeJoueurs;
+	public Joueur getJoueur(int i){
+		return listeJoueurs.get(i);
 		
 	}
 	
@@ -105,7 +103,7 @@ public class main extends JavaPlugin{
 	public void onEnable() {
 	PluginManager pm = getServer().getPluginManager();
 	
-	isState(EtatPartie.AttenteJoueur);
+	setState(EtatPartie.AttenteJoueur);
 	
 
 	
@@ -391,30 +389,32 @@ public class main extends JavaPlugin{
 			TaskLancementPartie start = new TaskLancementPartie(this);
 			start.runTaskTimer(this, 0, 20);
 		}
-		
-		
-		/*PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(new GPlayerListeners(this) , this);
-		pm.registerEvents(new GDamageListeners(this), this);*/
 	}
-	
+		
+	public void respawn(Joueur joueur) {
+			joueur.get_the_player().setGameMode(GameMode.SURVIVAL);
+			joueur.get_the_player().setInvisible(false);
+			
+			
+
+
+			
+			joueur.get_the_player().setFoodLevel(20);
+			joueur.get_the_player().setHealth(20);
+			
+			SpawnTeleportation(joueur);
+			
+			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "effect clear "+ joueur.get_the_player().getName());
+			GamePlay(joueur);
+			//attribution_du_kit(joueur);
+			
+		
+		}
+		
+		
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 }

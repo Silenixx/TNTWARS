@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 
 
+
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -26,9 +27,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import Enum.EtatPartie;
 import Enum.EtatTNT;
+
 import fr.silenix.tntwars.main;
 import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.tasks.TaskLancementPartie;
+import fr.silenix.tntwars.tasks.TaskRejoindPartieEnCours;
 import fr.silenix.tntwars.timer.TimerAllumageBlue;
 import fr.silenix.tntwars.timer.TimerAllumageRed;
 
@@ -38,6 +41,8 @@ import fr.silenix.tntwars.timer.TimerAllumageRed;
 public class PlayerListeners implements Listener{
 	
 	private main main;
+	
+	static World world = Bukkit.getWorld("world");
 
 
 	public PlayerListeners(main main) {
@@ -54,7 +59,6 @@ public class PlayerListeners implements Listener{
 		 
 		 player.setFoodLevel(20);
 		 player.setHealth(20);
-		 player.setGameMode(GameMode.ADVENTURE);
 		 
 
 		 player.getInventory().clear();
@@ -65,14 +69,6 @@ public class PlayerListeners implements Listener{
 		 main.listeJoueurs.add(joueur);
 		 
 		 
-		 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 	 
 		 if(!main.isState(EtatPartie.FinJeu)) { //si le joueur rejoint la partie avant la fin du jeu on lui donne le selectionneur d'équipe
 				
@@ -112,7 +108,70 @@ public class PlayerListeners implements Listener{
 				
 				custombed.setItemMeta(customB);
 				player.getInventory().setItem(0,custombed);
-			}
+			
+				
+				
+				
+				
+				if (!main.isState(EtatPartie.AttenteJoueur) && !main.isState(EtatPartie.FinJeu) && !main.isState(EtatPartie.Lancement)) {
+					player.setGameMode(GameMode.ADVENTURE);
+					player.setInvisible(true);
+					player.sendMessage("§5[§dSilenixGames§5] §bLe jeux a déja démarrer mais vous pouvez rejoindre une équipe! ");
+					event.setJoinMessage(null);
+					
+					
+					ItemStack customcompasses = new ItemStack(Material.COMPASS,1);
+					ItemMeta customC22 = customcompasses.getItemMeta();
+					customC22.setDisplayName("Choisir le kit");
+					
+					customC22.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+					customC22.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+					customC22.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
+					
+					customcompasses.setItemMeta(customC22);
+					player.getInventory().setItem(8,customcompasses);
+					
+					
+					TaskRejoindPartieEnCours cycle = new TaskRejoindPartieEnCours(main, joueur);
+					cycle.runTaskTimer(main, 0, 20);
+					
+
+
+					
+					
+
+				}
+				
+				
+				
+				
+				
+				if(main.isState(EtatPartie.AttenteJoueur) || main.isState(EtatPartie.Lancement)) {
+				 	player.teleport(main.spawn_general);
+				
+				 	player.setGameMode(GameMode.ADVENTURE);
+					event.setJoinMessage("§6[§eTntWars§6] §6" + player.getName()+ " §evient de se connecter à la partie.   §5<§d"+ main.listeJoueurs.size()+"§5/§d"+ Bukkit.getMaxPlayers()+"§5>");
+				
+				
+					if(main.isState(EtatPartie.AttenteJoueur)  && main.listeJoueurs.size()  >= 2) {
+							
+						main.setState(EtatPartie.Lancement);
+						TaskLancementPartie start = new TaskLancementPartie(main);
+						start.runTaskTimer(main, 0, 20);
+						
+							
+					}
+					
+					
+				}
+				
+				
+				
+				
+				
+		 
+		 
+		 }
 		 
 		 
 		 
@@ -122,31 +181,7 @@ public class PlayerListeners implements Listener{
 		 	}
 		 
 		 
-		 if(main.isState(EtatPartie.AttenteJoueur) || main.isState(EtatPartie.Lancement)) {
-			 	player.teleport(main.spawn_general);
-			
-			 	player.setInvisible(false);
-				
-				/*if(!main.getPlayer().contains(player)) {
-					main.players.add(player);
-						
-				}*/
-				
-			 	player.setGameMode(GameMode.ADVENTURE);
-				event.setJoinMessage("§6[§eTntWars§6] §6" + player.getName()+ " §evient de se connecter à la partie.   §5<§d"+ main.listeJoueurs.size()+"§5/§d"+ Bukkit.getMaxPlayers()+"§5>");
-			
-			
-			
-			
-				if(main.isState(EtatPartie.AttenteJoueur)  && main.listeJoueurs.size()  >= 2) {
-						
-					main.setState(EtatPartie.Lancement);
-					TaskLancementPartie start = new TaskLancementPartie(main);
-					start.runTaskTimer(main, 0, 20);
-					
-						
-				}
-			}
+		 
 	 
 	 
 	 
@@ -176,7 +211,7 @@ public class PlayerListeners implements Listener{
 				
 			
 			
-			event.setQuitMessage(player.getName() + " left.");
+			event.setQuitMessage(player.getName() + " est partie.");
 			
 			
 		}

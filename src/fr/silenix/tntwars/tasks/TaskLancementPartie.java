@@ -39,7 +39,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eAnnulation de début de partie par manque de joueur");
 			cancel();
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
-				Joueur joueur = main.getJoueur().get(i);
+				Joueur joueur = main.getJoueur(i);
 				joueur.get_the_player().getPlayer().setExp(0);
 			}
 			main.setState(EtatPartie.AttenteJoueur);
