@@ -62,8 +62,15 @@ public class main extends JavaPlugin{
 	
 	
 	
-	public Map map_en_cours;
-	
+	public Map map_en_cours = new Map(2,
+			"chateau",
+			new Location(world,30,167,-315),
+			new ArrayList<Location>(Arrays.asList(new Location(world,30,11,-242), new Location(world,30,11,-386))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,30,9,-371), new Location(world,30,9,-257))),
+			new Location(world,30,167,-315),
+			new Location(world,30,167,-315),
+			new Location(world,30,167,-315));
+	public Map chateau;
 	
 	
 	
@@ -71,6 +78,7 @@ public class main extends JavaPlugin{
 	
 	
 	public List<Joueur> listeJoueurs = new ArrayList<>();
+	public List<Player> listePlayers = new ArrayList<>();
 	
 	
 	public List<Map> list_maps = new ArrayList<>();
@@ -96,6 +104,10 @@ public class main extends JavaPlugin{
 		
 	}
 	
+	public List<Player> getListePlayer() {
+		return listePlayers;
+	}
+	
 	
 	
 	
@@ -113,8 +125,10 @@ public class main extends JavaPlugin{
 	
 	
 	
+	
+	
 	list_maps.add(
-		new Map(
+		chateau = new Map(
 				2,
 				"chateau",
 				new Location(world,30,167,-315),
@@ -186,7 +200,7 @@ public class main extends JavaPlugin{
 		
 		
 		for(int i=0; i < listeJoueurs.size(); i++) {
-			Joueur joueur = getJoueur().get(i);
+			Joueur joueur = getJoueur(i);
 			
 			if(joueur.getEquipe()!= Sans_Equipe) {
 					return;

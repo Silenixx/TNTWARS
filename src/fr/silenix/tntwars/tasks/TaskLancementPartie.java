@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import Enum.EtatPartie;
@@ -45,8 +46,8 @@ public class TaskLancementPartie extends BukkitRunnable{
 			main.setState(EtatPartie.AttenteJoueur);
 		}
 		if(main.isState(EtatPartie.Lancement)) {
-			for(Joueur pls : main.getJoueur()) {
-				pls.get_the_player().setLevel(timer);
+			for(Player pls : main.getListePlayer()) {
+				pls.setLevel(timer);
 			}
 			
 			if(timer==35 || timer ==10 || timer ==5 || timer==4 || timer==3|| timer==2|| timer==1) {
@@ -57,13 +58,14 @@ public class TaskLancementPartie extends BukkitRunnable{
 			if(timer == 0) {
 				
 				//main.value_random.clear();
-				Random random = new Random();
-				int value_random_en_cours = random.nextInt((main.list_maps.size() - 1) + 1) +1;
-				//int value_random_en_cours = random.nextInt((main.list_maps.size() - 1) + 1) +1;
 				
-				//main.value_random.add(value_random_en_cours);
-				main.map_en_cours = main.list_maps.get(value_random_en_cours-1);
-				Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map numéro §6" + main.map_en_cours.getNom()+"§e a été choisie.");
+				
+				/*Random random = new Random();
+				int value_random_en_cours = random.nextInt((main.list_maps.size() - 1) + 1) +1;
+				main.map_en_cours = main.list_maps.get(value_random_en_cours-1);*/
+				
+				
+				Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map §6" + main.map_en_cours.getNom()+"§e a été choisie.");
 				
 				
 				
@@ -75,7 +77,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 				
 				
 				for(int i=0; i < main.listeJoueurs.size(); i++) {
-					Joueur joueur = main.getJoueur().get(i);
+					Player player = main.listePlayers.get(i);
 					//Location spawn = main.getSpawns().get(i);
 					//for(int x =0; x != main.players.size(); x++) {
 					
@@ -83,7 +85,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 					
 					
 						
-					joueur.get_the_player().teleport(main.map_en_cours.getLocationVisite());
+					player.teleport(main.map_en_cours.getLocationVisite());
 						
 						//player.setPlayerListName(ChatColor.BLUE + player.getName());
 						

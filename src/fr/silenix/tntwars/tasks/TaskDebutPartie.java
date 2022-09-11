@@ -2,6 +2,7 @@ package fr.silenix.tntwars.tasks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import Enum.EtatPartie;
@@ -33,20 +34,20 @@ public class TaskDebutPartie extends BukkitRunnable{
 	public void run() {
 		
 		
-		if(main.getJoueur().size()  < 2) {
+		if(main.listeJoueurs.size() < 2) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eAnnulation de début de partie par manque de joueur");
 			cancel();
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
-				Joueur joueur = main.getJoueur().get(i);
-				joueur.get_the_player().teleport(main.spawn_general);
-				joueur.get_the_player().setExp(0);
+				Player joueur = main.listePlayers.get(i);
+				joueur.teleport(main.spawn_general);
+				joueur.setExp(0);
 			}
 			main.setState(EtatPartie.AttenteJoueur);
 			
 		}
 		if(main.isState(EtatPartie.AttenteJoueur)) {
-			for(Joueur pls : main.getJoueur()) {
-				pls.get_the_player().setLevel(timer);
+			for(Player pls : main.getListePlayer()) {
+				pls.setLevel(timer);
 			}
 			
 			if(timer==45 || timer ==30 || timer ==20 || timer ==10 || timer ==5 || timer==4 || timer==3|| timer==2|| timer==1) {
@@ -68,15 +69,15 @@ public class TaskDebutPartie extends BukkitRunnable{
 				main.AutoAddTeam(main.map_en_cours.getNbEquipe());
 				
 				for(int i=0; i < main.listeJoueurs.size(); i++) {
-					Joueur joueur = main.getJoueur().get(i);
-					
+					Joueur joueur = main.listeJoueurs.get(i);
+					Player player = main.listePlayers.get(i);
 					
 					main.SpawnTeleportation(joueur);
 					
 					
 					
 					
-					joueur.get_the_player().getInventory().clear();
+					player.getInventory().clear();
 					
 					
 					if(joueur.getKit()==main.Sans_Kit) {

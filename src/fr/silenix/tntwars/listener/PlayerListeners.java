@@ -67,6 +67,7 @@ public class PlayerListeners implements Listener{
 		 
 		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.Sans_Kit);
 		 main.listeJoueurs.add(joueur);
+		 main.listePlayers.add(player);
 		 
 		 
 	 
@@ -202,6 +203,9 @@ public class PlayerListeners implements Listener{
 					  .orElse(null);
 			
 			main.listeJoueurs.remove(joueur);
+			
+			
+			main.listePlayers.remove(player);
 			
 			
 			
