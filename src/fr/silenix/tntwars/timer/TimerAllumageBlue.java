@@ -45,7 +45,7 @@ public class TimerAllumageBlue extends BukkitRunnable{
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §630 §b secondes avant l'explosion de la TNT §9bleue§e.");
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
 				Joueur joueur = main.listeJoueurs.get(i);
-				joueur.getPlayer().playSound(joueur.getPlayer(), Sound.BLOCK_NOTE_BLOCK_PLING, 1F, 1F);
+				joueur.get_the_player().playSound(joueur.get_the_player(), Sound.BLOCK_NOTE_BLOCK_PLING, 1F, 1F);
 			}
 		}
 		if (timer_blue==20) {
@@ -83,7 +83,7 @@ public class TimerAllumageBlue extends BukkitRunnable{
 				
 				
 					
-				joueur.getPlayer().playSound(main.map_en_cours.getLocationTntArray(1), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 3F, 1F);
+				joueur.get_the_player().playSound(main.map_en_cours.getLocationTntArray(1), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 3F, 1F);
 				
 			}
 			
@@ -107,7 +107,7 @@ public class TimerAllumageBlue extends BukkitRunnable{
 			
 			
 				
-			joueur.getPlayer().playSound(main.map_en_cours.getLocationTntArray(1), Sound.ENTITY_CREEPER_PRIMED, 0.6F, 0.6F);
+			joueur.get_the_player().playSound(main.map_en_cours.getLocationTntArray(1), Sound.ENTITY_CREEPER_PRIMED, 0.6F, 0.6F);
 			
 			
 			//main.scoreboard(player);

@@ -38,15 +38,15 @@ public class TaskDebutPartie extends BukkitRunnable{
 			cancel();
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
 				Joueur joueur = main.getJoueur().get(i);
-				joueur.getPlayer().teleport(main.spawn_general);
-				joueur.getPlayer().setExp(0);
+				joueur.get_the_player().teleport(main.spawn_general);
+				joueur.get_the_player().setExp(0);
 			}
 			main.setState(EtatPartie.AttenteJoueur);
 			
 		}
 		if(main.isState(EtatPartie.AttenteJoueur)) {
 			for(Joueur pls : main.getJoueur()) {
-				pls.getPlayer().setLevel(timer);
+				pls.get_the_player().setLevel(timer);
 			}
 			
 			if(timer==45 || timer ==30 || timer ==20 || timer ==10 || timer ==5 || timer==4 || timer==3|| timer==2|| timer==1) {
@@ -76,7 +76,7 @@ public class TaskDebutPartie extends BukkitRunnable{
 					
 					
 					
-					joueur.getPlayer().getInventory().clear();
+					joueur.get_the_player().getInventory().clear();
 					
 					
 					if(joueur.getKit()==main.Sans_Kit) {

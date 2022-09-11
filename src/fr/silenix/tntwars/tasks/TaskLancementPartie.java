@@ -40,13 +40,13 @@ public class TaskLancementPartie extends BukkitRunnable{
 			cancel();
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
 				Joueur joueur = main.getJoueur().get(i);
-				joueur.getPlayer().getPlayer().setExp(0);
+				joueur.get_the_player().getPlayer().setExp(0);
 			}
 			main.setState(EtatPartie.AttenteJoueur);
 		}
 		if(main.isState(EtatPartie.Lancement)) {
 			for(Joueur pls : main.getJoueur()) {
-				pls.getPlayer().setLevel(timer);
+				pls.get_the_player().setLevel(timer);
 			}
 			
 			if(timer==35 || timer ==10 || timer ==5 || timer==4 || timer==3|| timer==2|| timer==1) {
@@ -83,7 +83,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 					
 					
 						
-					joueur.getPlayer().teleport(main.map_en_cours.getLocationVisite());
+					joueur.get_the_player().teleport(main.map_en_cours.getLocationVisite());
 						
 						//player.setPlayerListName(ChatColor.BLUE + player.getName());
 						

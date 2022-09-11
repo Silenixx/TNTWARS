@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -40,7 +41,9 @@ public class main extends JavaPlugin{
 	public int Timer_Global_TNT = 30;
 	public int Vie_Global_TNT = 50;
 	
-	public Location spawn_general = new Location(Bukkit.getWorld("world"),6,1,1);
+	
+	World world = Bukkit.getWorld("world");
+	public Location spawn_general = new Location(world,6,1,1);
 	
 	public Equipe Equipe_rouge = new Equipe("Rouge",false);
 	public Equipe Equipe_bleu = new Equipe("Bleu",false);
@@ -83,15 +86,9 @@ public class main extends JavaPlugin{
 	
 	
 	
-	private EtatPartie EtatPartie;
+	private EtatPartie Etat;
 
-	public boolean isState (EtatPartie EtatPartie) {
-		return this.EtatPartie == EtatPartie;
-	}
-	
-	public void setState(EtatPartie EtatPartie) {
-		this.EtatPartie = EtatPartie;
-	}
+
 	
 	
 	
@@ -122,12 +119,12 @@ public class main extends JavaPlugin{
 		new Map(
 				2,
 				"chateau",
-				new Location(Bukkit.getWorld("world"),30,167,-315),
-				new ArrayList<Location>(Arrays.asList(new Location(Bukkit.getWorld("world"),30,11,-242), new Location(Bukkit.getWorld("world"),30,11,-386))),
-				new ArrayList<Location>(Arrays.asList(new Location(Bukkit.getWorld("world"),30,9,-371), new Location(Bukkit.getWorld("world"),30,9,-257))),
-				new Location(Bukkit.getWorld("world"),30,167,-315),
-				new Location(Bukkit.getWorld("world"),30,167,-315),
-				new Location(Bukkit.getWorld("world"),30,167,-315)
+				new Location(world,30,167,-315),
+				new ArrayList<Location>(Arrays.asList(new Location(world,30,11,-242), new Location(world,30,11,-386))),
+				new ArrayList<Location>(Arrays.asList(new Location(world,30,9,-371), new Location(world,30,9,-257))),
+				new Location(world,30,167,-315),
+				new Location(world,30,167,-315),
+				new Location(world,30,167,-315)
 				)
 		
 		
@@ -142,6 +139,14 @@ public class main extends JavaPlugin{
 	
 	
 
+	}
+	
+	public boolean isState (EtatPartie EtatPartie) {
+		return this.Etat == EtatPartie;
+	}
+	
+	public void setState(EtatPartie EtatPartie) {
+		this.Etat = EtatPartie;
 	}
 	
 	
@@ -226,8 +231,8 @@ public class main extends JavaPlugin{
 		//for(int i=0; i < getPlayer().size(); i++) {
 			
 			
-			joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
-			joueur.getPlayer().removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
+			joueur.get_the_player().setGameMode(GameMode.SURVIVAL);
+			joueur.get_the_player().removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
 			
 			
 			ItemStack customironsword = new ItemStack(Material.IRON_SWORD,1);
@@ -260,15 +265,15 @@ public class main extends JavaPlugin{
 			customFF.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			customFF.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
 			customfeather.setItemMeta(customFF);
-			joueur.getPlayer().getInventory().setItem(8, customfeather);
-			joueur.getPlayer().getInventory().setItem(7, customblazepowder);
+			joueur.get_the_player().getInventory().setItem(8, customfeather);
+			joueur.get_the_player().getInventory().setItem(7, customblazepowder);
 			
 			
 			
 			
 			
 			
-			TimerImmortality start = new TimerImmortality( joueur.getPlayer());
+			TimerImmortality start = new TimerImmortality( joueur.get_the_player());
 			start.runTaskTimer(this, 0, 20);
 			
 			
@@ -281,18 +286,18 @@ public class main extends JavaPlugin{
 	public void SpawnTeleportation(Joueur joueur) {
 		
 		if(joueur.getEquipe()==Equipe_rouge) {
-			joueur.getPlayer().teleport(map_en_cours.getLocationSpawnEquipeArray(0));
+			joueur.get_the_player().teleport(map_en_cours.getLocationSpawnEquipeArray(0));
 		}
 		
 		if(joueur.getEquipe()==Equipe_bleu) {
-			joueur.getPlayer().teleport(map_en_cours.getLocationSpawnEquipeArray(1));
+			joueur.get_the_player().teleport(map_en_cours.getLocationSpawnEquipeArray(1));
 		}
 		
 		if(joueur.getEquipe()==Equipe_vert) {
-			joueur.getPlayer().teleport(map_en_cours.getLocationSpawnEquipeArray(2));
+			joueur.get_the_player().teleport(map_en_cours.getLocationSpawnEquipeArray(2));
 		}
 		if(joueur.getEquipe()==Equipe_jaune) {
-			joueur.getPlayer().teleport(map_en_cours.getLocationSpawnEquipeArray(3));
+			joueur.get_the_player().teleport(map_en_cours.getLocationSpawnEquipeArray(3));
 		}
 		
 		
@@ -339,11 +344,11 @@ public class main extends JavaPlugin{
 		for(int i=0; i<listeJoueurs.size();i++) {
 			Joueur joueur = listeJoueurs.get(i) ;
 			
-			joueur.getPlayer().setInvulnerable(false);
+			joueur.get_the_player().setInvulnerable(false);
 			
 			
-			joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
-			joueur.getPlayer().getInventory().clear();
+			joueur.get_the_player().setGameMode(GameMode.SURVIVAL);
+			joueur.get_the_player().getInventory().clear();
 			
 			ItemStack customnetherstar = new ItemStack(Material.NETHER_STAR,1);
 			ItemMeta customNS = customnetherstar.getItemMeta();
@@ -354,7 +359,7 @@ public class main extends JavaPlugin{
 			customNS.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
 			
 			customnetherstar.setItemMeta(customNS);
-			joueur.getPlayer().getInventory().setItem(4,customnetherstar);
+			joueur.get_the_player().getInventory().setItem(4,customnetherstar);
 			
 			
 			ItemStack customcompasse = new ItemStack(Material.COMPASS,1);
@@ -366,15 +371,15 @@ public class main extends JavaPlugin{
 			customC2.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
 			
 			customcompasse.setItemMeta(customC2);
-			joueur.getPlayer().getInventory().setItem(8,customcompasse);
+			joueur.get_the_player().getInventory().setItem(8,customcompasse);
 			
-			joueur.getPlayer().setInvisible(false);
-			
-			
+			joueur.get_the_player().setInvisible(false);
 			
 			
 			
-			joueur.getPlayer().teleport(spawn_general);
+			
+			
+			joueur.get_the_player().teleport(spawn_general);
 			
 		}
 		

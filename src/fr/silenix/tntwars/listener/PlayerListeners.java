@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 
 
+
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -45,13 +46,8 @@ public class PlayerListeners implements Listener{
 	
 	
 	 @EventHandler
-     public void onPlayerJoin(PlayerJoinEvent event) {
-		 
+     public void onJoin(PlayerJoinEvent event) {
 		 Player player = event.getPlayer();
-		 Joueur joueur = new Joueur(player,main.Sans_Equipe,main.Sans_Kit);
-		 main.listeJoueurs.add(joueur);
-		 
-		 
 		 player.setInvulnerable(false);
 		 player.setExp(0);
 		 player.setInvisible(false);
@@ -60,10 +56,16 @@ public class PlayerListeners implements Listener{
 		 player.setHealth(20);
 		 player.setGameMode(GameMode.ADVENTURE);
 		 
-	 
-	 
-	 
+
 		 player.getInventory().clear();
+		 
+		 
+		 
+		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.Sans_Kit);
+		 main.listeJoueurs.add(joueur);
+		 
+		 
+		 
 	 
 	 
 	 
@@ -159,10 +161,13 @@ public class PlayerListeners implements Listener{
 			Player player = event.getPlayer();
 			
 			
-			main.listeJoueurs.remove(main.listeJoueurs.stream()
-					  .filter(p -> player.getName().equals(p.getPlayer().getName()))
+			Joueur joueur = main.listeJoueurs.stream()
+					  .filter(p -> player.getName().equals(p.getNom()))
 					  .findAny()
-					  .orElse(null));
+					  .orElse(null);
+			
+			main.listeJoueurs.remove(joueur);
+			
 			
 			
 				
@@ -186,7 +191,7 @@ public class PlayerListeners implements Listener{
 			
 			
 			Joueur joueur = main.listeJoueurs.stream()
-					  .filter(p -> player2.getName().equals(p.getPlayer().getName()))
+					  .filter(p -> player2.getName().equals(p.getNom()))
 					  .findAny()
 					  .orElse(null);
 			
