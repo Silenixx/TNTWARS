@@ -62,15 +62,7 @@ public class main extends JavaPlugin{
 	
 	
 	
-	public Map map_en_cours = new Map(2,
-			"chateau",
-			new Location(world,30,167,-315),
-			new ArrayList<Location>(Arrays.asList(new Location(world,30,11,-242), new Location(world,30,11,-386))),
-			new ArrayList<Location>(Arrays.asList(new Location(world,30,9,-371), new Location(world,30,9,-257))),
-			new Location(world,30,167,-315),
-			new Location(world,30,167,-315),
-			new Location(world,30,167,-315));
-	public Map chateau;
+	public Map map_en_cours;
 	
 	
 	
@@ -117,7 +109,7 @@ public class main extends JavaPlugin{
 	
 	setState(EtatPartie.AttenteJoueur);
 	
-
+	World world = Bukkit.getWorld("world");
 	
 	
 	pm.registerEvents(new PlayerListeners(this) , this);
@@ -128,16 +120,15 @@ public class main extends JavaPlugin{
 	
 	
 	list_maps.add(
-		chateau = new Map(
+		new Map(
 				2,
 				"chateau",
-				new Location(world,30,167,-315),
-				new ArrayList<Location>(Arrays.asList(new Location(world,30,11,-242), new Location(world,30,11,-386))),
-				new ArrayList<Location>(Arrays.asList(new Location(world,30,9,-371), new Location(world,30,9,-257))),
-				new Location(world,30,167,-315),
-				new Location(world,30,167,-315),
-				new Location(world,30,167,-315)
-				)
+				new Location(world,431,132,7),
+				new ArrayList<Location>(Arrays.asList(new Location(world,501,13,24), new Location(world,365,13,4))),
+				new ArrayList<Location>(Arrays.asList(new Location(world,523,13,1), new Location(world,341,8,10))),
+				new Location(world,501,13,24),
+				new Location(world,221,-66,-114),
+				new Location(world,644,103,141))
 		
 		
 		
@@ -165,15 +156,17 @@ public class main extends JavaPlugin{
 	public void efface_laine() {
 		
 		
-		for (int x = map_en_cours.getLocationMapBorne1().getBlockX();x!=map_en_cours.getLocationMapBorne2().getBlockX(); x++) {
-			for (int y=map_en_cours.getLocationMapBorne1().getBlockY();y!=map_en_cours.getLocationMapBorne2().getBlockY(); y++) {
-				for (int z=map_en_cours.getLocationMapBorne1().getBlockZ();z!=map_en_cours.getLocationMapBorne2().getBlockZ(); z++) {
+		
+		
+		for (int x = map_en_cours.LocationMapBorne1.getBlockX();x!=map_en_cours.LocationMapBorne2.getBlockX(); x++) {
+			for (int y=map_en_cours.LocationMapBorne1.getBlockY();y!=map_en_cours.LocationMapBorne2.getBlockY(); y++) {
+				for (int z=map_en_cours.LocationMapBorne1.getBlockZ();z!=map_en_cours.LocationMapBorne2.getBlockZ(); z++) {
 					/*if(!(world.getBlockAt(x, y, z).getType() == Material.BLUE_WOOL) && !(world.getBlockAt(x, y, z).getType() == Material.RED_WOOL)) {
 						
 					}*/
-					if (Bukkit.getWorld("world").getBlockAt(x, y, z).getType() == Material.BLUE_WOOL || Bukkit.getWorld("world").getBlockAt(x, y, z).getType() == Material.RED_WOOL) {
+					if (world.getBlockAt(x, y, z).getType() == Material.BLUE_WOOL || world.getBlockAt(x, y, z).getType() == Material.RED_WOOL) {
 							
-						Bukkit.getWorld("world").getBlockAt(x, y, z).setType(Material.AIR);
+						world.getBlockAt(x, y, z).setType(Material.AIR);
 					}
 			                
 				}
@@ -295,21 +288,28 @@ public class main extends JavaPlugin{
 	}
 	
 
-	public void SpawnTeleportation(Joueur joueur) {
+	public void SpawnTeleportation(Player player) {
+		
+		
+		
+		Joueur joueur = listeJoueurs.stream()
+				  .filter(p -> player.getName().equals(p.getNom()))
+				  .findAny()
+				  .orElse(null);
 		
 		if(joueur.getEquipe()==Equipe_rouge) {
-			joueur.get_the_player().teleport(map_en_cours.getLocationSpawnEquipeArray(0));
+			joueur.player.teleport(map_en_cours.getLocationSpawnEquipeArray(0));
 		}
 		
 		if(joueur.getEquipe()==Equipe_bleu) {
-			joueur.get_the_player().teleport(map_en_cours.getLocationSpawnEquipeArray(1));
+			joueur.player.teleport(map_en_cours.getLocationSpawnEquipeArray(1));
 		}
 		
 		if(joueur.getEquipe()==Equipe_vert) {
-			joueur.get_the_player().teleport(map_en_cours.getLocationSpawnEquipeArray(2));
+			joueur.player.teleport(map_en_cours.getLocationSpawnEquipeArray(2));
 		}
 		if(joueur.getEquipe()==Equipe_jaune) {
-			joueur.get_the_player().teleport(map_en_cours.getLocationSpawnEquipeArray(3));
+			joueur.player.teleport(map_en_cours.getLocationSpawnEquipeArray(3));
 		}
 		
 		
@@ -405,7 +405,7 @@ public class main extends JavaPlugin{
 		}
 	}
 		
-	public void respawn(Joueur joueur) {
+	/*public void respawn(Joueur joueur) {
 			joueur.get_the_player().setGameMode(GameMode.SURVIVAL);
 			joueur.get_the_player().setInvisible(false);
 			
@@ -423,7 +423,7 @@ public class main extends JavaPlugin{
 			//attribution_du_kit(joueur);
 			
 		
-		}
+		}*/
 		
 		
 

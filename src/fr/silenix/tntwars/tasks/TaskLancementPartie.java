@@ -64,15 +64,26 @@ public class TaskLancementPartie extends BukkitRunnable{
 				int value_random_en_cours = random.nextInt((main.list_maps.size() - 1) + 1) +1;
 				main.map_en_cours = main.list_maps.get(value_random_en_cours-1);*/
 				
+				main.map_en_cours = main.list_maps.get(0);
 				
-				Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map §6" + main.map_en_cours.getNom()+"§e a été choisie.");
+				/*main.map_en_cours.NbEquipe = main.list_maps.get(0).NbEquipe;
+				main.map_en_cours.LocationSalleMort = main.list_maps.get(0).LocationSalleMort;
+				main.map_en_cours.LocationSpawnEquipeArray = main.list_maps.get(0).LocationSpawnEquipeArray;
+				main.map_en_cours.LocationVisite = main.list_maps.get(0).LocationVisite;
+				main.map_en_cours.LocationMapBorne1 = main.list_maps.get(0).LocationMapBorne1;
+				main.map_en_cours.LocationMapBorne2 = main.list_maps.get(0).LocationMapBorne2;
+				main.map_en_cours.Nom = main.list_maps.get(0).Nom;
+				main.map_en_cours.LocationTntArray = main.list_maps.get(0).LocationTntArray;*/
+				
+				
+				Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map §6" + main.map_en_cours.Nom+"§e a été choisie.");
 				
 				
 				
 				
 			    
-				main.efface_laine();
-				//Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "killall all");
+				//main.efface_laine();
+				
 				
 				
 				
@@ -85,7 +96,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 					
 					
 						
-					player.teleport(main.map_en_cours.getLocationVisite());
+					player.teleport(main.map_en_cours.LocationVisite);
 						
 						//player.setPlayerListName(ChatColor.BLUE + player.getName());
 						

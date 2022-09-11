@@ -8,14 +8,14 @@ import Enum.EtatTNT;
 
 public class Map {
 	
-	private int NbEquipe;
-	private String Nom;
-	private Location LocationSalleMort;
-	private ArrayList<Location> LocationSpawnEquipeArray;
-	private ArrayList<Location> LocationTntArray;
-	private Location LocationVisite;
-	private Location LocationMapBorne1;
-	private Location LocationMapBorne2;
+	public int NbEquipe;
+	public String Nom;
+	public Location LocationSalleMort;
+	public ArrayList<Location> LocationSpawnEquipeArray;
+	public ArrayList<Location> LocationTntArray;
+	public Location LocationVisite;
+	public Location LocationMapBorne1;
+	public Location LocationMapBorne2;
 	
 	
 	

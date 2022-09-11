@@ -5,10 +5,10 @@ import org.bukkit.entity.Player;
 
 public class Joueur {
 	
-	private Player player;
-	private String Nom;
-	private Equipe Equipe;
-	private Kit Kit;
+	public Player player;
+	public String Nom;
+	public Equipe Equipe;
+	public Kit Kit;
 	
 	
 	

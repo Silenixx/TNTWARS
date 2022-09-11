@@ -68,11 +68,16 @@ public class TaskDebutPartie extends BukkitRunnable{
 				
 				main.AutoAddTeam(main.map_en_cours.getNbEquipe());
 				
-				for(int i=0; i < main.listeJoueurs.size(); i++) {
-					Joueur joueur = main.listeJoueurs.get(i);
+				for(int i=0; i < main.listePlayers.size(); i++) {
 					Player player = main.listePlayers.get(i);
 					
-					main.SpawnTeleportation(joueur);
+					Joueur joueur = main.listeJoueurs.stream()
+							  .filter(p -> player.getName().equals(p.getNom()))
+							  .findAny()
+							  .orElse(null);
+					
+					
+					main.SpawnTeleportation(player);
 					
 					
 					
