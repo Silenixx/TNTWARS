@@ -65,6 +65,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 				main.map_en_cours = main.list_maps.get(value_random_en_cours-1);*/
 				
 				main.map_en_cours = main.list_maps.get(0);
+				System.out.println(main.list_maps);
 				
 				/*main.map_en_cours.NbEquipe = main.list_maps.get(0).NbEquipe;
 				main.map_en_cours.LocationSalleMort = main.list_maps.get(0).LocationSalleMort;
@@ -101,7 +102,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 						//player.setPlayerListName(ChatColor.BLUE + player.getName());
 						
 						
-					}
+				}
 				
 				TaskDebutPartie start = new TaskDebutPartie(main);
 				start.runTaskTimer(main, 0, 20);

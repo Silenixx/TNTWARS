@@ -2,6 +2,7 @@ package fr.silenix.tntwars.timer;
 
 import org.bukkit.Bukkit;
 
+
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -45,7 +46,7 @@ public class TimerAllumageBlue extends BukkitRunnable{
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §630 §b secondes avant l'explosion de la TNT §9bleue§e.");
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
 				Joueur joueur = main.listeJoueurs.get(i);
-				joueur.get_the_player().playSound(joueur.get_the_player(), Sound.BLOCK_NOTE_BLOCK_PLING, 1F, 1F);
+				joueur.get_the_player().playSound(joueur.get_the_player().getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1F, 1F);
 			}
 		}
 		if (timer_blue==20) {

@@ -53,6 +53,12 @@ public class PlayerListeners implements Listener{
 	 @EventHandler
      public void onJoin(PlayerJoinEvent event) {
 		 Player player = event.getPlayer();
+		 
+		 
+		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.Sans_Kit);
+		 main.listeJoueurs.add(joueur);
+		 System.out.println(joueur);
+		 
 		 player.setInvulnerable(false);
 		 player.setExp(0);
 		 player.setInvisible(false);
@@ -65,8 +71,7 @@ public class PlayerListeners implements Listener{
 		 
 		 
 		 
-		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.Sans_Kit);
-		 main.listeJoueurs.add(joueur);
+		 
 		 main.listePlayers.add(player);
 		 
 		 

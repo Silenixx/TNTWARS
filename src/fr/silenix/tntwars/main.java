@@ -68,12 +68,15 @@ public class main extends JavaPlugin{
 	
 	
 	
+	public List<Map> list_maps = new ArrayList<>();
+	
+	
+	
+	
 	
 	public List<Joueur> listeJoueurs = new ArrayList<>();
 	public List<Player> listePlayers = new ArrayList<>();
 	
-	
-	public List<Map> list_maps = new ArrayList<>();
 	
 	
 	
@@ -112,27 +115,28 @@ public class main extends JavaPlugin{
 	World world = Bukkit.getWorld("world");
 	
 	
-	pm.registerEvents(new PlayerListeners(this) , this);
-	pm.registerEvents(new DamageListeners(), this);
-	
-	
-	
 	
 	
 	list_maps.add(
-		new Map(
-				2,
-				"chateau",
-				new Location(world,431,132,7),
-				new ArrayList<Location>(Arrays.asList(new Location(world,501,13,24), new Location(world,365,13,4))),
-				new ArrayList<Location>(Arrays.asList(new Location(world,523,13,1), new Location(world,341,8,10))),
-				new Location(world,501,13,24),
-				new Location(world,221,-66,-114),
-				new Location(world,644,103,141))
+	new Map(
+			2,
+			"chateau",
+			new Location(world,431,132,7),
+			new ArrayList<Location>(Arrays.asList(new Location(world,501,13,24), new Location(world,365,13,4))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,523,13,1), new Location(world,341,8,10))),
+			new Location(world,501,13,24),
+			new Location(world,221,-66,-114),
+			new Location(world,644,103,141))
+	);
+	
+	
+	
 		
 		
 		
-		);
+		
+	pm.registerEvents(new PlayerListeners(this) , this);
+	pm.registerEvents(new DamageListeners(), this);
 	
 	
 	
