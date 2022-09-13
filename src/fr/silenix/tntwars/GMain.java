@@ -2,9 +2,6 @@ package fr.silenix.tntwars;
 
 import java.util.ArrayList;
 
-
-
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -76,6 +73,25 @@ public class GMain extends JavaPlugin{
 	public Kit OneShot=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
 	public Kit Elytra=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
 	public Kit Ninja=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Savior=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit PigRider=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Chevalier=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Pirate=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit DogMaster=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Trident=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Squid=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Barbare=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit SnowMan=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Tank=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Archer=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Sorcier=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Ghost=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Healer=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Pyro=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Builder=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Alchimiste=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	
+	
 	
 	
 	
@@ -190,7 +206,7 @@ public class GMain extends JavaPlugin{
 					return;
 			}
 			switch(NbEquipe) {
-				case 1:
+				case 2:
 				
 				
 				if(getSize(Equipe_bleu) < getSize(Equipe_rouge)) {
@@ -437,6 +453,31 @@ public class GMain extends JavaPlugin{
 		
 	}
 		
+	@SuppressWarnings("deprecation")
+	public void sethealth(Joueur joueur) {
+		
+		if(!isState(EtatPartie.JeuEnCours)) {
+			joueur.getPlayer().setMaxHealth(40);
+			joueur.getPlayer().setHealth(40);
+			joueur.getPlayer().setFoodLevel(20);
+		}
+		if(isState(EtatPartie.JeuEnCours)) {
+			if(joueur.getKit() == OneShot) {
+				joueur.getPlayer().setMaxHealth(1);
+				joueur.getPlayer().setHealth(1);
+			}else {
+				joueur.getPlayer().setMaxHealth(40);
+				joueur.getPlayer().setHealth(40);
+				joueur.getPlayer().setFoodLevel(20);
+			}
+			
+		}
+				
+		
+		
+		
+	}
+
 	public void respawn(Player player) {
 			player.setGameMode(GameMode.SURVIVAL);
 			player.setInvisible(false);
@@ -462,6 +503,8 @@ public class GMain extends JavaPlugin{
 			
 		
 		}
+
+
 		
 		
 

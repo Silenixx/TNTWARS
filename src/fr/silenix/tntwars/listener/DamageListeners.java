@@ -1,6 +1,7 @@
 package fr.silenix.tntwars.listener;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -175,9 +176,10 @@ public class DamageListeners implements Listener{
 			if(damager instanceof Arrow) {
 				Arrow arrow = (Arrow)damager;
 				if(arrow.getShooter() instanceof Player) {
-					killer = (Player) arrow.getShooter();
+					Player killer_arrow = (Player) arrow.getShooter();
+					
 					Joueur joueur_killer = (main.listeJoueurs.stream()
-							  .filter(p -> killer.getName().equals(p.getPlayer().getName()))
+							  .filter(p -> killer_arrow.getName().equals(p.getPlayer().getName()))
 							  .findAny()
 							  .orElse(null));
 					
@@ -205,10 +207,10 @@ public class DamageListeners implements Listener{
 			if(damager instanceof Fireball) {
 				Fireball fireball = (Fireball)damager;
 				if(fireball.getShooter() instanceof Player) {
-					killer = (Player) fireball.getShooter();
+					Player killer_fireball = (Player) fireball.getShooter();
 					
 					Joueur joueur_killer = (main.listeJoueurs.stream()
-							  .filter(p -> killer.getName().equals(p.getPlayer().getName()))
+							  .filter(p -> killer_fireball.getName().equals(p.getPlayer().getName()))
 							  .findAny()
 							  .orElse(null));
 					
@@ -336,9 +338,9 @@ public class DamageListeners implements Listener{
 			if (players.getHealth() <= event.getDamage()) {
 				
 				if(damager instanceof Player) {
-					killer = (Player)damager;
+					Player killer_parjoueur = (Player)damager;
 					Joueur joueur_killer = (main.listeJoueurs.stream()
-							  .filter(p -> killer.getName().equals(p.getPlayer().getName()))
+							  .filter(p -> killer_parjoueur.getName().equals(p.getPlayer().getName()))
 							  .findAny()
 							  .orElse(null));
 

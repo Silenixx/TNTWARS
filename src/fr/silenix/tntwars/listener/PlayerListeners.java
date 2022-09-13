@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 
 
+
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -14,10 +15,15 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Fireball;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -25,6 +31,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import Enum.EtatPartie;
 import Enum.EtatTNT;
@@ -35,6 +43,7 @@ import fr.silenix.tntwars.tasks.TaskLancementPartie;
 import fr.silenix.tntwars.tasks.TaskRejoindPartieEnCours;
 import fr.silenix.tntwars.timer.TimerAllumageBlue;
 import fr.silenix.tntwars.timer.TimerAllumageRed;
+import fr.silenix.tntwars.timer.TimerInvisibility;
 
 //import fr.silenix.tntwars.entity.Joueur;
 
@@ -168,6 +177,25 @@ public class PlayerListeners implements Listener{
 					
 				}
 				
+				if(main.isState(EtatPartie.Prejeu)) {
+					
+					player.setInvisible(false);
+					player.teleport(main.map_en_cours.getLocationVisite());
+					
+					
+					
+					
+					
+					
+					player.setGameMode(GameMode.ADVENTURE);
+					event.setJoinMessage("§6[§eTntWars§6] §6" + player.getName()+ " §evient de se connecter à la partie.   §5<§d"+ main.listeJoueurs.size()+"§5/§d"+ Bukkit.getMaxPlayers()+"§5>");
+				
+				
+				
+				
+						
+				}
+				
 				
 				
 				
@@ -192,7 +220,7 @@ public class PlayerListeners implements Listener{
 	 }
 	 
 	 @EventHandler
-		public void onQuit(PlayerQuitEvent event) {
+	 public void onQuit(PlayerQuitEvent event) {
 			
 			
 			
@@ -220,8 +248,344 @@ public class PlayerListeners implements Listener{
 			
 			
 		}
-		@EventHandler
-		public void onInteract(PlayerInteractEvent event) {
+	 
+	@EventHandler
+	public void onPlace(BlockPlaceEvent event) {
+			if(!main.isState(GState.PLAYING)) {
+				event.setCancelled(true);
+				return;
+			}else {
+				if(event.getBlock().getType() == Material.RED_WOOL || event.getBlock().getType() == Material.BLUE_WOOL) {
+					return;
+				}else {
+					event.setCancelled(true);
+					return;
+				}
+			}
+			
+		}
+	@EventHandler
+	public void onBreak(BlockBreakEvent event) {
+		if(!main.isState(GState.PLAYING)) {
+			event.setCancelled(true);
+			return;
+		}else {
+			if(event.getBlock().getType() == Material.RED_WOOL || event.getBlock().getType() == Material.BLUE_WOOL) {
+				return;
+			}else {
+				event.setCancelled(true);
+				return;
+			}
+		}
+		
+		
+	}
+	@EventHandler
+	public void onClick(InventoryClickEvent event) {
+		
+		
+		Inventory inv = event.getInventory();
+		Player player = (Player) event.getWhoClicked();
+		
+		Joueur joueur = main.listeJoueurs.stream()
+				  .filter(p -> player.getName().equals(p.getPlayer().getName()))
+				  .findAny()
+				  .orElse(null);
+		
+		
+		
+		ItemStack current = event.getCurrentItem();
+		
+		if (current==null) return;
+		
+		if(inv.contains(Material.RED_WOOL)) {
+			if (current.getType()==Material.RED_WOOL) {
+				player.closeInventory();
+				//player.sendMessage("tu as clické sur team rouge");
+				main.RejoindEquipe(joueur, main.Equipe_rouge);
+			}else if (current.getType()==Material.BLUE_WOOL) {
+				player.closeInventory();
+				//player.sendMessage("tu as clické sur team bleu");
+				main.RejoindEquipe(joueur, main.Equipe_bleu);
+			}
+		}
+		
+		
+		
+		
+		if(inv.contains(Material.DIAMOND_SWORD) && inv.contains(Material.STONE_SWORD)) {
+			if (current.getType()==Material.STONE_SWORD) {
+				joueur.setKit(main.Tank); 
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Tank sélectionné");
+				
+			}
+		
+			if (current.getType()==Material.DIAMOND_SWORD) {
+				joueur.setKit(main.Guerrier);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Guerrier sélectionné");
+				
+			}
+			if (current.getType()==Material.BOW) {
+				joueur.setKit(main.Archer);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Archer sélectionné");
+				
+			}
+			if (current.getType()==Material.ENDER_EYE) {
+				joueur.setKit(main.Ghost);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Ghost sélectionné");
+				
+			}
+			if (current.getType()==Material.GLISTERING_MELON_SLICE) {
+				joueur.setKit(main.Healer);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Healer sélectionné");
+				
+			}
+			if (current.getType()==Material.FLINT_AND_STEEL) {
+				joueur.setKit(main.Pyro);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Pyro sélectionné");
+				
+			}
+			if (current.getType()==Material.SHEARS) {
+				joueur.setKit(main.Builder);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Builder sélectionné");
+				
+			}
+			if (current.getType()==Material.BLAZE_ROD) {
+				joueur.setKit(main.Sorcier);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Sorcier sélectionné");
+				
+			}
+			if (current.getType()==Material.POTION) {
+				joueur.setKit(main.Alchimiste);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Alchimiste sélectionné");
+				
+			}
+			if (current.getType()==Material.ENDER_PEARL) {
+				joueur.setKit(main.Endermen);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit EnderMan sélectionné");
+				
+			}
+			if (current.getType()==Material.SNOWBALL) {
+				joueur.setKit(main.SnowMan);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Snowman sélectionné");
+				
+			}
+			if (current.getType()==Material.END_CRYSTAL) {
+				joueur.setKit(main.OneShot);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit OneShot sélectionné");
+				
+			}
+			if (current.getType()==Material.BLACK_BANNER) {
+				joueur.setKit(main.Ninja);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Ninja sélectionné");
+				
+			}
+			if (current.getType()==Material.AMETHYST_SHARD) {
+				joueur.setKit(main.Savior);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Savior sélectionné");
+				
+			}
+			if (current.getType()==Material.DIAMOND_AXE) {
+				joueur.setKit(main.Barbare);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Barbare sélectionné");
+				
+			}
+			if (current.getType()==Material.TNT) {
+				joueur.setKit(main.Kamikaze);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Kamikaze sélectionné");
+				
+			}
+			if (current.getType()==Material.BONE) {
+				joueur.setKit(main.DogMaster);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit DogMaster sélectionné");
+				
+			}
+			if (current.getType()==Material.SKELETON_SKULL) {
+				joueur.setKit(main.Pirate);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Pirate sélectionné");
+				
+			}
+			if (current.getType()==Material.SADDLE) {
+				joueur.setKit(main.Chevalier);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Chevalier sélectionné");
+				
+			}
+			if (current.getType()==Material.CARROT_ON_A_STICK) {
+				joueur.setKit(main.PigRider);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit PigRider sélectionné");
+				
+			}
+			if (current.getType()==Material.TRIDENT) {
+				joueur.setKit(main.Trident);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Trident sélectionné");
+				
+			}
+			if (current.getType()==Material.ELYTRA) {
+				joueur.setKit(main.Elytra);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Elytra sélectionné");
+				
+			}
+			if (current.getType()==Material.INK_SAC) {
+				joueur.setKit(main.Squid);
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Squid sélectionné");
+				
+			}
+			
+			
+		}
+	}
+
+	@EventHandler
+	public void onInteractEntity(PlayerInteractEntityEvent event) {
+		if(event.getRightClicked() instanceof Player)
+        {
+            Player player = event.getPlayer();
+            Player victim = (Player) event.getRightClicked();
+            
+            /*if(!(player.getInventory().getItemInMainHand().getType() == Material.BLAZE_ROD)) {
+            	return;
+            }*/
+            
+            /*if(player.getInventory().getItemInMainHand().getType() == Material.BLAZE_ROD) {
+            	if(main.TeamBlue.contains(player) && main.TeamBlue.contains(victim)) {
+            		
+            		if(victim.getHealth()>17.0) {
+            			victim.setHealth(20.0);
+            		}else {
+            			victim.setHealth(victim.getHealth() + 1.0);
+            		}
+            		
+            	}
+            	
+            	if(main.TeamRed.contains(player) && main.TeamRed.contains(victim)) {
+            		
+            		if(victim.getHealth()>17.0) {
+            			victim.setHealth(20.0);
+            		}else {
+            			victim.setHealth(victim.getHealth() + 1.0);
+            		}
+            	}
+            }*/
+            
+            if(main.getPlayerBlue().contains(player) && main.getPlayerBlue().contains(victim)) {
+				
+				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.GLISTERING_MELON_SLICE) {
+					if(!main.kit_oneshot.contains(victim)){
+						if(victim.getHealth()>37.0) {
+							victim.setHealth(40.0);
+	            		}else {
+	            			victim.setHealth(victim.getHealth() + 2.0);
+	            		}
+					}
+					return;
+				}
+				
+			}
+			
+			if(main.getPlayerRed().contains(player) && main.getPlayerRed().contains(victim)) {
+					
+					if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.GLISTERING_MELON_SLICE) {
+						if(!main.kit_oneshot.contains(victim)){
+							if(victim.getHealth()>37.0) {
+								victim.setHealth(40.0);
+		            		}else {
+		            			victim.setHealth(victim.getHealth() + 2.0);
+		            		}
+						}
+						return;
+					}
+					
+					
+			}
+			
+			
+			
+			
+			if(main.getPlayerBlue().contains(player) && main.getPlayerBlue().contains(victim)) {
+				
+				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.AMETHYST_CLUSTER) {
+					((HumanEntity) player).getInventory().getItemInMainHand().setAmount(((HumanEntity) player).getInventory().getItemInMainHand().getAmount() - 1);
+		            
+					player.teleport(main.map_en_cours.spawnbleu);
+					return;
+				}
+				
+			}
+			
+			if(main.getPlayerRed().contains(player) && main.getPlayerRed().contains(victim)) {
+				
+				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.AMETHYST_CLUSTER) {
+					
+					((HumanEntity) player).getInventory().getItemInMainHand().setAmount(((HumanEntity) player).getInventory().getItemInMainHand().getAmount() - 1);
+		            
+					player.teleport(main.map_en_cours.spawnrouge);
+					return;
+				}
+				
+			}
+			
+			
+			if(main.getPlayerBlue().contains(player) && main.getPlayerRed().contains(victim)) {
+				
+				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.INK_SAC) {
+					
+		            
+					
+					victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*15, 7));
+					
+					return;
+				}
+				
+			}
+			
+			if(main.getPlayerRed().contains(player) && main.getPlayerBlue().contains(victim)) {
+				
+				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.INK_SAC) {
+					
+					
+		            
+					
+					victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*15, 7));
+					
+					
+					return;
+				}
+				
+			}
+            
+            
+			
+            
+        }
+		
+		
+	}
+	 
+	@EventHandler
+	public void onInteract(PlayerInteractEvent event) {
 			
 			Player player = event.getPlayer();
 			Player player2 = event.getPlayer();
@@ -811,15 +1175,32 @@ public class PlayerListeners implements Listener{
 					}
 				}
 
-			
+				if (it.getType() == Material.AMETHYST_SHARD && joueur.getKit()==main.Savior) {
+					if(joueur.getEquipe()==main.Equipe_bleu) {
+						if (player.getInventory().getItemInMainHand().getType() == Material.AMETHYST_SHARD) {
+							player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+			            };
+						player.teleport(main.map_en_cours.getLocationSpawnEquipeArray(1));
+					}
+					if(joueur.getEquipe()==main.Equipe_rouge) {
+						if (player.getInventory().getItemInMainHand().getType() == Material.AMETHYST_SHARD) {
+							player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+			            }
+						player.teleport(main.map_en_cours.getLocationSpawnEquipeArray(0));
+					}
+					
+				}
+				
+				
+				if (it.getType() == Material.BLACK_BANNER && joueur.getKit()==main.Ninja) {
+					player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+					TimerInvisibility start = new TimerInvisibility(main,player);
+					start.runTaskTimer(main, 0, 20);
+				}
+			    
 			
 				
-				/*Bukkit.broadcastMessage("compteur bleu map 1="+main.compteur_tnt_bleu.size());
-				Bukkit.broadcastMessage("compteur rouge map 1="+main.compteur_tnt_rouge.size());
-				Bukkit.broadcastMessage("random numero 1="+main.value_random.get(0));*/
 				
-			
-			
 			
 			
 				
@@ -835,7 +1216,7 @@ public class PlayerListeners implements Listener{
 					
 			
 				
-			//Location tntred = new Location(world, 16, 85, -15);
+			
 			
 			
 				
