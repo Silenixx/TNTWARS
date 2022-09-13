@@ -13,8 +13,9 @@ public class Equipe {
     
     
     public Equipe(String Couleur, boolean IsAlive) {
-		Couleur = this.Couleur;
-		IsAlive = this.IsAlive;
+    	super();
+    	this.Couleur=Couleur;
+    	this.IsAlive=IsAlive;
 	}
     
     

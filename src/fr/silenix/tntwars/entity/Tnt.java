@@ -1,6 +1,7 @@
 package fr.silenix.tntwars.entity;
 
-import org.bukkit.Location;
+
+
 
 import Enum.EtatTNT;
 
@@ -12,9 +13,10 @@ public class Tnt {
 	
 	
 	public Tnt(Equipe Equipe, int Vie, EtatTNT Etat) {
-		Equipe = this.Equipe;
-		Vie = this.Vie;
-		Etat = this.Etat;
+		super();
+		this.Equipe=Equipe;
+		this.Vie=Vie;
+		this.Etat=Etat;
 	}
 	
 	

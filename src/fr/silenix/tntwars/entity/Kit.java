@@ -20,15 +20,16 @@ public class Kit {
 	
 	
 	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,float PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible) {
-		Nom = this.Nom;
-		Helmet = this.Helmet;
-		Chestplate = this.Chestplate;
-		Legging = this.Legging;
-		Boots = this.Boots;
-		PointVie = this.PointVie;
-		ItemsArray = this.ItemsArray;
-		Potioneffect = this.Potioneffect;
-		IsVisible = this.IsVisible;
+		super();
+		this.Nom=Nom;
+		this.Helmet=Helmet;
+		this.Chestplate=Chestplate;
+		this.Legging=Legging;
+		this.Boots=Boots ;
+		this.PointVie=PointVie;
+		this.ItemsArray=ItemsArray;
+		this.Potioneffect=Potioneffect;
+		this.IsVisible=IsVisible;
 		
 	}
 	

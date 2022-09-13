@@ -1,22 +1,22 @@
 package fr.silenix.tntwars.entity;
 
-
 import org.bukkit.entity.Player;
 
 public class Joueur {
 	
-	public Player player;
-	public String Nom;
-	public Equipe Equipe;
-	public Kit Kit;
+	private Player player;
+	private String Nom;
+	private Equipe Equipe;
+	private Kit Kit;
 	
 	
 	
 	public Joueur(Player Player,String Nom, Equipe Equipe, Kit Kit) {
-		Player = this.player;
-		Nom = this.Nom;
-		Equipe = this.Equipe;
-		Kit = this.Kit;
+		super();
+		this.player=Player;
+		this.Nom=Nom;
+		this.Equipe=Equipe;
+		this.Kit=Kit;
 	}
 	
 	
@@ -33,7 +33,7 @@ public class Joueur {
 	public void setEquipe(Equipe equipe) {
 		Equipe = equipe;
 	}
-	public Player get_the_player() {
+	public Player getPlayer() {
 		return player;
 	}
 	public void setPlayer(Player Player) {

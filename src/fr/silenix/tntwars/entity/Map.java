@@ -2,10 +2,7 @@ package fr.silenix.tntwars.entity;
 
 import java.util.ArrayList;
 
-
 import org.bukkit.Location;
-
-
 
 public class Map {
 	
@@ -21,14 +18,15 @@ public class Map {
 	
 	
 	public Map(int NbEquipe, String Nom, Location LocationSalleMort, ArrayList<Location> LocationSpawnEquipeArray, ArrayList<Location> LocationTntArray, Location LocationVisite, Location LocationMapBorne1,Location LocationMapBorne2) {
-		NbEquipe = this.NbEquipe;
-		Nom = this.Nom;
-		LocationSalleMort = this.LocationSalleMort;
-		LocationSpawnEquipeArray = this.LocationSpawnEquipeArray;
-		LocationTntArray = this.LocationTntArray;
-		LocationVisite = this.LocationVisite;
-		LocationMapBorne1 = this.LocationMapBorne1;
-		LocationMapBorne2 = this.LocationMapBorne2;
+		super();
+		this.NbEquipe= NbEquipe;
+		this.Nom= Nom;
+		this.LocationSalleMort=LocationSalleMort ;
+		this.LocationSpawnEquipeArray=LocationSpawnEquipeArray;
+		this.LocationTntArray=LocationTntArray;
+		this.LocationVisite=LocationVisite;
+		this.LocationMapBorne1=LocationMapBorne1;
+		this.LocationMapBorne2=LocationMapBorne2;
 	}
 	
 	

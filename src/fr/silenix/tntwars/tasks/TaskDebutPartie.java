@@ -1,8 +1,9 @@
 package fr.silenix.tntwars.tasks;
 
 import org.bukkit.Bukkit;
+
 import org.bukkit.World;
-import org.bukkit.entity.Player;
+
 import org.bukkit.scheduler.BukkitRunnable;
 
 import Enum.EtatPartie;
@@ -39,17 +40,17 @@ public class TaskDebutPartie extends BukkitRunnable{
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eAnnulation de début de partie par manque de joueur");
 			cancel();
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
-				Player joueur = main.listePlayers.get(i);
-				joueur.teleport(main.spawn_general);
-				joueur.setExp(0);
+				Joueur joueur = main.listeJoueurs.get(i);
+				joueur.getPlayer().teleport(main.spawn_general);
+				joueur.getPlayer().setExp(0);
 			}
 			main.setState(EtatPartie.AttenteJoueur);
 			
 		}
-		if(main.isState(EtatPartie.AttenteJoueur)) {
-			for(Player pls : main.getListePlayer()) {
+		if(main.isState(EtatPartie.Prejeu)) {
+			/*for(Player pls : main.listeJoueurs) {
 				pls.setLevel(timer);
-			}
+			}*/
 			
 			if(timer==45 || timer ==30 || timer ==20 || timer ==10 || timer ==5 || timer==4 || timer==3|| timer==2|| timer==1) {
 				Bukkit.broadcastMessage("§6[§eTntWars§6] §eLancement de la partie dans §6" + timer +"§e secondes.");
@@ -69,21 +70,21 @@ public class TaskDebutPartie extends BukkitRunnable{
 				
 				main.AutoAddTeam(main.map_en_cours.getNbEquipe());
 				
-				for(int i=0; i < main.listePlayers.size(); i++) {
-					Player player = main.listePlayers.get(i);
+				for(int i=0; i < main.listeJoueurs.size(); i++) {
+					Joueur joueur = main.listeJoueurs.get(i);
 					
-					Joueur joueur = main.listeJoueurs.stream()
+					/*Joueur joueur = main.listeJoueurs.stream()
 							  .filter(p -> player.getName().equals(p.getNom()))
 							  .findAny()
-							  .orElse(null);
+							  .orElse(null);*/
 					
 					
-					main.SpawnTeleportation(player);
+					main.SpawnTeleportation(joueur);
 					
 					
 					
 					
-					player.getInventory().clear();
+					joueur.getPlayer().getInventory().clear();
 					
 					
 					if(joueur.getKit()==main.Sans_Kit) {

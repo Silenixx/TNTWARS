@@ -1,10 +1,11 @@
 package fr.silenix.tntwars.tasks;
 
-import java.util.Random;
+
+
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.entity.Player;
+
 import org.bukkit.scheduler.BukkitRunnable;
 
 import Enum.EtatPartie;
@@ -41,15 +42,15 @@ public class TaskLancementPartie extends BukkitRunnable{
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eAnnulation de début de partie par manque de joueur");
 			cancel();
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
-				Player joueur = main.getListePlayer().get(i);
+				Joueur joueur = main.listeJoueurs.get(i);
 				joueur.getPlayer().setExp(0);
 			}
 			main.setState(EtatPartie.AttenteJoueur);
 		}
 		if(main.isState(EtatPartie.Lancement)) {
-			for(Player pls : main.getListePlayer()) {
+			/*for(Player pls : main.getListePlayer()) {
 				pls.setLevel(timer);
-			}
+			}*/
 			
 			if(timer==35 || timer ==10 || timer ==5 || timer==4 || timer==3|| timer==2|| timer==1) {
 				Bukkit.broadcastMessage("§6[§eTntWars§6] §eTéléportation vers la carte de jeu dans §6" + timer +"§e secondes.");
@@ -66,7 +67,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 				main.map_en_cours = main.list_maps.get(value_random_en_cours-1);*/
 				
 				main.map_en_cours = main.list_maps.get(0);
-				System.out.println(main.list_maps);
+				
 				
 				/*main.map_en_cours.NbEquipe = main.list_maps.get(0).NbEquipe;
 				main.map_en_cours.LocationSalleMort = main.list_maps.get(0).LocationSalleMort;
@@ -78,15 +79,15 @@ public class TaskLancementPartie extends BukkitRunnable{
 				main.map_en_cours.LocationTntArray = main.list_maps.get(0).LocationTntArray;*/
 				
 				
-				Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map §6" + main.map_en_cours.Nom+"§e a été choisie.");
+				Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map §6" + main.map_en_cours.Nom + "§e a été choisie.");
 				
 				//main.efface_laine();
 				
 				
 				
 				
-				for(int i=0; i < main.listePlayers.size(); i++) {
-					Player player = main.getListePlayer().get(i);
+				for(int i=0; i < main.listeJoueurs.size(); i++) {
+					Joueur joueur = main.listeJoueurs.get(i);
 					//Location spawn = main.getSpawns().get(i);
 					//for(int x =0; x != main.players.size(); x++) {
 					
@@ -94,15 +95,15 @@ public class TaskLancementPartie extends BukkitRunnable{
 					
 					
 						
-					player.teleport(main.list_maps.get(0).LocationVisite);
+					joueur.getPlayer().teleport(main.map_en_cours.LocationVisite);
 						
 						//player.setPlayerListName(ChatColor.BLUE + player.getName());
 	
 				}
-				
+				main.setState(EtatPartie.Prejeu);
 				TaskDebutPartie start = new TaskDebutPartie(main);
 				start.runTaskTimer(main, 0, 20);
-				main.setState(EtatPartie.Prejeu);
+				
 				
 				
 				/*GGameCycle cycle = new GGameCycle(main);

@@ -58,7 +58,6 @@ public class PlayerListeners implements Listener{
 		 
 		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.Sans_Kit);
 		 main.listeJoueurs.add(joueur);
-		 System.out.println(joueur);
 		 
 		 player.setInvulnerable(false);
 		 player.setExp(0);
@@ -71,9 +70,6 @@ public class PlayerListeners implements Listener{
 		 player.getInventory().clear();
 		 
 		 
-		 
-		 
-		 main.listePlayers.add(player);
 		 
 		 
 	 
@@ -211,7 +207,6 @@ public class PlayerListeners implements Listener{
 			main.listeJoueurs.remove(joueur);
 			
 			
-			main.listePlayers.remove(player);
 			
 			
 			
