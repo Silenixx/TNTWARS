@@ -1,7 +1,9 @@
 package fr.silenix.tntwars.listener;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
@@ -19,6 +21,7 @@ import org.bukkit.inventory.ItemStack;
 
 import Enum.EtatPartie;
 import fr.silenix.tntwars.GMain;
+import fr.silenix.tntwars.entity.Joueur;
 
 public class DamageListeners implements Listener{
 	
@@ -47,7 +50,11 @@ public class DamageListeners implements Listener{
 		
 		if(event.getCause().equals(DamageCause.ENTITY_EXPLOSION) || event.getCause().equals(DamageCause.BLOCK_EXPLOSION)){
 			Player player = (Player)victim;
-			if(main.kit_kamikaze.contains(player)) {
+			Joueur joueur = (main.listeJoueurs.stream()
+					  .filter(p -> player.getName().equals(p.getPlayer().getName()))
+					  .findAny()
+					  .orElse(null));
+			if(joueur.getKit()==main.Kamikaze) {
 				event.setCancelled(true);
 				event.setDamage(0);
 				return;
@@ -63,7 +70,7 @@ public class DamageListeners implements Listener{
 				
 				
 				event.setDamage(0);
-				player.teleport(main.map_en_cours.salle_attente);
+				player.teleport(main.map_en_cours.getLocationSalleMort());
 				main.eliminate(player);
 				
 			}
@@ -107,11 +114,16 @@ public class DamageListeners implements Listener{
 
         final Player pl = e.getPlayer();
         final Material m = e.getPlayer().getLocation().getBlock().getType();
+        
+        final Joueur joueur = (main.listeJoueurs.stream()
+				  .filter(p -> pl.getName().equals(p.getPlayer().getName()))
+				  .findAny()
+				  .orElse(null));
 
         //pl.sendMessage("debug 0");
 
         if (/*m == Material.LEGACY_STATIONARY_WATER ||*/ m == Material.WATER) {
-        	if(main.kit_endermen.contains(pl)) {
+        	if(joueur.getKit()== main.Endermen) {
         		pl.setHealth(0);
         		pl.sendMessage("un enderman ne peut pas nager ");
         	}
@@ -132,7 +144,7 @@ public class DamageListeners implements Listener{
 		Entity victim = event.getEntity();
 		
 		
-		if(!main.isState(GState.PLAYING)) {
+		if(!main.isState(EtatPartie.JeuEnCours)) {
 			event.setCancelled(true);
 			return;
 		}
@@ -140,9 +152,17 @@ public class DamageListeners implements Listener{
 		
 		if (victim instanceof Player) {
 			Player players = (Player)victim;
+			Joueur joueur_victime = (main.listeJoueurs.stream()
+					  .filter(p -> players.getName().equals(p.getPlayer().getName()))
+					  .findAny()
+					  .orElse(null));
+			
 			
 			Entity damager = event.getDamager();
-			
+			Joueur joueur_damager = (main.listeJoueurs.stream()
+					  .filter(p -> damager.getName().equals(p.getPlayer().getName()))
+					  .findAny()
+					  .orElse(null));
 			
 			Player killer = null;
 			
@@ -156,19 +176,22 @@ public class DamageListeners implements Listener{
 				Arrow arrow = (Arrow)damager;
 				if(arrow.getShooter() instanceof Player) {
 					killer = (Player) arrow.getShooter();
+					Joueur joueur_killer = (main.listeJoueurs.stream()
+							  .filter(p -> killer.getName().equals(p.getPlayer().getName()))
+							  .findAny()
+							  .orElse(null));
 					
-					
-					if(main.getPlayerBlue().contains(killer) && main.getPlayerBlue().contains(players)) {
+					if(joueur_killer.getEquipe()==main.Equipe_bleu && joueur_victime.getEquipe()==main.Equipe_bleu) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
 						}
-					if(main.getPlayerRed().contains(killer) && main.getPlayerRed().contains(players)) {
+					if(joueur_killer.getEquipe()==main.Equipe_rouge && joueur_victime.getEquipe()==main.Equipe_rouge) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
 					}
-					if(main.kit_endermen.contains(players)) {
+					if(joueur_victime.getKit()==main.Endermen) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
@@ -184,13 +207,18 @@ public class DamageListeners implements Listener{
 				if(fireball.getShooter() instanceof Player) {
 					killer = (Player) fireball.getShooter();
 					
+					Joueur joueur_killer = (main.listeJoueurs.stream()
+							  .filter(p -> killer.getName().equals(p.getPlayer().getName()))
+							  .findAny()
+							  .orElse(null));
 					
-					if(main.getPlayerBlue().contains(killer) && main.getPlayerBlue().contains(players)) {
+					
+					if(joueur_killer.getEquipe()==main.Equipe_bleu && joueur_victime.getEquipe()==main.Equipe_bleu) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
 						}
-					if(main.getPlayerRed().contains(killer) && main.getPlayerRed().contains(players)) {
+					if(joueur_killer.getEquipe()==main.Equipe_rouge && joueur_victime.getEquipe()==main.Equipe_rouge) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
@@ -208,7 +236,7 @@ public class DamageListeners implements Listener{
 			
 			
 			
-			if(main.kit_oneshot.contains(damager)) {
+			if(joueur_damager.getKit()==main.OneShot) {
 				Bukkit.broadcastMessage(damager.getName()+" vient de tuer "+ players.getDisplayName());
 				damager.sendMessage("Tu viens de tuer " + players.getName());
 				event.setDamage(0);
@@ -309,28 +337,33 @@ public class DamageListeners implements Listener{
 				
 				if(damager instanceof Player) {
 					killer = (Player)damager;
+					Joueur joueur_killer = (main.listeJoueurs.stream()
+							  .filter(p -> killer.getName().equals(p.getPlayer().getName()))
+							  .findAny()
+							  .orElse(null));
 
+				
+				
+				
+				
+				
+				
+					Bukkit.broadcastMessage(killer.getDisplayName()+" vient de tuer "+ players.getDisplayName());
+					killer.sendMessage("Tu viens de tuer " + players.getName());
+					
+					if(joueur_killer.getKit()==main.Elytra) {
+						killer.getInventory().addItem(new ItemStack(Material.FIREWORK_ROCKET));
+					}
+					if(joueur_killer.getKit()==main.Endermen) {
+						killer.getInventory().addItem(new ItemStack(Material.ENDER_PEARL));
+					}
+					if(joueur_killer.getKit()==main.Ninja) {
+						killer.getInventory().addItem(new ItemStack(Material.BLACK_BANNER));
+					}
+					
+					event.setDamage(0);
+					main.eliminate(players);
 				}
-				
-				
-				
-				
-				
-				Bukkit.broadcastMessage(killer.getDisplayName()+" vient de tuer "+ players.getDisplayName());
-				killer.sendMessage("Tu viens de tuer " + players.getName());
-				
-				if(main.kit_elytra.contains(killer)) {
-					killer.getInventory().addItem(new ItemStack(Material.FIREWORK_ROCKET));
-				}
-				if(main.kit_endermen.contains(killer)) {
-					killer.getInventory().addItem(new ItemStack(Material.ENDER_PEARL));
-				}
-				if(main.kit_ninja.contains(killer)) {
-					killer.getInventory().addItem(new ItemStack(Material.BLACK_BANNER));
-				}
-				
-				event.setDamage(0);
-				main.eliminate(players);
 			}
 		}
 	}

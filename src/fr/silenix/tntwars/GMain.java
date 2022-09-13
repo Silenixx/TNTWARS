@@ -60,8 +60,22 @@ public class GMain extends JavaPlugin{
 	public Tnt tnt_vert = new Tnt(Equipe_rouge, Vie_Global_TNT, EtatTNT.Eteinte);
 	public Tnt tnt_jaune = new Tnt(Equipe_rouge, Vie_Global_TNT, EtatTNT.Eteinte);
 	
-	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,10,null,null,true);
-	public Kit Guerrier = new Kit("Sans Kit",null,null,null,null,10,null,null,true);
+	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Guerrier = new Kit(
+					"Sans Kit",
+					new ItemStack(Material.IRON_HELMET),
+					new ItemStack(Material.IRON_CHESTPLATE),
+					new ItemStack(Material.IRON_LEGGINGS),
+					new ItemStack(Material.IRON_BOOTS),
+					20,
+					null,
+					null,
+					true);
+	public Kit Endermen = new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Kamikaze=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit OneShot=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Elytra=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Ninja=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
 	
 	
 	
