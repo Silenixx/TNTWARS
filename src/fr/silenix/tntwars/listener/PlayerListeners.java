@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 
 
+
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -27,8 +28,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import Enum.EtatPartie;
 import Enum.EtatTNT;
+import fr.silenix.tntwars.GMain;
 
-import fr.silenix.tntwars.main;
 import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.tasks.TaskLancementPartie;
 import fr.silenix.tntwars.tasks.TaskRejoindPartieEnCours;
@@ -40,12 +41,12 @@ import fr.silenix.tntwars.timer.TimerAllumageRed;
 
 public class PlayerListeners implements Listener{
 	
-	private main main;
+	private GMain main;
 	
 	static World world = Bukkit.getWorld("world");
 
 
-	public PlayerListeners(main main) {
+	public PlayerListeners(GMain main) {
 		this.main = main;
 	}
 	

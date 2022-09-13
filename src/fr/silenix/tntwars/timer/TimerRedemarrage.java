@@ -3,16 +3,18 @@ package fr.silenix.tntwars.timer;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import fr.silenix.tntwars.GMain;
+
 public class TimerRedemarrage extends BukkitRunnable{
 
-	private fr.silenix.tntwars.main main;
+	private GMain main;
 	private int timer =30;
 
 	
 	
 	
 	
-	public TimerRedemarrage(fr.silenix.tntwars.main main) {
+	public TimerRedemarrage(GMain main) {
 		this.main = main;
 	}
 	

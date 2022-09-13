@@ -2,9 +2,10 @@ package fr.silenix.tntwars.entity;
 
 import java.util.ArrayList;
 
+
 import org.bukkit.Location;
 
-import Enum.EtatTNT;
+
 
 public class Map {
 	

@@ -6,13 +6,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import Enum.EtatPartie;
+import fr.silenix.tntwars.GMain;
 import fr.silenix.tntwars.entity.Joueur;
 
 public class TaskDebutPartie extends BukkitRunnable{
 
 	private int timer = 45;
 	
-	private fr.silenix.tntwars.main main;
+	private GMain main;
 	
 	static World world = Bukkit.getWorld("world");
 
@@ -24,7 +25,7 @@ public class TaskDebutPartie extends BukkitRunnable{
 	
 	
 	
-	public TaskDebutPartie(fr.silenix.tntwars.main main) {
+	public TaskDebutPartie(GMain main) {
 		this.main = main;
 	}
 

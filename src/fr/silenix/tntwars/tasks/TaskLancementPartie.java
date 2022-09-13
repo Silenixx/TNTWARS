@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import Enum.EtatPartie;
+import fr.silenix.tntwars.GMain;
 import fr.silenix.tntwars.entity.Joueur;
 
 
@@ -18,14 +19,14 @@ public class TaskLancementPartie extends BukkitRunnable{
 	
 	private int timer = 15;
 	
-	private fr.silenix.tntwars.main main;
+	private GMain main;
 	
 	static World world = Bukkit.getWorld("world");
 	
 	
 	
 	
-	public TaskLancementPartie(fr.silenix.tntwars.main main) {
+	public TaskLancementPartie(GMain main) {
 		this.main = main;
 	}
 
@@ -40,8 +41,8 @@ public class TaskLancementPartie extends BukkitRunnable{
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eAnnulation de début de partie par manque de joueur");
 			cancel();
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
-				Joueur joueur = main.getJoueur(i);
-				joueur.get_the_player().getPlayer().setExp(0);
+				Player joueur = main.getListePlayer().get(i);
+				joueur.getPlayer().setExp(0);
 			}
 			main.setState(EtatPartie.AttenteJoueur);
 		}
@@ -79,17 +80,13 @@ public class TaskLancementPartie extends BukkitRunnable{
 				
 				Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map §6" + main.map_en_cours.Nom+"§e a été choisie.");
 				
-				
-				
-				
-			    
 				//main.efface_laine();
 				
 				
 				
 				
-				for(int i=0; i < main.listeJoueurs.size(); i++) {
-					Player player = main.listePlayers.get(i);
+				for(int i=0; i < main.listePlayers.size(); i++) {
+					Player player = main.getListePlayer().get(i);
 					//Location spawn = main.getSpawns().get(i);
 					//for(int x =0; x != main.players.size(); x++) {
 					
@@ -97,11 +94,10 @@ public class TaskLancementPartie extends BukkitRunnable{
 					
 					
 						
-					player.teleport(main.map_en_cours.LocationVisite);
+					player.teleport(main.list_maps.get(0).LocationVisite);
 						
 						//player.setPlayerListName(ChatColor.BLUE + player.getName());
-						
-						
+	
 				}
 				
 				TaskDebutPartie start = new TaskDebutPartie(main);

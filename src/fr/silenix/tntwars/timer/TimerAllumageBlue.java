@@ -3,26 +3,28 @@ package fr.silenix.tntwars.timer;
 import org.bukkit.Bukkit;
 
 
+
 import org.bukkit.Particle;
 import org.bukkit.Sound;
-import org.bukkit.entity.Player;
+
 import org.bukkit.scheduler.BukkitRunnable;
 
 import Enum.EtatPartie;
 import Enum.EtatTNT;
+import fr.silenix.tntwars.GMain;
 import fr.silenix.tntwars.entity.Joueur;
 
 
 public class TimerAllumageBlue extends BukkitRunnable{
 	
 	
-	private fr.silenix.tntwars.main main;
+	private GMain main;
 	
 	
 	
 	
 	
-	public TimerAllumageBlue(fr.silenix.tntwars.main main) {
+	public TimerAllumageBlue(GMain main) {
 		this.main = main;
 	}
 	

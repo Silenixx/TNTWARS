@@ -7,18 +7,19 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import Enum.EtatPartie;
 import Enum.EtatTNT;
+import fr.silenix.tntwars.GMain;
 import fr.silenix.tntwars.entity.Joueur;
 
 public class TimerAllumageRed extends BukkitRunnable{
 	
 	
-	private fr.silenix.tntwars.main main;
+	private GMain main;
 	
 	
 	
 	
 	
-	public TimerAllumageRed(fr.silenix.tntwars.main main) {
+	public TimerAllumageRed(GMain main) {
 		this.main = main;
 	}
 	
