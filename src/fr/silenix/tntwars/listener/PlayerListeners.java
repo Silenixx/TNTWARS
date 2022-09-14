@@ -251,7 +251,7 @@ public class PlayerListeners implements Listener{
 	 
 	@EventHandler
 	public void onPlace(BlockPlaceEvent event) {
-			if(!main.isState(GState.PLAYING)) {
+			if(!main.isState(EtatPartie.JeuEnCours)) {
 				event.setCancelled(true);
 				return;
 			}else {
@@ -266,7 +266,7 @@ public class PlayerListeners implements Listener{
 		}
 	@EventHandler
 	public void onBreak(BlockBreakEvent event) {
-		if(!main.isState(GState.PLAYING)) {
+		if(!main.isState(EtatPartie.JeuEnCours)) {
 			event.setCancelled(true);
 			return;
 		}else {
@@ -302,11 +302,11 @@ public class PlayerListeners implements Listener{
 			if (current.getType()==Material.RED_WOOL) {
 				player.closeInventory();
 				//player.sendMessage("tu as clické sur team rouge");
-				main.RejoindEquipe(joueur, main.Equipe_rouge);
+				main.RejoindEquipe(joueur, main.Equipe_rouge, main.map_en_cours.getNbEquipe());
 			}else if (current.getType()==Material.BLUE_WOOL) {
 				player.closeInventory();
 				//player.sendMessage("tu as clické sur team bleu");
-				main.RejoindEquipe(joueur, main.Equipe_bleu);
+				main.RejoindEquipe(joueur, main.Equipe_bleu, main.map_en_cours.getNbEquipe());
 			}
 		}
 		

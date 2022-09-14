@@ -504,6 +504,65 @@ public class GMain extends JavaPlugin{
 		
 		}
 
+	public void RejoindEquipe(Joueur joueur, Equipe equipe, int NbEquipe) {
+		
+		
+		
+
+		
+		if(joueur.getEquipe()==equipe) {
+			joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eVous etes déja "+equipe.getCouleur()+".");
+		}
+		
+		if(joueur.getEquipe()!=equipe) {
+			
+			
+				
+			if( listeJoueurs.size() /NbEquipe >= getSize(equipe)) {
+				
+				if(listeJoueurs.size()==2 && NbEquipe==2) {
+					if(equipe == Equipe_bleu) {
+						if(getSize(equipe)==1 && getSize(Equipe_jaune)==0) {
+							joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les "+equipe.getCouleur()+" essayez une autre équipe ou plus tard.");
+							return;
+						}
+					}else {
+						if(getSize(equipe)==1 && getSize(Equipe_bleu)==0) {
+							joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les "+equipe.getCouleur()+" essaie les rouges ou plus tard.");
+							return;
+						}
+					}
+					
+				}  
+				
+				
+				
+				
+				joueur.setEquipe(equipe);
+
+				
+				joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eVous avez rejoinds l'équipe "+equipe.getCouleur()+".");
+			} else {
+				joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les "+equipe.getCouleur()+" essayez une autre équipe ou plus tard.");
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+			
+		
+		
+		
+		
+	}
+
 
 		
 		
