@@ -66,7 +66,8 @@ public class PlayerListeners implements Listener{
 		 
 		 
 		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.Sans_Kit);
-		 main.listeJoueurs.add(joueur);
+		 main.listeConnecte.add(joueur);
+		 
 		 
 		 player.setInvulnerable(false);
 		 player.setExp(0);
@@ -84,7 +85,8 @@ public class PlayerListeners implements Listener{
 	 
 		 if(!main.isState(EtatPartie.FinJeu)) { //si le joueur rejoint la partie avant la fin du jeu on lui donne le selectionneur d'équipe
 				
-				ItemStack customnetherstar = new ItemStack(Material.NETHER_STAR,1);
+			 main.listeJoueurs.add(joueur);
+			 	ItemStack customnetherstar = new ItemStack(Material.NETHER_STAR,1);
 				ItemMeta customNS = customnetherstar.getItemMeta();
 				customNS.setDisplayName("Selectionneur d'équipe");
 				
@@ -233,7 +235,7 @@ public class PlayerListeners implements Listener{
 					  .orElse(null);
 			
 			main.listeJoueurs.remove(joueur);
-			
+			main.listeConnecte.remove(joueur);
 			
 			
 			

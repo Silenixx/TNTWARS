@@ -113,6 +113,7 @@ public class GMain extends JavaPlugin{
 	
 	
 	public List<Joueur> listeJoueurs = new ArrayList<>();
+	public List<Joueur> listeConnecte = new ArrayList<>();
 	private EtatPartie Etat;
 
 
@@ -353,6 +354,14 @@ public class GMain extends JavaPlugin{
 		tnt_jaune.setEtat(EtatTNT.Eteinte);
 		
 		
+		
+		
+		listeJoueurs.clear();
+		
+		for(int i=0; i<listeConnecte.size();i++) {
+	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,Sans_Kit);
+	         listeJoueurs.add(joueur_tempo);
+	        }
 		
 		
 		
