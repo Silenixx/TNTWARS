@@ -63,7 +63,7 @@ public class Kit {
 		Legging = legging;
 	}
 	public ItemStack getMainWeapon() {
-		return Boots;
+		return MainWeapon;
 	}
 	public void setMainWeapon(ItemStack mainweapon) {
 		MainWeapon = mainweapon;

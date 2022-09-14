@@ -39,7 +39,7 @@ import fr.silenix.tntwars.timer.TimerRespawn;
 public class GMain extends JavaPlugin{
 	
 	
-	public int Timer_Global_TNT = 30;
+	//public int Timer_Global_TNT = 30;
 	public int Avancement_Max_Global_TNT = 50;
 	public int Vie_Global_Joueur = 40;
 	
@@ -57,6 +57,9 @@ public class GMain extends JavaPlugin{
 	public Tnt tnt_bleu = new Tnt(Equipe_bleu, 0, EtatTNT.Eteinte);
 	public Tnt tnt_vert = new Tnt(Equipe_vert, 0, EtatTNT.Eteinte);
 	public Tnt tnt_jaune = new Tnt(Equipe_jaune, 0, EtatTNT.Eteinte);
+	
+	
+	
 	
 	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 	public Kit Guerrier = new Kit(

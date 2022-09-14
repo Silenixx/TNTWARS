@@ -28,7 +28,7 @@ public class TimerAllumageBlue extends BukkitRunnable{
 		this.main = main;
 	}
 	
-	int timer_blue= main.Timer_Global_TNT;
+	int timer_blue= 30;
 	
 	
 	@Override
@@ -36,7 +36,7 @@ public class TimerAllumageBlue extends BukkitRunnable{
 		if(main.tnt_bleu.getEtat()==EtatTNT.Eteinte){
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eExplosion §98bleue  §eévitée.");
 			
-			timer_blue= main.Timer_Global_TNT;
+			timer_blue= 30;
 			
 			
 			cancel();
@@ -44,7 +44,7 @@ public class TimerAllumageBlue extends BukkitRunnable{
 		if(main.isState(EtatPartie.FinJeu)) {
 			cancel();
 		} 
-		if (timer_blue==main.Timer_Global_TNT && main.tnt_bleu.getEtat()==EtatTNT.Allume) {
+		if (timer_blue==30 && main.tnt_bleu.getEtat()==EtatTNT.Allume) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §630 §b secondes avant l'explosion de la TNT §9bleue§e.");
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
 				Joueur joueur = main.listeJoueurs.get(i);

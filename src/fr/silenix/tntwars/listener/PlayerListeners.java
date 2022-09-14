@@ -1074,7 +1074,7 @@ public class PlayerListeners implements Listener{
 					}
 				}
 				
-				if(it.getType() == Material.BLAZE_POWDER && joueur.getEquipe() != main.Equipe_jaune && event.getAction()==Action.RIGHT_CLICK_BLOCK) {
+				if(it.getType() == Material.BLAZE_POWDER && joueur.getEquipe() != main.Equipe_jaune && event.getAction()==Action.RIGHT_CLICK_BLOCK && main.map_en_cours.getNbEquipe()>=4) {
 					
 					  
 					
@@ -1098,7 +1098,7 @@ public class PlayerListeners implements Listener{
 				
 				
 				
-				if (it.getType() == Material.FEATHER && joueur.getEquipe() == main.Equipe_jaune ) {
+				if (it.getType() == Material.FEATHER && joueur.getEquipe() == main.Equipe_jaune && main.map_en_cours.getNbEquipe()>=4) {
 					
 					
 					if (main.tnt_jaune.getEtat()==EtatTNT.Allume && event.getAction()==Action.RIGHT_CLICK_BLOCK &&  (main.map_en_cours.getLocationTntArray(3).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(3).getX()-3)  && (main.map_en_cours.getLocationTntArray(3).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(3).getZ()-3)) {
@@ -1114,7 +1114,7 @@ public class PlayerListeners implements Listener{
 				}
 			
 			
-				if(it.getType() == Material.BLAZE_POWDER && joueur.getEquipe() != main.Equipe_vert && event.getAction()==Action.RIGHT_CLICK_BLOCK) {
+				if(it.getType() == Material.BLAZE_POWDER && joueur.getEquipe() != main.Equipe_vert && event.getAction()==Action.RIGHT_CLICK_BLOCK && main.map_en_cours.getNbEquipe()>=3) {
 					
 					  
 					
@@ -1138,7 +1138,7 @@ public class PlayerListeners implements Listener{
 				
 				
 				
-				if (it.getType() == Material.FEATHER && joueur.getEquipe() == main.Equipe_vert ) {
+				if (it.getType() == Material.FEATHER && joueur.getEquipe() == main.Equipe_vert && main.map_en_cours.getNbEquipe()>=3) {
 					
 					
 					if (main.tnt_vert.getEtat()==EtatTNT.Allume && event.getAction()==Action.RIGHT_CLICK_BLOCK &&  (main.map_en_cours.getLocationTntArray(2).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(2).getX()-3)  && (main.map_en_cours.getLocationTntArray(2).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(2).getZ()-3)) {
