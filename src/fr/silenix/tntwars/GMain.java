@@ -41,6 +41,7 @@ public class GMain extends JavaPlugin{
 	
 	public int Timer_Global_TNT = 30;
 	public int Vie_Global_TNT = 50;
+	public int Vie_Global_Joueur = 40;
 	
 	
 	World world = Bukkit.getWorld("world");
@@ -57,39 +58,40 @@ public class GMain extends JavaPlugin{
 	public Tnt tnt_vert = new Tnt(Equipe_rouge, Vie_Global_TNT, EtatTNT.Eteinte);
 	public Tnt tnt_jaune = new Tnt(Equipe_rouge, Vie_Global_TNT, EtatTNT.Eteinte);
 	
-	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 	public Kit Guerrier = new Kit(
 					"Sans Kit",
 					new ItemStack(Material.IRON_HELMET),
 					new ItemStack(Material.IRON_CHESTPLATE),
 					new ItemStack(Material.IRON_LEGGINGS),
 					new ItemStack(Material.IRON_BOOTS),
+					new ItemStack(Material.IRON_SWORD),
 					20,
 					null,
 					null,
 					true);
-	public Kit Endermen = new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Kamikaze=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit OneShot=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Elytra=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Ninja=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Savior=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit PigRider=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Chevalier=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Pirate=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit DogMaster=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Trident=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Squid=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Barbare=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit SnowMan=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Tank=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Archer=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Sorcier=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Ghost=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Healer=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Pyro=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Builder=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
-	public Kit Alchimiste=new Kit("Sans Kit",null,null,null,null,20,null,null,true);
+	public Kit Endermen = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Kamikaze=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit OneShot=new Kit("Sans Kit",null,null,null,null,null,1,null,null,true);
+	public Kit Elytra=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Ninja=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Savior=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit PigRider=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Chevalier=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Pirate=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit DogMaster=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Trident=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Squid=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Barbare=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit SnowMan=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Tank=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Archer=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Sorcier=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Ghost=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Healer=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Pyro=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Builder=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public Kit Alchimiste=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 	
 	
 	
@@ -247,14 +249,16 @@ public class GMain extends JavaPlugin{
 			joueur.getPlayer().removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
 			
 			
-			ItemStack customironsword = new ItemStack(Material.IRON_SWORD,1);
-			ItemMeta customIS = customironsword.getItemMeta();
-			customIS.setDisplayName("a supprimer c'est un test");
 			
-			customIS.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
-			customIS.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-			customIS.setLore(Arrays.asList("a supprimer c'est un test","deuxieme","troisieme"));
-			customironsword.setItemMeta(customIS);
+			
+			
+			
+			joueur.getPlayer().getInventory().setBoots(joueur.getKit().getBoots());
+			joueur.getPlayer().getInventory().setChestplate(joueur.getKit().getChestplate());
+			joueur.getPlayer().getInventory().setHelmet(joueur.getKit().getHelmet());
+			joueur.getPlayer().getInventory().setLeggings(joueur.getKit().getLegging());
+			
+			
 			
 			
 			
@@ -281,7 +285,7 @@ public class GMain extends JavaPlugin{
 			joueur.getPlayer().getInventory().setItem(7, customblazepowder);
 			
 			
-			
+			sethealth(joueur);
 			
 			
 			
@@ -457,24 +461,10 @@ public class GMain extends JavaPlugin{
 	public void sethealth(Joueur joueur) {
 		
 		if(!isState(EtatPartie.JeuEnCours)) {
-			joueur.getPlayer().setMaxHealth(40);
-			joueur.getPlayer().setHealth(40);
+			joueur.getPlayer().setMaxHealth(joueur.getKit().getPointVie());
+			joueur.getPlayer().setHealth(joueur.getKit().getPointVie());
 			joueur.getPlayer().setFoodLevel(20);
 		}
-		if(isState(EtatPartie.JeuEnCours)) {
-			if(joueur.getKit() == OneShot) {
-				joueur.getPlayer().setMaxHealth(1);
-				joueur.getPlayer().setHealth(1);
-			}else {
-				joueur.getPlayer().setMaxHealth(40);
-				joueur.getPlayer().setHealth(40);
-				joueur.getPlayer().setFoodLevel(20);
-			}
-			
-		}
-				
-		
-		
 		
 	}
 

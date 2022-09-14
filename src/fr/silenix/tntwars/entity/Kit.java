@@ -12,20 +12,22 @@ public class Kit {
 	private ItemStack Chestplate;
 	private ItemStack Legging;
 	private ItemStack Boots;
-	private float PointVie;
+	private ItemStack MainWeapon;
+	private int PointVie;
 	private ArrayList<ItemStack> ItemsArray;
 	private PotionEffect Potioneffect;
 	private boolean IsVisible;
 	
 	
 	
-	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,float PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible) {
+	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,ItemStack MainWeapon,int PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible) {
 		super();
 		this.Nom=Nom;
 		this.Helmet=Helmet;
 		this.Chestplate=Chestplate;
 		this.Legging=Legging;
 		this.Boots=Boots ;
+		this.MainWeapon=MainWeapon;
 		this.PointVie=PointVie;
 		this.ItemsArray=ItemsArray;
 		this.Potioneffect=Potioneffect;
@@ -60,8 +62,14 @@ public class Kit {
 	public void setLegging(ItemStack legging) {
 		Legging = legging;
 	}
-	public ItemStack getBoots() {
+	public ItemStack getMainWeapon() {
 		return Boots;
+	}
+	public void setMainWeapon(ItemStack mainweapon) {
+		MainWeapon = mainweapon;
+	}
+	public ItemStack getBoots() {
+		return MainWeapon;
 	}
 	public void setBoots(ItemStack boots) {
 		Boots = boots;
@@ -69,7 +77,7 @@ public class Kit {
 	public float getPointVie() {
 		return PointVie;
 	}
-	public void setPointVie(float pointVie) {
+	public void setPointVie(int pointVie) {
 		PointVie = pointVie;
 	}
 	public ArrayList<ItemStack> getItemsArray() {
