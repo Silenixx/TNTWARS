@@ -7,6 +7,7 @@ import org.bukkit.World;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import Enum.EtatPartie;
+import Fonctions.IndexKit;
 import fr.silenix.tntwars.GMain;
 import fr.silenix.tntwars.entity.Joueur;
 
@@ -87,9 +88,9 @@ public class TaskDebutPartie extends BukkitRunnable{
 					joueur.getPlayer().getInventory().clear();
 					
 					
-					if(joueur.getKit()==main.Sans_Kit) {
+					if(joueur.getKit()==main.list_kits.get(IndexKit.Sans_Kit)) {
 						
-						joueur.setKit(main.Guerrier);
+						joueur.setKit(main.list_kits.get(IndexKit.Guerrier));
 					}
 					
 					

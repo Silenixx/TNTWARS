@@ -59,9 +59,9 @@ public class GMain extends JavaPlugin{
 	public Tnt tnt_jaune = new Tnt(Equipe_jaune, 0, EtatTNT.Eteinte);
 	
 	
+	public ArrayList<Kit> list_kits;
 	
-	
-	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	/*public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 	public Kit Guerrier = new Kit(
 					"Sans Kit",
 					new ItemStack(Material.IRON_HELMET),
@@ -96,7 +96,7 @@ public class GMain extends JavaPlugin{
 	public Kit Builder=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 	public Kit Alchimiste=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 	
-	
+	*/
 	
 	
 	
@@ -362,7 +362,7 @@ public class GMain extends JavaPlugin{
 		listeJoueurs.clear();
 		
 		for(int i=0; i<listeConnecte.size();i++) {
-	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,Sans_Kit);
+	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,list_kits.get(0));
 	         listeJoueurs.add(joueur_tempo);
 	        }
 		

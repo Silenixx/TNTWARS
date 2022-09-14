@@ -36,6 +36,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import Enum.EtatPartie;
 import Enum.EtatTNT;
+import Fonctions.IndexKit;
 import fr.silenix.tntwars.GMain;
 
 import fr.silenix.tntwars.entity.Joueur;
@@ -65,7 +66,7 @@ public class PlayerListeners implements Listener{
 		 Player player = event.getPlayer();
 		 
 		 
-		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.Sans_Kit);
+		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.list_kits.get(IndexKit.Sans_Kit));
 		 main.listeConnecte.add(joueur);
 		 
 		 
@@ -317,140 +318,140 @@ public class PlayerListeners implements Listener{
 		
 		if(inv.contains(Material.DIAMOND_SWORD) && inv.contains(Material.STONE_SWORD)) {
 			if (current.getType()==Material.STONE_SWORD) {
-				joueur.setKit(main.Tank); 
+				joueur.setKit(main.list_kits.get(IndexKit.Tank)); 
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Tank sélectionné");
 				
 			}
 		
 			if (current.getType()==Material.DIAMOND_SWORD) {
-				joueur.setKit(main.Guerrier);
+				joueur.setKit(main.list_kits.get(IndexKit.Guerrier));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Guerrier sélectionné");
 				
 			}
 			if (current.getType()==Material.BOW) {
-				joueur.setKit(main.Archer);
+				joueur.setKit(main.list_kits.get(IndexKit.Archer));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Archer sélectionné");
 				
 			}
 			if (current.getType()==Material.ENDER_EYE) {
-				joueur.setKit(main.Ghost);
+				joueur.setKit(main.list_kits.get(IndexKit.Ghost));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Ghost sélectionné");
 				
 			}
 			if (current.getType()==Material.GLISTERING_MELON_SLICE) {
-				joueur.setKit(main.Healer);
+				joueur.setKit(main.list_kits.get(IndexKit.Healer));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Healer sélectionné");
 				
 			}
 			if (current.getType()==Material.FLINT_AND_STEEL) {
-				joueur.setKit(main.Pyro);
+				joueur.setKit(main.list_kits.get(IndexKit.Pyro));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Pyro sélectionné");
 				
 			}
 			if (current.getType()==Material.SHEARS) {
-				joueur.setKit(main.Builder);
+				joueur.setKit(main.list_kits.get(IndexKit.Builder));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Builder sélectionné");
 				
 			}
 			if (current.getType()==Material.BLAZE_ROD) {
-				joueur.setKit(main.Sorcier);
+				joueur.setKit(main.list_kits.get(IndexKit.Sorcier));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Sorcier sélectionné");
 				
 			}
 			if (current.getType()==Material.POTION) {
-				joueur.setKit(main.Alchimiste);
+				joueur.setKit(main.list_kits.get(IndexKit.Alchimiste));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Alchimiste sélectionné");
 				
 			}
 			if (current.getType()==Material.ENDER_PEARL) {
-				joueur.setKit(main.Endermen);
+				joueur.setKit(main.list_kits.get(IndexKit.Endermen));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit EnderMan sélectionné");
 				
 			}
 			if (current.getType()==Material.SNOWBALL) {
-				joueur.setKit(main.SnowMan);
+				joueur.setKit(main.list_kits.get(IndexKit.SnowMan));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Snowman sélectionné");
 				
 			}
 			if (current.getType()==Material.END_CRYSTAL) {
-				joueur.setKit(main.OneShot);
+				joueur.setKit(main.list_kits.get(IndexKit.OneShot));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit OneShot sélectionné");
 				
 			}
 			if (current.getType()==Material.BLACK_BANNER) {
-				joueur.setKit(main.Ninja);
+				joueur.setKit(main.list_kits.get(IndexKit.Ninja));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Ninja sélectionné");
 				
 			}
 			if (current.getType()==Material.AMETHYST_SHARD) {
-				joueur.setKit(main.Savior);
+				joueur.setKit(main.list_kits.get(IndexKit.Savior));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Savior sélectionné");
 				
 			}
 			if (current.getType()==Material.DIAMOND_AXE) {
-				joueur.setKit(main.Barbare);
+				joueur.setKit(main.list_kits.get(IndexKit.Barbare));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Barbare sélectionné");
 				
 			}
 			if (current.getType()==Material.TNT) {
-				joueur.setKit(main.Kamikaze);
+				joueur.setKit(main.list_kits.get(IndexKit.Kamikaze));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Kamikaze sélectionné");
 				
 			}
 			if (current.getType()==Material.BONE) {
-				joueur.setKit(main.DogMaster);
+				joueur.setKit(main.list_kits.get(IndexKit.DogMaster));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit DogMaster sélectionné");
 				
 			}
 			if (current.getType()==Material.SKELETON_SKULL) {
-				joueur.setKit(main.Pirate);
+				joueur.setKit(main.list_kits.get(IndexKit.Pirate));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Pirate sélectionné");
 				
 			}
 			if (current.getType()==Material.SADDLE) {
-				joueur.setKit(main.Chevalier);
+				joueur.setKit(main.list_kits.get(IndexKit.Chevalier));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Chevalier sélectionné");
 				
 			}
 			if (current.getType()==Material.CARROT_ON_A_STICK) {
-				joueur.setKit(main.PigRider);
+				joueur.setKit(main.list_kits.get(IndexKit.PigRider));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit PigRider sélectionné");
 				
 			}
 			if (current.getType()==Material.TRIDENT) {
-				joueur.setKit(main.Trident);
+				joueur.setKit(main.list_kits.get(IndexKit.Trident));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Trident sélectionné");
 				
 			}
 			if (current.getType()==Material.ELYTRA) {
-				joueur.setKit(main.Elytra);
+				joueur.setKit(main.list_kits.get(IndexKit.Elytra));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Elytra sélectionné");
 				
 			}
 			if (current.getType()==Material.INK_SAC) {
-				joueur.setKit(main.Squid);
+				joueur.setKit(main.list_kits.get(IndexKit.Squid));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Squid sélectionné");
 				
@@ -504,7 +505,7 @@ public class PlayerListeners implements Listener{
             if(joueur.getEquipe()== joueur_victime.getEquipe()) {
 				
 				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.GLISTERING_MELON_SLICE) {
-					if(joueur_victime.getKit()!=main.OneShot){
+					if(joueur_victime.getKit()!=main.list_kits.get(IndexKit.OneShot)){
 						if(victim.getHealth()>37.0) {
 							victim.setHealth(40.0);
 	            		}else {
@@ -1153,7 +1154,7 @@ public class PlayerListeners implements Listener{
 					}
 				}
 
-				if (it.getType() == Material.AMETHYST_SHARD && joueur.getKit()==main.Savior) {
+				if (it.getType() == Material.AMETHYST_SHARD && joueur.getKit()==main.list_kits.get(IndexKit.Savior)) {
 					if(joueur.getEquipe()==main.Equipe_bleu) {
 						if (player.getInventory().getItemInMainHand().getType() == Material.AMETHYST_SHARD) {
 							player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
@@ -1170,7 +1171,7 @@ public class PlayerListeners implements Listener{
 				}
 				
 				
-				if (it.getType() == Material.BLACK_BANNER && joueur.getKit()==main.Ninja) {
+				if (it.getType() == Material.BLACK_BANNER && joueur.getKit()==main.list_kits.get(IndexKit.Ninja)) {
 					player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
 					TimerInvisibility start = new TimerInvisibility(main,player);
 					start.runTaskTimer(main, 0, 20);

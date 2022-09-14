@@ -21,6 +21,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
 import Enum.EtatPartie;
+import Fonctions.IndexKit;
 import fr.silenix.tntwars.GMain;
 import fr.silenix.tntwars.entity.Joueur;
 
@@ -55,7 +56,7 @@ public class DamageListeners implements Listener{
 					  .filter(p -> player.getName().equals(p.getPlayer().getName()))
 					  .findAny()
 					  .orElse(null));
-			if(joueur.getKit()==main.Kamikaze) {
+			if(joueur.getKit()==main.list_kits.get(IndexKit.Kamikaze)) {
 				event.setCancelled(true);
 				event.setDamage(0);
 				return;
@@ -124,7 +125,7 @@ public class DamageListeners implements Listener{
         //pl.sendMessage("debug 0");
 
         if (/*m == Material.LEGACY_STATIONARY_WATER ||*/ m == Material.WATER) {
-        	if(joueur.getKit()== main.Endermen) {
+        	if(joueur.getKit()== main.list_kits.get(IndexKit.Endermen)) {
         		pl.setHealth(0);
         		pl.sendMessage("un enderman ne peut pas nager ");
         	}
@@ -193,7 +194,7 @@ public class DamageListeners implements Listener{
 						event.setCancelled(true);
 						return;
 					}
-					if(joueur_victime.getKit()==main.Endermen) {
+					if(joueur_victime.getKit()==main.list_kits.get(IndexKit.Endermen)) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
@@ -238,7 +239,7 @@ public class DamageListeners implements Listener{
 			
 			
 			
-			if(joueur_damager.getKit()==main.OneShot) {
+			if(joueur_damager.getKit()==main.list_kits.get(IndexKit.OneShot)) {
 				Bukkit.broadcastMessage(damager.getName()+" vient de tuer "+ players.getDisplayName());
 				damager.sendMessage("Tu viens de tuer " + players.getName());
 				event.setDamage(0);
@@ -353,13 +354,13 @@ public class DamageListeners implements Listener{
 					Bukkit.broadcastMessage(killer_parjoueur.getDisplayName()+" vient de tuer "+ players.getDisplayName());
 					killer_parjoueur.sendMessage("Tu viens de tuer " + players.getName());
 					
-					if(joueur_killer.getKit()==main.Elytra) {
+					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.Elytra)) {
 						killer_parjoueur.getInventory().addItem(new ItemStack(Material.FIREWORK_ROCKET));
 					}
-					if(joueur_killer.getKit()==main.Endermen) {
+					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.Endermen)) {
 						killer_parjoueur.getInventory().addItem(new ItemStack(Material.ENDER_PEARL));
 					}
-					if(joueur_killer.getKit()==main.Ninja) {
+					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.Ninja)) {
 						killer_parjoueur.getInventory().addItem(new ItemStack(Material.BLACK_BANNER));
 					}
 					
