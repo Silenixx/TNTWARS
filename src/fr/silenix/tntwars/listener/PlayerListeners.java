@@ -465,6 +465,15 @@ public class PlayerListeners implements Listener{
             Player player = event.getPlayer();
             Player victim = (Player) event.getRightClicked();
             
+            Joueur joueur = main.listeJoueurs.stream()
+					  .filter(p -> player.getName().equals(p.getNom()))
+					  .findAny()
+					  .orElse(null);
+            Joueur joueur_victime = main.listeJoueurs.stream()
+					  .filter(p -> victim.getName().equals(p.getNom()))
+					  .findAny()
+					  .orElse(null);
+            
             /*if(!(player.getInventory().getItemInMainHand().getType() == Material.BLAZE_ROD)) {
             	return;
             }*/
@@ -490,10 +499,10 @@ public class PlayerListeners implements Listener{
             	}
             }*/
             
-            if(main.getPlayerBlue().contains(player) && main.getPlayerBlue().contains(victim)) {
+            if(joueur.getEquipe()== joueur_victime.getEquipe()) {
 				
 				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.GLISTERING_MELON_SLICE) {
-					if(!main.kit_oneshot.contains(victim)){
+					if(joueur_victime.getKit()!=main.OneShot){
 						if(victim.getHealth()>37.0) {
 							victim.setHealth(40.0);
 	            		}else {
@@ -505,50 +514,26 @@ public class PlayerListeners implements Listener{
 				
 			}
 			
-			if(main.getPlayerRed().contains(player) && main.getPlayerRed().contains(victim)) {
-					
-					if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.GLISTERING_MELON_SLICE) {
-						if(!main.kit_oneshot.contains(victim)){
-							if(victim.getHealth()>37.0) {
-								victim.setHealth(40.0);
-		            		}else {
-		            			victim.setHealth(victim.getHealth() + 2.0);
-		            		}
-						}
-						return;
-					}
-					
-					
+
+			
+			
+			
+			
+				
+			if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.AMETHYST_CLUSTER) {
+				((HumanEntity) player).getInventory().getItemInMainHand().setAmount(((HumanEntity) player).getInventory().getItemInMainHand().getAmount() - 1);
+		        
+				
+				main.SpawnTeleportation(joueur);
+				return;
 			}
-			
-			
-			
-			
-			if(main.getPlayerBlue().contains(player) && main.getPlayerBlue().contains(victim)) {
 				
-				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.AMETHYST_CLUSTER) {
-					((HumanEntity) player).getInventory().getItemInMainHand().setAmount(((HumanEntity) player).getInventory().getItemInMainHand().getAmount() - 1);
-		            
-					player.teleport(main.map_en_cours.spawnbleu);
-					return;
-				}
-				
-			}
+
 			
-			if(main.getPlayerRed().contains(player) && main.getPlayerRed().contains(victim)) {
-				
-				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.AMETHYST_CLUSTER) {
-					
-					((HumanEntity) player).getInventory().getItemInMainHand().setAmount(((HumanEntity) player).getInventory().getItemInMainHand().getAmount() - 1);
-		            
-					player.teleport(main.map_en_cours.spawnrouge);
-					return;
-				}
-				
-			}
+
 			
 			
-			if(main.getPlayerBlue().contains(player) && main.getPlayerRed().contains(victim)) {
+			if(joueur.getEquipe()!= joueur_victime.getEquipe()) {
 				
 				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.INK_SAC) {
 					
@@ -561,20 +546,7 @@ public class PlayerListeners implements Listener{
 				
 			}
 			
-			if(main.getPlayerRed().contains(player) && main.getPlayerBlue().contains(victim)) {
-				
-				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.INK_SAC) {
-					
-					
-		            
-					
-					victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*15, 7));
-					
-					
-					return;
-				}
-				
-			}
+			
             
             
 			
