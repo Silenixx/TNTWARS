@@ -350,17 +350,17 @@ public class DamageListeners implements Listener{
 				
 				
 				
-					Bukkit.broadcastMessage(killer.getDisplayName()+" vient de tuer "+ players.getDisplayName());
-					killer.sendMessage("Tu viens de tuer " + players.getName());
+					Bukkit.broadcastMessage(killer_parjoueur.getDisplayName()+" vient de tuer "+ players.getDisplayName());
+					killer_parjoueur.sendMessage("Tu viens de tuer " + players.getName());
 					
 					if(joueur_killer.getKit()==main.Elytra) {
-						killer.getInventory().addItem(new ItemStack(Material.FIREWORK_ROCKET));
+						killer_parjoueur.getInventory().addItem(new ItemStack(Material.FIREWORK_ROCKET));
 					}
 					if(joueur_killer.getKit()==main.Endermen) {
-						killer.getInventory().addItem(new ItemStack(Material.ENDER_PEARL));
+						killer_parjoueur.getInventory().addItem(new ItemStack(Material.ENDER_PEARL));
 					}
 					if(joueur_killer.getKit()==main.Ninja) {
-						killer.getInventory().addItem(new ItemStack(Material.BLACK_BANNER));
+						killer_parjoueur.getInventory().addItem(new ItemStack(Material.BLACK_BANNER));
 					}
 					
 					event.setDamage(0);

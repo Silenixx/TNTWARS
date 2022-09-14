@@ -59,6 +59,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 			
 			if(timer == 0) {
 				
+				Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 				//main.value_random.clear();
 				
 				

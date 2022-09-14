@@ -40,7 +40,7 @@ public class GMain extends JavaPlugin{
 	
 	
 	public int Timer_Global_TNT = 30;
-	public int Vie_Global_TNT = 50;
+	public int Avancement_Max_Global_TNT = 50;
 	public int Vie_Global_Joueur = 40;
 	
 	
@@ -53,10 +53,10 @@ public class GMain extends JavaPlugin{
 	public Equipe Equipe_jaune = new Equipe("Jaune",false);
 	public Equipe Sans_Equipe = new Equipe("Sans Equipe",true);
 	
-	public Tnt tnt_rouge = new Tnt(Equipe_rouge, Vie_Global_TNT, EtatTNT.Eteinte);
-	public Tnt tnt_bleu = new Tnt(Equipe_rouge, Vie_Global_TNT, EtatTNT.Eteinte);
-	public Tnt tnt_vert = new Tnt(Equipe_rouge, Vie_Global_TNT, EtatTNT.Eteinte);
-	public Tnt tnt_jaune = new Tnt(Equipe_rouge, Vie_Global_TNT, EtatTNT.Eteinte);
+	public Tnt tnt_rouge = new Tnt(Equipe_rouge, 0, EtatTNT.Eteinte);
+	public Tnt tnt_bleu = new Tnt(Equipe_bleu, 0, EtatTNT.Eteinte);
+	public Tnt tnt_vert = new Tnt(Equipe_vert, 0, EtatTNT.Eteinte);
+	public Tnt tnt_jaune = new Tnt(Equipe_jaune, 0, EtatTNT.Eteinte);
 	
 	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 	public Kit Guerrier = new Kit(
@@ -137,7 +137,7 @@ public class GMain extends JavaPlugin{
 			"chateau",
 			new Location(world,431,132,7),
 			new ArrayList<Location>(Arrays.asList(new Location(world,501,13,24), new Location(world,365,13,4))),
-			new ArrayList<Location>(Arrays.asList(new Location(world,523,13,1), new Location(world,341,8,10))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,523,13,18), new Location(world,341,8,10))),
 			new Location(world,501,13,24),
 			new Location(world,221,-66,-114),
 			new Location(world,644,103,141)));

@@ -985,21 +985,22 @@ public class PlayerListeners implements Listener{
 			
 			
 			
-				if(it.getType() == Material.BLAZE_POWDER && joueur.getEquipe() != main.Equipe_bleu && event.getAction()==Action.RIGHT_CLICK_BLOCK ) {
+				if(it.getType() == Material.BLAZE_POWDER &&  event.getAction()==Action.RIGHT_CLICK_BLOCK ) {
 				
 				
 				
 				
 				
-					if ((main.map_en_cours.getLocationTntArray(1).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(1).getX()-3)  && (main.map_en_cours.getLocationTntArray(1).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(1).getZ()-3) && event.getClickedBlock().getType() == Material.TNT ) {
+					if (joueur.getEquipe() != main.Equipe_bleu  && (main.map_en_cours.getLocationTntArray(1).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(1).getX()-3)  && (main.map_en_cours.getLocationTntArray(1).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(1).getZ()-3) ) {
 						
 						if (main.tnt_bleu.getEtat()==EtatTNT.Eteinte) {
 							
-							if (main.tnt_bleu.getVie()<main.Vie_Global_TNT) {
+							if (main.tnt_bleu.getVie()<main.Avancement_Max_Global_TNT && event.getClickedBlock().getType() == Material.TNT) {
 								main.tnt_bleu.setVie(main.tnt_bleu.getVie()+1);
+								Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 			
 								
-								if(main.tnt_bleu.getVie() ==main.Vie_Global_TNT) {
+								if(main.tnt_bleu.getVie() ==main.Avancement_Max_Global_TNT) {
 									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §9bleue §ea été allumée!");
 									main.tnt_bleu.setEtat(EtatTNT.Allume);
 									TimerAllumageBlue start = new TimerAllumageBlue(main);
@@ -1017,8 +1018,9 @@ public class PlayerListeners implements Listener{
 					
 					if (main.tnt_bleu.getEtat()==EtatTNT.Allume && joueur.getEquipe() == main.Equipe_bleu && (main.map_en_cours.getLocationTntArray(1).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(1).getX()-3)  && (main.map_en_cours.getLocationTntArray(1).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(1).getZ()-3) ){
 						
-						if (main.tnt_bleu.getVie()>0) {
+						if (main.tnt_bleu.getVie()>0 && event.getClickedBlock().getType() == Material.TNT) {
 							main.tnt_bleu.setVie(main.tnt_bleu.getVie()-1);
+							Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 						
 							if(main.tnt_bleu.getVie() ==0) {
 								Bukkit.broadcastMessage("§6[§eTntWars§6] §eLa TNT §9bleue §ea été étteinte.");
@@ -1031,18 +1033,19 @@ public class PlayerListeners implements Listener{
 			
 			
 			
-				if(it.getType() == Material.BLAZE_POWDER && joueur.getEquipe() != main.Equipe_rouge && event.getAction()==Action.RIGHT_CLICK_BLOCK) {
+				if(it.getType() == Material.BLAZE_POWDER && event.getAction()==Action.RIGHT_CLICK_BLOCK   ) {
 				
 				  
 				
-					if (event.getClickedBlock().getType() == Material.TNT && (main.map_en_cours.getLocationTntArray(0).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(0).getX()-3)  && (main.map_en_cours.getLocationTntArray(0).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(0).getZ()-3)  ) {
+					if (joueur.getEquipe() != main.Equipe_rouge && (main.map_en_cours.getLocationTntArray(0).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(0).getX()-3)  && (main.map_en_cours.getLocationTntArray(0).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(0).getZ()-3)  ) {
 						
 						
 						if (main.tnt_rouge.getEtat()==EtatTNT.Eteinte) {
-							if (main.tnt_rouge.getVie()<main.Vie_Global_TNT) {
+							if (main.tnt_rouge.getVie()<main.Avancement_Max_Global_TNT && event.getClickedBlock().getType() == Material.TNT) {
 								main.tnt_rouge.setVie(main.tnt_rouge.getVie()+1);
+								Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 							
-								if(main.tnt_rouge.getVie() ==main.Vie_Global_TNT) {
+								if(main.tnt_rouge.getVie() ==main.Avancement_Max_Global_TNT) {
 									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §crouge §ea été allumée!");
 									main.tnt_rouge.setEtat(EtatTNT.Allume);
 									TimerAllumageRed start = new TimerAllumageRed(main);
@@ -1055,12 +1058,13 @@ public class PlayerListeners implements Listener{
 				
 				
 				
-				if (it.getType() == Material.FEATHER && joueur.getEquipe() == main.Equipe_rouge ) {
+				if (it.getType() == Material.FEATHER && event.getAction()==Action.RIGHT_CLICK_BLOCK  ) {
 					
 					
-					if (main.tnt_rouge.getEtat()==EtatTNT.Allume && event.getAction()==Action.RIGHT_CLICK_BLOCK &&  (main.map_en_cours.getLocationTntArray(0).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(0).getX()-3)  && (main.map_en_cours.getLocationTntArray(0).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(0).getZ()-3)) {
-						if (main.tnt_rouge.getVie()>0) {
+					if (main.tnt_rouge.getEtat()==EtatTNT.Allume && joueur.getEquipe() == main.Equipe_rouge &&  (main.map_en_cours.getLocationTntArray(0).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(0).getX()-3)  && (main.map_en_cours.getLocationTntArray(0).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(0).getZ()-3)) {
+						if (main.tnt_rouge.getVie()>0 && event.getClickedBlock().getType() == Material.TNT) {
 							main.tnt_rouge.setVie(main.tnt_rouge.getVie()-1);
+							Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 						
 							if(main.tnt_rouge.getVie() ==0) {
 								Bukkit.broadcastMessage("§6[§eTntWars§6] §eLa TNT §crouge §ea été étteinte.");
@@ -1078,10 +1082,10 @@ public class PlayerListeners implements Listener{
 						
 						
 						if (main.tnt_jaune.getEtat()==EtatTNT.Eteinte) {
-							if (main.tnt_jaune.getVie()<main.Vie_Global_TNT) {
+							if (main.tnt_jaune.getVie()<main.Avancement_Max_Global_TNT) {
 								main.tnt_jaune.setVie(main.tnt_jaune.getVie()+1);
 							
-								if(main.tnt_jaune.getVie() ==main.Vie_Global_TNT) {
+								if(main.tnt_jaune.getVie() ==main.Avancement_Max_Global_TNT) {
 									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §cjaune §ea été allumée!");
 									main.tnt_jaune.setEtat(EtatTNT.Allume);
 									//TimerAllumageYellow start = new TimerAllumageYellow(main);
@@ -1118,10 +1122,10 @@ public class PlayerListeners implements Listener{
 						
 						
 						if (main.tnt_vert.getEtat()==EtatTNT.Eteinte) {
-							if (main.tnt_vert.getVie()<main.Vie_Global_TNT) {
+							if (main.tnt_vert.getVie()<main.Avancement_Max_Global_TNT) {
 								main.tnt_vert.setVie(main.tnt_vert.getVie()+1);
 							
-								if(main.tnt_vert.getVie() ==main.Vie_Global_TNT) {
+								if(main.tnt_vert.getVie() ==main.Avancement_Max_Global_TNT) {
 									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §cjaune §ea été allumée!");
 									main.tnt_vert.setEtat(EtatTNT.Allume);
 									//TimerAllumageGreen start = new TimerAllumageGreen(main);

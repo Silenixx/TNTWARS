@@ -12,7 +12,7 @@ import fr.silenix.tntwars.entity.Joueur;
 
 public class TaskDebutPartie extends BukkitRunnable{
 
-	private int timer = 45;
+	private int timer = 20;
 	
 	private GMain main;
 	
