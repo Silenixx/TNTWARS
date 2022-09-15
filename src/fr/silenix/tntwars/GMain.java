@@ -20,7 +20,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
 import Enum.EtatPartie;
 import Enum.EtatTNT;
-
+import Fonctions.CreateKit;
 import fr.silenix.tntwars.entity.Equipe;
 import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.entity.Kit;
@@ -42,6 +42,8 @@ public class GMain extends JavaPlugin{
 	//public int Timer_Global_TNT = 30;
 	public int Avancement_Max_Global_TNT = 50;
 	public int Vie_Global_Joueur = 40;
+	
+	GMain main;
 	
 	
 	World world = Bukkit.getWorld("world");
@@ -146,7 +148,7 @@ public class GMain extends JavaPlugin{
 			new Location(world,644,103,141)));
 	
 	
-	
+	CreateKit.CreationKit(main);
 	
 		
 	pm.registerEvents(new PlayerListeners(this) , this);
