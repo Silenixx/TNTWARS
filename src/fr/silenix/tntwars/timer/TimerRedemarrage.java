@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.silenix.tntwars.GMain;
+import fr.silenix.tntwars.entity.Equipe;
 
 public class TimerRedemarrage extends BukkitRunnable{
 
@@ -25,7 +26,9 @@ public class TimerRedemarrage extends BukkitRunnable{
 	@Override
 	public void run() {
 		if (timer==30 ) {
-			Bukkit.broadcastMessage("§6[§eTntWars§6] §eVictoire de la team: ");
+			Equipe gagnant = main.RenvoieGagnant();
+			
+			Bukkit.broadcastMessage("§6[§eTntWars§6] §eVictoire de la team: "+gagnant.getCouleur()+"");
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eRedemmarage du mode de jeu dans §6"+timer+" §esecondes.");
 			
 		}

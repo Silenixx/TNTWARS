@@ -92,7 +92,7 @@ public class Kit {
 	public void setPotioneffect(PotionEffect potioneffect) {
 		Potioneffect = potioneffect;
 	}
-	public boolean isIsVisible() {
+	public boolean IsVisible() {
 		return IsVisible;
 	}
 	public void setIsVisible(boolean isVisible) {

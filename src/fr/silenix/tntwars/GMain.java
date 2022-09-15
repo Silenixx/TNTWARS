@@ -1,7 +1,6 @@
 package fr.silenix.tntwars;
 
 import java.util.ArrayList;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -286,7 +285,7 @@ public class GMain extends JavaPlugin{
 			
 			
 			joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
-			joueur.getPlayer().removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
+			
 			
 			
 			
@@ -351,7 +350,9 @@ public class GMain extends JavaPlugin{
 			
 			sethealth(joueur);
 			
-			
+			if(joueur.getKit().IsVisible()==false) {
+				joueur.getPlayer().setInvisible(true);
+			}
 			
 			TimerImmortality start = new TimerImmortality( joueur.getPlayer());
 			start.runTaskTimer(this, 0, 20);
@@ -421,20 +422,26 @@ public class GMain extends JavaPlugin{
 	
 	
 	
-	/*public void RenvoieGagnat() {
-		Equipe gagnant;
+	public Equipe RenvoieGagnant() {
+		Equipe gagnant = null;
 
 				
-		if(tnt_rouge.getEtat()== EtatTNT.Explose) {
+		if(tnt_rouge.getEtat()== EtatTNT.Eteinte) {
 			gagnant = Equipe_bleu;
 		}
-		if(tnt_bleu.getEtat()== EtatTNT.Explose) {
+		if(tnt_bleu.getEtat()== EtatTNT.Eteinte) {
 			gagnant = Equipe_rouge;
+		}
+		if(tnt_vert.getEtat()== EtatTNT.Eteinte && map_en_cours.getNbEquipe()>=3) {
+			gagnant = Equipe_vert;
+		}
+		if(tnt_jaune.getEtat()== EtatTNT.Eteinte&& map_en_cours.getNbEquipe()>=4) {
+			gagnant = Equipe_jaune;
 		}
 		return gagnant;	
 
 
-	}*/
+	}
 
 	public void remiseazero() {
 		tnt_rouge.setEtat(EtatTNT.Eteinte);
@@ -442,7 +449,7 @@ public class GMain extends JavaPlugin{
 		tnt_vert.setEtat(EtatTNT.Eteinte);
 		tnt_jaune.setEtat(EtatTNT.Eteinte);
 		
-		
+		setState(EtatPartie.AttenteJoueur);
 		
 		
 		listeJoueurs.clear();
@@ -555,6 +562,7 @@ public class GMain extends JavaPlugin{
 		
 	}
 		
+	
 	@SuppressWarnings("deprecation")
 	public void sethealth(Joueur joueur) {
 		
@@ -578,7 +586,8 @@ public class GMain extends JavaPlugin{
 
 			
 			player.setFoodLevel(20);
-			player.setHealth(20);
+			
+			joueur.getPlayer().setHealth(40);
 			
 			
 			
