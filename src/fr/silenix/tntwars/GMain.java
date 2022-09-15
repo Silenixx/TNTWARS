@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -17,10 +19,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.Team;
+
 import Enum.EtatPartie;
 import Enum.EtatTNT;
 import Fonctions.CreateKit;
 import Fonctions.IndexKit;
+
 import fr.silenix.tntwars.entity.Equipe;
 import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.entity.Kit;
@@ -32,6 +39,7 @@ import fr.silenix.tntwars.tasks.TaskLancementPartie;
 import fr.silenix.tntwars.timer.TimerImmortality;
 import fr.silenix.tntwars.timer.TimerRedemarrage;
 import fr.silenix.tntwars.timer.TimerRespawn;
+import fr.silenix.tntwars.timer.TimerScoreboard;
 
 
 
@@ -63,42 +71,16 @@ public class GMain extends JavaPlugin{
 	
 	public ArrayList<Kit> list_kits;
 	
-	/*public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Guerrier = new Kit(
-					"Sans Kit",
-					new ItemStack(Material.IRON_HELMET),
-					new ItemStack(Material.IRON_CHESTPLATE),
-					new ItemStack(Material.IRON_LEGGINGS),
-					new ItemStack(Material.IRON_BOOTS),
-					new ItemStack(Material.IRON_SWORD),
-					20,
-					null,
-					null,
-					true);
-	public Kit Endermen = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Kamikaze=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit OneShot=new Kit("Sans Kit",null,null,null,null,null,1,null,null,true);
-	public Kit Elytra=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Ninja=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Savior=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit PigRider=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Chevalier=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Pirate=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit DogMaster=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Trident=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Squid=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Barbare=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit SnowMan=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Tank=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Archer=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Sorcier=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Ghost=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Healer=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Pyro=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Builder=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
-	public Kit Alchimiste=new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+	public ScoreboardManager manager ;
+	public Scoreboard board ;
+    
 	
-	*/
+	public Team RedTeamSC ;
+	public Team BlueTeamSC ;
+    
+	public Team onlineCounter ;
+	public Team boardblue;
+	public Team boardred ;
 	
 	
 	
@@ -183,6 +165,10 @@ public class GMain extends JavaPlugin{
 	
 	list_kits = CreateKit.CreationKit();
 	
+	
+	TimerScoreboard cycle = new TimerScoreboard(this);
+	cycle.runTaskTimer(this, 0, 20);
+	
 		
 	pm.registerEvents(new PlayerListeners(this) , this);
 	pm.registerEvents(new DamageListeners(this), this);
@@ -223,11 +209,11 @@ public class GMain extends JavaPlugin{
 	}
 	
 	
-	public int getSize(Equipe Equipe) {
+	public int getSize(String couleur) {
 		int nombre_joueur = 0;
 	    for(int i=0; i < listeJoueurs.size(); i++) {
 			Joueur joueur = listeJoueurs.get(i);
-			if (joueur.getEquipe() == Equipe ) {
+			if (joueur.getEquipe().getCouleur() == couleur ) {
 				nombre_joueur ++;
 			} 
 				
@@ -239,38 +225,30 @@ public class GMain extends JavaPlugin{
 	
 	public void AutoAddTeam(int NbEquipe) {
 		
+		ArrayList<Joueur> liste_joueur_filtre = (ArrayList<Joueur>) listeJoueurs.stream(). //get a stream of all animals 
+		        filter((s) -> s.getEquipe().getCouleur().equals("Sans Equipe")). //Filter for dogs and find the first one
+				collect(Collectors.toList());
 		
-		for(int i=0; i < listeJoueurs.size(); i++) {
-			Joueur joueur = listeJoueurs.get(i);
+		
+		
+		for(int i=0; i < liste_joueur_filtre.size(); i++) {
+			Joueur joueur = liste_joueur_filtre.get(i);
 			
-			if(joueur.getEquipe()!= Sans_Equipe) {
-					return;
-			}
+			
 			switch(NbEquipe) {
 				case 2:
-				
-				
-				if(getSize(Equipe_bleu) < getSize(Equipe_rouge)) {
-		
-					joueur.setEquipe(Equipe_bleu);
-
-					return;
-				}
-				
-				
-				if(getSize(Equipe_bleu) > getSize(Equipe_rouge)) {
-		
-					joueur.setEquipe(Equipe_rouge);
-					return;
-				}
-				
-				if(getSize(Equipe_bleu) == getSize(Equipe_rouge)) {
-		
-					joueur.setEquipe(Equipe_bleu);
-					return;
-				}
-				
-				
+					if(getSize("Bleu") < getSize("Rouge")) {
+						joueur.setEquipe(Equipe_bleu);
+					}
+					else if(getSize("Bleu") > getSize("Rouge")) {
+						joueur.setEquipe(Equipe_rouge);
+					}
+					else if(getSize("Bleu") == getSize("Rouge")) {
+						joueur.setEquipe(Equipe_bleu);
+					}
+					break;
+				default:
+					break;
 			}
 			
 		}
@@ -426,16 +404,16 @@ public class GMain extends JavaPlugin{
 		Equipe gagnant = null;
 
 				
-		if(tnt_rouge.getEtat()== EtatTNT.Eteinte) {
+		if(tnt_rouge.getEtat()!= EtatTNT.Explose) {
 			gagnant = Equipe_bleu;
 		}
-		if(tnt_bleu.getEtat()== EtatTNT.Eteinte) {
+		else if(tnt_bleu.getEtat()!= EtatTNT.Explose) {
 			gagnant = Equipe_rouge;
 		}
-		if(tnt_vert.getEtat()== EtatTNT.Eteinte && map_en_cours.getNbEquipe()>=3) {
+		else if(tnt_vert.getEtat()!= EtatTNT.Explose && map_en_cours.getNbEquipe()>=3) {
 			gagnant = Equipe_vert;
 		}
-		if(tnt_jaune.getEtat()== EtatTNT.Eteinte&& map_en_cours.getNbEquipe()>=4) {
+		else if(tnt_jaune.getEtat()!= EtatTNT.Explose && map_en_cours.getNbEquipe()>=4) {
 			gagnant = Equipe_jaune;
 		}
 		return gagnant;	
@@ -457,7 +435,7 @@ public class GMain extends JavaPlugin{
 		for(int i=0; i<listeConnecte.size();i++) {
 	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,list_kits.get(0));
 	         listeJoueurs.add(joueur_tempo);
-	        }
+	    }
 		
 		
 		
@@ -531,9 +509,8 @@ public class GMain extends JavaPlugin{
 		
 		player.teleport(map_en_cours.getLocationSalleMort());
 		
-		player.setFoodLevel(20);
-		sethealth(joueur);
-		player.setGameMode(GameMode.CREATIVE);
+		
+		
 		player.sendMessage("vous etes mort");
 		player.setInvisible(true);
 		
@@ -570,6 +547,10 @@ public class GMain extends JavaPlugin{
 			joueur.getPlayer().setMaxHealth(joueur.getKit().getPointVie());
 			joueur.getPlayer().setHealth(joueur.getKit().getPointVie());
 			joueur.getPlayer().setFoodLevel(20);
+		}else {
+			joueur.getPlayer().setMaxHealth(20);
+			joueur.getPlayer().setHealth(20);
+			joueur.getPlayer().setFoodLevel(20);
 		}
 		
 	}
@@ -585,9 +566,10 @@ public class GMain extends JavaPlugin{
 
 
 			
-			player.setFoodLevel(20);
 			
-			joueur.getPlayer().setHealth(40);
+			
+
+
 			
 			
 			
@@ -619,12 +601,12 @@ public class GMain extends JavaPlugin{
 				
 				if(listeJoueurs.size()==2 && NbEquipe==2) {
 					if(equipe == Equipe_bleu) {
-						if(getSize(equipe)==1 && getSize(Equipe_jaune)==0) {
+						if(getSize(equipe.getCouleur())==1 && getSize(Equipe_jaune.getCouleur())==0) {
 							joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les "+equipe.getCouleur()+" essayez une autre équipe ou plus tard.");
 							return;
 						}
 					}else {
-						if(getSize(equipe)==1 && getSize(Equipe_bleu)==0) {
+						if(getSize(equipe.getCouleur())==1 && getSize(Equipe_bleu.getCouleur())==0) {
 							joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les "+equipe.getCouleur()+" essaie les rouges ou plus tard.");
 							return;
 						}

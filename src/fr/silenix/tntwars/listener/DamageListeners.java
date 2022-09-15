@@ -72,7 +72,6 @@ public class DamageListeners implements Listener{
 				
 				
 				event.setDamage(0);
-				player.teleport(main.map_en_cours.getLocationSalleMort());
 				main.eliminate(player);
 				
 			}
@@ -184,16 +183,11 @@ public class DamageListeners implements Listener{
 							  .findAny()
 							  .orElse(null));
 					
-					if(joueur_killer.getEquipe()==main.Equipe_bleu && joueur_victime.getEquipe()==main.Equipe_bleu) {
+					if(joueur_killer.getEquipe() == joueur_victime.getEquipe()) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
 						}
-					if(joueur_killer.getEquipe()==main.Equipe_rouge && joueur_victime.getEquipe()==main.Equipe_rouge) {
-						event.setDamage(0);
-						event.setCancelled(true);
-						return;
-					}
 					if(joueur_victime.getKit()==main.list_kits.get(IndexKit.Endermen)) {
 						event.setDamage(0);
 						event.setCancelled(true);
