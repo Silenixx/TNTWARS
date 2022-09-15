@@ -260,10 +260,31 @@ public class CreateKit {
 		
 		
 		
+		ItemStack customdiamondsword_pirate = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_pirate = customdiamondsword_pirate.getItemMeta();
+		customDS_pirate.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_pirate.setItemMeta(customDS_pirate);
 		
+		ItemStack customhelmet_pirate = new ItemStack(Material.SKELETON_SKULL,1);
+		ItemMeta customHH_pirate = customhelmet_pirate.getItemMeta();
+		customHH_pirate.addEnchant(Enchantment.OXYGEN, 3, true);
+		customhelmet_pirate.setItemMeta(customHH_pirate);
 		
-		Kit Pirate=new Kit("Pirate",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		Kit Pirate=new Kit(
+						"Pirate",
+						customhelmet_pirate ,
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_pirate,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.PARROT_SPAWN_EGG,3),new ItemStack(Material.WHEAT_SEEDS,64),new ItemStack(Material.SPYGLASS),new ItemStack(Material.GOLDEN_APPLE,2))),
+						null,
+						true);
 		list_kits.add(Pirate);
+		
+		
+		
 		Kit DogMaster=new Kit("DogMaster",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 		list_kits.add(DogMaster);
 		Kit Trident=new Kit("Trident",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
@@ -280,7 +301,7 @@ public class CreateKit {
 		list_kits.add(Archer);
 		Kit Sorcier=new Kit("Sorcier",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 		list_kits.add(Sorcier);
-		Kit Ghost=new Kit("Ghost",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		Kit Ghost=new Kit("Ghost",null,null,null,null,null,Vie_Global_Joueur,null,null,false);
 		list_kits.add(Ghost);
 		Kit Healer=new Kit("Healer",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 		list_kits.add(Healer);
