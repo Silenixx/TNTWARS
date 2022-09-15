@@ -23,6 +23,7 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
+import Enum.CouleurEquipe;
 import Enum.EtatPartie;
 import Enum.EtatTNT;
 import Fonctions.CreateKit;
@@ -39,7 +40,6 @@ import fr.silenix.tntwars.tasks.TaskLancementPartie;
 import fr.silenix.tntwars.timer.TimerImmortality;
 import fr.silenix.tntwars.timer.TimerRedemarrage;
 import fr.silenix.tntwars.timer.TimerRespawn;
-import fr.silenix.tntwars.timer.TimerScoreboard;
 
 
 
@@ -166,9 +166,9 @@ public class GMain extends JavaPlugin{
 	list_kits = CreateKit.CreationKit();
 	
 	
-	TimerScoreboard cycle = new TimerScoreboard(this);
+	/*TimerScoreboard cycle = new TimerScoreboard(this);
 	cycle.runTaskTimer(this, 0, 20);
-	
+	*/
 		
 	pm.registerEvents(new PlayerListeners(this) , this);
 	pm.registerEvents(new DamageListeners(this), this);
@@ -237,13 +237,13 @@ public class GMain extends JavaPlugin{
 			
 			switch(NbEquipe) {
 				case 2:
-					if(getSize("Bleu") < getSize("Rouge")) {
+					if(getSize(CouleurEquipe.Bleu.toString()) < getSize(CouleurEquipe.Rouge.toString())) {
 						joueur.setEquipe(Equipe_bleu);
 					}
-					else if(getSize("Bleu") > getSize("Rouge")) {
+					else if(getSize(CouleurEquipe.Bleu.toString()) > getSize(CouleurEquipe.Rouge.toString())) {
 						joueur.setEquipe(Equipe_rouge);
 					}
-					else if(getSize("Bleu") == getSize("Rouge")) {
+					else if(getSize(CouleurEquipe.Bleu.toString()) == getSize(CouleurEquipe.Rouge.toString())) {
 						joueur.setEquipe(Equipe_bleu);
 					}
 					break;
@@ -597,16 +597,16 @@ public class GMain extends JavaPlugin{
 			
 			
 				
-			if( listeJoueurs.size() /NbEquipe >= getSize(equipe)) {
+			if( listeJoueurs.size() /NbEquipe >= getSize(equipe.getCouleur())) {
 				
 				if(listeJoueurs.size()==2 && NbEquipe==2) {
 					if(equipe == Equipe_bleu) {
-						if(getSize(equipe.getCouleur())==1 && getSize(Equipe_jaune.getCouleur())==0) {
+						if(getSize(CouleurEquipe.Bleu.toString())==1 && getSize(CouleurEquipe.Jaune.toString())==0) {
 							joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les "+equipe.getCouleur()+" essayez une autre équipe ou plus tard.");
 							return;
 						}
 					}else {
-						if(getSize(equipe.getCouleur())==1 && getSize(Equipe_bleu.getCouleur())==0) {
+						if(getSize(CouleurEquipe.Rouge.toString())==1 && getSize(CouleurEquipe.Bleu.toString())==0) {
 							joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les "+equipe.getCouleur()+" essaie les rouges ou plus tard.");
 							return;
 						}
@@ -624,12 +624,6 @@ public class GMain extends JavaPlugin{
 			} else {
 				joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les "+equipe.getCouleur()+" essayez une autre équipe ou plus tard.");
 			}
-			
-			
-			
-			
-			
-			
 			
 			
 			
