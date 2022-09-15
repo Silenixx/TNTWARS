@@ -557,7 +557,7 @@ public class CreateKit {
 							new ItemStack(Material.IRON_BOOTS),
 							customdiamondsword_alchi,
 							Vie_Global_Joueur,
-							null,
+							new ArrayList<ItemStack>(Arrays.asList(is)),
 							null,
 							true);
 		list_kits.add(Alchimiste);
