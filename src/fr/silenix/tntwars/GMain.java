@@ -138,15 +138,48 @@ public class GMain extends JavaPlugin{
 	
 	setState(EtatPartie.AttenteJoueur);
 
-	list_maps.add( new Map(
+	list_maps.add( 
+			new Map(
 			2,
-			"chateau",
+			"Sky",
 			new Location(world,431,132,7),
 			new ArrayList<Location>(Arrays.asList(new Location(world,501,13,24), new Location(world,365,13,4))),
 			new ArrayList<Location>(Arrays.asList(new Location(world,523,13,18), new Location(world,341,8,10))),
 			new Location(world,501,13,24),
 			new Location(world,221,-66,-114),
 			new Location(world,644,103,141)));
+	list_maps.add( 		
+			new Map(
+			2,
+			"Chateau",
+			new Location(world,30,167,-315),
+			new ArrayList<Location>(Arrays.asList(new Location(world,30,11,-242), new Location(world,30,11,-386))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,30,9,-357), new Location(world,30,9,-371))),
+			new Location(world,31,13,-320),
+			new Location(world,-55,-21,-442),
+			new Location(world,103,125,-205)));
+	list_maps.add( 		
+			new Map(
+			2,
+			"LushCave",
+			new Location(world,-253,44,-343),
+			new ArrayList<Location>(Arrays.asList(new Location(world,-282,22,-319), new Location(world,-274,23,-227))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,-319,25,-314), new Location(world,-265,23,-199))),
+			new Location(world,-300,20,-263),
+			new Location(world,-356,8,-346),
+			new Location(world,-184,102,-185)));
+	list_maps.add( 		
+			new Map(
+			2,
+			"Japon",
+			new Location(world,443,216,-558),
+			new ArrayList<Location>(Arrays.asList(new Location(world,404,65,-602), new Location(world,410,64,-514))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,434,76,-641), new Location(world,428,72,-486))),
+			new Location(world,439,60,-558),
+			new Location(world,357,0,-676),
+			new Location(world,556,189,-421)));
+			
+			
 	
 	
 	list_kits = CreateKit.CreationKit();
@@ -266,7 +299,7 @@ public class GMain extends JavaPlugin{
 			joueur.getPlayer().getInventory().setLeggings(joueur.getKit().getLegging());
 			joueur.getPlayer().getInventory().setItem(0, joueur.getKit().getMainWeapon());
 			joueur.getPlayer().getInventory().setItem(1, joueur.getEquipe().getLaine());
-			if (joueur.getKit()!=main.list_kits.get(IndexKit.Builder)) {
+			if (joueur.getKit()!=list_kits.get(IndexKit.Builder)) {
 				joueur.getPlayer().getInventory().setItem(2, new ItemStack(Material.SHEARS));
 			}else {
 				joueur.getPlayer().getInventory().addItem(joueur.getEquipe().getLaine());
@@ -282,10 +315,12 @@ public class GMain extends JavaPlugin{
 			
 			
 			
-			
-			for (int i=0;i<joueur.getKit().getItemsArray().size();i++) {
-				joueur.getPlayer().getInventory().addItem(joueur.getKit().getItemsArray().get(i));
+			if(joueur.getKit().getItemsArray()!=null) {
+				for (int i=0;i<joueur.getKit().getItemsArray().size();i++) {
+					joueur.getPlayer().getInventory().addItem(joueur.getKit().getItemsArray().get(i));
+				}
 			}
+			
 			
 			
 			
@@ -366,6 +401,14 @@ public class GMain extends JavaPlugin{
 			}
 		if(nombre_de_tnt_explose == map_en_cours.getNbEquipe()-1) {
 			
+			for(int i=0; i < listeJoueurs.size(); i++) {
+				Joueur joueur = listeJoueurs.get(i);
+				
+				joueur.getPlayer().setGameMode(GameMode.SPECTATOR);
+				
+			}
+			
+			
 			
 			TimerRedemarrage cycle = new TimerRedemarrage(this);
 			cycle.runTaskTimer(this, 0, 20);
@@ -374,6 +417,24 @@ public class GMain extends JavaPlugin{
 
 
 	}
+	
+	
+	
+	
+	/*public void RenvoieGagnat() {
+		Equipe gagnant;
+
+				
+		if(tnt_rouge.getEtat()== EtatTNT.Explose) {
+			gagnant = Equipe_bleu;
+		}
+		if(tnt_bleu.getEtat()== EtatTNT.Explose) {
+			gagnant = Equipe_rouge;
+		}
+		return gagnant;	
+
+
+	}*/
 
 	public void remiseazero() {
 		tnt_rouge.setEtat(EtatTNT.Eteinte);
@@ -457,7 +518,7 @@ public class GMain extends JavaPlugin{
 				  .orElse(null));
 
 		player.setInvulnerable(true);
-		
+		player.setGameMode(GameMode.SPECTATOR);
 		
 		player.getInventory().clear();
 		
@@ -465,7 +526,7 @@ public class GMain extends JavaPlugin{
 		
 		player.setFoodLevel(20);
 		sethealth(joueur);
-		player.setGameMode(GameMode.ADVENTURE);
+		player.setGameMode(GameMode.CREATIVE);
 		player.sendMessage("vous etes mort");
 		player.setInvisible(true);
 		
@@ -483,7 +544,7 @@ public class GMain extends JavaPlugin{
 		customC2.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
 		
 		customcompasse.setItemMeta(customC2);
-		joueur.getPlayer().getInventory().setItem(8,customcompasse);
+		joueur.getPlayer().getInventory().setItem(4,customcompasse);
 		
 		
 		

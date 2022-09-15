@@ -24,7 +24,12 @@ public class TimerRedemarrage extends BukkitRunnable{
 
 	@Override
 	public void run() {
-		if (timer==30 || timer==10 || timer==5 || timer==4 || timer==3 || timer==2) {
+		if (timer==30 ) {
+			Bukkit.broadcastMessage("§6[§eTntWars§6] §eVictoire de la team: ");
+			Bukkit.broadcastMessage("§6[§eTntWars§6] §eRedemmarage du mode de jeu dans §6"+timer+" §esecondes.");
+			
+		}
+		if (timer==10 || timer==5 || timer==4 || timer==3 || timer==2) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eRedemmarage du mode de jeu dans §6"+timer+" §esecondes.");
 			
 		}

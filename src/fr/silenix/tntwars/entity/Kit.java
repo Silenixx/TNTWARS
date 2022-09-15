@@ -69,7 +69,7 @@ public class Kit {
 		MainWeapon = mainweapon;
 	}
 	public ItemStack getBoots() {
-		return MainWeapon;
+		return Boots;
 	}
 	public void setBoots(ItemStack boots) {
 		Boots = boots;

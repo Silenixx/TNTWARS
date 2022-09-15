@@ -1,6 +1,7 @@
 package fr.silenix.tntwars.timer;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -78,8 +79,9 @@ public class TimerAllumageRed extends BukkitRunnable{
 			
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
 				Joueur joueur = main.listeJoueurs.get(i);
-				
-				
+				if(joueur.getEquipe()==main.Equipe_rouge) {
+					joueur.getPlayer().setGameMode(GameMode.SPECTATOR);
+				}
 					
 				joueur.getPlayer().playSound(main.map_en_cours.getLocationTntArray(0), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 3F, 1F);
 				

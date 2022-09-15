@@ -3,6 +3,8 @@ package fr.silenix.tntwars.tasks;
 
 
 
+import java.util.Random;
+
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
@@ -63,11 +65,11 @@ public class TaskLancementPartie extends BukkitRunnable{
 				//main.value_random.clear();
 				
 				
-				/*Random random = new Random();
+				Random random = new Random();
 				int value_random_en_cours = random.nextInt((main.list_maps.size() - 1) + 1) +1;
-				main.map_en_cours = main.list_maps.get(value_random_en_cours-1);*/
+				main.map_en_cours = main.list_maps.get(value_random_en_cours-1);
 				
-				main.map_en_cours = main.list_maps.get(0);
+				main.map_en_cours = main.list_maps.get(value_random_en_cours);
 				
 				
 				/*main.map_en_cours.NbEquipe = main.list_maps.get(0).NbEquipe;
@@ -82,7 +84,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 				
 				Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map §6" + main.map_en_cours.Nom + "§e a été choisie.");
 				
-				//main.efface_laine();
+				main.efface_laine();
 				
 				
 				
