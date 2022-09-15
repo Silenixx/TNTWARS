@@ -269,12 +269,17 @@ public class GMain extends JavaPlugin{
 			if (joueur.getKit()!=main.list_kits.get(IndexKit.Builder)) {
 				joueur.getPlayer().getInventory().setItem(2, new ItemStack(Material.SHEARS));
 			}else {
+				joueur.getPlayer().getInventory().addItem(joueur.getEquipe().getLaine());
+				joueur.getPlayer().getInventory().addItem(joueur.getEquipe().getLaine());
+				joueur.getPlayer().getInventory().addItem(joueur.getEquipe().getLaine());
 				ItemStack customcisaille = new ItemStack(Material.SHEARS,1);
 				ItemMeta customCCC = customcisaille.getItemMeta();
 				customCCC.addEnchant(Enchantment.DIG_SPEED, 10, true);
 				customcisaille.setItemMeta(customCCC);
 				joueur.getPlayer().getInventory().setItem(2,customcisaille);
 			}
+			
+			
 			
 			
 			

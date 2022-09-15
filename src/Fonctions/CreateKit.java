@@ -285,32 +285,286 @@ public class CreateKit {
 		
 		
 		
-		Kit DogMaster=new Kit("DogMaster",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		ItemStack customdiamondsword_dog = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_dog = customdiamondsword_dog.getItemMeta();
+		customDS_dog.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_dog.setItemMeta(customDS_dog);
+		
+		Kit DogMaster=new Kit(
+						"DogMaster",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_dog,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.BONE,64),new ItemStack(Material.WOLF_SPAWN_EGG,7))),
+						null,
+						true);
 		list_kits.add(DogMaster);
-		Kit Trident=new Kit("Trident",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		
+		
+		ItemStack customdiamondsword_Trident = new ItemStack(Material.STONE_SWORD,1);
+		ItemMeta customDS_Trident = customdiamondsword_Trident.getItemMeta();
+		customDS_Trident.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_Trident.setItemMeta(customDS_Trident);
+		
+		ItemStack customtrident_Trident = new ItemStack(Material.TRIDENT,1);
+		ItemMeta customTTT_Trident = customtrident_Trident.getItemMeta();
+		customTTT_Trident.addEnchant(Enchantment.CHANNELING, 1, true);
+		customTTT_Trident.addEnchant(Enchantment.LOYALTY, 3, true);
+		customtrident_Trident.setItemMeta(customTTT_Trident);
+		
+		Kit Trident=new Kit(
+						"Trident",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_Trident,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(customtrident_Trident)),
+						null,
+						true);
 		list_kits.add(Trident);
-		Kit Squid=new Kit("Squid",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		ItemStack customdiamondsword_squid = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_squid = customdiamondsword_squid.getItemMeta();
+		customDS_squid.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_squid.setItemMeta(customDS_squid);
+		
+		Kit Squid=new Kit(
+						"Squid",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_squid,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.INK_SAC))),
+						null,
+						true);
 		list_kits.add(Squid);
-		Kit Barbare=new Kit("Barbare",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		ItemStack customdiamondsword_barbare = new ItemStack(Material.DIAMOND_AXE,1);
+		ItemMeta customDS_barbare = customdiamondsword_barbare.getItemMeta();
+		customDS_barbare.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_barbare.setItemMeta(customDS_barbare);
+		
+		Kit Barbare=new Kit(
+						"Barbare",
+						new ItemStack(Material.CHAINMAIL_HELMET),
+						new ItemStack(Material.CHAINMAIL_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_barbare,
+						Vie_Global_Joueur,
+						null,
+						null,
+						true);
 		list_kits.add(Barbare);
-		Kit SnowMan=new Kit("SnowMan",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		ItemStack customdiamondsword_snow = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_snow = customdiamondsword_snow.getItemMeta();
+		customDS_snow.addEnchant(Enchantment.DAMAGE_ALL, 2, true);
+		customdiamondsword_snow.setItemMeta(customDS_snow);
+		
+		Kit SnowMan=new Kit(
+						"SnowMan",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_snow,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.SNOWBALL,64),new ItemStack(Material.SNOWBALL,64),new ItemStack(Material.SNOWBALL,64),new ItemStack(Material.SNOWBALL,64))),
+						null,
+						true);
 		list_kits.add(SnowMan);
-		Kit Tank=new Kit("Tank",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		ItemStack customironsword_tank = new ItemStack(Material.STONE_SWORD,1);
+		ItemMeta customIS_tank = customironsword_tank.getItemMeta();
+		customIS_tank.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customironsword_tank.setItemMeta(customIS_tank);
+		
+		Kit Tank=new Kit(
+						"Tank",
+						new ItemStack(Material.DIAMOND_HELMET),
+						new ItemStack(Material.DIAMOND_CHESTPLATE),
+						new ItemStack(Material.DIAMOND_LEGGINGS),
+						new ItemStack(Material.DIAMOND_BOOTS),
+						customironsword_tank,
+						Vie_Global_Joueur,
+						null,
+						null,
+						true);
 		list_kits.add(Tank);
-		Kit Archer=new Kit("Archer",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		ItemStack custombow_archer = new ItemStack(Material.BOW,1);
+		ItemMeta customB_archer = custombow_archer.getItemMeta();
+		customB_archer.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
+		customB_archer.addEnchant(Enchantment.ARROW_KNOCKBACK, 2, true);
+		custombow_archer.setItemMeta(customB_archer);
+		
+		ItemStack customstonesword_archer = new ItemStack(Material.STONE_SWORD,1);
+		ItemMeta customSW2_archer = customstonesword_archer.getItemMeta();
+		customSW2_archer.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customstonesword_archer.setItemMeta(customSW2_archer);
+		
+		Kit Archer=new Kit(
+						"Archer",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customstonesword_archer,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(custombow_archer,new ItemStack(Material.ARROW))),
+						null,
+						true);
 		list_kits.add(Archer);
-		Kit Sorcier=new Kit("Sorcier",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		
+		ItemStack customdiamondsword_sorcier = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_sorcier = customdiamondsword_sorcier.getItemMeta();
+		customDS_sorcier.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_sorcier.setItemMeta(customDS_sorcier);
+		
+		ItemStack customblaze_sorcier = new ItemStack(Material.BLAZE_ROD,1);
+		ItemMeta customSSS_sorcier = customblaze_sorcier.getItemMeta();
+		customSSS_sorcier.addEnchant(Enchantment.KNOCKBACK, 6, true);
+		customblaze_sorcier.setItemMeta(customSSS_sorcier);
+		
+		Kit Sorcier=new Kit(
+						"Sorcier",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_sorcier,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(customblaze_sorcier)),
+						null,
+						true);
 		list_kits.add(Sorcier);
-		Kit Ghost=new Kit("Ghost",null,null,null,null,null,Vie_Global_Joueur,null,null,false);
+		
+		
+		ItemStack customwoodsword_ghost = new ItemStack(Material.WOODEN_SWORD,1);
+		ItemMeta customWS_ghost = customwoodsword_ghost.getItemMeta();
+		customWS_ghost.addEnchant(Enchantment.DAMAGE_ALL, 2, true);
+		customwoodsword_ghost.setItemMeta(customWS_ghost);
+		
+		Kit Ghost=new Kit(
+						"Ghost",
+						null,
+						null,
+						null,
+						null,
+						customwoodsword_ghost,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.COOKED_BEEF,64),new ItemStack(Material.COOKED_BEEF,64))),
+						null,
+						false);
 		list_kits.add(Ghost);
-		Kit Healer=new Kit("Healer",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		ItemStack customwoodsword_healer = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customWS_healer = customwoodsword_healer.getItemMeta();
+		customWS_healer.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customwoodsword_healer.setItemMeta(customWS_healer);
+		
+		Kit Healer=new Kit(
+						"Healer",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customwoodsword_healer,
+						Vie_Global_Joueur,
+						null,
+						null,
+						true);
 		list_kits.add(Healer);
-		Kit Pyro=new Kit("Pyro",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		ItemStack customdiamondsword_pyro = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_pyro = customdiamondsword_pyro.getItemMeta();
+		customDS_pyro.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customDS_pyro.addEnchant(Enchantment.FIRE_ASPECT, 1, true);
+		customdiamondsword_pyro.setItemMeta(customDS_pyro);
+		
+		Kit Pyro=new Kit(
+						"Pyro",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_pyro,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.FIRE_CHARGE,16),new ItemStack(Material.FLINT_AND_STEEL))),
+						null,
+						true);
 		list_kits.add(Pyro);
-		Kit Builder=new Kit("Builder",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		ItemStack customdiamondsword_builder = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_builder = customdiamondsword_builder.getItemMeta();
+		customDS_builder.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_builder.setItemMeta(customDS_builder);
+		
+		Kit Builder=new Kit(
+						"Builder",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_builder,
+						Vie_Global_Joueur,
+						null,
+						null,
+						true);
 		list_kits.add(Builder);
-		Kit Alchimiste=new Kit("Alchimiste",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		ItemStack customdiamondsword_alchi = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_alchi = customdiamondsword_alchi.getItemMeta();
+		customDS_alchi.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_alchi.setItemMeta(customDS_alchi);
+		
+		ItemStack is = new ItemStack(Material.POTION, 5);
+		ItemMeta im = is.getItemMeta();
+		//if(!(im instanceof PotionMeta)) 
+		PotionMeta pm22 = (PotionMeta) im;
+		pm22.addCustomEffect(new PotionEffect(PotionEffectType.REGENERATION, 20*60, 4), true);
+		pm22.addCustomEffect(new PotionEffect(PotionEffectType.ABSORPTION, 20*60, 2), true);
+		pm22.addCustomEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 20*60, 2), true);
+		pm22.addCustomEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 20*60, 2), true);
+		is.setItemMeta(pm2);
+		
+		Kit Alchimiste=new Kit(
+							"Alchimiste",
+							new ItemStack(Material.IRON_HELMET),
+							new ItemStack(Material.IRON_CHESTPLATE),
+							new ItemStack(Material.IRON_LEGGINGS),
+							new ItemStack(Material.IRON_BOOTS),
+							customdiamondsword_alchi,
+							Vie_Global_Joueur,
+							null,
+							null,
+							true);
 		list_kits.add(Alchimiste);
+		
+		
+		
+		
 		
 		return list_kits;
 		
