@@ -49,11 +49,11 @@ public class GMain extends JavaPlugin{
 	World world = Bukkit.getWorld("world");
 	public Location spawn_general = new Location(world,6,1,1);
 	
-	public Equipe Equipe_rouge = new Equipe("Rouge",false);
-	public Equipe Equipe_bleu = new Equipe("Bleu",false);
-	public Equipe Equipe_vert = new Equipe("Vert",false);
-	public Equipe Equipe_jaune = new Equipe("Jaune",false);
-	public Equipe Sans_Equipe = new Equipe("Sans Equipe",true);
+	public Equipe Equipe_rouge = new Equipe("Rouge",false,new ItemStack(Material.RED_WOOL,64));
+	public Equipe Equipe_bleu = new Equipe("Bleu",false,new ItemStack(Material.BLUE_WOOL,64));
+	public Equipe Equipe_vert = new Equipe("Vert",false,new ItemStack(Material.GREEN_WOOL,64));
+	public Equipe Equipe_jaune = new Equipe("Jaune",false,new ItemStack(Material.YELLOW_WOOL,64));
+	public Equipe Sans_Equipe = new Equipe("Sans Equipe",true,null);
 	
 	public Tnt tnt_rouge = new Tnt(Equipe_rouge, 0, EtatTNT.Eteinte);
 	public Tnt tnt_bleu = new Tnt(Equipe_bleu, 0, EtatTNT.Eteinte);
@@ -148,7 +148,7 @@ public class GMain extends JavaPlugin{
 			new Location(world,644,103,141)));
 	
 	
-	CreateKit.CreationKit(main);
+	list_kits = CreateKit.CreationKit();
 	
 		
 	pm.registerEvents(new PlayerListeners(this) , this);
@@ -263,6 +263,12 @@ public class GMain extends JavaPlugin{
 			joueur.getPlayer().getInventory().setChestplate(joueur.getKit().getChestplate());
 			joueur.getPlayer().getInventory().setHelmet(joueur.getKit().getHelmet());
 			joueur.getPlayer().getInventory().setLeggings(joueur.getKit().getLegging());
+			joueur.getPlayer().getInventory().setItem(0, joueur.getKit().getMainWeapon());
+			joueur.getPlayer().getInventory().setItem(1, joueur.getEquipe().getLaine());
+			
+			for (int i=0;i<joueur.getKit().getItemsArray().size();i++) {
+				joueur.getPlayer().getInventory().addItem(joueur.getKit().getItemsArray().get(i));
+			}
 			
 			
 			
