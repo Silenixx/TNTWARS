@@ -199,15 +199,69 @@ public class CreateKit {
 		
 		
 		
-		Kit Savior=new Kit("Savior",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		ItemStack customdiamondsword_Savior = new ItemStack(Material.STONE_SWORD,1);
+		ItemMeta customDS_Savior = customdiamondsword_Savior.getItemMeta();
+		customDS_Savior.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_Savior.setItemMeta(customDS_Savior);
+		
+		Kit Savior=new Kit(
+					"Savior",
+					new ItemStack(Material.IRON_HELMET),
+					new ItemStack(Material.IRON_CHESTPLATE),
+					new ItemStack(Material.IRON_LEGGINGS),
+					new ItemStack(Material.IRON_BOOTS),
+					customdiamondsword_Savior,
+					Vie_Global_Joueur,
+					new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.AMETHYST_SHARD,3),new ItemStack(Material.AMETHYST_CLUSTER,3))),
+					null,
+					true);
 		list_kits.add(Savior);
 		
 		
 		
-		Kit PigRider=new Kit("PigRider",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		ItemStack customcarrot = new ItemStack(Material.CARROT_ON_A_STICK,1);
+		ItemMeta customCARROTE = customcarrot.getItemMeta();
+		customCARROTE.addEnchant(Enchantment.KNOCKBACK, 5, true);
+		customCARROTE.addEnchant(Enchantment.DAMAGE_ALL, 2, true);
+		customcarrot.setItemMeta(customCARROTE);
+		
+		Kit PigRider=new Kit(
+						"PigRider",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customcarrot,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(customcarrot,customcarrot,customcarrot,customcarrot,customcarrot,new ItemStack(Material.SADDLE,6),new ItemStack(Material.PIG_SPAWN_EGG,6))),
+						null,
+						true);
 		list_kits.add(PigRider);
-		Kit Chevalier=new Kit("Chevalier",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		
+		
+		
+		ItemStack customdiamondsword_chevalier = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_chevalier = customdiamondsword_chevalier.getItemMeta();
+		customDS_chevalier.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_chevalier.setItemMeta(customDS_chevalier);
+		
+		Kit Chevalier=new Kit(
+						"Chevalier",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_chevalier,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.HORSE_SPAWN_EGG,1),new ItemStack(Material.SADDLE,1),new ItemStack(Material.WHEAT,64),new ItemStack(Material.WHEAT,64))),
+						null,
+						true);
 		list_kits.add(Chevalier);
+		
+		
+		
+		
+		
 		Kit Pirate=new Kit("Pirate",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
 		list_kits.add(Pirate);
 		Kit DogMaster=new Kit("DogMaster",null,null,null,null,null,Vie_Global_Joueur,null,null,true);

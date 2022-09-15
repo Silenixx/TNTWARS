@@ -21,6 +21,7 @@ import org.bukkit.potion.PotionEffectType;
 import Enum.EtatPartie;
 import Enum.EtatTNT;
 import Fonctions.CreateKit;
+import Fonctions.IndexKit;
 import fr.silenix.tntwars.entity.Equipe;
 import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.entity.Kit;
@@ -265,6 +266,17 @@ public class GMain extends JavaPlugin{
 			joueur.getPlayer().getInventory().setLeggings(joueur.getKit().getLegging());
 			joueur.getPlayer().getInventory().setItem(0, joueur.getKit().getMainWeapon());
 			joueur.getPlayer().getInventory().setItem(1, joueur.getEquipe().getLaine());
+			if (joueur.getKit()!=main.list_kits.get(IndexKit.Builder)) {
+				joueur.getPlayer().getInventory().setItem(2, new ItemStack(Material.SHEARS));
+			}else {
+				ItemStack customcisaille = new ItemStack(Material.SHEARS,1);
+				ItemMeta customCCC = customcisaille.getItemMeta();
+				customCCC.addEnchant(Enchantment.DIG_SPEED, 10, true);
+				customcisaille.setItemMeta(customCCC);
+				joueur.getPlayer().getInventory().setItem(2,customcisaille);
+			}
+			
+			
 			
 			for (int i=0;i<joueur.getKit().getItemsArray().size();i++) {
 				joueur.getPlayer().getInventory().addItem(joueur.getKit().getItemsArray().get(i));
