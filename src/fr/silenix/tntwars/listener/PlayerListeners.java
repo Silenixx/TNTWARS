@@ -13,6 +13,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.HumanEntity;
@@ -255,19 +256,25 @@ public class PlayerListeners implements Listener{
 	 
 	@EventHandler
 	public void onPlace(BlockPlaceEvent event) {
-			if(!main.isState(EtatPartie.JeuEnCours)) {
-				event.setCancelled(true);
-				return;
-			}else {
-				if(event.getBlock().getType() == Material.RED_WOOL || event.getBlock().getType() == Material.BLUE_WOOL) {
-					return;
-				}else {
+		BlockState block_replaced = event.getBlockReplacedState();
+		
+		if(!main.isState(EtatPartie.JeuEnCours)) {
+			event.setCancelled(true);
+			return;
+		}else {
+			if(event.getBlock().getType() == Material.RED_WOOL || event.getBlock().getType() == Material.BLUE_WOOL) {
+				if(block_replaced.getType() == Material.WATER ) {
 					event.setCancelled(true);
 					return;
 				}
+				return;
+			}else {
+				event.setCancelled(true);
+				return;
 			}
-			
 		}
+			
+	}
 	@EventHandler
 	public void onBreak(BlockBreakEvent event) {
 		if(!main.isState(EtatPartie.JeuEnCours)) {
@@ -999,7 +1006,7 @@ public class PlayerListeners implements Listener{
 							
 							if (main.tnt_bleu.getVie()<main.Avancement_Max_Global_TNT && event.getClickedBlock().getType() == Material.TNT) {
 								main.tnt_bleu.setVie(main.tnt_bleu.getVie()+1);
-								Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
+								//Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 			
 								
 								if(main.tnt_bleu.getVie() ==main.Avancement_Max_Global_TNT) {
@@ -1022,7 +1029,7 @@ public class PlayerListeners implements Listener{
 						
 						if (main.tnt_bleu.getVie()>0 && event.getClickedBlock().getType() == Material.TNT) {
 							main.tnt_bleu.setVie(main.tnt_bleu.getVie()-1);
-							Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
+							//Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 						
 							if(main.tnt_bleu.getVie() ==0) {
 								Bukkit.broadcastMessage("§6[§eTntWars§6] §eLa TNT §9bleue §ea été étteinte.");
@@ -1045,7 +1052,7 @@ public class PlayerListeners implements Listener{
 						if (main.tnt_rouge.getEtat()==EtatTNT.Eteinte) {
 							if (main.tnt_rouge.getVie()<main.Avancement_Max_Global_TNT && event.getClickedBlock().getType() == Material.TNT) {
 								main.tnt_rouge.setVie(main.tnt_rouge.getVie()+1);
-								Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
+								//Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 							
 								if(main.tnt_rouge.getVie() ==main.Avancement_Max_Global_TNT) {
 									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §crouge §ea été allumée!");
@@ -1066,7 +1073,7 @@ public class PlayerListeners implements Listener{
 					if (main.tnt_rouge.getEtat()==EtatTNT.Allume && joueur.getEquipe() == main.Equipe_rouge &&  (main.map_en_cours.getLocationTntArray(0).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(0).getX()-3)  && (main.map_en_cours.getLocationTntArray(0).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(0).getZ()-3)) {
 						if (main.tnt_rouge.getVie()>0 && event.getClickedBlock().getType() == Material.TNT) {
 							main.tnt_rouge.setVie(main.tnt_rouge.getVie()-1);
-							Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
+							//Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 						
 							if(main.tnt_rouge.getVie() ==0) {
 								Bukkit.broadcastMessage("§6[§eTntWars§6] §eLa TNT §crouge §ea été étteinte.");

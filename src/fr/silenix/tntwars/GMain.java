@@ -558,6 +558,11 @@ public class GMain extends JavaPlugin{
 		timer_blue=30;
 		timer_red=30;
 		
+		tnt_bleu.setVie(0);
+		tnt_rouge.setVie(0);
+		tnt_jaune.setVie(0);
+		tnt_vert.setVie(0);
+		
 		setState(EtatPartie.AttenteJoueur);
 		
 		
@@ -749,9 +754,9 @@ public class GMain extends JavaPlugin{
 				}  
 				
 				
-				joueur.getEquipe().getScoreBoardTeam().removePlayer(joueur.getPlayer());
+				deletejoueurscoreboard(joueur, equipe);
 				joueur.setEquipe(equipe);
-				equipe.getScoreBoardTeam().addPlayer(joueur.getPlayer());
+				ajoutjoueurscoreboard(joueur, equipe);
 				
 				
 				joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eVous avez rejoinds l'équipe "+equipe.getCouleur()+".");
@@ -767,6 +772,39 @@ public class GMain extends JavaPlugin{
 		
 		
 		
+		
+	}
+
+	public void ajoutjoueurscoreboard(Joueur joueur, Equipe equipe) {
+		if(equipe == Equipe_bleu) {
+			BlueTeamSC.addPlayer(joueur.getPlayer());
+		}
+		else if(equipe == Equipe_rouge){
+			RedTeamSC.addPlayer(joueur.getPlayer());
+		}
+		else if(equipe == Equipe_vert){
+			GreenTeamSC.addPlayer(joueur.getPlayer());
+		}
+		else if(equipe == Equipe_jaune){
+			YellowTeamSC.addPlayer(joueur.getPlayer());
+		}
+		
+	}
+
+	@SuppressWarnings("deprecation")
+	public void deletejoueurscoreboard(Joueur joueur, Equipe equipe) {
+		if(equipe == Equipe_bleu) {
+			BlueTeamSC.removePlayer(joueur.getPlayer());
+		}
+		else if(equipe == Equipe_rouge){
+			RedTeamSC.removePlayer(joueur.getPlayer());
+		}
+		else if(equipe == Equipe_vert){
+			GreenTeamSC.removePlayer(joueur.getPlayer());
+		}
+		else if(equipe == Equipe_jaune){
+			YellowTeamSC.removePlayer(joueur.getPlayer());
+		}
 		
 	}
 

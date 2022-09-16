@@ -7,10 +7,12 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.type.Fire;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -66,6 +68,18 @@ public class DamageListeners implements Listener{
 		
 		
 		if (victim instanceof Player) {
+			Player player = (Player)victim;
+			if (player.getHealth() <= event.getDamage()) {
+				
+				
+				
+				event.setDamage(0);
+				main.eliminate(player);
+				
+			}
+		}
+		
+		if (victim instanceof Fire) {
 			Player player = (Player)victim;
 			if (player.getHealth() <= event.getDamage()) {
 				
@@ -160,10 +174,7 @@ public class DamageListeners implements Listener{
 			
 			
 			Entity damager = event.getDamager();
-			Joueur joueur_damager = (main.listeJoueurs.stream()
-					  .filter(p -> damager.getName().equals(p.getPlayer().getName()))
-					  .findAny()
-					  .orElse(null));
+			
 			
 			Player killer = null;
 			
@@ -210,16 +221,44 @@ public class DamageListeners implements Listener{
 							  .orElse(null));
 					
 					
-					if(joueur_killer.getEquipe()==main.Equipe_bleu && joueur_victime.getEquipe()==main.Equipe_bleu) {
+					if(joueur_killer.getEquipe() == joueur_victime.getEquipe()) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
 						}
-					if(joueur_killer.getEquipe()==main.Equipe_rouge && joueur_victime.getEquipe()==main.Equipe_rouge) {
+					/*if(main.kit_pyro.contains(players)) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
-					}
+					}*/
+				
+				
+				}
+			}
+			
+			
+			if(damager instanceof Snowball) {
+				Snowball snowball= (Snowball)damager;
+				if(snowball.getShooter() instanceof Player) {
+					Player killer_snowball = (Player) snowball.getShooter();
+					
+					Joueur joueur_killer = (main.listeJoueurs.stream()
+							  .filter(p -> killer_snowball.getName().equals(p.getPlayer().getName()))
+							  .findAny()
+							  .orElse(null));
+					
+					
+					if(joueur_killer.getEquipe() == joueur_victime.getEquipe()) {
+						event.setDamage(0);
+						event.setCancelled(true);
+						return;
+						}else {
+							if(joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
+								event.setDamage(0);
+								main.eliminate(joueur_victime.getPlayer());
+							}
+							
+						}
 					/*if(main.kit_pyro.contains(players)) {
 						event.setDamage(0);
 						event.setCancelled(true);
@@ -233,12 +272,10 @@ public class DamageListeners implements Listener{
 			
 			
 			
-			if(joueur_damager.getKit()==main.list_kits.get(IndexKit.OneShot)) {
-				Bukkit.broadcastMessage(damager.getName()+" vient de tuer "+ players.getDisplayName());
-				damager.sendMessage("Tu viens de tuer " + players.getName());
-				event.setDamage(0);
-				main.eliminate(players);
-			}
+			
+			
+			
+			
 			
 			
 			/*if(main.getPlayerBlue().contains(damager) && main.getPlayerBlue().contains(players)) {
@@ -356,6 +393,10 @@ public class DamageListeners implements Listener{
 					}
 					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.Ninja)) {
 						killer_parjoueur.getInventory().addItem(new ItemStack(Material.BLACK_BANNER));
+					}
+					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.OneShot)) {
+						Bukkit.broadcastMessage(damager.getName()+" vient de tuer "+ players.getDisplayName());
+						damager.sendMessage("Tu viens de tuer " + players.getName());
 					}
 					
 					event.setDamage(0);
