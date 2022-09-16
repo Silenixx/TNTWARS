@@ -69,7 +69,7 @@ public class PlayerListeners implements Listener{
 		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.list_kits.get(IndexKit.Sans_Kit));
 		 main.listeConnecte.add(joueur);
 		 
-		 main.SetScoreboard(joueur);
+		 
 		 player.setInvulnerable(false);
 		 player.setExp(0);
 		 player.setInvisible(false);
@@ -79,6 +79,7 @@ public class PlayerListeners implements Listener{
 		 
 
 		 player.getInventory().clear();
+		 player.setScoreboard(main.board);
 		 
 		 
 		 

@@ -182,7 +182,7 @@ public class GMain extends JavaPlugin{
 	timer_red=30;
 	
 	list_kits = CreateKit.CreationKit();
-	
+	SetScoreboard();
 	
 	TimerScoreboard cycle = new TimerScoreboard(this);
 	cycle.runTaskTimer(this, 0, 20);
@@ -239,7 +239,101 @@ public class GMain extends JavaPlugin{
 	    return nombre_joueur; 
 	}
 	
-	
+	@SuppressWarnings("deprecation")
+	public void SetScoreboard(){
+		
+		
+		
+		
+		
+		
+		manager = Bukkit.getScoreboardManager();
+		board = manager.getNewScoreboard();
+	    
+		
+		RedTeamSC = board.registerNewTeam("Equipe Rouge");
+	    BlueTeamSC = board.registerNewTeam("Equipe Bleu");
+	    
+	    onlineCounter = board.registerNewTeam("onlineCounter");
+	    boardblue = board.registerNewTeam("boardblue");
+	    boardred = board.registerNewTeam("boardred");
+		
+		
+		
+	    Objective objective = board.registerNewObjective("lol", "dummy"); 
+	    
+		//Objective obj = board.registerNewObjective("aie", "dummy");
+		
+		
+		RedTeamSC.setPrefix("§4[§cEquipe Rouge§4]§c ");
+		BlueTeamSC.setPrefix("§1[§9Equipe Bleu§1]§9 ");
+
+        BlueTeamSC.setDisplayName("Equipe Bleu");
+        RedTeamSC.setDisplayName("Equipe Rouge");
+        
+        BlueTeamSC.setCanSeeFriendlyInvisibles(true);
+        BlueTeamSC.setAllowFriendlyFire(false);
+        RedTeamSC.setCanSeeFriendlyInvisibles(true);
+        RedTeamSC.setAllowFriendlyFire(false);
+		
+		
+		
+		
+		connecter_score = Bukkit.getOnlinePlayers().size();
+		cblue = tnt_bleu.getVie() *2;
+		cred = tnt_rouge.getVie() *2;
+		taille_blue = getSize("Bleu");
+		taille_red = getSize("Rouge");
+		timeblue = timer_blue;
+		timered = timer_red;
+
+		
+		
+		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        
+		
+		objective.setDisplayName(ChatColor.GOLD + "§6-------- TNT WARS --------");
+		
+
+		Score information = objective.getScore(ChatColor.GOLD + "» Informations de la Partie");
+		information.setScore(15);
+		
+		
+		
+		onlineCounter.addEntry(ChatColor.BLACK + "" + ChatColor.WHITE);
+		onlineCounter.setPrefix("  §eJoueurs connectés: ");
+		
+		if (Bukkit.getOnlinePlayers().size() == 0) {
+            onlineCounter.setSuffix(ChatColor.AQUA + "0");
+        } else {
+            onlineCounter.setSuffix("" + ChatColor.DARK_RED + Bukkit.getOnlinePlayers().size()+ "  (" + ChatColor.BLUE+taille_blue+ ChatColor.GRAY+"|"+ChatColor.RED+taille_red+ ChatColor.GRAY+")");
+        }
+		
+		objective.getScore(ChatColor.BLACK + "" + ChatColor.WHITE).setScore(14);
+		
+		
+		
+
+		boardblue.addEntry(ChatColor.WHITE + "" + ChatColor.WHITE);
+		boardblue.setPrefix("  §eTNT bleu: ");
+		boardblue.setSuffix(""+ ChatColor.BLUE + cblue + ChatColor.BLUE + "%" );
+		objective.getScore(ChatColor.WHITE + "" + ChatColor.WHITE).setScore(13);
+		
+		
+		
+		
+		boardred.addEntry(ChatColor.WHITE + "" + ChatColor.BLACK);
+		boardred.setPrefix("  §eTNT rouge: ");
+		boardred.setSuffix(""+ ChatColor.RED + cred + ChatColor.RED + "%" );
+		objective.getScore(ChatColor.WHITE + "" + ChatColor.BLACK).setScore(12);
+		
+		
+		
+		
+		
+		
+		
+	}
 	
 	@SuppressWarnings("deprecation")
 	public void AutoAddTeam(int NbEquipe) {
@@ -258,25 +352,25 @@ public class GMain extends JavaPlugin{
 				case 2:
 					if(getSize(CouleurEquipe.Bleu.toString()) < getSize(CouleurEquipe.Rouge.toString())) {
 						if(joueur.getEquipe()!=Sans_Equipe) {
-							Equipe_rouge.getScoreBoardTeam().removePlayer(joueur.getPlayer());
+							RedTeamSC.removePlayer(joueur.getPlayer());
 						}
 						joueur.setEquipe(Equipe_bleu);
-						Equipe_bleu.getScoreBoardTeam().addPlayer(joueur.getPlayer());
+						BlueTeamSC.addPlayer(joueur.getPlayer());
 					}
 					else if(getSize(CouleurEquipe.Bleu.toString()) > getSize(CouleurEquipe.Rouge.toString())) {
 						if(joueur.getEquipe()!=Sans_Equipe) {
-							Equipe_bleu.getScoreBoardTeam().removePlayer(joueur.getPlayer());
+							BlueTeamSC.removePlayer(joueur.getPlayer());
 						}
 						joueur.setEquipe(Equipe_rouge);
-						Equipe_rouge.getScoreBoardTeam().addPlayer(joueur.getPlayer());
+						RedTeamSC.addPlayer(joueur.getPlayer());
 					}
 					else if(getSize(CouleurEquipe.Bleu.toString()) == getSize(CouleurEquipe.Rouge.toString())) {
 						if(joueur.getEquipe()!=Sans_Equipe) {
-							Equipe_rouge.getScoreBoardTeam().removePlayer(joueur.getPlayer());
+							RedTeamSC.removePlayer(joueur.getPlayer());
 						}
 						
 						joueur.setEquipe(Equipe_bleu);
-						Equipe_bleu.getScoreBoardTeam().addPlayer(joueur.getPlayer());
+						BlueTeamSC.addPlayer(joueur.getPlayer());
 					}
 					break;
 				default:
@@ -453,101 +547,7 @@ public class GMain extends JavaPlugin{
 
 	}
 	
-@SuppressWarnings("deprecation")
-public void SetScoreboard(Joueur joueur){
-		
-		
-		
-		
-		
-		
-		manager = Bukkit.getScoreboardManager();
-		board = manager.getNewScoreboard();
-	    
-		
-		RedTeamSC = board.registerNewTeam("Equipe Rouge");
-	    BlueTeamSC = board.registerNewTeam("Equipe Bleu");
-	    
-	    onlineCounter = board.registerNewTeam("onlineCounter");
-	    boardblue = board.registerNewTeam("boardblue");
-	    boardred = board.registerNewTeam("boardred");
-		
-		
-		
-	    Objective objective = board.registerNewObjective("lol", "dummy"); 
-	    
-		//Objective obj = board.registerNewObjective("aie", "dummy");
-		
-		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-		RedTeamSC.setPrefix("§4[§cEquipe Rouge§4]§c ");
-		BlueTeamSC.setPrefix("§1[§9Equipe Bleu§1]§9 ");
 
-        BlueTeamSC.setDisplayName("Equipe Bleu");
-        RedTeamSC.setDisplayName("Equipe Rouge");
-        
-        BlueTeamSC.setCanSeeFriendlyInvisibles(true);
-        BlueTeamSC.setAllowFriendlyFire(false);
-        RedTeamSC.setCanSeeFriendlyInvisibles(true);
-        RedTeamSC.setAllowFriendlyFire(false);
-		
-		
-		
-		
-		connecter_score = Bukkit.getOnlinePlayers().size();
-		cblue = tnt_bleu.getVie() *2;
-		cred = tnt_rouge.getVie() *2;
-		taille_blue = getSize("Bleu");
-		taille_red = getSize("Rouge");
-		timeblue = timer_blue;
-		timered = timer_red;
-
-		
-		
-		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        
-		
-		objective.setDisplayName(ChatColor.GOLD + "§6-------- TNT WARS --------");
-		
-
-		Score information = objective.getScore(ChatColor.GOLD + "» Informations de la Partie");
-		information.setScore(15);
-		
-		
-		
-		onlineCounter.addEntry(ChatColor.BLACK + "" + ChatColor.WHITE);
-		onlineCounter.setPrefix("  §eJoueurs connectés: ");
-		
-		if (Bukkit.getOnlinePlayers().size() == 0) {
-            onlineCounter.setSuffix(ChatColor.AQUA + "0");
-        } else {
-            onlineCounter.setSuffix("" + ChatColor.DARK_RED + Bukkit.getOnlinePlayers().size()+ "  (" + ChatColor.BLUE+taille_blue+ ChatColor.GRAY+"|"+ChatColor.RED+taille_red+ ChatColor.GRAY+")");
-        }
-		
-		objective.getScore(ChatColor.BLACK + "" + ChatColor.WHITE).setScore(14);
-		
-		
-		
-
-		boardblue.addEntry(ChatColor.WHITE + "" + ChatColor.WHITE);
-		boardblue.setPrefix("  §eTNT bleu: ");
-		boardblue.setSuffix(""+ ChatColor.BLUE + cblue + ChatColor.BLUE + "%" );
-		objective.getScore(ChatColor.WHITE + "" + ChatColor.WHITE).setScore(13);
-		
-		
-		
-		
-		boardred.addEntry(ChatColor.WHITE + "" + ChatColor.BLACK);
-		boardred.setPrefix("  §eTNT rouge: ");
-		boardred.setSuffix(""+ ChatColor.RED + cred + ChatColor.RED + "%" );
-		objective.getScore(ChatColor.WHITE + "" + ChatColor.BLACK).setScore(12);
-		
-		
-		
-		
-		joueur.getPlayer().setScoreboard(board);
-		
-		
-	}
 
 	public void remiseazero() {
 		tnt_rouge.setEtat(EtatTNT.Eteinte);
@@ -578,7 +578,7 @@ public void SetScoreboard(Joueur joueur){
 		for(int i=0; i<listeJoueurs.size();i++) {
 			Joueur joueur = listeJoueurs.get(i) ;
 			
-			SetScoreboard(joueur);
+			
 			
 			joueur.getPlayer().setInvulnerable(false);
 			
@@ -636,7 +636,7 @@ public void SetScoreboard(Joueur joueur){
 				  .orElse(null));
 
 		player.setInvulnerable(true);
-		player.setGameMode(GameMode.SPECTATOR);
+		player.setGameMode(GameMode.CREATIVE);//ne pas changer c'est obligatoire
 		
 		player.getInventory().clear();
 		
@@ -705,7 +705,7 @@ public void SetScoreboard(Joueur joueur){
 
 			
 			
-			
+			player.setInvisible(false);
 			
 			SpawnTeleportation(joueur);
 			
