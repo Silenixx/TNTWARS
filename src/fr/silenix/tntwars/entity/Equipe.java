@@ -9,7 +9,7 @@ import org.bukkit.scoreboard.Team;
 public class Equipe {
 
     private String Couleur;
-    //private Team ScoreBoardTeam;
+    private Team ScoreBoardTeam;
     private boolean IsAlive;
     private ItemStack laine;
 
@@ -17,10 +17,10 @@ public class Equipe {
     
     
     
-    public Equipe(String Couleur, /*Team scoreBoardTeam,*/ boolean IsAlive, ItemStack laine) {
+    public Equipe(String Couleur, Team scoreBoardTeam, boolean IsAlive, ItemStack laine) {
     	super();
     	this.Couleur=Couleur;
-    	//this.ScoreBoardTeam = scoreBoardTeam;
+    	this.ScoreBoardTeam = scoreBoardTeam;
     	this.IsAlive=IsAlive;
     	this.laine=laine;
 	}
@@ -36,13 +36,13 @@ public class Equipe {
         this.Couleur = couleur;
     }
 
-    /*public Team getScoreBoardTeam() {
+    public Team getScoreBoardTeam() {
         return ScoreBoardTeam;
     }
  
     public void setScoreBoardTeam(Team scoreBoardTeam) {
         this.ScoreBoardTeam = scoreBoardTeam;
-    }*/
+    }
     
     
 

@@ -61,7 +61,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 			
 			if(timer == 0) {
 				
-				Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
+				//Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 				//main.value_random.clear();
 				
 				
@@ -69,7 +69,7 @@ public class TaskLancementPartie extends BukkitRunnable{
 				int value_random_en_cours = random.nextInt((main.list_maps.size() - 1) + 1) +1;
 				main.map_en_cours = main.list_maps.get(value_random_en_cours-1);
 				
-				main.map_en_cours = main.list_maps.get(value_random_en_cours);
+				
 				
 				
 				/*main.map_en_cours.NbEquipe = main.list_maps.get(0).NbEquipe;

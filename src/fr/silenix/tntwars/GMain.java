@@ -56,17 +56,21 @@ public class GMain extends JavaPlugin{
 	public int Avancement_Max_Global_TNT = 50;
 	public int Vie_Global_Joueur = 40;
 	
-	GMain main;
 	
+	
+	public Team RedTeamSC ;
+	public Team BlueTeamSC ;
+	public Team GreenTeamSC ;
+	public Team YellowTeamSC ;
 	
 	World world = Bukkit.getWorld("world");
 	public Location spawn_general = new Location(world,6,1,1);
 	
-	public Equipe Equipe_rouge = new Equipe("Rouge",false,new ItemStack(Material.RED_WOOL,64));
-	public Equipe Equipe_bleu = new Equipe("Bleu",false,new ItemStack(Material.BLUE_WOOL,64));
-	public Equipe Equipe_vert = new Equipe("Vert",false,new ItemStack(Material.GREEN_WOOL,64));
-	public Equipe Equipe_jaune = new Equipe("Jaune",false,new ItemStack(Material.YELLOW_WOOL,64));
-	public Equipe Sans_Equipe = new Equipe("Sans Equipe",true,null);
+	public Equipe Equipe_rouge = new Equipe("Rouge",RedTeamSC,false,new ItemStack(Material.RED_WOOL,64));
+	public Equipe Equipe_bleu = new Equipe("Bleu",BlueTeamSC,false,new ItemStack(Material.BLUE_WOOL,64));
+	public Equipe Equipe_vert = new Equipe("Vert",GreenTeamSC,false,new ItemStack(Material.GREEN_WOOL,64));
+	public Equipe Equipe_jaune = new Equipe("Jaune",YellowTeamSC,false,new ItemStack(Material.YELLOW_WOOL,64));
+	public Equipe Sans_Equipe = new Equipe("Sans Equipe",null,true,null);
 	
 	public Tnt tnt_rouge = new Tnt(Equipe_rouge, 0, EtatTNT.Eteinte);
 	public Tnt tnt_bleu = new Tnt(Equipe_bleu, 0, EtatTNT.Eteinte);
@@ -80,8 +84,7 @@ public class GMain extends JavaPlugin{
 	public Scoreboard board ;
     
 	
-	public Team RedTeamSC ;
-	public Team BlueTeamSC ;
+	
     
 	public Team onlineCounter ;
 	public Team boardblue;
@@ -149,7 +152,7 @@ public class GMain extends JavaPlugin{
 			"Chateau",
 			new Location(world,30,167,-315),
 			new ArrayList<Location>(Arrays.asList(new Location(world,30,11,-242), new Location(world,30,11,-386))),
-			new ArrayList<Location>(Arrays.asList(new Location(world,30,9,-357), new Location(world,30,9,-371))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,30,9,-257), new Location(world,30,9,-371))),
 			new Location(world,31,13,-320),
 			new Location(world,-55,-21,-442),
 			new Location(world,103,125,-205)));
@@ -238,6 +241,7 @@ public class GMain extends JavaPlugin{
 	
 	
 	
+	@SuppressWarnings("deprecation")
 	public void AutoAddTeam(int NbEquipe) {
 		
 		ArrayList<Joueur> liste_joueur_filtre = (ArrayList<Joueur>) listeJoueurs.stream(). //get a stream of all animals 
@@ -253,13 +257,26 @@ public class GMain extends JavaPlugin{
 			switch(NbEquipe) {
 				case 2:
 					if(getSize(CouleurEquipe.Bleu.toString()) < getSize(CouleurEquipe.Rouge.toString())) {
+						if(joueur.getEquipe()!=Sans_Equipe) {
+							Equipe_rouge.getScoreBoardTeam().removePlayer(joueur.getPlayer());
+						}
 						joueur.setEquipe(Equipe_bleu);
+						Equipe_bleu.getScoreBoardTeam().addPlayer(joueur.getPlayer());
 					}
 					else if(getSize(CouleurEquipe.Bleu.toString()) > getSize(CouleurEquipe.Rouge.toString())) {
+						if(joueur.getEquipe()!=Sans_Equipe) {
+							Equipe_bleu.getScoreBoardTeam().removePlayer(joueur.getPlayer());
+						}
 						joueur.setEquipe(Equipe_rouge);
+						Equipe_rouge.getScoreBoardTeam().addPlayer(joueur.getPlayer());
 					}
 					else if(getSize(CouleurEquipe.Bleu.toString()) == getSize(CouleurEquipe.Rouge.toString())) {
+						if(joueur.getEquipe()!=Sans_Equipe) {
+							Equipe_rouge.getScoreBoardTeam().removePlayer(joueur.getPlayer());
+						}
+						
 						joueur.setEquipe(Equipe_bleu);
+						Equipe_bleu.getScoreBoardTeam().addPlayer(joueur.getPlayer());
 					}
 					break;
 				default:
@@ -440,16 +457,6 @@ public class GMain extends JavaPlugin{
 public void SetScoreboard(Joueur joueur){
 		
 		
-		manager = Bukkit.getScoreboardManager();
-		board = manager.getNewScoreboard();
-	    
-		
-		RedTeamSC = board.registerNewTeam("Equipe Rouge");
-	    BlueTeamSC = board.registerNewTeam("Equipe Bleu");
-	    
-	    onlineCounter = board.registerNewTeam("onlineCounter");
-	    boardblue = board.registerNewTeam("boardblue");
-	    boardred = board.registerNewTeam("boardred");
 		
 		
 		
@@ -469,19 +476,12 @@ public void SetScoreboard(Joueur joueur){
 		
 	    Objective objective = board.registerNewObjective("lol", "dummy"); 
 	    
-		Objective obj = board.registerNewObjective("aie", "dummy");
+		//Objective obj = board.registerNewObjective("aie", "dummy");
 		
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 		RedTeamSC.setPrefix("§4[§cEquipe Rouge§4]§c ");
 		BlueTeamSC.setPrefix("§1[§9Equipe Bleu§1]§9 ");
-        
-        if (joueur.getEquipe()==Equipe_bleu) {
-        	BlueTeamSC.addPlayer(joueur.getPlayer());
-        }
-        if (joueur.getEquipe()==Equipe_rouge) {
-        	RedTeamSC.addPlayer(joueur.getPlayer());
-        }
-        
+
         BlueTeamSC.setDisplayName("Equipe Bleu");
         RedTeamSC.setDisplayName("Equipe Rouge");
         
@@ -577,6 +577,8 @@ public void SetScoreboard(Joueur joueur){
 		
 		for(int i=0; i<listeJoueurs.size();i++) {
 			Joueur joueur = listeJoueurs.get(i) ;
+			
+			SetScoreboard(joueur);
 			
 			joueur.getPlayer().setInvulnerable(false);
 			
@@ -714,6 +716,7 @@ public void SetScoreboard(Joueur joueur){
 		
 		}
 
+	@SuppressWarnings("deprecation")
 	public void RejoindEquipe(Joueur joueur, Equipe equipe, int NbEquipe) {
 		
 		
@@ -746,10 +749,10 @@ public void SetScoreboard(Joueur joueur){
 				}  
 				
 				
-				
-				
+				joueur.getEquipe().getScoreBoardTeam().removePlayer(joueur.getPlayer());
 				joueur.setEquipe(equipe);
-
+				equipe.getScoreBoardTeam().addPlayer(joueur.getPlayer());
+				
 				
 				joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eVous avez rejoinds l'équipe "+equipe.getCouleur()+".");
 			} else {
