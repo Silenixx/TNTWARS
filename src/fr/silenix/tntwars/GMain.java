@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,6 +20,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
@@ -40,6 +44,7 @@ import fr.silenix.tntwars.tasks.TaskLancementPartie;
 import fr.silenix.tntwars.timer.TimerImmortality;
 import fr.silenix.tntwars.timer.TimerRedemarrage;
 import fr.silenix.tntwars.timer.TimerRespawn;
+import fr.silenix.tntwars.timer.TimerScoreboard;
 
 
 
@@ -82,8 +87,17 @@ public class GMain extends JavaPlugin{
 	public Team boardblue;
 	public Team boardred ;
 	
-	
-	
+	public int timer_blue;
+	public int timer_red;
+	public int connecter_score;
+	public int cblue;
+	public int cred;
+	public int taille_blue;
+	public int taille_red;
+	public int timeblue;
+	public int timered;
+	public int mort_rouge;
+	public int mort_bleu;
 	
 	
 	
@@ -160,15 +174,16 @@ public class GMain extends JavaPlugin{
 			new Location(world,357,0,-676),
 			new Location(world,556,189,-421)));
 			
-			
 	
+	timer_blue=30;
+	timer_red=30;
 	
 	list_kits = CreateKit.CreationKit();
 	
 	
-	/*TimerScoreboard cycle = new TimerScoreboard(this);
+	TimerScoreboard cycle = new TimerScoreboard(this);
 	cycle.runTaskTimer(this, 0, 20);
-	*/
+	
 		
 	pm.registerEvents(new PlayerListeners(this) , this);
 	pm.registerEvents(new DamageListeners(this), this);
@@ -420,12 +435,128 @@ public class GMain extends JavaPlugin{
 
 
 	}
+	
+@SuppressWarnings("deprecation")
+public void SetScoreboard(Joueur joueur){
+		
+		
+		manager = Bukkit.getScoreboardManager();
+		board = manager.getNewScoreboard();
+	    
+		
+		RedTeamSC = board.registerNewTeam("Equipe Rouge");
+	    BlueTeamSC = board.registerNewTeam("Equipe Bleu");
+	    
+	    onlineCounter = board.registerNewTeam("onlineCounter");
+	    boardblue = board.registerNewTeam("boardblue");
+	    boardred = board.registerNewTeam("boardred");
+		
+		
+		
+		
+		manager = Bukkit.getScoreboardManager();
+		board = manager.getNewScoreboard();
+	    
+		
+		RedTeamSC = board.registerNewTeam("Equipe Rouge");
+	    BlueTeamSC = board.registerNewTeam("Equipe Bleu");
+	    
+	    onlineCounter = board.registerNewTeam("onlineCounter");
+	    boardblue = board.registerNewTeam("boardblue");
+	    boardred = board.registerNewTeam("boardred");
+		
+		
+		
+	    Objective objective = board.registerNewObjective("lol", "dummy"); 
+	    
+		Objective obj = board.registerNewObjective("aie", "dummy");
+		
+		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+		RedTeamSC.setPrefix("§4[§cEquipe Rouge§4]§c ");
+		BlueTeamSC.setPrefix("§1[§9Equipe Bleu§1]§9 ");
+        
+        if (joueur.getEquipe()==Equipe_bleu) {
+        	BlueTeamSC.addPlayer(joueur.getPlayer());
+        }
+        if (joueur.getEquipe()==Equipe_rouge) {
+        	RedTeamSC.addPlayer(joueur.getPlayer());
+        }
+        
+        BlueTeamSC.setDisplayName("Equipe Bleu");
+        RedTeamSC.setDisplayName("Equipe Rouge");
+        
+        BlueTeamSC.setCanSeeFriendlyInvisibles(true);
+        BlueTeamSC.setAllowFriendlyFire(false);
+        RedTeamSC.setCanSeeFriendlyInvisibles(true);
+        RedTeamSC.setAllowFriendlyFire(false);
+		
+		
+		
+		
+		connecter_score = Bukkit.getOnlinePlayers().size();
+		cblue = tnt_bleu.getVie() *2;
+		cred = tnt_rouge.getVie() *2;
+		taille_blue = getSize("Bleu");
+		taille_red = getSize("Rouge");
+		timeblue = timer_blue;
+		timered = timer_red;
+
+		
+		
+		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        
+		
+		objective.setDisplayName(ChatColor.GOLD + "§6-------- TNT WARS --------");
+		
+
+		Score information = objective.getScore(ChatColor.GOLD + "» Informations de la Partie");
+		information.setScore(15);
+		
+		
+		
+		onlineCounter.addEntry(ChatColor.BLACK + "" + ChatColor.WHITE);
+		onlineCounter.setPrefix("  §eJoueurs connectés: ");
+		
+		if (Bukkit.getOnlinePlayers().size() == 0) {
+            onlineCounter.setSuffix(ChatColor.AQUA + "0");
+        } else {
+            onlineCounter.setSuffix("" + ChatColor.DARK_RED + Bukkit.getOnlinePlayers().size()+ "  (" + ChatColor.BLUE+taille_blue+ ChatColor.GRAY+"|"+ChatColor.RED+taille_red+ ChatColor.GRAY+")");
+        }
+		
+		objective.getScore(ChatColor.BLACK + "" + ChatColor.WHITE).setScore(14);
+		
+		
+		
+
+		boardblue.addEntry(ChatColor.WHITE + "" + ChatColor.WHITE);
+		boardblue.setPrefix("  §eTNT bleu: ");
+		boardblue.setSuffix(""+ ChatColor.BLUE + cblue + ChatColor.BLUE + "%" );
+		objective.getScore(ChatColor.WHITE + "" + ChatColor.WHITE).setScore(13);
+		
+		
+		
+		
+		boardred.addEntry(ChatColor.WHITE + "" + ChatColor.BLACK);
+		boardred.setPrefix("  §eTNT rouge: ");
+		boardred.setSuffix(""+ ChatColor.RED + cred + ChatColor.RED + "%" );
+		objective.getScore(ChatColor.WHITE + "" + ChatColor.BLACK).setScore(12);
+		
+		
+		
+		
+		joueur.getPlayer().setScoreboard(board);
+		
+		
+	}
 
 	public void remiseazero() {
 		tnt_rouge.setEtat(EtatTNT.Eteinte);
 		tnt_bleu.setEtat(EtatTNT.Eteinte);
 		tnt_vert.setEtat(EtatTNT.Eteinte);
 		tnt_jaune.setEtat(EtatTNT.Eteinte);
+		
+		timer_blue=30;
+		timer_red=30;
 		
 		setState(EtatPartie.AttenteJoueur);
 		

@@ -26,15 +26,13 @@ public class TimerAllumageBlue extends BukkitRunnable{
 		this.main = main;
 	}
 	
-	int timer_blue= 30;
-	
 	
 	@Override
 	public void run() {
 		if(main.tnt_bleu.getEtat()==EtatTNT.Eteinte){
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eExplosion §98bleue  §eévitée.");
 			
-			timer_blue= 30;
+			main.timer_blue= 30;
 			
 			
 			cancel();
@@ -42,35 +40,35 @@ public class TimerAllumageBlue extends BukkitRunnable{
 		if(main.isState(EtatPartie.FinJeu)) {
 			cancel();
 		} 
-		if (timer_blue==30 && main.tnt_bleu.getEtat()==EtatTNT.Allume) {
+		if (main.timer_blue==30 && main.tnt_bleu.getEtat()==EtatTNT.Allume) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §630 §b secondes avant l'explosion de la TNT §9bleue§e.");
 			for(int i=0; i < main.listeJoueurs.size(); i++) {
 				Joueur joueur = main.listeJoueurs.get(i);
 				joueur.getPlayer().playSound(joueur.getPlayer().getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1F, 1F);
 			}
 		}
-		if (timer_blue==20) {
+		if (main.timer_blue==20) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §620 §esecondes avant l'explosion de la TNT §9bleue§e.");
 		}
-		if (timer_blue==10) {
+		if (main.timer_blue==10) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §610 §esecondes avant l'explosion de la TNT §9bleue§e.");
 		}
-		if (timer_blue==5) {
+		if (main.timer_blue==5) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §65 §esecondes avant l'explosion de la TNT §9bleue§e.");
 		}
-		if (timer_blue==4) {
+		if (main.timer_blue==4) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §64 §esecondes avant l'explosion de la TNT §9bleue§e.");
 		}
-		if (timer_blue==3) {
+		if (main.timer_blue==3) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §63 §esecondes avant l'explosion de la TNT §9bleue§e.");
 		}
-		if (timer_blue==2) {
+		if (main.timer_blue==2) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §62 §esecondes avant l'explosion de la TNT §9bleue§e.");
 		}
-		if (timer_blue==1) {
+		if (main.timer_blue==1) {
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §61 §esecondes avant l'explosion de la TNT §9bleue§e.");
 		}
-		if (timer_blue==0) {
+		if (main.timer_blue==0) {
 			
 
 			
@@ -97,8 +95,8 @@ public class TimerAllumageBlue extends BukkitRunnable{
 			
 		}
 		
-		if (timer_blue!=0) {
-			timer_blue--;
+		if (main.timer_blue!=0) {
+			main.timer_blue--;
 		}
 		
 		
