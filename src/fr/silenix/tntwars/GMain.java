@@ -389,6 +389,7 @@ public class GMain extends JavaPlugin{
 			
 			
 			joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
+			joueur.getPlayer().getInventory().clear();
 			
 			
 			
