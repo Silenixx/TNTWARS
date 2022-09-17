@@ -46,7 +46,7 @@ public class CreateKit {
 						new ItemStack(Material.IRON_LEGGINGS),
 						new ItemStack(Material.IRON_BOOTS),
 						customdiamondsword_guerrier,
-						20,
+						Vie_Global_Joueur,
 						null,
 						null,
 						true);

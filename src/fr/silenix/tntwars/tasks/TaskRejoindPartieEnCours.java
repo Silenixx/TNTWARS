@@ -1,33 +1,15 @@
 package fr.silenix.tntwars.tasks;
-
 import org.bukkit.Bukkit;
-
-import org.bukkit.Location;
 import org.bukkit.World;
-
 import org.bukkit.scheduler.BukkitRunnable;
-
+import Fonctions.IndexKit;
 import fr.silenix.tntwars.GMain;
 import fr.silenix.tntwars.entity.Joueur;
 
-
-
 public class TaskRejoindPartieEnCours extends BukkitRunnable{
-	
-	@SuppressWarnings("unused")
 	private GMain main;
-	@SuppressWarnings("unused")
 	private Joueur joueur;
-	
-	
 	static World world = Bukkit.getWorld("world");
-	
-
-	public static Location spawnbleu = new Location (world, -6, 85, -15);
-	public static Location spawnrouge = new Location(world, 12, 85, -15);
-	
-	
-	@SuppressWarnings("unused")
 	private int timer=10;
 	
 	public TaskRejoindPartieEnCours(GMain main, Joueur joueur) {
@@ -35,47 +17,26 @@ public class TaskRejoindPartieEnCours extends BukkitRunnable{
 		this.joueur = joueur;
 	}
 
+	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
 
-
-	
-	/*@Override
-	public void run() {
-
-		if(joueur.getEquipe() == main.Sans_Equipe) {
-			
-			main.players.add(player);
+		if(joueur.getEquipe() != main.Sans_Equipe) {
 		
 			if(timer==35 || timer ==10 || timer ==5 || timer==4 || timer==3|| timer==2|| timer==1 || timer==0) {
-				player.sendMessage("§5[§dSilenixGames§5] §bVous allez rejoindre la partie dans §5" + timer +"§b secondes.");
+				joueur.getPlayer().sendMessage("§5[§dSilenixGames§5] §bVous allez rejoindre la partie dans §5" + timer +"§b secondes.");
 				if(timer == 0) {
-					player.sendMessage("§5[§dSilenixGames§5] §bVous avez rejoind le jeu. Amusez vous bien!");
-					
-					
-					kit par defaut ici
-					
-					player.getInventory().clear();
-					
-					main.respawn(player);
-					
-					
-					GGameCycle cycle = new GGameCycle(main);
-					cycle.runTaskTimer(main, 0, 20);
-					
+					joueur.getPlayer().sendMessage("§5[§dSilenixGames§5] §bVous avez rejoind le jeu. Amusez vous bien!");
+					if(joueur.getKit()==main.list_kits.get(IndexKit.Sans_Kit)) {
+						joueur.setKit(main.list_kits.get(IndexKit.Guerrier));
+					}
+					joueur.getPlayer().getInventory().clear();
+					main.respawn(joueur.getPlayer());
 					cancel();
 				}
-			
-			
-			
 			}
 		timer--;
 		}
-		
-		
-	}*/
+	}	
 
 }
