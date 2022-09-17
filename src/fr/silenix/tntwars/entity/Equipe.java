@@ -1,7 +1,6 @@
 package fr.silenix.tntwars.entity;
 
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 

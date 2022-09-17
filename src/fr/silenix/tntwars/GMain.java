@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -19,20 +18,17 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
-
 import Enum.CouleurEquipe;
 import Enum.EtatPartie;
 import Enum.EtatTNT;
 import Fonctions.CreateKit;
 import Fonctions.IndexKit;
-
 import fr.silenix.tntwars.entity.Equipe;
 import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.entity.Kit;
@@ -505,6 +501,12 @@ public class GMain extends JavaPlugin{
 		if(tnt_bleu.getEtat()== EtatTNT.Explose) {
 			nombre_de_tnt_explose++;
 			}
+		if(tnt_jaune.getEtat()== EtatTNT.Explose) {
+			nombre_de_tnt_explose++;
+			}
+		if(tnt_vert.getEtat()== EtatTNT.Explose) {
+			nombre_de_tnt_explose++;
+			}
 		if(nombre_de_tnt_explose == map_en_cours.getNbEquipe()-1) {
 			
 			for(int i=0; i < listeJoueurs.size(); i++) {
@@ -514,7 +516,7 @@ public class GMain extends JavaPlugin{
 				
 			}
 			
-			
+			setState(EtatPartie.FinJeu);
 			
 			TimerRedemarrage cycle = new TimerRedemarrage(this);
 			cycle.runTaskTimer(this, 0, 20);
@@ -537,10 +539,10 @@ public class GMain extends JavaPlugin{
 		else if(tnt_bleu.getEtat()!= EtatTNT.Explose) {
 			gagnant = Equipe_rouge;
 		}
-		else if(tnt_vert.getEtat()!= EtatTNT.Explose && map_en_cours.getNbEquipe()>=3) {
+		else if(tnt_vert.getEtat()!= EtatTNT.Explose) {
 			gagnant = Equipe_vert;
 		}
-		else if(tnt_jaune.getEtat()!= EtatTNT.Explose && map_en_cours.getNbEquipe()>=4) {
+		else if(tnt_jaune.getEtat()!= EtatTNT.Explose ) {
 			gagnant = Equipe_jaune;
 		}
 		return gagnant;	
@@ -722,7 +724,6 @@ public class GMain extends JavaPlugin{
 		
 		}
 
-	@SuppressWarnings("deprecation")
 	public void RejoindEquipe(Joueur joueur, Equipe equipe, int NbEquipe) {
 		
 		
@@ -776,6 +777,7 @@ public class GMain extends JavaPlugin{
 		
 	}
 
+	@SuppressWarnings("deprecation")
 	public void ajoutjoueurscoreboard(Joueur joueur, Equipe equipe) {
 		if(equipe == Equipe_bleu) {
 			BlueTeamSC.addPlayer(joueur.getPlayer());

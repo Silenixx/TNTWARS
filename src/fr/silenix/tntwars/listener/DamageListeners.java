@@ -176,14 +176,6 @@ public class DamageListeners implements Listener{
 			Entity damager = event.getDamager();
 			
 			
-			Player killer = null;
-			
-			
-			
-			
-			
-			
-			
 			if(damager instanceof Arrow) {
 				Arrow arrow = (Arrow)damager;
 				if(arrow.getShooter() instanceof Player) {
