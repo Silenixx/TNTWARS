@@ -290,6 +290,7 @@ public class GMain extends JavaPlugin{
 	}
 	
 	public void GamePlay(Joueur joueur) {
+		joueur.setKit(joueur.getProchainKit());
 		joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
 		joueur.getPlayer().getInventory().clear();
 		joueur.getPlayer().getInventory().setBoots(joueur.getKit().getBoots());
@@ -310,13 +311,8 @@ public class GMain extends JavaPlugin{
 			customcisaille.setItemMeta(customCCC);
 			joueur.getPlayer().getInventory().setItem(2,customcisaille);
 		}
-			
-		if(joueur.getKit().getItemsArray()!=null) {
-			for (int i=0;i<joueur.getKit().getItemsArray().size();i++) {
-				joueur.getPlayer().getInventory().addItem(joueur.getKit().getItemsArray().get(i));
-			}
-		}
-			
+		
+		
 		ItemStack customblazepowder = new ItemStack(Material.BLAZE_POWDER,1);
 		ItemMeta customBP = customblazepowder.getItemMeta();
 		customBP.setDisplayName("Clique droit pour allumer la TNT adverse");
@@ -335,6 +331,23 @@ public class GMain extends JavaPlugin{
 		
 		joueur.getPlayer().getInventory().setItem(8, customfeather);
 		joueur.getPlayer().getInventory().setItem(7, customblazepowder);
+		
+		ItemStack customnetherstar = new ItemStack(Material.NETHER_STAR,1);
+		ItemMeta customNS = customnetherstar.getItemMeta();
+		customNS.setDisplayName("Choisir le kit");
+		customNS.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+		customNS.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		customNS.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
+		customnetherstar.setItemMeta(customNS);
+		joueur.getPlayer().getInventory().setItem(6,customnetherstar);
+		
+		if(joueur.getKit().getItemsArray()!=null) {
+			for (int i=0;i<joueur.getKit().getItemsArray().size();i++) {
+				joueur.getPlayer().getInventory().addItem(joueur.getKit().getItemsArray().get(i));
+			}
+		}
+			
+		
 			
 		sethealth(joueur);
 			
@@ -428,7 +441,7 @@ public class GMain extends JavaPlugin{
 		listeJoueurs.clear();
 		
 		for(int i=0; i<listeConnecte.size();i++) {
-	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,list_kits.get(0));
+	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,list_kits.get(0),null);
 	         listeJoueurs.add(joueur_tempo);
 	    }
 		
@@ -487,7 +500,7 @@ public class GMain extends JavaPlugin{
 		player.sendMessage("vous etes mort");
 		player.setInvisible(true);
 		
-		ItemStack customcompasse = new ItemStack(Material.COMPASS,1);
+		ItemStack customcompasse = new ItemStack(Material.NETHER_STAR,1);
 		ItemMeta customC2 = customcompasse.getItemMeta();
 		customC2.setDisplayName("Choisir le kit");
 		customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);

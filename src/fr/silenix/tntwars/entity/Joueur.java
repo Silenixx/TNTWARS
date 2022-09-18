@@ -8,15 +8,17 @@ public class Joueur {
 	private String Nom;
 	private Equipe Equipe;
 	private Kit Kit;
+	private Kit ProchainKit;
 	
 	
 	
-	public Joueur(Player Player,String Nom, Equipe Equipe, Kit Kit) {
+	public Joueur(Player Player,String Nom, Equipe Equipe, Kit Kit, Kit ProchainKit) {
 		super();
 		this.player=Player;
 		this.Nom=Nom;
 		this.Equipe=Equipe;
 		this.Kit=Kit;
+		this.ProchainKit=ProchainKit;
 	}
 	
 	
@@ -44,6 +46,12 @@ public class Joueur {
 	}
 	public void setKit(Kit kit) {
 		Kit = kit;
+	}
+	public Kit getProchainKit() {
+		return ProchainKit;
+	}
+	public void setProchainKit(Kit prochainkit) {
+		ProchainKit = prochainkit;
 	}
 	
 	
