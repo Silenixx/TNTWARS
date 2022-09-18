@@ -176,6 +176,8 @@ public class DamageListeners implements Listener{
 			Entity damager = event.getDamager();
 			
 			
+			
+			
 			if(damager instanceof Arrow) {
 				Arrow arrow = (Arrow)damager;
 				if(arrow.getShooter() instanceof Player) {
@@ -351,7 +353,20 @@ public class DamageListeners implements Listener{
 					
 					return;
 			}*/
-			
+			if(damager instanceof Player) {
+				
+				Joueur joueur_killer = (main.listeJoueurs.stream()
+						  .filter(p -> damager.getName().equals(p.getPlayer().getName()))
+						  .findAny()
+						  .orElse(null));
+				
+				if(joueur_killer.getKit()==main.list_kits.get(IndexKit.OneShot)) {
+					Bukkit.broadcastMessage(damager.getName()+" vient de tuer "+ players.getDisplayName());
+					damager.sendMessage("Tu viens de tuer " + players.getName());
+					event.setDamage(0);
+					main.eliminate(players);
+				}
+			}
 			
 			
 		
@@ -386,10 +401,7 @@ public class DamageListeners implements Listener{
 					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.Ninja)) {
 						killer_parjoueur.getInventory().addItem(new ItemStack(Material.BLACK_BANNER));
 					}
-					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.OneShot)) {
-						Bukkit.broadcastMessage(damager.getName()+" vient de tuer "+ players.getDisplayName());
-						damager.sendMessage("Tu viens de tuer " + players.getName());
-					}
+					
 					
 					event.setDamage(0);
 					main.eliminate(players);

@@ -340,6 +340,8 @@ public class GMain extends JavaPlugin{
 			
 		if(joueur.getKit().IsVisible()==false) {
 			joueur.getPlayer().setInvisible(true);
+		}else {
+			joueur.getPlayer().setInvisible(false);
 		}
 			
 		TimerImmortality start = new TimerImmortality( joueur.getPlayer());
@@ -501,7 +503,7 @@ public class GMain extends JavaPlugin{
 	
 	@SuppressWarnings("deprecation")
 	public void sethealth(Joueur joueur) {
-		if(!isState(EtatPartie.JeuEnCours)) {
+		if(isState(EtatPartie.JeuEnCours)) {
 			joueur.getPlayer().setMaxHealth(joueur.getKit().getPointVie());
 			joueur.getPlayer().setHealth(joueur.getKit().getPointVie());
 			joueur.getPlayer().setFoodLevel(20);

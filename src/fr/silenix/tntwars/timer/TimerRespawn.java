@@ -14,7 +14,7 @@ public class TimerRespawn extends BukkitRunnable{
 	
 	
 	private GMain main;
-	private int timer=10;
+	private int timer=20;
 	private Player player;
 	
 	
