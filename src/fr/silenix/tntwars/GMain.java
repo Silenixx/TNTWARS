@@ -356,6 +356,8 @@ public class GMain extends JavaPlugin{
 		}else {
 			joueur.getPlayer().setInvisible(false);
 		}
+		
+		
 			
 		TimerImmortality start = new TimerImmortality( joueur.getPlayer());
 		start.runTaskTimer(this, 0, 20);
@@ -406,10 +408,10 @@ public class GMain extends JavaPlugin{
 	public Equipe RenvoieGagnant() {
 		Equipe gagnant = null;	
 		if(tnt_rouge.getEtat()!= EtatTNT.Explose) {
-			gagnant = Equipe_bleu;
+			gagnant = Equipe_rouge;
 		}
 		else if(tnt_bleu.getEtat()!= EtatTNT.Explose) {
-			gagnant = Equipe_rouge;
+			gagnant = Equipe_bleu;
 		}
 		else if(tnt_vert.getEtat()!= EtatTNT.Explose) {
 			gagnant = Equipe_vert;

@@ -486,7 +486,7 @@ public class CreateKit {
 						new ItemStack(Material.IRON_BOOTS),
 						customwoodsword_healer,
 						Vie_Global_Joueur,
-						null,
+						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.GLISTERING_MELON_SLICE))),
 						null,
 						true);
 		list_kits.add(Healer);

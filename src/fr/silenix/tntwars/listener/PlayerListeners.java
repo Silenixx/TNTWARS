@@ -512,8 +512,8 @@ public class PlayerListeners implements Listener{
 				
 				if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.GLISTERING_MELON_SLICE) {
 					if(joueur_victime.getKit()!=main.list_kits.get(IndexKit.OneShot)){
-						if(victim.getHealth()>37.0) {
-							victim.setHealth(40.0);
+						if(joueur_victime.getPlayer().getHealth()>joueur_victime.getKit().getPointVie()-3) {
+							victim.setHealth(joueur_victime.getKit().getPointVie());
 	            		}else {
 	            			victim.setHealth(victim.getHealth() + 2.0);
 	            		}

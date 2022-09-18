@@ -139,7 +139,7 @@ public class DamageListeners implements Listener{
 
         if (/*m == Material.LEGACY_STATIONARY_WATER ||*/ m == Material.WATER) {
         	if(joueur.getKit()== main.list_kits.get(IndexKit.Endermen)) {
-        		pl.setHealth(0);
+        		main.eliminate(pl);;
         		pl.sendMessage("un enderman ne peut pas nager ");
         	}
             //pl.sendMessage("debug 1");

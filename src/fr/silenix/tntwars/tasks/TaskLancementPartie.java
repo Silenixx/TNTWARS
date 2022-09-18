@@ -44,6 +44,10 @@ public class TaskLancementPartie extends BukkitRunnable{
 				
 				main.efface_laine();
 				
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall parrot");
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall pig");
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall horse");
+				
 				for(int i=0; i < main.listeJoueurs.size(); i++) {
 					Joueur joueur = main.listeJoueurs.get(i);
 					joueur.getPlayer().teleport(main.map_en_cours.LocationVisite);
