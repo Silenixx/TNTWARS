@@ -441,7 +441,7 @@ public class GMain extends JavaPlugin{
 		listeJoueurs.clear();
 		
 		for(int i=0; i<listeConnecte.size();i++) {
-	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,list_kits.get(0),null);
+	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,list_kits.get(0),list_kits.get(0));
 	         listeJoueurs.add(joueur_tempo);
 	    }
 		
