@@ -135,20 +135,11 @@ public class DamageListeners implements Listener{
 				  .findAny()
 				  .orElse(null));
 
-        //pl.sendMessage("debug 0");
-
-        if (/*m == Material.LEGACY_STATIONARY_WATER ||*/ m == Material.WATER) {
+        if (m == Material.WATER) {
         	if(joueur.getKit()== main.list_kits.get(IndexKit.Endermen)) {
         		main.eliminate(pl);;
         		pl.sendMessage("un enderman ne peut pas nager ");
         	}
-            //pl.sendMessage("debug 1");
-
-            /*if (pl.getWorld().equals("TestS")) {*/
-            
-            
-
-            //    }
         }
     }
 	
@@ -174,9 +165,6 @@ public class DamageListeners implements Listener{
 			
 			
 			Entity damager = event.getDamager();
-			
-			
-			
 			
 			if(damager instanceof Arrow) {
 				Arrow arrow = (Arrow)damager;

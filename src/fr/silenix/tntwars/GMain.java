@@ -82,6 +82,8 @@ public class GMain extends JavaPlugin{
 	
 	public int timer_blue;
 	public int timer_red;
+	public int timer_green;
+	public int timer_yellow;
 	public int connecter_score;
 	public int cblue;
 	public int cred;
@@ -150,6 +152,8 @@ public class GMain extends JavaPlugin{
 	
 	timer_blue=30;
 	timer_red=30;
+	timer_yellow=30;
+	timer_green=30;
 	
 	list_kits = CreateKit.CreationKit();
 	SetScoreboard();
@@ -161,6 +165,74 @@ public class GMain extends JavaPlugin{
 	pm.registerEvents(new DamageListeners(this), this);
 	}
 	
+	
+	public void remiseazero() {
+		tnt_rouge.setEtat(EtatTNT.Eteinte);
+		tnt_bleu.setEtat(EtatTNT.Eteinte);
+		tnt_vert.setEtat(EtatTNT.Eteinte);
+		tnt_jaune.setEtat(EtatTNT.Eteinte);
+		
+		timer_blue=30;
+		timer_red=30;
+		timer_yellow=30;
+		timer_green=30;
+		
+		tnt_bleu.setVie(0);
+		tnt_rouge.setVie(0);
+		tnt_jaune.setVie(0);
+		tnt_vert.setVie(0);
+		
+		setState(EtatPartie.AttenteJoueur);
+		
+		listeJoueurs.clear();
+		
+		for(int i=0; i<listeConnecte.size();i++) {
+	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,list_kits.get(0),list_kits.get(0));
+	         listeJoueurs.add(joueur_tempo);
+	    }
+		
+		for(int i =0; i<5;i++){
+	         Collections.shuffle(listeJoueurs);
+	         //System.out.println(arlist);
+	        }
+		
+		for(int i=0; i<listeJoueurs.size();i++) {
+			Joueur joueur = listeJoueurs.get(i) ;
+
+			joueur.getPlayer().setInvisible(false);
+			joueur.getPlayer().teleport(spawn_general);
+			joueur.getPlayer().setInvulnerable(false);
+			joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
+			joueur.getPlayer().getInventory().clear();
+			
+			ItemStack customnetherstar = new ItemStack(Material.NETHER_STAR,1);
+			ItemMeta customNS = customnetherstar.getItemMeta();
+			customNS.setDisplayName("Selectionneur d'équipe");
+			customNS.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+			customNS.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+			customNS.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
+			customnetherstar.setItemMeta(customNS);
+			joueur.getPlayer().getInventory().setItem(4,customnetherstar);
+			
+			ItemStack customcompasse = new ItemStack(Material.COMPASS,1);
+			ItemMeta customC2 = customcompasse.getItemMeta();
+			customC2.setDisplayName("Choisir le kit");
+			customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+			customC2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+			customC2.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
+			customcompasse.setItemMeta(customC2);
+			joueur.getPlayer().getInventory().setItem(8,customcompasse);			
+		}
+		
+		
+		if(isState(EtatPartie.AttenteJoueur)  && listeJoueurs.size()  >= 2 && !isState(EtatPartie.Lancement)) {
+			Bukkit.broadcastMessage("§6[§eTntWars§6] §eAssez de monde pour relancer une nouvelle partie.");
+			setState(EtatPartie.Lancement);
+			TaskLancementPartie start = new TaskLancementPartie(this);
+			start.runTaskTimer(this, 0, 20);
+		}
+	}	
+
 	public void efface_laine() {
 		for (int x = map_en_cours.getLocationMapBorne1().getBlockX();x!=map_en_cours.getLocationMapBorne2().getBlockX(); x++) {
 			for (int y=map_en_cours.getLocationMapBorne1().getBlockY();y!=map_en_cours.getLocationMapBorne2().getBlockY(); y++) {
@@ -404,6 +476,7 @@ public class GMain extends JavaPlugin{
 			cycle.runTaskTimer(this, 0, 20);
 		}
 	}
+
 	
 	public Equipe RenvoieGagnant() {
 		Equipe gagnant = null;	
@@ -424,70 +497,7 @@ public class GMain extends JavaPlugin{
 	
 
 
-	public void remiseazero() {
-		tnt_rouge.setEtat(EtatTNT.Eteinte);
-		tnt_bleu.setEtat(EtatTNT.Eteinte);
-		tnt_vert.setEtat(EtatTNT.Eteinte);
-		tnt_jaune.setEtat(EtatTNT.Eteinte);
-		
-		timer_blue=30;
-		timer_red=30;
-		
-		tnt_bleu.setVie(0);
-		tnt_rouge.setVie(0);
-		tnt_jaune.setVie(0);
-		tnt_vert.setVie(0);
-		
-		setState(EtatPartie.AttenteJoueur);
-		
-		listeJoueurs.clear();
-		
-		for(int i=0; i<listeConnecte.size();i++) {
-	         Joueur joueur_tempo = new Joueur(listeConnecte.get(i).getPlayer(),listeConnecte.get(i).getPlayer().getName(),Sans_Equipe,list_kits.get(0),list_kits.get(0));
-	         listeJoueurs.add(joueur_tempo);
-	    }
-		
-		for(int i =0; i<5;i++){
-	         Collections.shuffle(listeJoueurs);
-	         //System.out.println(arlist);
-	        }
-		
-		for(int i=0; i<listeJoueurs.size();i++) {
-			Joueur joueur = listeJoueurs.get(i) ;
 
-			joueur.getPlayer().setInvisible(false);
-			joueur.getPlayer().teleport(spawn_general);
-			joueur.getPlayer().setInvulnerable(false);
-			joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
-			joueur.getPlayer().getInventory().clear();
-			
-			ItemStack customnetherstar = new ItemStack(Material.NETHER_STAR,1);
-			ItemMeta customNS = customnetherstar.getItemMeta();
-			customNS.setDisplayName("Selectionneur d'équipe");
-			customNS.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-			customNS.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-			customNS.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
-			customnetherstar.setItemMeta(customNS);
-			joueur.getPlayer().getInventory().setItem(4,customnetherstar);
-			
-			ItemStack customcompasse = new ItemStack(Material.COMPASS,1);
-			ItemMeta customC2 = customcompasse.getItemMeta();
-			customC2.setDisplayName("Choisir le kit");
-			customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-			customC2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-			customC2.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
-			customcompasse.setItemMeta(customC2);
-			joueur.getPlayer().getInventory().setItem(8,customcompasse);			
-		}
-		
-		
-		if(isState(EtatPartie.AttenteJoueur)  && listeJoueurs.size()  >= 2 && !isState(EtatPartie.Lancement)) {
-			Bukkit.broadcastMessage("§6[§eTntWars§6] §eAssez de monde pour relancer une nouvelle partie.");
-			setState(EtatPartie.Lancement);
-			TaskLancementPartie start = new TaskLancementPartie(this);
-			start.runTaskTimer(this, 0, 20);
-		}
-	}
 
 	public void eliminate(Player player) {
 		Joueur joueur = (listeJoueurs.stream()

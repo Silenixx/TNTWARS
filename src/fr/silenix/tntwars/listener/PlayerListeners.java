@@ -226,12 +226,7 @@ public class PlayerListeners implements Listener{
 	 
 	 @EventHandler
 	 public void onQuit(PlayerQuitEvent event) {
-			
-			
-			
 			Player player = event.getPlayer();
-			
-			
 			Joueur joueur = main.listeJoueurs.stream()
 					  .filter(p -> player.getName().equals(p.getNom()))
 					  .findAny()
@@ -239,17 +234,9 @@ public class PlayerListeners implements Listener{
 			
 			main.listeJoueurs.remove(joueur);
 			main.listeConnecte.remove(joueur);
-			
-			
-			
-			
-				
-				
 			player.setPlayerListName(player.getName());
-				
-			
-			
 			event.setQuitMessage(player.getName() + " est partie.");
+			
 			
 			
 		}
@@ -650,273 +637,144 @@ public class PlayerListeners implements Listener{
 			if(it.getType() == Material.NETHER_STAR) {
 				Inventory inv2 = Bukkit.createInventory(null, 45, "§5Choix du kit");
 				
+				
 				ItemStack customironsword = new ItemStack(Material.STONE_SWORD,1);
 				ItemMeta customIS = customironsword.getItemMeta();
 				customIS.setDisplayName("§5Kit Tank");
-				
-				//customWTB.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTB.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customIS.setLore(Arrays.asList("§bArmure en diamand","§bEpée en pierre","§dCe kit n'est pas fait pour la négociation.","§dLancez vous dans le combat avec pour écraser vos enemeies"));
-				
 				customironsword.setItemMeta(customIS);
-				
-				
-				
+								
 				ItemStack customdiamondsword = new ItemStack(Material.DIAMOND_SWORD,1);
 				ItemMeta customDS = customdiamondsword.getItemMeta();
 				customDS.setDisplayName("§5Kit Soldat");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customDS.setLore(Arrays.asList("§bArmure en fer","§bEpée en diamant","§dCe kit est fait pour les mordues de PVP.","§dVous ferez partie des combattants majeurs de votre équipe."));
-				
 				customdiamondsword.setItemMeta(customDS);
 				
 				ItemStack custombow = new ItemStack(Material.BOW,1);
 				ItemMeta customBOW = custombow.getItemMeta();
 				customBOW.setDisplayName("§5Kit Archer");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customBOW.setLore(Arrays.asList("§bArc enchanté","§bArmure en maille","§dLe kit archer est un soutien essentiel pour votre équipe."));
-				
 				custombow.setItemMeta(customBOW);
-				
-				
 				
 				ItemStack customendereye = new ItemStack(Material.ENDER_EYE,1);
 				ItemMeta customEE = customendereye.getItemMeta();
 				customEE.setDisplayName("§5Kit Ghost");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customEE.setLore(Arrays.asList("§bEpée en bois","§bTotalement invisible","§dLe kit Ghost vous rendra invisivle pour ","§dinfiltrer les lignes enemies. Soyez discret et assasin."));
-				
 				customendereye.setItemMeta(customEE);
-				
-				
-				
 				
 				ItemStack customglistering_melon_slice = new ItemStack(Material.GLISTERING_MELON_SLICE,1);
 				ItemMeta customBlS = customglistering_melon_slice.getItemMeta();
 				customBlS.setDisplayName("§5Kit Healer");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customBlS.setLore(Arrays.asList("§bEpée en pierre","§bArmure maille","§dLe kit des medecins, utilisez-le ","§dpour soigner vos compagnons."));
-				
 				customglistering_melon_slice.setItemMeta(customBlS);
-				
-				
 				
 				ItemStack customflintandsteel = new ItemStack(Material.FLINT_AND_STEEL,1);
 				ItemMeta customFAS = customflintandsteel.getItemMeta();
 				customFAS.setDisplayName("§5Kit Pyro");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customFAS.setLore(Arrays.asList("§bEpée en pierre","§bArmure fer","§dPour les pyroman du dimanche "));
-				
 				customflintandsteel.setItemMeta(customFAS);
-				
-				
-				
+
 				ItemStack customshears = new ItemStack(Material.SHEARS,1);
 				ItemMeta customSHEARS = customshears.getItemMeta();
 				customSHEARS.setDisplayName("§5Kit Builder");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customSHEARS.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customshears.setItemMeta(customSHEARS);
-				
-				
+
 				ItemStack customblaze = new ItemStack(Material.BLAZE_ROD,1);
 				ItemMeta customSSS = customblaze.getItemMeta();
 				customSSS.setDisplayName("§5Kit Sorcier");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customSSS.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customblaze.setItemMeta(customSSS);
-				
-				
-				
+
 				ItemStack custompotion = new ItemStack(Material.POTION,1);
 				ItemMeta customPOTION = custompotion.getItemMeta();
 				customPOTION.setDisplayName("§5Kit Alchimiste");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customPOTION.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				custompotion.setItemMeta(customPOTION);
-				
-				
-				
+
 				ItemStack customendermen = new ItemStack(Material.ENDER_PEARL,1);
 				ItemMeta customENDERMEN = customendermen.getItemMeta();
 				customENDERMEN.setDisplayName("§5Kit Endermen");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customENDERMEN.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customendermen.setItemMeta(customENDERMEN);
-				
-				
 				
 				ItemStack customsnowball = new ItemStack(Material.SNOWBALL,1);
 				ItemMeta customSNOWBALL = customsnowball.getItemMeta();
 				customSNOWBALL.setDisplayName("§5Kit Snowman");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customSNOWBALL.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customsnowball.setItemMeta(customSNOWBALL);
-				
-				
-				
+
 				ItemStack customendcrystal = new ItemStack(Material.END_CRYSTAL,1);
 				ItemMeta customEC = customendcrystal.getItemMeta();
 				customEC.setDisplayName("§5Kit Oneshot");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customEC.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customendcrystal.setItemMeta(customEC);
-				
-				
 				
 				ItemStack customninja = new ItemStack(Material.BLACK_BANNER,1);
 				ItemMeta customNINJA = customninja.getItemMeta();
 				customNINJA.setDisplayName("§5Kit Ninja");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customNINJA.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customninja.setItemMeta(customNINJA);
-				
-				
+
 				ItemStack customamethystshard = new ItemStack(Material.AMETHYST_SHARD,1);
 				ItemMeta customASHARD = customamethystshard.getItemMeta();
 				customASHARD.setDisplayName("§5Kit Savior");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customASHARD.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customamethystshard.setItemMeta(customASHARD);
-				
-				
-				
+
 				ItemStack custombarbare = new ItemStack(Material.DIAMOND_AXE,1);
 				ItemMeta customBARBARE = custombarbare.getItemMeta();
 				customBARBARE.setDisplayName("§5Kit Barbare");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customBARBARE.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				custombarbare.setItemMeta(customBARBARE);
-				
-				
+
 				ItemStack customtnt = new ItemStack(Material.TNT,1);
 				ItemMeta customTNT = customtnt.getItemMeta();
 				customTNT.setDisplayName("§5Kit Kamikaze");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customTNT.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customtnt.setItemMeta(customTNT);
-				
-				
-				
-				
+
 				ItemStack custombone = new ItemStack(Material.BONE,1);
 				ItemMeta customBONE = custombone.getItemMeta();
 				customBONE.setDisplayName("§5Kit DogMaster");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customBONE.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				custombone.setItemMeta(customBONE);
-				
 				
 				ItemStack customskeleton = new ItemStack(Material.SKELETON_SKULL,1);
 				ItemMeta customSKELETON = customskeleton.getItemMeta();
 				customSKELETON.setDisplayName("§5Kit Pirate");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customSKELETON.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customskeleton.setItemMeta(customSKELETON);
-				
 				
 				ItemStack customsaddle = new ItemStack(Material.SADDLE,1);
 				ItemMeta customSADDLE = customsaddle.getItemMeta();
 				customSADDLE.setDisplayName("§5Kit Chevalier");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customSADDLE.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customsaddle.setItemMeta(customSADDLE);
-				
 				
 				ItemStack custompigrider = new ItemStack(Material.CARROT_ON_A_STICK,1);
 				ItemMeta customPIGRIDER = custompigrider.getItemMeta();
 				customPIGRIDER.setDisplayName("§5Kit PigRider");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customPIGRIDER.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				custompigrider.setItemMeta(customPIGRIDER);
-				
-				
-				
+
 				ItemStack customtrident = new ItemStack(Material.TRIDENT,1);
 				ItemMeta customTRIDENT = customtrident.getItemMeta();
 				customTRIDENT.setDisplayName("§5Kit Trident");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customTRIDENT.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customtrident.setItemMeta(customTRIDENT);
 				
 				ItemStack customelytra = new ItemStack(Material.ELYTRA,1);
 				ItemMeta customELYTRA = customelytra.getItemMeta();
 				customELYTRA.setDisplayName("§5Kit Elytra");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customELYTRA.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customelytra.setItemMeta(customELYTRA);
-				
-				
-				
 				
 				ItemStack customsquid = new ItemStack(Material.INK_SAC,1);
 				ItemMeta customSQUID = customsquid.getItemMeta();
 				customSQUID.setDisplayName("§5Kit Squid");
-				
-				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customSQUID.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				
 				customsquid.setItemMeta(customSQUID);
-				
 				
 				inv2.setItem(0, customelytra);
 				inv2.setItem(1, customtrident);
@@ -942,23 +800,6 @@ public class PlayerListeners implements Listener{
 				inv2.setItem(21, customsquid);
 				inv2.setItem(22, customamethystshard);
 				
-				
-				
-				
-
-				
-				
-				/*
-				*/
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				player.openInventory(inv2);
 				
 			}
@@ -966,32 +807,18 @@ public class PlayerListeners implements Listener{
 			
 			if(it.getType() == Material.GUNPOWDER) {
 				World world = player.getWorld();
-				//world.createExplosion(player.getLocation(), 6, false);
 				world.createExplosion(player.getLocation(), 7, false, false);
-				
 			}
 			
 			if(it.getType() == Material.FIRE_CHARGE) {
-				//world.createExplosion(player.getLocation(), 6, false);
-				
 				Fireball f = player.launchProjectile(Fireball.class);
 				f.setIsIncendiary(false);
 				f.setVelocity(f.getVelocity().multiply(50));
-				
 				f.setBounce(false);
-				
 				player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 				if(it.getType() == Material.BLAZE_POWDER &&  event.getAction()==Action.RIGHT_CLICK_BLOCK ) {
 				
 				
