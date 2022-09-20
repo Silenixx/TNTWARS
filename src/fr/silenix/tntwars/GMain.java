@@ -213,15 +213,7 @@ public class GMain extends JavaPlugin{
 			customNS.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
 			customnetherstar.setItemMeta(customNS);
 			joueur.getPlayer().getInventory().setItem(4,customnetherstar);
-			
-			ItemStack customcompasse = new ItemStack(Material.COMPASS,1);
-			ItemMeta customC2 = customcompasse.getItemMeta();
-			customC2.setDisplayName("Choisir le kit");
-			customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-			customC2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-			customC2.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
-			customcompasse.setItemMeta(customC2);
-			joueur.getPlayer().getInventory().setItem(8,customcompasse);			
+					
 		}
 		
 		

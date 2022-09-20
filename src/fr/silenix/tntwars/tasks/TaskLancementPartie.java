@@ -1,7 +1,13 @@
 package fr.silenix.tntwars.tasks;
+import java.util.Arrays;
 import java.util.Random;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import Enum.EtatPartie;
 import fr.silenix.tntwars.GMain;
@@ -47,10 +53,21 @@ public class TaskLancementPartie extends BukkitRunnable{
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall parrot");
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall pig");
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall horse");
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall dog");
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall wolf");
 				
 				for(int i=0; i < main.listeJoueurs.size(); i++) {
 					Joueur joueur = main.listeJoueurs.get(i);
 					joueur.getPlayer().teleport(main.map_en_cours.LocationVisite);
+					
+					ItemStack customcompasse = new ItemStack(Material.COMPASS,1);
+					ItemMeta customC2 = customcompasse.getItemMeta();
+					customC2.setDisplayName("Selectionneur d'équipe");
+					customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+					customC2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+					customC2.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
+					customcompasse.setItemMeta(customC2);
+					joueur.getPlayer().getInventory().setItem(8,customcompasse);
 				}
 				main.setState(EtatPartie.Prejeu);
 				TaskDebutPartie start = new TaskDebutPartie(main);

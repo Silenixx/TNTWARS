@@ -101,16 +101,7 @@ public class PlayerListeners implements Listener{
 				player.getInventory().setItem(0,customnetherstar);
 				
 				
-				ItemStack customcompasse = new ItemStack(Material.COMPASS,1);
-				ItemMeta customC2 = customcompasse.getItemMeta();
-				customC2.setDisplayName("Selectionneur d'équipe");
-				
-				customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				customC2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-				customC2.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
-				
-				customcompasse.setItemMeta(customC2);
-				player.getInventory().setItem(8,customcompasse);
+
 				
 				
 				
@@ -140,11 +131,9 @@ public class PlayerListeners implements Listener{
 					ItemStack customnetherstars = new ItemStack(Material.NETHER_STAR,1);
 					ItemMeta customNSs = customnetherstars.getItemMeta();
 					customNSs.setDisplayName("Choisir le kit");
-					
 					customNSs.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
 					customNSs.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					customNSs.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
-					
 					customnetherstars.setItemMeta(customNSs);
 					player.getInventory().setItem(0,customnetherstars);
 					
