@@ -58,7 +58,7 @@ public class DamageListeners implements Listener{
 					  .filter(p -> player.getName().equals(p.getPlayer().getName()))
 					  .findAny()
 					  .orElse(null));
-			if(joueur.getKit()==main.list_kits.get(IndexKit.Kamikaze)) {
+			if(joueur.getKit()==main.list_kits.get(IndexKit.Creeper)) {
 				event.setCancelled(true);
 				event.setDamage(0);
 				return;
