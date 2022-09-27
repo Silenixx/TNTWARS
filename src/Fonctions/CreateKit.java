@@ -27,7 +27,7 @@ public class CreateKit {
 		ArrayList<Kit> list_kits = new ArrayList<Kit>();
 		int Vie_Global_Joueur = 40;
 		
-		Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true);
+		Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true, null);
 		list_kits.add(Sans_Kit);
 		
 
@@ -49,7 +49,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						null,
 						null,
-						true);
+						true,
+						new ItemStack(Material.DIAMOND_SWORD));
 		list_kits.add(Guerrier);
 		
 		
@@ -70,7 +71,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.ENDER_PEARL,3),new ItemStack(Material.CHORUS_FRUIT,10))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.ENDER_PEARL));
 		list_kits.add(Endermen);
 		
 		
@@ -113,7 +115,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						null,
 						null,
-						true);
+						true,
+						new ItemStack(Material.GUNPOWDER));
 		list_kits.add(Creeper);
 		
 		
@@ -132,7 +135,8 @@ public class CreateKit {
 					1,
 					null,
 					null,
-					true);
+					true,
+					new ItemStack(Material.END_CRYSTAL));
 		list_kits.add(OneShot);
 		
 		
@@ -153,7 +157,8 @@ public class CreateKit {
 					Vie_Global_Joueur,
 					new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.FIREWORK_ROCKET,1))),
 					null,
-					true);
+					true,
+					new ItemStack(Material.ELYTRA));
 		list_kits.add(Elytra);
 		
 		
@@ -190,7 +195,8 @@ public class CreateKit {
 					Vie_Global_Joueur,
 					new ArrayList<ItemStack>(Arrays.asList(is_Ninja,is2_Ninja,new ItemStack(Material.BLACK_BANNER,3),new ItemStack(Material.GOLDEN_APPLE,5))),
 					null,
-					true);
+					true,
+					new ItemStack(Material.BLACK_BANNER));
 		list_kits.add(Ninja);
 		
 		
@@ -212,7 +218,8 @@ public class CreateKit {
 					Vie_Global_Joueur,
 					new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.AMETHYST_SHARD,3),new ItemStack(Material.AMETHYST_CLUSTER,3))),
 					null,
-					true);
+					true,
+					new ItemStack(Material.AMETHYST_SHARD));
 		list_kits.add(Savior);
 		
 		
@@ -233,7 +240,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(customcarrot,customcarrot,customcarrot,customcarrot,customcarrot,new ItemStack(Material.SADDLE,6),new ItemStack(Material.PIG_SPAWN_EGG,6))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.CARROT_ON_A_STICK));
 		list_kits.add(PigRider);
 		
 		
@@ -253,7 +261,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.HORSE_SPAWN_EGG,1),new ItemStack(Material.SADDLE,1),new ItemStack(Material.WHEAT,64),new ItemStack(Material.WHEAT,64))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.SADDLE));
 		list_kits.add(Chevalier);
 		
 		
@@ -278,7 +287,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.PARROT_SPAWN_EGG,3),new ItemStack(Material.WHEAT_SEEDS,64),new ItemStack(Material.SPYGLASS),new ItemStack(Material.GOLDEN_APPLE,2))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.SPYGLASS));
 		list_kits.add(Pirate);
 		
 		
@@ -298,7 +308,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.BONE,64),new ItemStack(Material.WOLF_SPAWN_EGG,7))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.BONE));
 		list_kits.add(DogMaster);
 		
 		
@@ -325,7 +336,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(customtrident_Trident)),
 						null,
-						true);
+						true,
+						new ItemStack(Material.TRIDENT));
 		list_kits.add(Trident);
 		
 		
@@ -344,7 +356,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.INK_SAC))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.INK_SAC));
 		list_kits.add(Squid);
 		
 		
@@ -363,7 +376,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						null,
 						null,
-						true);
+						true,
+						new ItemStack(Material.DIAMOND_AXE));
 		list_kits.add(Barbare);
 		
 		
@@ -382,7 +396,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.SNOWBALL,64),new ItemStack(Material.SNOWBALL,64),new ItemStack(Material.SNOWBALL,64),new ItemStack(Material.SNOWBALL,64))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.SNOWBALL));
 		list_kits.add(SnowMan);
 		
 		
@@ -401,7 +416,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						null,
 						null,
-						true);
+						true,
+						new ItemStack(Material.DIAMOND_CHESTPLATE));
 		list_kits.add(Tank);
 		
 		
@@ -426,7 +442,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(custombow_archer,new ItemStack(Material.ARROW))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.BOW));
 		list_kits.add(Archer);
 		
 		
@@ -452,7 +469,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(customblaze_sorcier)),
 						null,
-						true);
+						true,
+						new ItemStack(Material.BLAZE_ROD));
 		list_kits.add(Sorcier);
 		
 		
@@ -471,7 +489,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.COOKED_BEEF,64),new ItemStack(Material.COOKED_BEEF,64))),
 						null,
-						false);
+						false,
+						new ItemStack(Material.ENDER_EYE));
 		list_kits.add(Ghost);
 		
 		
@@ -490,7 +509,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.GLISTERING_MELON_SLICE))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.GLISTERING_MELON_SLICE));
 		list_kits.add(Healer);
 		
 		
@@ -510,7 +530,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.FIRE_CHARGE,16),new ItemStack(Material.FLINT_AND_STEEL))),
 						null,
-						true);
+						true,
+						new ItemStack(Material.FLINT_AND_STEEL));
 		list_kits.add(Pyro);
 		
 		
@@ -529,7 +550,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						null,
 						null,
-						true);
+						true,
+						new ItemStack(Material.SHEARS));
 		list_kits.add(Builder);
 		
 		
@@ -558,7 +580,8 @@ public class CreateKit {
 							Vie_Global_Joueur,
 							new ArrayList<ItemStack>(Arrays.asList(is)),
 							null,
-							true);
+							true,
+							new ItemStack(Material.POTION));
 		list_kits.add(Alchimiste);
 		
 		
@@ -586,7 +609,8 @@ public class CreateKit {
 						Vie_Global_Joueur,
 						new ArrayList<ItemStack>(Arrays.asList(customblaze_Gandalf)),
 						null,
-						true);
+						true,
+						new ItemStack(Material.STICK));
 		list_kits.add(Gandalf);
 		
 		
@@ -604,7 +628,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.SHIELD));
 		list_kits.add(Shield);
 		
 
@@ -619,7 +644,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.CROSSBOW));
 		list_kits.add(Arbalette);
 		
 		Kit Shulker=new Kit(
@@ -632,7 +658,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.SHULKER_BOX));
 		list_kits.add(Shulker);
 		
 		
@@ -646,7 +673,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.FIRE_CHARGE));
 		list_kits.add(Ghast);
 		
 		
@@ -660,7 +688,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.COBWEB));
 		list_kits.add(Spider);
 		
 		
@@ -674,7 +703,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.WITHER_SKELETON_SKULL));
 		list_kits.add(Wither);
 		
 		
@@ -688,7 +718,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.BAMBOO));
 		list_kits.add(PandaMan);
 		
 		
@@ -702,7 +733,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.PUFFERFISH));
 		list_kits.add(Poison);
 		
 		
@@ -716,7 +748,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.FISHING_ROD));
 		list_kits.add(Pecheur);
 		
 		
@@ -730,7 +763,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.FIREWORK_ROCKET));
 		list_kits.add(Rocketman);
 		
 		
@@ -745,7 +779,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.BLAZE_POWDER));
 		list_kits.add(Blaze);
 		
 		
@@ -760,7 +795,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.END_ROD));
 		list_kits.add(Evocateur);
 		
 		
@@ -775,7 +811,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.ARROW));
 		list_kits.add(Archer2);
 		
 		
@@ -789,7 +826,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.WHITE_GLAZED_TERRACOTTA));
 		list_kits.add(Tacticien);
 		
 		
@@ -804,7 +842,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.CLOCK));
 		list_kits.add(Teleporteur);
 		
 		
@@ -819,7 +858,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.BEACON));
 		list_kits.add(Spy);
 		
 		
@@ -833,7 +873,8 @@ public class CreateKit {
 				Vie_Global_Joueur,
 				null,
 				null,
-				true);
+				true,
+				new ItemStack(Material.HEART_OF_THE_SEA));
 		list_kits.add(Hasard);
 		
 

@@ -17,10 +17,11 @@ public class Kit {
 	private ArrayList<ItemStack> ItemsArray;
 	private PotionEffect Potioneffect;
 	private boolean IsVisible;
+	private ItemStack ItemSelection;
 	
 	
 	
-	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,ItemStack MainWeapon,int PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible) {
+	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,ItemStack MainWeapon,int PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible,ItemStack ItemSelection) {
 		super();
 		this.Nom=Nom;
 		this.Helmet=Helmet;
@@ -32,6 +33,7 @@ public class Kit {
 		this.ItemsArray=ItemsArray;
 		this.Potioneffect=Potioneffect;
 		this.IsVisible=IsVisible;
+		this.ItemSelection=ItemSelection;
 		
 	}
 	
@@ -98,7 +100,12 @@ public class Kit {
 	public void setIsVisible(boolean isVisible) {
 		IsVisible = isVisible;
 	}
-
+	public ItemStack getItemSelection() {
+		return ItemSelection;
+	}
+	public void setItemSelection(ItemStack Selection) {
+		ItemSelection = Selection;
+	}
 
 
 }

@@ -62,7 +62,8 @@ public class PlayerListeners implements Listener{
 	}
 	
 	
-	 @EventHandler
+	@SuppressWarnings("deprecation")
+	@EventHandler
      public void onJoin(PlayerJoinEvent event) {
 		 Player player = event.getPlayer();
 		 
@@ -76,6 +77,7 @@ public class PlayerListeners implements Listener{
 		 player.setInvisible(false);
 		 
 		 player.setFoodLevel(20);
+		 player.setMaxHealth(20);
 		 player.setHealth(20);
 		 
 
@@ -299,6 +301,7 @@ public class PlayerListeners implements Listener{
 		
 		
 		if(inv.contains(Material.DIAMOND_SWORD) && inv.contains(Material.STONE_SWORD)) {
+			
 			if (current.getType()==Material.STONE_SWORD) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Tank)); 
 				player.closeInventory();
@@ -390,7 +393,7 @@ public class PlayerListeners implements Listener{
 				player.sendMessage("§6[§eTntWars§6] §eKit Barbare sélectionné");
 				
 			}
-			if (current.getType()==Material.TNT) {
+			if (current.getType()==Material.GUNPOWDER) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Creeper));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Creeper sélectionné");
@@ -439,129 +442,129 @@ public class PlayerListeners implements Listener{
 			}
 			
 			
-			/*if (current.getType()==Material.STICK) {
+			if (current.getType()==Material.STICK) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Gandalf));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Gandalf sélectionné");
 			}
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.SHIELD) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Shield));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Shield sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.CROSSBOW) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Arbalette));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Arbalette sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.FIRE_CHARGE) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Ghast));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Ghast sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.SHULKER_BOX) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Shulker));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Shulker sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.COBWEB) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Spider));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Spider sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.WITHER_SKELETON_SKULL) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Wither));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Wither sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.BAMBOO) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.PandaMan));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit PandaMan sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.PUFFERFISH) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Poison));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Poison sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.FISHING_ROD) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Pecheur));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Pêcheur sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.FIREWORK_ROCKET) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Rocketman));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Rocketman sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.BLAZE_POWDER) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Blaze));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Blaze sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.END_ROD) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Evocateur));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Evocateur sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.ARROW) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Archer2));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Archer version 2 sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.WHITE_GLAZED_TERRACOTTA) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Tacticien));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Tacticien sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.CLOCK) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Teleporteur));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Téléporteur sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.BEACON) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Spy));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Espion sélectionné");
 			}
 			
 			
-			if (current.getType()==Material.APPLE) {
+			if (current.getType()==Material.HEART_OF_THE_SEA) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Hasard));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Hasard sélectionné");
-			}*/
+			}
 			
 			
 		}
@@ -889,6 +892,116 @@ public class PlayerListeners implements Listener{
 				customSQUID.setLore(Arrays.asList("§btest","§btest","§dtest"));
 				customsquid.setItemMeta(customSQUID);
 				
+				ItemStack customsgandalf = new ItemStack(Material.STICK,1);
+				ItemMeta customgandalf = customsquid.getItemMeta();
+				customgandalf.setDisplayName("§5Kit Gandalf");
+				customgandalf.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customsgandalf.setItemMeta(customgandalf);
+				
+				ItemStack customshield = new ItemStack(Material.SHIELD,1);
+				ItemMeta customSHIELD = customshield.getItemMeta();
+				customSHIELD.setDisplayName("§5Kit Shield");
+				customSHIELD.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customshield.setItemMeta(customSHIELD);
+				
+				ItemStack customarbalette = new ItemStack(Material.CROSSBOW,1);
+				ItemMeta customARBALETTE = customarbalette.getItemMeta();
+				customARBALETTE.setDisplayName("§5Kit Shield");
+				customARBALETTE.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customarbalette.setItemMeta(customARBALETTE);
+				
+				ItemStack customshulker = new ItemStack(Material.SHULKER_BOX,1);
+				ItemMeta customSHULKER = customshulker.getItemMeta();
+				customSHULKER.setDisplayName("§5Kit Shulker");
+				customSHULKER.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customshulker.setItemMeta(customSHULKER);
+				
+				ItemStack customghast = new ItemStack(Material.FIRE_CHARGE,1);
+				ItemMeta customGHAST = customghast.getItemMeta();
+				customGHAST.setDisplayName("§5Kit Ghast");
+				customGHAST.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customghast.setItemMeta(customGHAST);
+				
+				ItemStack customspider = new ItemStack(Material.COBWEB,1);
+				ItemMeta customSPIDER = customspider.getItemMeta();
+				customSPIDER.setDisplayName("§5Kit Spider");
+				customSPIDER.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customspider.setItemMeta(customSPIDER);
+				
+				ItemStack customwither = new ItemStack(Material.WITHER_SKELETON_SKULL,1);
+				ItemMeta customWITHER = customwither.getItemMeta();
+				customWITHER.setDisplayName("§5Kit Wither");
+				customWITHER.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customwither.setItemMeta(customWITHER);
+				
+				ItemStack custompanda = new ItemStack(Material.BAMBOO,1);
+				ItemMeta customPANDA = custompanda.getItemMeta();
+				customPANDA.setDisplayName("§5Kit Panda");
+				customPANDA.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				custompanda.setItemMeta(customPANDA);
+				
+				ItemStack custompoison = new ItemStack(Material.PUFFERFISH,1);
+				ItemMeta customPOISON = custompoison.getItemMeta();
+				customPOISON.setDisplayName("§5Kit Poison");
+				customPOISON.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				custompoison.setItemMeta(customPOISON);
+				
+				ItemStack custompecheur = new ItemStack(Material.FISHING_ROD,1);
+				ItemMeta customPECHEUR = custompecheur.getItemMeta();
+				customPECHEUR.setDisplayName("§5Kit Pecheur");
+				customPECHEUR.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				custompecheur.setItemMeta(customPECHEUR);
+				
+				ItemStack customrocket = new ItemStack(Material.FIREWORK_ROCKET,1);
+				ItemMeta customROCKET = customrocket.getItemMeta();
+				customROCKET.setDisplayName("§5Kit Rocketman");
+				customROCKET.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customrocket.setItemMeta(customROCKET);
+				
+				ItemStack customblazek = new ItemStack(Material.BLAZE_POWDER,1);
+				ItemMeta customBLAZE = customblazek.getItemMeta();
+				customBLAZE.setDisplayName("§5Kit Blaze");
+				customBLAZE.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customblazek.setItemMeta(customBLAZE);
+				
+				ItemStack customevoc = new ItemStack(Material.END_ROD,1);
+				ItemMeta customEVOC = customevoc.getItemMeta();
+				customEVOC.setDisplayName("§5Kit Evocateur");
+				customEVOC.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customevoc.setItemMeta(customEVOC);
+				
+				ItemStack customarcher2 = new ItemStack(Material.ARROW,1);
+				ItemMeta customARCHER2 = customarcher2.getItemMeta();
+				customARCHER2.setDisplayName("§5Kit Archer Version 2");
+				customARCHER2.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customarcher2.setItemMeta(customARCHER2);
+				
+				ItemStack customtacticien = new ItemStack(Material.WHITE_GLAZED_TERRACOTTA,1);
+				ItemMeta customTACTICIEN = customtacticien.getItemMeta();
+				customTACTICIEN.setDisplayName("§5Kit Tacticien");
+				customTACTICIEN.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customtacticien.setItemMeta(customTACTICIEN);
+				
+				ItemStack customteleporteur = new ItemStack(Material.CLOCK,1);
+				ItemMeta customTELEPORTEUR = customteleporteur.getItemMeta();
+				customTELEPORTEUR.setDisplayName("§5Kit Téléporteur");
+				customTELEPORTEUR.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customteleporteur.setItemMeta(customTELEPORTEUR);
+				
+				ItemStack customspy = new ItemStack(Material.BEACON,1);
+				ItemMeta customSPY = customspy.getItemMeta();
+				customSPY.setDisplayName("§5Kit Espion");
+				customSPY.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customspy.setItemMeta(customSPY);
+				
+				ItemStack customhasard = new ItemStack(Material.HEART_OF_THE_SEA,1);
+				ItemMeta customHASARD = customhasard.getItemMeta();
+				customHASARD.setDisplayName("§5Kit Hasard");
+				customHASARD.setLore(Arrays.asList("§btest","§btest","§dtest"));
+				customhasard.setItemMeta(customHASARD);
+				
+				
+				
 				inv2.setItem(0, customelytra);
 				inv2.setItem(1, customtrident);
 				inv2.setItem(2, custompigrider);
@@ -912,6 +1025,24 @@ public class PlayerListeners implements Listener{
 				inv2.setItem(20, customendcrystal);
 				inv2.setItem(21, customsquid);
 				inv2.setItem(22, customamethystshard);
+				inv2.setItem(23, customsgandalf);
+				inv2.setItem(24, customshield);
+				inv2.setItem(25, customarbalette);
+				inv2.setItem(26, customshulker);
+				inv2.setItem(27, customghast);
+				inv2.setItem(28, customspider);
+				inv2.setItem(29, customwither);
+				inv2.setItem(30, custompanda);
+				inv2.setItem(31, custompoison);
+				inv2.setItem(32, custompecheur);
+				inv2.setItem(33, customrocket);
+				inv2.setItem(34, customblazek);
+				inv2.setItem(35, customevoc);
+				inv2.setItem(36, customarcher2);
+				inv2.setItem(37, customtacticien);
+				inv2.setItem(38, customteleporteur);
+				inv2.setItem(39, customspy);
+				inv2.setItem(40, customhasard);
 				
 				player.openInventory(inv2);
 				

@@ -72,6 +72,7 @@ public class GMain extends JavaPlugin{
 	public Tnt tnt_jaune = new Tnt(Equipe_jaune, 0, EtatTNT.Eteinte);
 	
 	public ArrayList<Kit> list_kits;
+	public ArrayList<ItemStack> list_Item;
 	
 	public ScoreboardManager manager ;
 	public Scoreboard board ;
@@ -156,6 +157,10 @@ public class GMain extends JavaPlugin{
 	timer_green=30;
 	
 	list_kits = CreateKit.CreationKit();
+	/*for(Kit kit : list_kits) {
+		list_Item.add(kit.getItemSelection());
+	}*/
+	
 	SetScoreboard();
 	
 	TimerScoreboard cycle = new TimerScoreboard(this);
