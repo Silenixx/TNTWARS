@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
@@ -437,7 +438,8 @@ public class CreateKit {
 		
 		ItemStack customblaze_sorcier = new ItemStack(Material.BLAZE_ROD,1);
 		ItemMeta customSSS_sorcier = customblaze_sorcier.getItemMeta();
-		customSSS_sorcier.addEnchant(Enchantment.KNOCKBACK, 6, true);
+		customSSS_sorcier.addEnchant(Enchantment.ARROW_INFINITE, 6, true);
+		customSSS_sorcier.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		customblaze_sorcier.setItemMeta(customSSS_sorcier);
 		
 		Kit Sorcier=new Kit(
@@ -561,6 +563,280 @@ public class CreateKit {
 		
 		
 		
+		
+		
+		
+		ItemStack customdiamondsword_Gandalf = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_Gandalf = customdiamondsword_Gandalf.getItemMeta();
+		customDS_Gandalf.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_Gandalf.setItemMeta(customDS_Gandalf);
+		
+		ItemStack customblaze_Gandalf = new ItemStack(Material.BLAZE_ROD,1);
+		ItemMeta customSSS_Gandalf = customblaze_Gandalf.getItemMeta();
+		customSSS_Gandalf.addEnchant(Enchantment.KNOCKBACK, 6, true);
+		customblaze_Gandalf.setItemMeta(customSSS_Gandalf);
+		
+		Kit Gandalf=new Kit(
+						"Gandalf",
+						new ItemStack(Material.IRON_HELMET),
+						new ItemStack(Material.IRON_CHESTPLATE),
+						new ItemStack(Material.IRON_LEGGINGS),
+						new ItemStack(Material.IRON_BOOTS),
+						customdiamondsword_Gandalf,
+						Vie_Global_Joueur,
+						new ArrayList<ItemStack>(Arrays.asList(customblaze_Gandalf)),
+						null,
+						true);
+		list_kits.add(Gandalf);
+		
+		
+		
+		
+		
+		
+		Kit Shield =new Kit(
+				"ShieldMan",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Shield);
+		
+
+		
+		Kit Arbalette=new Kit(
+				"Arbalette",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Arbalette);
+		
+		Kit Shulker=new Kit(
+				"Shulker",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Shulker);
+		
+		
+		Kit Ghast=new Kit(
+				"Ghast",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Ghast);
+		
+		
+		Kit Spider=new Kit(
+				"Spider",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Spider);
+		
+		
+		Kit Wither=new Kit(
+				"Wither",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Wither);
+		
+		
+		Kit PandaMan=new Kit(
+				"PandaMan",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(PandaMan);
+		
+		
+		Kit Poison=new Kit(
+				"Poison",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Poison);
+		
+		
+		Kit Pecheur=new Kit(
+				"Pecheur",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Pecheur);
+		
+		
+		Kit Rocketman=new Kit(
+				"Rocketman",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Rocketman);
+		
+		
+		
+		Kit Blaze=new Kit(
+				"Blaze",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Blaze);
+		
+		
+		
+		Kit Evocateur=new Kit(
+				"Evocateur",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Evocateur);
+		
+		
+		
+		Kit Archer2=new Kit(
+				"Archer 2",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Archer2);
+		
+		
+		Kit Tacticien=new Kit(
+				"Tacticien",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Tacticien);
+		
+		
+		
+		Kit Teleporteur=new Kit(
+				"Teleporteur",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Teleporteur);
+		
+		
+		
+		Kit Spy=new Kit(
+				"Spy",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Spy);
+		
+		
+		Kit Hasard=new Kit(
+				"Hasard",
+				new ItemStack(Material.IRON_HELMET),
+				new ItemStack(Material.IRON_CHESTPLATE),
+				new ItemStack(Material.IRON_LEGGINGS),
+				new ItemStack(Material.IRON_BOOTS),
+				null,
+				Vie_Global_Joueur,
+				null,
+				null,
+				true);
+		list_kits.add(Hasard);
+		
+
 		
 		
 		return list_kits;

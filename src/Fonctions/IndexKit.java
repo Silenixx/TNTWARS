@@ -29,7 +29,7 @@ public class IndexKit {
 	
 	public static final int Gandalf = 24;
 	public static final int Shield = 25;
-	public static final int Arbalete = 26;
+	public static final int Arbalette = 26;
 	public static final int Ghast = 27;
 	public static final int Shulker = 28;
 	public static final int Spider = 29;
@@ -41,7 +41,7 @@ public class IndexKit {
 	public static final int Blaze = 35;
 	public static final int Evocateur = 36;
 	public static final int Archer2 = 37;
-	public static final int Builder2 = 38;
+	public static final int Tacticien = 38;
 	public static final int Teleporteur = 39;
 	public static final int Spy = 40;
 	public static final int Hasard = 41;

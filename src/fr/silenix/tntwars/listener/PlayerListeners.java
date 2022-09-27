@@ -436,8 +436,132 @@ public class PlayerListeners implements Listener{
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Squid));
 				player.closeInventory();
 				player.sendMessage("§6[§eTntWars§6] §eKit Squid sélectionné");
-				
 			}
+			
+			
+			/*if (current.getType()==Material.STICK) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Gandalf));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Gandalf sélectionné");
+			}
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Shield));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Shield sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Arbalette));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Arbalette sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Ghast));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Ghast sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Shulker));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Shulker sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Spider));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Spider sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Wither));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Wither sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.PandaMan));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit PandaMan sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Poison));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Poison sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Pecheur));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Pêcheur sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Rocketman));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Rocketman sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Blaze));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Blaze sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Evocateur));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Evocateur sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Archer2));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Archer version 2 sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Tacticien));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Tacticien sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Teleporteur));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Téléporteur sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Spy));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Espion sélectionné");
+			}
+			
+			
+			if (current.getType()==Material.APPLE) {
+				joueur.setProchainKit(main.list_kits.get(IndexKit.Hasard));
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit Hasard sélectionné");
+			}*/
 			
 			
 		}
