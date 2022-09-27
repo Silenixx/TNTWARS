@@ -26,9 +26,9 @@ public class IndexKit {
 	public static final int Pyro = 21;
 	public static final int Builder = 22;
 	public static final int Alchimiste = 23;
+	
 	public static final int Gandalf = 24;
 	public static final int Shield = 25;
-	
 	public static final int Arbalete = 26;
 	public static final int Ghast = 27;
 	public static final int Shulker = 28;
@@ -37,7 +37,6 @@ public class IndexKit {
 	public static final int PandaMan = 31;
 	public static final int Poison = 32;
 	public static final int Pecheur = 33;
-
 	public static final int Rocketman = 34;
 	public static final int Blaze = 35;
 	public static final int Evocateur = 36;

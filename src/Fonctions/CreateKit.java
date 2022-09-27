@@ -77,43 +77,43 @@ public class CreateKit {
 		
 		
 		
-		ItemStack customdiamondsword_kami = new ItemStack(Material.IRON_SWORD,1);
-		ItemMeta customDS_kami = customdiamondsword_kami.getItemMeta();
-		customDS_kami.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
-		customdiamondsword_kami.setItemMeta(customDS_kami);
+		ItemStack customdiamondsword_creeper = new ItemStack(Material.IRON_SWORD,1);
+		ItemMeta customDS_creeper = customdiamondsword_creeper.getItemMeta();
+		customDS_creeper.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+		customdiamondsword_creeper.setItemMeta(customDS_creeper);
 		
-		ItemStack customboot_kami = new ItemStack(Material.IRON_BOOTS,1);
-		ItemMeta customb_kami = customboot_kami.getItemMeta();
-		customb_kami.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 100, true);
-		customboot_kami.setItemMeta(customb_kami);
+		ItemStack customboot_creeper = new ItemStack(Material.IRON_BOOTS,1);
+		ItemMeta customb_creeper = customboot_creeper.getItemMeta();
+		customb_creeper.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 100, true);
+		customboot_creeper.setItemMeta(customb_creeper);
 		
-		ItemStack customchest_kami = new ItemStack(Material.IRON_CHESTPLATE,1);
-		ItemMeta customc_kami = customchest_kami.getItemMeta();
-		customc_kami.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 100, true);
-		customchest_kami.setItemMeta(customc_kami);
+		ItemStack customchest_creeper = new ItemStack(Material.IRON_CHESTPLATE,1);
+		ItemMeta customc_creeper = customchest_creeper.getItemMeta();
+		customc_creeper.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 100, true);
+		customchest_creeper.setItemMeta(customc_creeper);
 		
-		ItemStack customhelmet_kami = new ItemStack(Material.IRON_HELMET,1);
-		ItemMeta customh_kami = customhelmet_kami.getItemMeta();
-		customh_kami.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 100, true);
-		customhelmet_kami.setItemMeta(customh_kami);
+		ItemStack customhelmet_creeper = new ItemStack(Material.IRON_HELMET,1);
+		ItemMeta customh_creeper = customhelmet_creeper.getItemMeta();
+		customh_creeper.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 100, true);
+		customhelmet_creeper.setItemMeta(customh_creeper);
 		
-		ItemStack customlegging_kami = new ItemStack(Material.IRON_LEGGINGS,1);
-		ItemMeta customl_kami = customlegging_kami.getItemMeta();
-		customl_kami.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 100, true);
-		customlegging_kami.setItemMeta(customl_kami);
+		ItemStack customlegging_creeper = new ItemStack(Material.IRON_LEGGINGS,1);
+		ItemMeta customl_creeper = customlegging_creeper.getItemMeta();
+		customl_creeper.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 100, true);
+		customlegging_creeper.setItemMeta(customl_creeper);
 		
-		Kit Kamikaze=new Kit(
-						"Kamikaze",
-						customhelmet_kami,
-						customchest_kami,
-						customlegging_kami,
-						customboot_kami,
-						customdiamondsword_kami,
+		Kit Creeper=new Kit(
+						"Creeper",
+						customhelmet_creeper,
+						customchest_creeper,
+						customlegging_creeper,
+						customboot_creeper,
+						customdiamondsword_creeper,
 						Vie_Global_Joueur,
 						null,
 						null,
 						true);
-		list_kits.add(Kamikaze);
+		list_kits.add(Creeper);
 		
 		
 		ItemStack customdiamondsword_oneshot = new ItemStack(Material.NETHERITE_SWORD,1);

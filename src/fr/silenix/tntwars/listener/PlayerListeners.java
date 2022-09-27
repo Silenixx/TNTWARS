@@ -393,7 +393,7 @@ public class PlayerListeners implements Listener{
 			if (current.getType()==Material.TNT) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Creeper));
 				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Kamikaze sélectionné");
+				player.sendMessage("§6[§eTntWars§6] §eKit Creeper sélectionné");
 				
 			}
 			if (current.getType()==Material.BONE) {
