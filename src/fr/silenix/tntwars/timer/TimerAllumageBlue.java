@@ -68,7 +68,7 @@ public class TimerAllumageBlue extends BukkitRunnable{
 		if (main.timer_blue!=0) {
 			main.timer_blue--;
 		}
-		Bukkit.getWorld("world").spawnParticle(Particle.LAVA, main.map_en_cours.getLocationTntArray(0),100, 1,1,1 );
+		Bukkit.getWorld("world").spawnParticle(Particle.LAVA, main.map_en_cours.getLocationTntArray(1),100, 1,1,1 );
 		for(int i=0; i < main.listeJoueurs.size(); i++) {
 			Joueur joueur = main.listeJoueurs.get(i);
 			joueur.getPlayer().playSound(main.map_en_cours.getLocationTntArray(1), Sound.ENTITY_CREEPER_PRIMED, 0.6F, 0.6F);

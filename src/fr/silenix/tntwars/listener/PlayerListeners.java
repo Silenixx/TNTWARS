@@ -41,6 +41,7 @@ import Fonctions.IndexKit;
 import fr.silenix.tntwars.GMain;
 
 import fr.silenix.tntwars.entity.Joueur;
+import fr.silenix.tntwars.entity.Kit;
 import fr.silenix.tntwars.tasks.TaskLancementPartie;
 import fr.silenix.tntwars.tasks.TaskRejoindPartieEnCours;
 import fr.silenix.tntwars.timer.TimerAllumageBlue;
@@ -301,6 +302,26 @@ public class PlayerListeners implements Listener{
 		
 		
 		if(inv.contains(Material.DIAMOND_SWORD) && inv.contains(Material.STONE_SWORD)) {
+			
+			
+			
+			/*Kit kit = main.list_kits.stream()
+					.filter(k->k.getItemSelection().getType() == current.getType())
+					.findAny()
+					.orElse(null);
+			
+			if (current.getType()==Material.STONE_SWORD) {
+				joueur.setProchainKit(kit); 
+				player.closeInventory();
+				player.sendMessage("§6[§eTntWars§6] §eKit "+ kit.getNom() +" sélectionné");
+				
+			}*/
+			
+			
+			
+			
+			
+			
 			
 			if (current.getType()==Material.STONE_SWORD) {
 				joueur.setProchainKit(main.list_kits.get(IndexKit.Tank)); 
@@ -1064,10 +1085,6 @@ public class PlayerListeners implements Listener{
 			
 
 				if(it.getType() == Material.BLAZE_POWDER &&  event.getAction()==Action.RIGHT_CLICK_BLOCK ) {
-				
-				
-				
-				
 				
 					if (joueur.getEquipe() != main.Equipe_bleu  && (main.map_en_cours.getLocationTntArray(1).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(1).getX()-3)  && (main.map_en_cours.getLocationTntArray(1).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(1).getZ()-3) ) {
 						
