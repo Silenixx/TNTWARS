@@ -865,10 +865,10 @@ public class CreateKit {
 		
 		Kit Hasard=new Kit(
 				"Hasard",
-				new ItemStack(Material.IRON_HELMET),
-				new ItemStack(Material.IRON_CHESTPLATE),
-				new ItemStack(Material.IRON_LEGGINGS),
-				new ItemStack(Material.IRON_BOOTS),
+				null,
+				null,
+				null,
+				null,
 				null,
 				Vie_Global_Joueur,
 				null,

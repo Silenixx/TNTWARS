@@ -286,6 +286,11 @@ public class PlayerListeners implements Listener{
 		
 		ItemStack current = event.getCurrentItem();
 		
+		
+		
+		
+		
+		
 		if (current==null) return;
 		
 		if(inv.contains(Material.RED_WOOL)) {
@@ -306,15 +311,15 @@ public class PlayerListeners implements Listener{
 			
 			
 			/*Kit kit = main.list_kits.stream()
-					.filter(k  ->  k.getItemSelection() == current)
+					.filter(k  ->  k.getItemSelection().equals(current))
 					.findAny()
 					.orElse(null);
 			
-			if (current.getType()==Material.STONE_SWORD) {
+			
 			joueur.setProchainKit(kit); 
 			player.closeInventory();
 			player.sendMessage("§6[§eTntWars§6] §eKit "+ kit.getNom() +" sélectionné");*/
-				
+			
 			
 			
 			
