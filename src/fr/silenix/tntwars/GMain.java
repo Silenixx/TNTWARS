@@ -66,13 +66,13 @@ public class GMain extends JavaPlugin{
 	public Equipe Equipe_jaune = new Equipe("Jaune",false,new ItemStack(Material.YELLOW_WOOL,64));
 	public Equipe Sans_Equipe = new Equipe("Sans Equipe",true,null);
 	
-	public Tnt tnt_rouge = new Tnt(Equipe_rouge, 0, EtatTNT.Eteinte);
-	public Tnt tnt_bleu = new Tnt(Equipe_bleu, 0, EtatTNT.Eteinte);
-	public Tnt tnt_vert = new Tnt(Equipe_vert, 0, EtatTNT.Eteinte);
-	public Tnt tnt_jaune = new Tnt(Equipe_jaune, 0, EtatTNT.Eteinte);
+	public Tnt tnt_rouge = new Tnt(Equipe_rouge, 0, EtatTNT.Eteinte,30,0);
+	public Tnt tnt_bleu = new Tnt(Equipe_bleu, 0, EtatTNT.Eteinte,30,1);
+	public Tnt tnt_vert = new Tnt(Equipe_vert, 0, EtatTNT.Eteinte,30,2);
+	public Tnt tnt_jaune = new Tnt(Equipe_jaune, 0, EtatTNT.Eteinte,30,3);
 	
 	public ArrayList<Kit> list_kits;
-	public ArrayList<ItemStack> list_Item;
+	public ArrayList<Tnt> listTnt = new ArrayList<>();;
 	
 	public ScoreboardManager manager ;
 	public Scoreboard board ;
@@ -81,10 +81,7 @@ public class GMain extends JavaPlugin{
 	public Team boardblue;
 	public Team boardred ;
 	
-	public int timer_blue;
-	public int timer_red;
-	public int timer_green;
-	public int timer_yellow;
+
 	public int connecter_score;
 	public int cblue;
 	public int cred;
@@ -109,6 +106,12 @@ public class GMain extends JavaPlugin{
 	
 	setState(EtatPartie.AttenteJoueur);
 
+	listTnt.add(tnt_bleu);
+	listTnt.add(tnt_rouge);
+	listTnt.add(tnt_vert);
+	listTnt.add(tnt_jaune);
+	
+	
 	list_maps.add( 
 			new Map(
 			2,
@@ -151,15 +154,10 @@ public class GMain extends JavaPlugin{
 			new Location(world,556,189,-421)));
 			
 	
-	timer_blue=30;
-	timer_red=30;
-	timer_yellow=30;
-	timer_green=30;
+	
 	
 	list_kits = CreateKit.CreationKit();
-	/*for(Kit kit : list_kits) {
-		list_Item.add(kit.getItemSelection());
-	}*/
+
 	
 	SetScoreboard();
 	
@@ -177,10 +175,10 @@ public class GMain extends JavaPlugin{
 		tnt_vert.setEtat(EtatTNT.Eteinte);
 		tnt_jaune.setEtat(EtatTNT.Eteinte);
 		
-		timer_blue=30;
-		timer_red=30;
-		timer_yellow=30;
-		timer_green=30;
+		tnt_bleu.setTimer(30);
+		tnt_rouge.setTimer(30);
+		tnt_vert.setTimer(30);
+		tnt_jaune.setTimer(30);
 		
 		tnt_bleu.setVie(0);
 		tnt_rouge.setVie(0);
@@ -286,8 +284,8 @@ public class GMain extends JavaPlugin{
 		cred = tnt_rouge.getVie() *2;
 		taille_blue = getSize("Bleu");
 		taille_red = getSize("Rouge");
-		timeblue = timer_blue;
-		timered = timer_red;
+		timeblue = tnt_bleu.getTimer();
+		timered = tnt_rouge.getTimer();
 
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         

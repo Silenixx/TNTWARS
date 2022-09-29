@@ -33,8 +33,9 @@ public class TimerScoreboard extends BukkitRunnable{
 			main.connecter_score = Bukkit.getOnlinePlayers().size();
 			main.cblue = main.tnt_bleu.getVie() *2;
 			main.cred = main.tnt_rouge.getVie() *2;
-			main.timeblue = main.timer_blue;
-			main.timered = main.timer_red;
+			main.timeblue = main.tnt_bleu.getTimer();
+			main.timered = main.tnt_rouge.getTimer();
+
 			
 			
 			main.taille_blue = main.getSize("Bleu");

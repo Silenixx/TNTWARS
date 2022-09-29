@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 
 
+
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -44,8 +45,7 @@ import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.entity.Kit;
 import fr.silenix.tntwars.tasks.TaskLancementPartie;
 import fr.silenix.tntwars.tasks.TaskRejoindPartieEnCours;
-import fr.silenix.tntwars.timer.TimerAllumageBlue;
-import fr.silenix.tntwars.timer.TimerAllumageRed;
+import fr.silenix.tntwars.timer.TimerAllumage;
 import fr.silenix.tntwars.timer.TimerInvisibility;
 
 //import fr.silenix.tntwars.entity.Joueur;
@@ -522,296 +522,7 @@ public class PlayerListeners implements Listener{
                     emplacement++;
                 }
 				
-				/*
-				ItemStack customironsword = new ItemStack(Material.STONE_SWORD,1);
-				ItemMeta customIS = customironsword.getItemMeta();
-				customIS.setDisplayName("§5Kit Tank");
-				customIS.setLore(Arrays.asList("§bArmure en diamand","§bEpée en pierre","§dCe kit n'est pas fait pour la négociation.","§dLancez vous dans le combat avec pour écraser vos enemeies"));
-				customironsword.setItemMeta(customIS);
-								
-				ItemStack customdiamondsword = new ItemStack(Material.DIAMOND_SWORD,1);
-				ItemMeta customDS = customdiamondsword.getItemMeta();
-				customDS.setDisplayName("§5Kit Guerrier");
-				customDS.setLore(Arrays.asList("§bArmure en fer","§bEpée en diamant","§dCe kit est fait pour les mordues de PVP.","§dVous ferez partie des combattants majeurs de votre équipe."));
-				customdiamondsword.setItemMeta(customDS);
 				
-				ItemStack custombow = new ItemStack(Material.BOW,1);
-				ItemMeta customBOW = custombow.getItemMeta();
-				customBOW.setDisplayName("§5Kit Archer");
-				customBOW.setLore(Arrays.asList("§bArc enchanté","§bArmure en maille","§dLe kit archer est un soutien essentiel pour votre équipe."));
-				custombow.setItemMeta(customBOW);
-				
-				ItemStack customendereye = new ItemStack(Material.ENDER_EYE,1);
-				ItemMeta customEE = customendereye.getItemMeta();
-				customEE.setDisplayName("§5Kit Ghost");
-				customEE.setLore(Arrays.asList("§bEpée en bois","§bTotalement invisible","§dLe kit Ghost vous rendra invisivle pour ","§dinfiltrer les lignes enemies. Soyez discret et assasin."));
-				customendereye.setItemMeta(customEE);
-				
-				ItemStack customglistering_melon_slice = new ItemStack(Material.GLISTERING_MELON_SLICE,1);
-				ItemMeta customBlS = customglistering_melon_slice.getItemMeta();
-				customBlS.setDisplayName("§5Kit Healer");
-				customBlS.setLore(Arrays.asList("§bEpée en pierre","§bArmure maille","§dLe kit des medecins, utilisez-le ","§dpour soigner vos compagnons."));
-				customglistering_melon_slice.setItemMeta(customBlS);
-				
-				ItemStack customflintandsteel = new ItemStack(Material.FLINT_AND_STEEL,1);
-				ItemMeta customFAS = customflintandsteel.getItemMeta();
-				customFAS.setDisplayName("§5Kit Pyro");
-				customFAS.setLore(Arrays.asList("§bEpée en pierre","§bArmure fer","§dPour les pyroman du dimanche "));
-				customflintandsteel.setItemMeta(customFAS);
-
-				ItemStack customshears = new ItemStack(Material.SHEARS,1);
-				ItemMeta customSHEARS = customshears.getItemMeta();
-				customSHEARS.setDisplayName("§5Kit Builder");
-				customSHEARS.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customshears.setItemMeta(customSHEARS);
-
-				ItemStack customblaze = new ItemStack(Material.BLAZE_ROD,1);
-				ItemMeta customSSS = customblaze.getItemMeta();
-				customSSS.setDisplayName("§5Kit Sorcier");
-				customSSS.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customblaze.setItemMeta(customSSS);
-
-				ItemStack custompotion = new ItemStack(Material.POTION,1);
-				ItemMeta customPOTION = custompotion.getItemMeta();
-				customPOTION.setDisplayName("§5Kit Alchimiste");
-				customPOTION.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				custompotion.setItemMeta(customPOTION);
-
-				ItemStack customendermen = new ItemStack(Material.ENDER_PEARL,1);
-				ItemMeta customENDERMEN = customendermen.getItemMeta();
-				customENDERMEN.setDisplayName("§5Kit Endermen");
-				customENDERMEN.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customendermen.setItemMeta(customENDERMEN);
-				
-				ItemStack customsnowball = new ItemStack(Material.SNOWBALL,1);
-				ItemMeta customSNOWBALL = customsnowball.getItemMeta();
-				customSNOWBALL.setDisplayName("§5Kit Snowman");
-				customSNOWBALL.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customsnowball.setItemMeta(customSNOWBALL);
-
-				ItemStack customendcrystal = new ItemStack(Material.END_CRYSTAL,1);
-				ItemMeta customEC = customendcrystal.getItemMeta();
-				customEC.setDisplayName("§5Kit Oneshot");
-				customEC.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customendcrystal.setItemMeta(customEC);
-				
-				ItemStack customninja = new ItemStack(Material.BLACK_BANNER,1);
-				ItemMeta customNINJA = customninja.getItemMeta();
-				customNINJA.setDisplayName("§5Kit Ninja");
-				customNINJA.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customninja.setItemMeta(customNINJA);
-
-				ItemStack customamethystshard = new ItemStack(Material.AMETHYST_SHARD,1);
-				ItemMeta customASHARD = customamethystshard.getItemMeta();
-				customASHARD.setDisplayName("§5Kit Savior");
-				customASHARD.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customamethystshard.setItemMeta(customASHARD);
-
-				ItemStack custombarbare = new ItemStack(Material.DIAMOND_AXE,1);
-				ItemMeta customBARBARE = custombarbare.getItemMeta();
-				customBARBARE.setDisplayName("§5Kit Barbare");
-				customBARBARE.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				custombarbare.setItemMeta(customBARBARE);
-
-				ItemStack customtnt = new ItemStack(Material.GUNPOWDER,1);
-				ItemMeta customTNT = customtnt.getItemMeta();
-				customTNT.setDisplayName("§5Kit Creeper");
-				customTNT.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customtnt.setItemMeta(customTNT);
-
-				ItemStack custombone = new ItemStack(Material.BONE,1);
-				ItemMeta customBONE = custombone.getItemMeta();
-				customBONE.setDisplayName("§5Kit DogMaster");
-				customBONE.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				custombone.setItemMeta(customBONE);
-				
-				ItemStack customskeleton = new ItemStack(Material.SKELETON_SKULL,1);
-				ItemMeta customSKELETON = customskeleton.getItemMeta();
-				customSKELETON.setDisplayName("§5Kit Pirate");
-				customSKELETON.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customskeleton.setItemMeta(customSKELETON);
-				
-				ItemStack customsaddle = new ItemStack(Material.SADDLE,1);
-				ItemMeta customSADDLE = customsaddle.getItemMeta();
-				customSADDLE.setDisplayName("§5Kit Chevalier");
-				customSADDLE.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customsaddle.setItemMeta(customSADDLE);
-				
-				ItemStack custompigrider = new ItemStack(Material.CARROT_ON_A_STICK,1);
-				ItemMeta customPIGRIDER = custompigrider.getItemMeta();
-				customPIGRIDER.setDisplayName("§5Kit PigRider");
-				customPIGRIDER.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				custompigrider.setItemMeta(customPIGRIDER);
-
-				ItemStack customtrident = new ItemStack(Material.TRIDENT,1);
-				ItemMeta customTRIDENT = customtrident.getItemMeta();
-				customTRIDENT.setDisplayName("§5Kit Trident");
-				customTRIDENT.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customtrident.setItemMeta(customTRIDENT);
-				
-				ItemStack customelytra = new ItemStack(Material.ELYTRA,1);
-				ItemMeta customELYTRA = customelytra.getItemMeta();
-				customELYTRA.setDisplayName("§5Kit Elytra");
-				customELYTRA.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customelytra.setItemMeta(customELYTRA);
-				
-				ItemStack customsquid = new ItemStack(Material.INK_SAC,1);
-				ItemMeta customSQUID = customsquid.getItemMeta();
-				customSQUID.setDisplayName("§5Kit Squid");
-				customSQUID.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customsquid.setItemMeta(customSQUID);
-				
-				ItemStack customsgandalf = new ItemStack(Material.STICK,1);
-				ItemMeta customgandalf = customsquid.getItemMeta();
-				customgandalf.setDisplayName("§5Kit Gandalf");
-				customgandalf.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customsgandalf.setItemMeta(customgandalf);
-				
-				ItemStack customshield = new ItemStack(Material.SHIELD,1);
-				ItemMeta customSHIELD = customshield.getItemMeta();
-				customSHIELD.setDisplayName("§5Kit Shield");
-				customSHIELD.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customshield.setItemMeta(customSHIELD);
-				
-				ItemStack customarbalette = new ItemStack(Material.CROSSBOW,1);
-				ItemMeta customARBALETTE = customarbalette.getItemMeta();
-				customARBALETTE.setDisplayName("§5Kit Shield");
-				customARBALETTE.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customarbalette.setItemMeta(customARBALETTE);
-				
-				ItemStack customshulker = new ItemStack(Material.SHULKER_BOX,1);
-				ItemMeta customSHULKER = customshulker.getItemMeta();
-				customSHULKER.setDisplayName("§5Kit Shulker");
-				customSHULKER.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customshulker.setItemMeta(customSHULKER);
-				
-				ItemStack customghast = new ItemStack(Material.FIRE_CHARGE,1);
-				ItemMeta customGHAST = customghast.getItemMeta();
-				customGHAST.setDisplayName("§5Kit Ghast");
-				customGHAST.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customghast.setItemMeta(customGHAST);
-				
-				ItemStack customspider = new ItemStack(Material.COBWEB,1);
-				ItemMeta customSPIDER = customspider.getItemMeta();
-				customSPIDER.setDisplayName("§5Kit Spider");
-				customSPIDER.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customspider.setItemMeta(customSPIDER);
-				
-				ItemStack customwither = new ItemStack(Material.WITHER_SKELETON_SKULL,1);
-				ItemMeta customWITHER = customwither.getItemMeta();
-				customWITHER.setDisplayName("§5Kit Wither");
-				customWITHER.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customwither.setItemMeta(customWITHER);
-				
-				ItemStack custompanda = new ItemStack(Material.BAMBOO,1);
-				ItemMeta customPANDA = custompanda.getItemMeta();
-				customPANDA.setDisplayName("§5Kit Panda");
-				customPANDA.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				custompanda.setItemMeta(customPANDA);
-				
-				ItemStack custompoison = new ItemStack(Material.PUFFERFISH,1);
-				ItemMeta customPOISON = custompoison.getItemMeta();
-				customPOISON.setDisplayName("§5Kit Poison");
-				customPOISON.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				custompoison.setItemMeta(customPOISON);
-				
-				ItemStack custompecheur = new ItemStack(Material.FISHING_ROD,1);
-				ItemMeta customPECHEUR = custompecheur.getItemMeta();
-				customPECHEUR.setDisplayName("§5Kit Pecheur");
-				customPECHEUR.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				custompecheur.setItemMeta(customPECHEUR);
-				
-				ItemStack customrocket = new ItemStack(Material.FIREWORK_ROCKET,1);
-				ItemMeta customROCKET = customrocket.getItemMeta();
-				customROCKET.setDisplayName("§5Kit Rocketman");
-				customROCKET.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customrocket.setItemMeta(customROCKET);
-				
-				ItemStack customblazek = new ItemStack(Material.BLAZE_POWDER,1);
-				ItemMeta customBLAZE = customblazek.getItemMeta();
-				customBLAZE.setDisplayName("§5Kit Blaze");
-				customBLAZE.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customblazek.setItemMeta(customBLAZE);
-				
-				ItemStack customevoc = new ItemStack(Material.END_ROD,1);
-				ItemMeta customEVOC = customevoc.getItemMeta();
-				customEVOC.setDisplayName("§5Kit Evocateur");
-				customEVOC.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customevoc.setItemMeta(customEVOC);
-				
-				ItemStack customarcher2 = new ItemStack(Material.ARROW,1);
-				ItemMeta customARCHER2 = customarcher2.getItemMeta();
-				customARCHER2.setDisplayName("§5Kit Archer Version 2");
-				customARCHER2.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customarcher2.setItemMeta(customARCHER2);
-				
-				ItemStack customtacticien = new ItemStack(Material.WHITE_GLAZED_TERRACOTTA,1);
-				ItemMeta customTACTICIEN = customtacticien.getItemMeta();
-				customTACTICIEN.setDisplayName("§5Kit Tacticien");
-				customTACTICIEN.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customtacticien.setItemMeta(customTACTICIEN);
-				
-				ItemStack customteleporteur = new ItemStack(Material.CLOCK,1);
-				ItemMeta customTELEPORTEUR = customteleporteur.getItemMeta();
-				customTELEPORTEUR.setDisplayName("§5Kit Téléporteur");
-				customTELEPORTEUR.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customteleporteur.setItemMeta(customTELEPORTEUR);
-				
-				ItemStack customspy = new ItemStack(Material.BEACON,1);
-				ItemMeta customSPY = customspy.getItemMeta();
-				customSPY.setDisplayName("§5Kit Espion");
-				customSPY.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customspy.setItemMeta(customSPY);
-				
-				ItemStack customhasard = new ItemStack(Material.HEART_OF_THE_SEA,1);
-				ItemMeta customHASARD = customhasard.getItemMeta();
-				customHASARD.setDisplayName("§5Kit Hasard");
-				customHASARD.setLore(Arrays.asList("§btest","§btest","§dtest"));
-				customhasard.setItemMeta(customHASARD);
-				
-				
-				
-				inv2.setItem(0, customelytra);
-				inv2.setItem(1, customtrident);
-				inv2.setItem(2, custompigrider);
-				inv2.setItem(3, customsaddle);
-				inv2.setItem(4, customskeleton);
-				inv2.setItem(5, custombone);
-				inv2.setItem(6, customtnt);
-				inv2.setItem(7, custombarbare);
-				inv2.setItem(8, customninja);
-				inv2.setItem(9, custompotion);
-				inv2.setItem(10, customblaze);
-				inv2.setItem(11, customflintandsteel);
-				inv2.setItem(12, customglistering_melon_slice);
-				inv2.setItem(13, customendereye);
-				inv2.setItem(14, customironsword);
-				inv2.setItem(15, customdiamondsword);
-				inv2.setItem(16, custombow);
-				inv2.setItem(17, customshears);
-				inv2.setItem(18, customendermen);
-				inv2.setItem(19, customsnowball);
-				inv2.setItem(20, customendcrystal);
-				inv2.setItem(21, customsquid);
-				inv2.setItem(22, customamethystshard);
-				inv2.setItem(23, customsgandalf);
-				inv2.setItem(24, customshield);
-				inv2.setItem(25, customarbalette);
-				inv2.setItem(26, customshulker);
-				inv2.setItem(27, customghast);
-				inv2.setItem(28, customspider);
-				inv2.setItem(29, customwither);
-				inv2.setItem(30, custompanda);
-				inv2.setItem(31, custompoison);
-				inv2.setItem(32, custompecheur);
-				inv2.setItem(33, customrocket);
-				inv2.setItem(34, customblazek);
-				inv2.setItem(35, customevoc);
-				inv2.setItem(36, customarcher2);
-				inv2.setItem(37, customtacticien);
-				inv2.setItem(38, customteleporteur);
-				inv2.setItem(39, customspy);
-				inv2.setItem(40, customhasard);*/
 				
 				player.openInventory(inv2);
 				
@@ -846,7 +557,7 @@ public class PlayerListeners implements Listener{
 								if(main.tnt_bleu.getVie() ==main.Avancement_Max_Global_TNT) {
 									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §9bleue §ea été allumée!");
 									main.tnt_bleu.setEtat(EtatTNT.Allume);
-									TimerAllumageBlue start = new TimerAllumageBlue(main);
+									TimerAllumage start = new TimerAllumage(main,"Bleu");
 									start.runTaskTimer(main, 0, 20);
 								}
 							}
@@ -891,7 +602,7 @@ public class PlayerListeners implements Listener{
 								if(main.tnt_rouge.getVie() ==main.Avancement_Max_Global_TNT) {
 									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §crouge §ea été allumée!");
 									main.tnt_rouge.setEtat(EtatTNT.Allume);
-									TimerAllumageRed start = new TimerAllumageRed(main);
+									TimerAllumage start = new TimerAllumage(main,"Rouge");
 									start.runTaskTimer(main, 0, 20);
 								}
 							}
