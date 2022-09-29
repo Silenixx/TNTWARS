@@ -306,293 +306,21 @@ public class PlayerListeners implements Listener{
 		
 		
 		
-		if(inv.contains(Material.DIAMOND_SWORD) && inv.contains(Material.STONE_SWORD)) {
+		if(inv.contains(Material.HEART_OF_THE_SEA) && inv.contains(Material.BEACON)) {
 			
 			
 			
-			/*Kit kit = main.list_kits.stream()
-					.filter(k  ->  k.getItemSelection().equals(current))
-					.findAny()
-					.orElse(null);
+			Kit kit = main.list_kits.stream()
+					.filter(k  ->  k.getItemSelection().getType().equals(current.getType()))
+					.findFirst()
+					.get();
 			
 			
 			joueur.setProchainKit(kit); 
 			player.closeInventory();
-			player.sendMessage("§6[§eTntWars§6] §eKit "+ kit.getNom() +" sélectionné");*/
+			player.sendMessage("§6[§eTntWars§6] §eKit "+ kit.getNom() +" sélectionné");
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			if (current.getType()==Material.STONE_SWORD) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Tank)); 
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Tank sélectionné");
-				
-			}
-		
-			if (current.getType()==Material.DIAMOND_SWORD) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Guerrier));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Guerrier sélectionné");
-				
-			}
-			if (current.getType()==Material.BOW) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Archer));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Archer sélectionné");
-				
-			}
-			if (current.getType()==Material.ENDER_EYE) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Ghost));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Ghost sélectionné");
-				
-			}
-			if (current.getType()==Material.GLISTERING_MELON_SLICE) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Healer));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Healer sélectionné");
-				
-			}
-			if (current.getType()==Material.FLINT_AND_STEEL) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Pyro));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Pyro sélectionné");
-				
-			}
-			if (current.getType()==Material.SHEARS) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Builder));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Builder sélectionné");
-				
-			}
-			if (current.getType()==Material.BLAZE_ROD) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Sorcier));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Sorcier sélectionné");
-				
-			}
-			if (current.getType()==Material.POTION) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Alchimiste));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Alchimiste sélectionné");
-				
-			}
-			if (current.getType()==Material.ENDER_PEARL) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Endermen));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit EnderMan sélectionné");
-				
-			}
-			if (current.getType()==Material.SNOWBALL) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.SnowMan));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Snowman sélectionné");
-				
-			}
-			if (current.getType()==Material.END_CRYSTAL) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.OneShot));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit OneShot sélectionné");
-				
-			}
-			if (current.getType()==Material.BLACK_BANNER) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Ninja));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Ninja sélectionné");
-				
-			}
-			if (current.getType()==Material.AMETHYST_SHARD) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Savior));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Savior sélectionné");
-				
-			}
-			if (current.getType()==Material.DIAMOND_AXE) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Barbare));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Barbare sélectionné");
-				
-			}
-			if (current.getType()==Material.GUNPOWDER) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Creeper));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Creeper sélectionné");
-				
-			}
-			if (current.getType()==Material.BONE) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.DogMaster));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit DogMaster sélectionné");
-				
-			}
-			if (current.getType()==Material.SKELETON_SKULL) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Pirate));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Pirate sélectionné");
-				
-			}
-			if (current.getType()==Material.SADDLE) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Chevalier));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Chevalier sélectionné");
-				
-			}
-			if (current.getType()==Material.CARROT_ON_A_STICK) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.PigRider));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit PigRider sélectionné");
-				
-			}
-			if (current.getType()==Material.TRIDENT) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Trident));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Trident sélectionné");
-				
-			}
-			if (current.getType()==Material.ELYTRA) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Elytra));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Elytra sélectionné");
-				
-			}
-			if (current.getType()==Material.INK_SAC) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Squid));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Squid sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.STICK) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Gandalf));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Gandalf sélectionné");
-			}
-			
-			if (current.getType()==Material.SHIELD) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Shield));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Shield sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.CROSSBOW) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Arbalette));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Arbalette sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.FIRE_CHARGE) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Ghast));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Ghast sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.SHULKER_BOX) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Shulker));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Shulker sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.COBWEB) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Spider));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Spider sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.WITHER_SKELETON_SKULL) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Wither));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Wither sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.BAMBOO) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.PandaMan));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit PandaMan sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.PUFFERFISH) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Poison));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Poison sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.FISHING_ROD) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Pecheur));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Pêcheur sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.FIREWORK_ROCKET) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Rocketman));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Rocketman sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.BLAZE_POWDER) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Blaze));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Blaze sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.END_ROD) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Evocateur));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Evocateur sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.ARROW) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Archer2));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Archer version 2 sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.WHITE_GLAZED_TERRACOTTA) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Tacticien));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Tacticien sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.CLOCK) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Teleporteur));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Téléporteur sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.BEACON) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Spy));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Espion sélectionné");
-			}
-			
-			
-			if (current.getType()==Material.HEART_OF_THE_SEA) {
-				joueur.setProchainKit(main.list_kits.get(IndexKit.Hasard));
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit Hasard sélectionné");
-			}
-			
-			
+
 		}
 	}
 
@@ -780,6 +508,21 @@ public class PlayerListeners implements Listener{
 				Inventory inv2 = Bukkit.createInventory(null, 45, "§5Choix du kit");
 				
 				
+				int emplacement = 0;
+
+                for (Kit kit : main.list_kits) {
+
+                    ItemStack customironsword = new ItemStack(kit.getItemSelection().getType(),1);
+                    ItemMeta customIS = customironsword.getItemMeta();
+                    customIS.setDisplayName("§5Kit "+ kit.getNom());
+                    customIS.setLore(kit.getDescription());
+                    customironsword.setItemMeta(customIS);
+
+                    inv2.setItem(emplacement, customironsword);
+                    emplacement++;
+                }
+				
+				/*
 				ItemStack customironsword = new ItemStack(Material.STONE_SWORD,1);
 				ItemMeta customIS = customironsword.getItemMeta();
 				customIS.setDisplayName("§5Kit Tank");
@@ -788,7 +531,7 @@ public class PlayerListeners implements Listener{
 								
 				ItemStack customdiamondsword = new ItemStack(Material.DIAMOND_SWORD,1);
 				ItemMeta customDS = customdiamondsword.getItemMeta();
-				customDS.setDisplayName("§5Kit Soldat");
+				customDS.setDisplayName("§5Kit Guerrier");
 				customDS.setLore(Arrays.asList("§bArmure en fer","§bEpée en diamant","§dCe kit est fait pour les mordues de PVP.","§dVous ferez partie des combattants majeurs de votre équipe."));
 				customdiamondsword.setItemMeta(customDS);
 				
@@ -870,9 +613,9 @@ public class PlayerListeners implements Listener{
 				customBARBARE.setLore(Arrays.asList("§btest","§btest","§dtest"));
 				custombarbare.setItemMeta(customBARBARE);
 
-				ItemStack customtnt = new ItemStack(Material.TNT,1);
+				ItemStack customtnt = new ItemStack(Material.GUNPOWDER,1);
 				ItemMeta customTNT = customtnt.getItemMeta();
-				customTNT.setDisplayName("§5Kit Kamikaze");
+				customTNT.setDisplayName("§5Kit Creeper");
 				customTNT.setLore(Arrays.asList("§btest","§btest","§dtest"));
 				customtnt.setItemMeta(customTNT);
 
@@ -1068,7 +811,7 @@ public class PlayerListeners implements Listener{
 				inv2.setItem(37, customtacticien);
 				inv2.setItem(38, customteleporteur);
 				inv2.setItem(39, customspy);
-				inv2.setItem(40, customhasard);
+				inv2.setItem(40, customhasard);*/
 				
 				player.openInventory(inv2);
 				

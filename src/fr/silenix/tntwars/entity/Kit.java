@@ -1,6 +1,7 @@
 package fr.silenix.tntwars.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -18,24 +19,25 @@ public class Kit {
 	private PotionEffect Potioneffect;
 	private boolean IsVisible;
 	private ItemStack ItemSelection;
+	private List<String> Description;
 	
 	
 	
-	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,ItemStack MainWeapon,int PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible,ItemStack ItemSelection) {
-		super();
-		this.Nom=Nom;
-		this.Helmet=Helmet;
-		this.Chestplate=Chestplate;
-		this.Legging=Legging;
-		this.Boots=Boots ;
-		this.MainWeapon=MainWeapon;
-		this.PointVie=PointVie;
-		this.ItemsArray=ItemsArray;
-		this.Potioneffect=Potioneffect;
-		this.IsVisible=IsVisible;
-		this.ItemSelection=ItemSelection;
-		
-	}
+	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,ItemStack MainWeapon,int PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible,ItemStack ItemSelection, List<String>  description) {
+        super();
+        this.Nom=Nom;
+        this.Helmet=Helmet;
+        this.Chestplate=Chestplate;
+        this.Legging=Legging;
+        this.Boots=Boots ;
+        this.MainWeapon=MainWeapon;
+        this.PointVie=PointVie;
+        this.ItemsArray=ItemsArray;
+        this.Potioneffect=Potioneffect;
+        this.IsVisible=IsVisible;
+        this.ItemSelection=ItemSelection;
+        this.Description = description;
+    }
 	
 	
 	
@@ -106,6 +108,13 @@ public class Kit {
 	public void setItemSelection(ItemStack Selection) {
 		ItemSelection = Selection;
 	}
+	
+	public List<String>  getDescription() {
+        return Description;
+    }
+    public void setDescription(List<String>  description) {
+        Description = description;
+    }
 
 
 }
