@@ -306,16 +306,16 @@ public class PlayerListeners implements Listener{
 			
 			
 			/*Kit kit = main.list_kits.stream()
-					.filter(k->k.getItemSelection().getType() == current.getType())
+					.filter(k  ->  k.getItemSelection() == current)
 					.findAny()
 					.orElse(null);
 			
 			if (current.getType()==Material.STONE_SWORD) {
-				joueur.setProchainKit(kit); 
-				player.closeInventory();
-				player.sendMessage("§6[§eTntWars§6] §eKit "+ kit.getNom() +" sélectionné");
+			joueur.setProchainKit(kit); 
+			player.closeInventory();
+			player.sendMessage("§6[§eTntWars§6] §eKit "+ kit.getNom() +" sélectionné");*/
 				
-			}*/
+			
 			
 			
 			
