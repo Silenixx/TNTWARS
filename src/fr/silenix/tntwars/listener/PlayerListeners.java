@@ -15,6 +15,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.block.data.type.TNT;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.HumanEntity;
@@ -43,6 +44,7 @@ import fr.silenix.tntwars.GMain;
 
 import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.entity.Kit;
+import fr.silenix.tntwars.entity.Tnt;
 import fr.silenix.tntwars.tasks.TaskLancementPartie;
 import fr.silenix.tntwars.tasks.TaskRejoindPartieEnCours;
 import fr.silenix.tntwars.timer.TimerAllumage;
@@ -69,7 +71,7 @@ public class PlayerListeners implements Listener{
 		 Player player = event.getPlayer();
 		 
 		 
-		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.list_kits.get(IndexKit.Sans_Kit),main.list_kits.get(IndexKit.Sans_Kit));
+		 Joueur joueur = new Joueur(player,player.getName(),main.Sans_Equipe,main.Sans_Kit,main.Sans_Kit);
 		 main.listeConnecte.add(joueur);
 		 
 		 
@@ -340,30 +342,7 @@ public class PlayerListeners implements Listener{
 					  .findAny()
 					  .orElse(null);
             
-            /*if(!(player.getInventory().getItemInMainHand().getType() == Material.BLAZE_ROD)) {
-            	return;
-            }*/
-            
-            /*if(player.getInventory().getItemInMainHand().getType() == Material.BLAZE_ROD) {
-            	if(main.TeamBlue.contains(player) && main.TeamBlue.contains(victim)) {
-            		
-            		if(victim.getHealth()>17.0) {
-            			victim.setHealth(20.0);
-            		}else {
-            			victim.setHealth(victim.getHealth() + 1.0);
-            		}
-            		
-            	}
-            	
-            	if(main.TeamRed.contains(player) && main.TeamRed.contains(victim)) {
-            		
-            		if(victim.getHealth()>17.0) {
-            			victim.setHealth(20.0);
-            		}else {
-            			victim.setHealth(victim.getHealth() + 1.0);
-            		}
-            	}
-            }*/
+
             
             if(joueur.getEquipe()== joueur_victime.getEquipe()) {
 				
@@ -440,13 +419,9 @@ public class PlayerListeners implements Listener{
 			
 			if (it==null) return;
 			
-			//setStateTntBlue(GStateTntBlue.BLUE_ETTEINTE);
-			//setStateTntRed(GStateTntRed.RED_ETTEINTE);
-			
-			//Location tntblue = new Location (world, -5, 85, -9);
 			
 			
-			if(it.getType() == Material.COMPASS /*&& it.getItemMeta().getDisplayName().equalsIgnoreCase("Selectionneur d'équipe")*/){
+			if(it.getType() == Material.COMPASS ){
 
 
 				Inventory inv = Bukkit.createInventory(null, 27, "§7Choix d'équipe");
@@ -454,11 +429,9 @@ public class PlayerListeners implements Listener{
 				ItemStack customwoolteamblue = new ItemStack(Material.BLUE_WOOL,1);
 				ItemMeta customWTB = customwoolteamblue.getItemMeta();
 				customWTB.setDisplayName("Rejoindre l'équipe bleu");
-				
 				//customWTB.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
 				//customWTB.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customWTB.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
-				
 				customwoolteamblue.setItemMeta(customWTB);
 				
 				
@@ -469,13 +442,10 @@ public class PlayerListeners implements Listener{
 				ItemStack customwoolteamred = new ItemStack(Material.RED_WOOL,1);
 				ItemMeta customWTR = customwoolteamred.getItemMeta();
 				customWTR.setDisplayName("Rejoindre l'équipe rouge");
-				
 				//customWTR.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
 				//customWTR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				customWTR.setLore(Arrays.asList("premiere ligne","deuxieme","troisieme"));
-				
 				customwoolteamred.setItemMeta(customWTR);
-				
 				inv.setItem(11, customwoolteamred);
 				inv.setItem(14, customwoolteamblue);
 				
@@ -542,22 +512,33 @@ public class PlayerListeners implements Listener{
 				player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
 			}
 			
-
-				if(it.getType() == Material.BLAZE_POWDER &&  event.getAction()==Action.RIGHT_CLICK_BLOCK ) {
+			
+			
+			if(it.getType() == Material.BLAZE_POWDER  ) {
 				
-					if (joueur.getEquipe() != main.Equipe_bleu  && (main.map_en_cours.getLocationTntArray(1).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(1).getX()-3)  && (main.map_en_cours.getLocationTntArray(1).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(1).getZ()-3) ) {
-						
-						if (main.tnt_bleu.getEtat()==EtatTNT.Eteinte) {
+				
+				if ( event.getClickedBlock().getType() == Material.TNT &&  event.getAction()==Action.RIGHT_CLICK_BLOCK) {
+					
+					Tnt tnt = main.listTnt.stream()
+							.filter(t  ->  t.getLocation().equals(block.getLocation()))
+							.findFirst()
+							.get();
+					
+					
+					
+					if (joueur.getEquipe() != tnt.getEquipe()   ) {
+					
+						if (tnt.getEtat()==EtatTNT.Eteinte) {
 							
-							if (main.tnt_bleu.getVie()<main.Avancement_Max_Global_TNT && event.getClickedBlock().getType() == Material.TNT) {
-								main.tnt_bleu.setVie(main.tnt_bleu.getVie()+1);
+							if (tnt.getVie()<main.Avancement_Max_Global_TNT ) {
+								tnt.setVie(tnt.getVie()+1);
 								//Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 			
 								
-								if(main.tnt_bleu.getVie() ==main.Avancement_Max_Global_TNT) {
-									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §9bleue §ea été allumée!");
-									main.tnt_bleu.setEtat(EtatTNT.Allume);
-									TimerAllumage start = new TimerAllumage(main,"Bleu");
+								if(tnt.getVie() ==main.Avancement_Max_Global_TNT) {
+									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT "+tnt.getEquipe().getCouleur()+" §ea été allumée!");
+									tnt.setEtat(EtatTNT.Allume);
+									TimerAllumage start = new TimerAllumage(main,""+tnt.getEquipe().getCouleur());
 									start.runTaskTimer(main, 0, 20);
 								}
 							}
@@ -566,146 +547,41 @@ public class PlayerListeners implements Listener{
 				}
 				
 				
+			}
+			
+			
+			
+			
+			if (it.getType() == Material.FEATHER ) {
 				
-				
-				if (it.getType() == Material.FEATHER && event.getAction()==Action.RIGHT_CLICK_BLOCK) {
+				if(event.getClickedBlock().getType() == Material.TNT && event.getAction()==Action.RIGHT_CLICK_BLOCK) {
 					
-					if (main.tnt_bleu.getEtat()==EtatTNT.Allume && joueur.getEquipe() == main.Equipe_bleu && (main.map_en_cours.getLocationTntArray(1).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(1).getX()-3)  && (main.map_en_cours.getLocationTntArray(1).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(1).getZ()-3) ){
-						
-						if (main.tnt_bleu.getVie()>0 && event.getClickedBlock().getType() == Material.TNT) {
-							main.tnt_bleu.setVie(main.tnt_bleu.getVie()-1);
+					Tnt tnt = main.listTnt.stream()
+							.filter(t  ->  t.getLocation().equals(block.getLocation()))
+							.findFirst()
+							.get();
+					
+					
+					if (tnt.getEtat()==EtatTNT.Allume && joueur.getEquipe() == tnt.getEquipe()  ){
+					
+						if (tnt.getVie()>0 ) {
+							tnt.setVie(tnt.getVie()-1);
 							//Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
 						
-							if(main.tnt_bleu.getVie() ==0) {
-								Bukkit.broadcastMessage("§6[§eTntWars§6] §eLa TNT §9bleue §ea été étteinte.");
-								main.tnt_bleu.setEtat(EtatTNT.Eteinte);
+							if(tnt.getVie() ==0) {
+								Bukkit.broadcastMessage("§6[§eTntWars§6] §eLa TNT "+ tnt.getEquipe().getCouleur() +" §ea été étteinte.");
+								tnt.setEtat(EtatTNT.Eteinte);
 							}
 						}
 					}
+					
 				}
 				
+				
+			}
 			
 			
 			
-				if(it.getType() == Material.BLAZE_POWDER && event.getAction()==Action.RIGHT_CLICK_BLOCK   ) {
-				
-				  
-				
-					if (joueur.getEquipe() != main.Equipe_rouge && (main.map_en_cours.getLocationTntArray(0).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(0).getX()-3)  && (main.map_en_cours.getLocationTntArray(0).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(0).getZ()-3)  ) {
-						
-						
-						if (main.tnt_rouge.getEtat()==EtatTNT.Eteinte) {
-							if (main.tnt_rouge.getVie()<main.Avancement_Max_Global_TNT && event.getClickedBlock().getType() == Material.TNT) {
-								main.tnt_rouge.setVie(main.tnt_rouge.getVie()+1);
-								//Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
-							
-								if(main.tnt_rouge.getVie() ==main.Avancement_Max_Global_TNT) {
-									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §crouge §ea été allumée!");
-									main.tnt_rouge.setEtat(EtatTNT.Allume);
-									TimerAllumage start = new TimerAllumage(main,"Rouge");
-									start.runTaskTimer(main, 0, 20);
-								}
-							}
-						}
-					}
-				}
-				
-				
-				
-				if (it.getType() == Material.FEATHER && event.getAction()==Action.RIGHT_CLICK_BLOCK  ) {
-					
-					
-					if (main.tnt_rouge.getEtat()==EtatTNT.Allume && joueur.getEquipe() == main.Equipe_rouge &&  (main.map_en_cours.getLocationTntArray(0).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(0).getX()-3)  && (main.map_en_cours.getLocationTntArray(0).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(0).getZ()-3)) {
-						if (main.tnt_rouge.getVie()>0 && event.getClickedBlock().getType() == Material.TNT) {
-							main.tnt_rouge.setVie(main.tnt_rouge.getVie()-1);
-							//Bukkit.broadcastMessage("vie tnt bleu: "+ main.tnt_bleu.getVie()+"vie tnt rouge: "+ main.tnt_rouge.getVie());
-						
-							if(main.tnt_rouge.getVie() ==0) {
-								Bukkit.broadcastMessage("§6[§eTntWars§6] §eLa TNT §crouge §ea été étteinte.");
-								main.tnt_rouge.setEtat(EtatTNT.Eteinte);
-							}
-						}
-					}
-				}
-				
-				if(it.getType() == Material.BLAZE_POWDER && joueur.getEquipe() != main.Equipe_jaune && event.getAction()==Action.RIGHT_CLICK_BLOCK && main.map_en_cours.getNbEquipe()>=4) {
-					
-					  
-					
-					if (event.getClickedBlock().getType() == Material.TNT && (main.map_en_cours.getLocationTntArray(3).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(3).getX()-3)  && (main.map_en_cours.getLocationTntArray(3).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(3).getZ()-3)  ) {
-						
-						
-						if (main.tnt_jaune.getEtat()==EtatTNT.Eteinte) {
-							if (main.tnt_jaune.getVie()<main.Avancement_Max_Global_TNT) {
-								main.tnt_jaune.setVie(main.tnt_jaune.getVie()+1);
-							
-								if(main.tnt_jaune.getVie() ==main.Avancement_Max_Global_TNT) {
-									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §cjaune §ea été allumée!");
-									main.tnt_jaune.setEtat(EtatTNT.Allume);
-									//TimerAllumageYellow start = new TimerAllumageYellow(main);
-									//start.runTaskTimer(main, 0, 20);
-								}
-							}
-						}
-					}
-				}
-				
-				
-				
-				if (it.getType() == Material.FEATHER && joueur.getEquipe() == main.Equipe_jaune && main.map_en_cours.getNbEquipe()>=4) {
-					
-					
-					if (main.tnt_jaune.getEtat()==EtatTNT.Allume && event.getAction()==Action.RIGHT_CLICK_BLOCK &&  (main.map_en_cours.getLocationTntArray(3).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(3).getX()-3)  && (main.map_en_cours.getLocationTntArray(3).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(3).getZ()-3)) {
-						if (main.tnt_jaune.getVie()>0) {
-							main.tnt_jaune.setVie(main.tnt_jaune.getVie()-1);
-						
-							if(main.tnt_jaune.getVie() ==0) {
-								Bukkit.broadcastMessage("§6[§eTntWars§6] §eLa TNT §cjaune §ea été étteinte.");
-								main.tnt_jaune.setEtat(EtatTNT.Eteinte);
-							}
-						}
-					}
-				}
-			
-			
-				if(it.getType() == Material.BLAZE_POWDER && joueur.getEquipe() != main.Equipe_vert && event.getAction()==Action.RIGHT_CLICK_BLOCK && main.map_en_cours.getNbEquipe()>=3) {
-					
-					  
-					
-					if (event.getClickedBlock().getType() == Material.TNT && (main.map_en_cours.getLocationTntArray(2).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(2).getX()-3)  && (main.map_en_cours.getLocationTntArray(2).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(2).getZ()-3)  ) {
-						
-						
-						if (main.tnt_vert.getEtat()==EtatTNT.Eteinte) {
-							if (main.tnt_vert.getVie()<main.Avancement_Max_Global_TNT) {
-								main.tnt_vert.setVie(main.tnt_vert.getVie()+1);
-							
-								if(main.tnt_vert.getVie() ==main.Avancement_Max_Global_TNT) {
-									Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT §cjaune §ea été allumée!");
-									main.tnt_vert.setEtat(EtatTNT.Allume);
-									//TimerAllumageGreen start = new TimerAllumageGreen(main);
-									//start.runTaskTimer(main, 0, 20);
-								}
-							}
-						}
-					}
-				}
-				
-				
-				
-				if (it.getType() == Material.FEATHER && joueur.getEquipe() == main.Equipe_vert && main.map_en_cours.getNbEquipe()>=3) {
-					
-					
-					if (main.tnt_vert.getEtat()==EtatTNT.Allume && event.getAction()==Action.RIGHT_CLICK_BLOCK &&  (main.map_en_cours.getLocationTntArray(2).getX()+3)>block.getX() && block.getX()>(main.map_en_cours.getLocationTntArray(2).getX()-3)  && (main.map_en_cours.getLocationTntArray(2).getZ()+3)>block.getZ() && block.getZ()>(main.map_en_cours.getLocationTntArray(2).getZ()-3)) {
-						if (main.tnt_vert.getVie()>0) {
-							main.tnt_vert.setVie(main.tnt_vert.getVie()-1);
-						
-							if(main.tnt_vert.getVie() ==0) {
-								Bukkit.broadcastMessage("§6[§eTntWars§6] §eLa TNT §cjaune §ea été étteinte.");
-								main.tnt_vert.setEtat(EtatTNT.Eteinte);
-							}
-						}
-					}
-				}
 
 				if (it.getType() == Material.AMETHYST_SHARD && joueur.getKit()==main.list_kits.get(IndexKit.Savior)) {
 					if(joueur.getEquipe()==main.Equipe_bleu) {

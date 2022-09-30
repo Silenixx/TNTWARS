@@ -1,5 +1,7 @@
 package fr.silenix.tntwars.entity;
 
+import org.bukkit.Location;
+
 import Enum.EtatTNT;
 
 public class Tnt {
@@ -8,22 +10,30 @@ public class Tnt {
 	private EtatTNT Etat;
 	private int Timer;
 	private int Index;
+	private Location location;
 	
 	
 	
-	public Tnt(Equipe Equipe, int Vie, EtatTNT Etat, int Timer, int Index) {
+	public Tnt(Equipe Equipe, int Vie, EtatTNT Etat, int Timer, int Index, Location location) {
 		super();
 		this.Equipe=Equipe;
 		this.Vie=Vie;
 		this.Etat=Etat;
 		this.Timer = Timer;
 		this.Index = Index;
+		this.location = location;
 	}
 	
 	
 	
 	
 	
+	public Location getLocation() {
+		return location;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 	public Equipe getEquipe() {
 		return Equipe;
 	}

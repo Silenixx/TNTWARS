@@ -66,10 +66,12 @@ public class GMain extends JavaPlugin{
 	public Equipe Equipe_jaune = new Equipe("Jaune",false,new ItemStack(Material.YELLOW_WOOL,64));
 	public Equipe Sans_Equipe = new Equipe("Sans Equipe",true,null);
 	
-	public Tnt tnt_rouge = new Tnt(Equipe_rouge, 0, EtatTNT.Eteinte,30,0);
-	public Tnt tnt_bleu = new Tnt(Equipe_bleu, 0, EtatTNT.Eteinte,30,1);
-	public Tnt tnt_vert = new Tnt(Equipe_vert, 0, EtatTNT.Eteinte,30,2);
-	public Tnt tnt_jaune = new Tnt(Equipe_jaune, 0, EtatTNT.Eteinte,30,3);
+	public Tnt tnt_rouge = new Tnt(Equipe_rouge, 0, EtatTNT.Eteinte,30,0,null);
+	public Tnt tnt_bleu = new Tnt(Equipe_bleu, 0, EtatTNT.Eteinte,30,1,null);
+	public Tnt tnt_vert = new Tnt(Equipe_vert, 0, EtatTNT.Eteinte,30,2,null);
+	public Tnt tnt_jaune = new Tnt(Equipe_jaune, 0, EtatTNT.Eteinte,30,3,null);
+	
+	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true, new ItemStack(Material.ACACIA_BOAT),null);
 	
 	public ArrayList<Kit> list_kits;
 	public ArrayList<Tnt> listTnt = new ArrayList<>();;
@@ -105,11 +107,7 @@ public class GMain extends JavaPlugin{
 	PluginManager pm = getServer().getPluginManager();
 	
 	setState(EtatPartie.AttenteJoueur);
-
-	listTnt.add(tnt_bleu);
-	listTnt.add(tnt_rouge);
-	listTnt.add(tnt_vert);
-	listTnt.add(tnt_jaune);
+	
 	
 	
 	list_maps.add( 
@@ -118,7 +116,7 @@ public class GMain extends JavaPlugin{
 			"Sky",
 			new Location(world,431,132,7),
 			new ArrayList<Location>(Arrays.asList(new Location(world,501,13,24), new Location(world,365,13,4))),
-			new ArrayList<Location>(Arrays.asList(new Location(world,523,13,18), new Location(world,341,8,10))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,523,13,18), new Location(world,341,13,10))),
 			new Location(world,501,13,24),
 			new Location(world,221,-66,-114),
 			new Location(world,644,103,141)));
@@ -128,7 +126,7 @@ public class GMain extends JavaPlugin{
 			"Chateau",
 			new Location(world,30,167,-315),
 			new ArrayList<Location>(Arrays.asList(new Location(world,30,11,-242), new Location(world,30,11,-386))),
-			new ArrayList<Location>(Arrays.asList(new Location(world,30,9,-257), new Location(world,30,9,-371))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,30,9,-258), new Location(world,30,9,-372))),
 			new Location(world,31,13,-320),
 			new Location(world,-55,-21,-442),
 			new Location(world,103,125,-205)));
@@ -138,7 +136,7 @@ public class GMain extends JavaPlugin{
 			"LushCave",
 			new Location(world,-253,44,-343),
 			new ArrayList<Location>(Arrays.asList(new Location(world,-282,22,-319), new Location(world,-274,23,-227))),
-			new ArrayList<Location>(Arrays.asList(new Location(world,-319,25,-314), new Location(world,-265,23,-199))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,-320,25,-315), new Location(world,-266,23,-200))),
 			new Location(world,-300,20,-263),
 			new Location(world,-356,8,-346),
 			new Location(world,-184,102,-185)));
@@ -148,7 +146,7 @@ public class GMain extends JavaPlugin{
 			"Japon",
 			new Location(world,443,216,-558),
 			new ArrayList<Location>(Arrays.asList(new Location(world,404,65,-602), new Location(world,410,64,-514))),
-			new ArrayList<Location>(Arrays.asList(new Location(world,434,76,-641), new Location(world,428,72,-486))),
+			new ArrayList<Location>(Arrays.asList(new Location(world,434,76,-642), new Location(world,428,71,-487))),
 			new Location(world,439,60,-558),
 			new Location(world,357,0,-676),
 			new Location(world,556,189,-421)));
@@ -626,4 +624,34 @@ public class GMain extends JavaPlugin{
 	public void setState(EtatPartie EtatPartie) {
 		this.Etat = EtatPartie;
 	}
+
+
+	public void PutLocationInTnt(int NBEQUIPE) {
+		
+		tnt_rouge.setLocation(map_en_cours.getLocationTntArray(0));
+		tnt_bleu.setLocation(map_en_cours.getLocationTntArray(1));
+		switch (NBEQUIPE) {
+		case 2:
+			break;
+			
+		case 3:
+			tnt_vert.setLocation(map_en_cours.getLocationTntArray(2));
+			break;
+		case 4 :
+			tnt_jaune.setLocation(map_en_cours.getLocationTntArray(3));
+			break;
+		default:
+			System.out.println("erreur alloue location tnt");	
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

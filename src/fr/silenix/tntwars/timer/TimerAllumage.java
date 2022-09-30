@@ -36,7 +36,8 @@ public class TimerAllumage extends BukkitRunnable{
     
 		if(tnt.getEtat()==EtatTNT.Eteinte){
 			Bukkit.broadcastMessage("§6[§eTntWars§6] §eExplosion Tnt "+ couleur+"  §eévitée.");
-			tnt.setVie(30);
+			tnt.setVie(0);
+			tnt.setTimer(30);
 			cancel();
 		}
 		else if(main.isState(EtatPartie.FinJeu)) {

@@ -27,8 +27,8 @@ public class CreateKit {
 		ArrayList<Kit> list_kits = new ArrayList<Kit>();
 		int Vie_Global_Joueur = 40;
 		
-		Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true, new ItemStack(Material.ACACIA_BOAT),null);
-		list_kits.add(Sans_Kit);
+		
+		//list_kits.add(Sans_Kit);
 		
 
 		

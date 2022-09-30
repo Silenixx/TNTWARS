@@ -41,7 +41,7 @@ public class TaskDebutPartie extends BukkitRunnable{
 					Joueur joueur = main.listeJoueurs.get(i);
 					main.SpawnTeleportation(joueur);
 					joueur.getPlayer().getInventory().clear();
-					if(joueur.getProchainKit()==main.list_kits.get(IndexKit.Sans_Kit)) {
+					if(joueur.getProchainKit()==main.Sans_Kit) {
 						joueur.setProchainKit(main.list_kits.get(IndexKit.Guerrier));
 					}
 					main.GamePlay(joueur);

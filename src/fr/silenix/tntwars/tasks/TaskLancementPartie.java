@@ -48,12 +48,18 @@ public class TaskLancementPartie extends BukkitRunnable{
 				main.map_en_cours = main.list_maps.get(value_random_en_cours-1);
 				Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map §6" + main.map_en_cours.Nom + "§e a été choisie.");
 				
+				main.PutLocationInTnt(main.map_en_cours.getNbEquipe());
+				
+				main.listTnt.add(main.tnt_rouge);
+				main.listTnt.add(main.tnt_bleu);
+				main.listTnt.add(main.tnt_vert);
+				main.listTnt.add(main.tnt_jaune);
+				
 				main.efface_laine();
 				
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall parrot world");
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall pig world");
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall horse world");
-				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall dog world");
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall wolf world");
 				
 				for(int i=0; i < main.listeJoueurs.size(); i++) {
