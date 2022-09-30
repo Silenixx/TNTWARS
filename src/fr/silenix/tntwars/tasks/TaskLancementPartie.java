@@ -50,11 +50,11 @@ public class TaskLancementPartie extends BukkitRunnable{
 				
 				main.efface_laine();
 				
-				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall parrot");
-				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall pig");
-				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall horse");
-				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall dog");
-				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall wolf");
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall parrot world");
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall pig world");
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall horse world");
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall dog world");
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"killall wolf world");
 				
 				for(int i=0; i < main.listeJoueurs.size(); i++) {
 					Joueur joueur = main.listeJoueurs.get(i);

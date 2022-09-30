@@ -140,7 +140,7 @@ public class CreateKit {
 					null,
 					true,
 					new ItemStack(Material.END_CRYSTAL),
-					Arrays.asList("\\bEpee en netherite\",\"§bPas d'armure","§dUn coup d'épée et il est mort"));
+					Arrays.asList("\\Epee en netherite\",\"§bPas d'armure","§dUn coup d'épée et il est mort"));
 		list_kits.add(OneShot);
 		
 		
@@ -163,7 +163,7 @@ public class CreateKit {
 					null,
 					true,
 					new ItemStack(Material.ELYTRA),
-					Arrays.asList("\\bEpee en pierre\",\"§bUne paire d'élytre et une rocket","§denvolez vous dans les cieux"));
+					Arrays.asList("\\Epee en pierre\",\"§bUne paire d'élytre et une rocket","§denvolez vous dans les cieux"));
 		list_kits.add(Elytra);
 		
 		
@@ -226,7 +226,7 @@ public class CreateKit {
 					null,
 					true,
 					new ItemStack(Material.AMETHYST_SHARD),
-					Arrays.asList("\\bEpee en pierre\",\"§bDe quoi soigner","§dMerci toubib"));
+					Arrays.asList("\\Epee en pierre\",\"§bDe quoi soigner","§dMerci toubib"));
 		list_kits.add(Savior);
 		
 		
@@ -249,7 +249,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.CARROT_ON_A_STICK),
-						Arrays.asList("\\bCanne à pêche carotte\",\"§bUne horde de cochons","§dDevenez un véritable dresseur"));
+						Arrays.asList("\\Canne à pêche carotte\",\"§bUne horde de cochons","§dDevenez un véritable dresseur"));
 		list_kits.add(PigRider);
 		
 		
@@ -271,7 +271,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.SADDLE),
-						Arrays.asList("\\bUne épée en fer\",\"§bUne armure en fer","§dUn cheval et vous voila au moyen-age"));
+						Arrays.asList("\\Une épée en fer\",\"§bUne armure en fer","§dUn cheval et vous voila au moyen-age"));
 		list_kits.add(Chevalier);
 		
 		
@@ -298,7 +298,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.SPYGLASS),
-						Arrays.asList("\\bUne épée en fer\",\"§bUne armure en fer","§dL'apnée ca vous connait, ne seriez vous pas Jack Sparrow?"));
+						Arrays.asList("\\Une épée en fer\",\"§bUne armure en fer","§dL'apnée ca vous connait, ne seriez vous pas Jack Sparrow?"));
 		list_kits.add(Pirate);
 		
 		
@@ -320,7 +320,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.BONE),
-						Arrays.asList("\\bUne épée en fer\",\"§bUne armure en fer","§dUne horde de loup, un vrai éléveur"));
+						Arrays.asList("\\Une épée en fer\",\"§bUne armure en fer","§dUne horde de loup, un vrai éléveur"));
 		list_kits.add(DogMaster);
 		
 		
@@ -349,7 +349,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.TRIDENT),
-						Arrays.asList("\\bUne épée en pierre et un tridant\",\"§bUne armure en fer","§dQui vois je , Aquaman c'est toi?"));
+						Arrays.asList("\\Une épée en pierre et un tridant\",\"§bUne armure en fer","§dQui vois je , Aquaman c'est toi?"));
 		list_kits.add(Trident);
 		
 		
@@ -370,7 +370,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.INK_SAC),
-						Arrays.asList("\\bUne épée en fer\",\"§bUne armure en fer","§dRendez aveugle vos adversaires"));
+						Arrays.asList("\\Une épée en fer\",\"§bUne armure en fer","§dRendez aveugle vos adversaires"));
 		list_kits.add(Squid);
 		
 		
@@ -391,7 +391,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.DIAMOND_AXE),
-						Arrays.asList("\\bUne épée en diamant\",\"§bUne armure en fer et chaine","§dUne vrai brute, quel carnage!!"));
+						Arrays.asList("\\Une épée en diamant\",\"§bUne armure en fer et chaine","§dUne vrai brute, quel carnage!!"));
 		list_kits.add(Barbare);
 		
 		
@@ -412,7 +412,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.SNOWBALL),
-						Arrays.asList("\\bUne épée en fer\",\"§bUne armure en fer","§dRedenvez un enfant et faites une bataille de boule de neige"));
+						Arrays.asList("\\Une épée en fer\",\"§bUne armure en fer","§dRedenvez un enfant et faites une bataille de boule de neige"));
 		list_kits.add(SnowMan);
 		
 		
@@ -433,7 +433,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.DIAMOND_CHESTPLATE),
-						Arrays.asList("bArmure en diamand","bEpe en pierre","dCe kit n'est pas fait pour la ngociation.","dLancez vous dans le combat avec pour craser vos enemeies"));
+						Arrays.asList("Armure en diamand","bEpe en pierre","dCe kit n'est pas fait pour la ngociation.","dLancez vous dans le combat avec pour craser vos enemeies"));
 		list_kits.add(Tank);
 		
 		
@@ -460,7 +460,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.BOW),
-						Arrays.asList("bArc enchant","bArmure en maille","dLe kit archer est un soutien essentiel pour votre équipe."));
+						Arrays.asList("Arc enchant","bArmure en maille","dLe kit archer est un soutien essentiel pour votre équipe."));
 		list_kits.add(Archer);
 		
 		
@@ -488,7 +488,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.BLAZE_ROD),
-						Arrays.asList("\\bUne baguette magiue\",\"§bUne armure en fer","§dDevenez un vrai magicien \",\"dle temps d'une partie"));
+						Arrays.asList("\\Une baguette magiue\",\"§bUne armure en fer","§dDevenez un vrai magicien \",\"dle temps d'une partie"));
 		list_kits.add(Sorcier);
 		
 		
@@ -509,7 +509,7 @@ public class CreateKit {
 						null,
 						false,
 						new ItemStack(Material.ENDER_EYE),
-						Arrays.asList("bEpe en bois","bTotalement invisible","dLe kit Ghost vous rendra invisivle pour ","dinfiltrer les lignes enemies. Soyez discret et assasin."));
+						Arrays.asList("Epe en bois","bTotalement invisible","dLe kit Ghost vous rendra invisivle pour ","dinfiltrer les lignes enemies. Soyez discret et assasin."));
 		list_kits.add(Ghost);
 		
 		
@@ -530,7 +530,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.GLISTERING_MELON_SLICE),
-						Arrays.asList("bEpe en pierre","bArmure maille","dLe kit des medecins, utilisez-le ","dpour soigner vos compagnons."));
+						Arrays.asList("Epée en pierre","bArmure maille","dLe kit des medecins, utilisez-le ","dpour soigner vos compagnons."));
 		list_kits.add(Healer);
 		
 		
@@ -552,7 +552,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.FLINT_AND_STEEL),
-						Arrays.asList("bEpee en pierre","bArmure fer","dPour les pyroman du dimanche "));
+						Arrays.asList("Epee en pierre","bArmure fer","dPour les pyroman du dimanche "));
 		list_kits.add(Pyro);
 		
 		
@@ -573,7 +573,7 @@ public class CreateKit {
 						null,
 						true,
 						new ItemStack(Material.SHEARS),
-						Arrays.asList("bEpee en fer","bArmure fer","dCa manque de déco ici! "));
+						Arrays.asList("Epee en fer","bArmure fer","dCa manque de déco ici! "));
 		list_kits.add(Builder);
 		
 		
