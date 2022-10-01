@@ -319,8 +319,9 @@ public class PlayerListeners implements Listener{
 			
 			
 			joueur.setProchainKit(kit); 
-			player.closeInventory();
 			player.sendMessage("§6[§eTntWars§6] §eKit "+ kit.getNom() +" sélectionné");
+			player.closeInventory();
+			
 			
 
 		}

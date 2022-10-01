@@ -4,7 +4,7 @@ public class IndexKit {
 
 	public static final int Sans_Kit = 0;
 	public static final int Guerrier = 1;
-	public static final int Endermen = 2;
+	public static final int Enderman = 2;
 	public static final int Creeper = 3;
 	public static final int OneShot = 4;
 	public static final int Elytra = 5;

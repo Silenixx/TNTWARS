@@ -20,10 +20,11 @@ public class Kit {
 	private boolean IsVisible;
 	private ItemStack ItemSelection;
 	private List<String> Description;
+	private String DroitAcces;
 	
 	
 	
-	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,ItemStack MainWeapon,int PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible,ItemStack ItemSelection, List<String>  description) {
+	public Kit(String Nom, ItemStack Helmet, ItemStack Chestplate, ItemStack Legging,ItemStack Boots,ItemStack MainWeapon,int PointVie, ArrayList<ItemStack> ItemsArray, PotionEffect Potioneffect, boolean IsVisible,ItemStack ItemSelection, List<String>  description, String DroitAcces) {
         super();
         this.Nom=Nom;
         this.Helmet=Helmet;
@@ -37,11 +38,18 @@ public class Kit {
         this.IsVisible=IsVisible;
         this.ItemSelection=ItemSelection;
         this.Description = description;
+        this.DroitAcces = DroitAcces;
     }
 	
 	
 	
 	
+	public String getDroitAcces() {
+		return DroitAcces;
+	}
+	public void setDroitAcces(String droitAcces) {
+		DroitAcces = droitAcces;
+	}
 	public String getNom() {
 		return Nom;
 	}

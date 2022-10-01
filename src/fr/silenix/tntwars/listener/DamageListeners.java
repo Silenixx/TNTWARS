@@ -136,7 +136,7 @@ public class DamageListeners implements Listener{
 				  .orElse(null));
 
         if (m == Material.WATER) {
-        	if(joueur.getKit()== main.list_kits.get(IndexKit.Endermen)) {
+        	if(joueur.getKit()== main.list_kits.get(IndexKit.Enderman)) {
         		main.eliminate(pl);;
         		pl.sendMessage("un enderman ne peut pas nager ");
         	}
@@ -181,7 +181,7 @@ public class DamageListeners implements Listener{
 						event.setCancelled(true);
 						return;
 						}
-					if(joueur_victime.getKit()==main.list_kits.get(IndexKit.Endermen)) {
+					if(joueur_victime.getKit()==main.list_kits.get(IndexKit.Enderman)) {
 						event.setDamage(0);
 						event.setCancelled(true);
 						return;
@@ -383,7 +383,7 @@ public class DamageListeners implements Listener{
 					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.Elytra)) {
 						killer_parjoueur.getInventory().addItem(new ItemStack(Material.FIREWORK_ROCKET));
 					}
-					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.Endermen)) {
+					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.Enderman)) {
 						killer_parjoueur.getInventory().addItem(new ItemStack(Material.ENDER_PEARL));
 					}
 					if(joueur_killer.getKit()==main.list_kits.get(IndexKit.Ninja)) {

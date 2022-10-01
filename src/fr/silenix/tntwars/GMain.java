@@ -71,7 +71,7 @@ public class GMain extends JavaPlugin{
 	public Tnt tnt_vert = new Tnt(Equipe_vert, 0, EtatTNT.Eteinte,30,2,null);
 	public Tnt tnt_jaune = new Tnt(Equipe_jaune, 0, EtatTNT.Eteinte,30,3,null);
 	
-	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true, new ItemStack(Material.ACACIA_BOAT),null);
+	public Kit Sans_Kit = new Kit("Sans Kit",null,null,null,null,null,Vie_Global_Joueur,null,null,true, new ItemStack(Material.ACACIA_BOAT),null,"tnt.sanskit");
 	
 	public ArrayList<Kit> list_kits;
 	public ArrayList<Tnt> listTnt = new ArrayList<>();;
