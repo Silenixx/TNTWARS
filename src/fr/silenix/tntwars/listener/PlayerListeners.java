@@ -322,8 +322,10 @@ public class PlayerListeners implements Listener{
 			player.sendMessage("§6[§eTntWars§6] §eKit "+ kit.getNom() +" sélectionné");
 			player.closeInventory();
 			
+			//verifier le goupe du joueur et refuser l'acces à un kit interdit
 			
-
+			
+			
 		}
 	}
 
@@ -492,6 +494,8 @@ public class PlayerListeners implements Listener{
                     inv2.setItem(emplacement, customironsword);
                     emplacement++;
                 }
+                //
+                //bonus: dercription verte disponible si accès, en rouge indisponible sinon
 				
 				
 				
