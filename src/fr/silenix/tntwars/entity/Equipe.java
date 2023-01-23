@@ -1,36 +1,53 @@
-package fr.silenix.tntwars.entity;
-import org.bukkit.inventory.ItemStack;
+/*    */ package fr.silenix.tntwars.entity;
+/*    */ 
+/*    */ import org.bukkit.Material;
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ public class Equipe
+/*    */ {
+/*    */   private String Couleur;
+/*    */   private boolean IsAlive;
+/*    */   private Material laine;
+/*    */   private Material BlockTactique;
+/*    */   
+/*    */   public Equipe(String Couleur, boolean IsAlive, Material laine, Material BlockTactique) {
+/* 17 */     this.Couleur = Couleur;
+/* 18 */     this.IsAlive = IsAlive;
+/* 19 */     this.laine = laine;
+/* 20 */     this.BlockTactique = BlockTactique;
+/*    */   }
+/*    */   
+/*    */   public String getCouleur() {
+/* 24 */     return this.Couleur;
+/*    */   }
+/*    */   public void setCouleur(String couleur) {
+/* 27 */     this.Couleur = couleur;
+/*    */   }
+/*    */   public boolean getIsAlive() {
+/* 30 */     return this.IsAlive;
+/*    */   }
+/*    */   public void setIsAlive(boolean isAlive) {
+/* 33 */     this.IsAlive = isAlive;
+/*    */   }
+/*    */   public Material getLaine() {
+/* 36 */     return this.laine;
+/*    */   }
+/*    */   public void setLaine(Material laine) {
+/* 39 */     this.laine = laine;
+/*    */   }
+/*    */   public Material getBlockTactique() {
+/* 42 */     return this.BlockTactique;
+/*    */   }
+/*    */   public void setBlockTactique(Material BlockTactique) {
+/* 45 */     this.BlockTactique = BlockTactique;
+/*    */   }
+/*    */ }
 
-public class Equipe {
 
-    private String Couleur;
-    /*private Team ScoreBoardTeam;*/
-    private boolean IsAlive;
-    private ItemStack laine;
-
-    public Equipe(String Couleur, boolean IsAlive, ItemStack laine) {
-    	super();
-    	this.Couleur=Couleur;
-    	this.IsAlive=IsAlive;
-    	this.laine=laine;
-	}
-    
-	public String getCouleur() {
-        return Couleur;
-    }
-    public void setCouleur(String couleur) {
-        this.Couleur = couleur;
-    }
-    public boolean getIsAlive() {
-        return IsAlive;
-    }
-    public void setIsAlive(boolean isAlive) {
-        this.IsAlive = isAlive;
-    }
-    public ItemStack getLaine() {
-        return laine;
-    }
-    public void setLaine(ItemStack laine) {
-        this.laine = laine;
-    }
-}
+/* Location:              C:\Users\Lukas\Desktop\plugin export\tntwars.jar!\fr\silenix\tntwars\entity\Equipe.class
+ * Java compiler version: 17 (61.0)
+ * JD-Core Version:       1.1.3
+ */

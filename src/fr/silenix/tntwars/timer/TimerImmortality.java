@@ -1,47 +1,52 @@
-package fr.silenix.tntwars.timer;
+/*    */ package fr.silenix.tntwars.timer;
+/*    */ 
+/*    */ import fr.silenix.tntwars.GMain;
+/*    */ import org.bukkit.entity.Player;
+/*    */ import org.bukkit.scheduler.BukkitRunnable;
+/*    */ 
+/*    */ public class TimerImmortality
+/*    */   extends BukkitRunnable
+/*    */ {
+/* 10 */   private int timer = 3;
+/*    */   
+/*    */   private Player player;
+/*    */   
+/*    */   private GMain main;
+/*    */   
+/*    */   public TimerImmortality(GMain main, Player player) {
+/* 17 */     this.main = main;
+/* 18 */     this.player = player;
+/*    */   }
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */   
+/*    */   public void run() {
+/* 25 */     if (this.timer == 3) {
+/* 26 */       this.player.setInvulnerable(true);
+/* 27 */       this.player.sendMessage("Â§6[Â§eTntWarsÂ§6] Â§eImmortalitÃ© pendant 3 Â§bsecondes");
+/*    */     } 
+/* 29 */     if (this.timer == 2) {
+/* 30 */       this.player.sendMessage("Â§6[Â§eTntWarsÂ§6] Â§eImmortalitÃ© pendant 2 Â§bsecondes");
+/*    */     }
+/* 32 */     if (this.timer == 1) {
+/* 33 */       this.player.sendMessage("Â§6[Â§eTntWarsÂ§6] Â§eImmortalitÃ© pendant 1 Â§bseconde");
+/*    */     }
+/* 35 */     if (this.timer == 0) {
+/* 36 */       this.player.sendMessage("Â§6[Â§eTntWarsÂ§6] Â§eFin d'ImmortalitÃ©");
+/*    */       
+/* 38 */       this.player.setInvulnerable(false);
+/* 39 */       cancel();
+/*    */     } 
+/*    */ 
+/*    */ 
+/*    */     
+/* 44 */     this.timer--;
+/*    */   }
+/*    */ }
 
-import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
-public class TimerImmortality extends BukkitRunnable{
-
-	private int timer=3;
-	private Player player;
-	
-	
-	
-	
-	public TimerImmortality(Player player) {
-		this.player = player;
-	}
-	
-	
-	@Override
-	public void run() {
-
-		if (timer==3) {
-			player.setInvulnerable(true);
-			//player.sendMessage("§5[§dSilenixGames§5] §bRespawn dans §54 §bsecondes");
-		}
-		if (timer==2) {
-			//player.sendMessage("§5[§dSilenixGames§5] §bRespawn dans §52 §bsecondes");
-		}
-		if (timer==1) {
-			//player.sendMessage("§5[§dSilenixGames§5] §bRespawn dans §51 §bseconde");
-		}
-		if (timer==0) {
-			//player.sendMessage("§5[§dSilenixGames§5]Respawn en cours");
-			//main.respawn(player);
-			player.setInvulnerable(false);
-			cancel();
-			
-			
-		}
-		
-		timer--;
-		
-	}
-	
-	
-
-}
+/* Location:              C:\Users\Lukas\Desktop\plugin export\tntwars.jar!\fr\silenix\tntwars\timer\TimerImmortality.class
+ * Java compiler version: 17 (61.0)
+ * JD-Core Version:       1.1.3
+ */

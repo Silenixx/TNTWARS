@@ -1,42 +1,48 @@
-package fr.silenix.tntwars.tasks;
-import org.bukkit.Bukkit;
-import org.bukkit.World;
-import org.bukkit.scheduler.BukkitRunnable;
-import Fonctions.IndexKit;
-import fr.silenix.tntwars.GMain;
-import fr.silenix.tntwars.entity.Joueur;
+/*    */ package fr.silenix.tntwars.tasks;
+/*    */ 
+/*    */ import fr.silenix.tntwars.GMain;
+/*    */ import fr.silenix.tntwars.entity.Joueur;
+/*    */ import org.bukkit.Bukkit;
+/*    */ import org.bukkit.World;
+/*    */ import org.bukkit.scheduler.BukkitRunnable;
+/*    */ 
+/*    */ public class TaskRejoindPartieEnCours extends BukkitRunnable {
+/*    */   private GMain main;
+/*    */   private Joueur joueur;
+/* 12 */   static World world = Bukkit.getWorld("world");
+/* 13 */   private int timer = 10;
+/*    */   
+/*    */   public TaskRejoindPartieEnCours(GMain main, Joueur joueur) {
+/* 16 */     this.main = main;
+/* 17 */     this.joueur = joueur;
+/*    */   }
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */   
+/*    */   public void run() {
+/* 24 */     if (this.joueur.getEquipe() != this.main.Sans_Equipe) {
+/*    */       
+/* 26 */       if (this.timer == 35 || this.timer == 10 || this.timer == 5 || this.timer == 4 || this.timer == 3 || this.timer == 2 || this.timer == 1 || this.timer == 0) {
+/* 27 */         this.joueur.getPlayer().sendMessage("Â§6[Â§eTntWarsÂ§6] Â§eVous allez rejoindre la partie dans Â§5" + this.timer + "Â§b secondes.");
+/* 28 */         if (this.timer == 0) {
+/* 29 */           this.joueur.getPlayer().sendMessage("Â§6[Â§eTntWarsÂ§6] Â§eVous avez rejoind le jeu. Amusez vous bien!");
+/* 30 */           if (this.joueur.getKit() == this.main.Sans_Kit) {
+/* 31 */             this.joueur.setKit(this.main.list_kits.get(0));
+/* 32 */             this.joueur.setProchainKit(this.main.list_kits.get(0));
+/*    */           } 
+/* 34 */           this.joueur.getPlayer().getInventory().clear();
+/* 35 */           this.main.respawn(this.joueur.getPlayer());
+/* 36 */           cancel();
+/*    */         } 
+/*    */       } 
+/* 39 */       this.timer--;
+/*    */     } 
+/*    */   }
+/*    */ }
 
-public class TaskRejoindPartieEnCours extends BukkitRunnable{
-	private GMain main;
-	private Joueur joueur;
-	static World world = Bukkit.getWorld("world");
-	private int timer=10;
-	
-	public TaskRejoindPartieEnCours(GMain main, Joueur joueur) {
-		this.main = main;
-		this.joueur = joueur;
-	}
 
-	
-	@Override
-	public void run() {
-
-		if(joueur.getEquipe() != main.Sans_Equipe) {
-		
-			if(timer==35 || timer ==10 || timer ==5 || timer==4 || timer==3|| timer==2|| timer==1 || timer==0) {
-				joueur.getPlayer().sendMessage("§5[§dSilenixGames§5] §bVous allez rejoindre la partie dans §5" + timer +"§b secondes.");
-				if(timer == 0) {
-					joueur.getPlayer().sendMessage("§5[§dSilenixGames§5] §bVous avez rejoind le jeu. Amusez vous bien!");
-					if(joueur.getKit()==main.list_kits.get(IndexKit.Sans_Kit)) {
-						joueur.setKit(main.list_kits.get(IndexKit.Guerrier));
-					}
-					joueur.getPlayer().getInventory().clear();
-					main.respawn(joueur.getPlayer());
-					cancel();
-				}
-			}
-		timer--;
-		}
-	}	
-
-}
+/* Location:              C:\Users\Lukas\Desktop\plugin export\tntwars.jar!\fr\silenix\tntwars\tasks\TaskRejoindPartieEnCours.class
+ * Java compiler version: 17 (61.0)
+ * JD-Core Version:       1.1.3
+ */

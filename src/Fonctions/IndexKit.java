@@ -1,51 +1,91 @@
 package Fonctions;
 
 public class IndexKit {
-
-	public static final int Sans_Kit = 0;
-	public static final int Guerrier = 1;
-	public static final int Enderman = 2;
-	public static final int Creeper = 3;
-	public static final int OneShot = 4;
-	public static final int Elytra = 5;
-	public static final int Ninja = 6;
-	public static final int Savior = 7;
-	public static final int PigRider = 8;
-	public static final int Chevalier = 9;
-	public static final int Pirate = 10;
-	public static final int DogMaster = 11;
-	public static final int Trident = 12;
-	public static final int Squid = 13;
-	public static final int Barbare = 14;
-	public static final int SnowMan = 15;
-	public static final int Tank = 16;
-	public static final int Archer = 17;
-	public static final int Sorcier = 18;
-	public static final int Ghost = 19;
-	public static final int Healer = 20;
-	public static final int Pyro = 21;
-	public static final int Builder = 22;
-	public static final int Alchimiste = 23;
-	
-	public static final int Gandalf = 24;
-	public static final int Shield = 25;
-	public static final int Arbalette = 26;
-	public static final int Ghast = 27;
-	public static final int Shulker = 28;
-	public static final int Spider = 29;
-	public static final int Wither = 30;
-	public static final int PandaMan = 31;
-	public static final int Poison = 32;
-	public static final int Pecheur = 33;
-	public static final int Rocketman = 34;
-	public static final int Blaze = 35;
-	public static final int Evocateur = 36;
-	public static final int Archer2 = 37;
-	public static final int Tacticien = 38;
-	public static final int Teleporteur = 39;
-	public static final int Spy = 40;
-	public static final int Hasard = 41;
-	
-	
-	
+  public static final int Guerrier = 0;
+  
+  public static final int Enderman = 1;
+  
+  public static final int Creeper = 2;
+  
+  public static final int OneShot = 3;
+  
+  public static final int Elytra = 4;
+  
+  public static final int Ninja = 5;
+  
+  public static final int Savior = 6;
+  
+  public static final int PigRider = 7;
+  
+  public static final int Chevalier = 8;
+  
+  public static final int Pirate = 9;
+  
+  public static final int DogMaster = 10;
+  
+  public static final int Trident = 11;
+  
+  public static final int Squid = 12;
+  
+  public static final int Barbare = 13;
+  
+  public static final int SnowMan = 14;
+  
+  public static final int Tank = 15;
+  
+  public static final int Archer = 16;
+  
+  public static final int Sorcier = 17;
+  
+  public static final int Ghost = 18;
+  
+  public static final int Healer = 19;
+  
+  public static final int Pyro = 20;
+  
+  public static final int Builder = 21;
+  
+  public static final int Alchimiste = 22;
+  
+  public static final int Gandalf = 23;
+  
+  public static final int Shield = 24;
+  
+  public static final int Arbalette = 25;
+  
+  public static final int Ghast = 26;
+  
+  public static final int Shulker = 27;
+  
+  public static final int Spider = 28;
+  
+  public static final int Wither = 29;
+  
+  public static final int PandaMan = 30;
+  
+  public static final int Poison = 31;
+  
+  public static final int Pecheur = 32;
+  
+  public static final int Rocketman = 33;
+  
+  public static final int Blaze = 34;
+  
+  public static final int Evocateur = 35;
+  
+  public static final int Archer2 = 36;
+  
+  public static final int Tacticien = 37;
+  
+  public static final int Teleporteur = 38;
+  
+  public static final int Spy = 39;
+  
+  public static final int Hasard = 40;
 }
+
+
+/* Location:              C:\Users\Lukas\Desktop\plugin export\tntwars.jar!\Fonctions\IndexKit.class
+ * Java compiler version: 17 (61.0)
+ * JD-Core Version:       1.1.3
+ */
