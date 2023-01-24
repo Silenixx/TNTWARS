@@ -1160,11 +1160,13 @@
            ), "tnt.teleporteur");
      list_kits.add(Teleporteur);
 
-
+     ItemStack skull_Spy = PlayerHead.customPlayerHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg3YTk1MzZiNmI0NWJmYWU1ZGNjZTYzM2QxODQ3NGNmMjAwZTJmY2U4NDQ3ODI3YWRjMjFjNTZkZDhhMDVmYiJ9fX0=", 
+             Arrays.asList( "test", "test"
+               ), "test_autre");
 
      Kit Spy = new Kit(
          "Spy", 
-         new ItemStack(Material.IRON_HELMET), 
+         skull_Spy, 
          new ItemStack(Material.IRON_CHESTPLATE), 
          new ItemStack(Material.IRON_LEGGINGS), 
          new ItemStack(Material.IRON_BOOTS), 
@@ -1178,7 +1180,9 @@
            ), "tnt.spy");
      list_kits.add(Spy);
 
-
+     
+     
+     
      Kit Hasard = new Kit(
          "Hasard", 
          null, 

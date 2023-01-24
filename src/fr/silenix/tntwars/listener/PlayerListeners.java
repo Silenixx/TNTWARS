@@ -613,6 +613,7 @@
        f.setIsIncendiary(false);
        f.setVelocity(f.getVelocity().multiply(50));
        f.setBounce(false);
+       f.setIsIncendiary(false);
        player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
      } 
  

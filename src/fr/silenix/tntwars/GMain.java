@@ -5,7 +5,8 @@
  import Enum.EtatPartie;
  import Enum.EtatTNT;
  import Fonctions.CreateKit;
- import fr.silenix.tntwars.entity.Equipe;
+import Fonctions.IndexKit;
+import fr.silenix.tntwars.entity.Equipe;
  import fr.silenix.tntwars.entity.Joueur;
  import fr.silenix.tntwars.entity.Kit;
  import fr.silenix.tntwars.entity.Map;
@@ -21,7 +22,9 @@
  import java.util.Arrays;
  import java.util.Collections;
  import java.util.List;
- import org.bukkit.Bukkit;
+import java.util.Random;
+
+import org.bukkit.Bukkit;
  import org.bukkit.ChatColor;
  import org.bukkit.GameMode;
  import org.bukkit.Location;
@@ -463,6 +466,17 @@
      joueur.setKit(joueur.getProchainKit());
      joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
      joueur.getPlayer().getInventory().clear();
+     
+     
+     if (joueur.getKit() == this.list_kits.get(IndexKit.Hasard))
+     {
+    	 Random random_kit = new Random();
+         int value_random_kit = random_kit.nextInt(39 + 0) + 0;
+         joueur.setKit(list_kits.get(value_random_kit));
+    	 
+     }
+     
+     
      joueur.getPlayer().getInventory().setBoots(joueur.getKit().getBoots());
      joueur.getPlayer().getInventory().setChestplate(joueur.getKit().getChestplate());
      joueur.getPlayer().getInventory().setHelmet(joueur.getKit().getHelmet());
@@ -505,7 +519,7 @@
  
  
  
- 
+     
  
  
      
