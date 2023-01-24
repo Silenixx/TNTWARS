@@ -211,7 +211,7 @@
 /* 211 */       Bukkit.broadcastMessage("§6[§eTntWars§6] §eAssez de monde pour relancer une nouvelle partie.");
 /* 212 */       setState(EtatPartie.Lancement);
 /* 213 */       TaskLancementPartie start = new TaskLancementPartie(this);
-/* 214 */       start.runTaskTimer((Plugin)this, 0L, 20L);
+/* 214 */       start.runTaskTimer(this, 0L, 20L);
 /*     */     } 
 /*     */   }
 /*     */   
@@ -275,32 +275,32 @@
 /* 275 */     this.timered = this.tnt_rouge.getTimer();
 /*     */     
 /* 277 */     objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+
+				objective.setDisplayName(ChatColor.GOLD + "�6-------- TNT WARS --------");
+				
+				Score information = objective.getScore(ChatColor.GOLD + "� Informations de la Partie");
+				information.setScore(15);
 /*     */     
-/* 279 */     objective.setDisplayName(ChatColor.GOLD + "-------- TNT WARS --------");
-/*     */     
-/* 281 */     Score information = objective.getScore(ChatColor.GOLD + " Informations de la Partie");
-/* 282 */     information.setScore(15);
-/*     */     
-/* 284 */     this.onlineCounter.addEntry(ChatColor.BLACK + ChatColor.WHITE);
-/* 285 */     this.onlineCounter.setPrefix("  §eJoueurs connectés: ");
-/*     */     
-/* 287 */     if (Bukkit.getOnlinePlayers().size() == 0) {
-/* 288 */       this.onlineCounter.setSuffix(ChatColor.AQUA + "0");
-/*     */     } else {
-/* 290 */       this.onlineCounter.setSuffix(ChatColor.DARK_RED + Bukkit.getOnlinePlayers().size() + "  (" + ChatColor.BLUE + this.taille_blue + ChatColor.GRAY + "|" + ChatColor.RED + this.taille_red + ChatColor.GRAY + ")");
-/*     */     } 
-/*     */     
-/* 293 */     objective.getScore(ChatColor.BLACK + ChatColor.WHITE).setScore(14);
-/*     */     
-/* 295 */     this.boardblue.addEntry(ChatColor.WHITE + ChatColor.WHITE);
-/* 296 */     this.boardblue.setPrefix("  §eTNT bleu: ");
-/* 297 */     this.boardblue.setSuffix(ChatColor.BLUE + this.cblue + ChatColor.BLUE + "%");
-/* 298 */     objective.getScore(ChatColor.WHITE + ChatColor.WHITE).setScore(13);
-/*     */     
-/* 300 */     this.boardred.addEntry(ChatColor.WHITE + ChatColor.BLACK);
-/* 301 */     this.boardred.setPrefix("  §eTNT rouge: ");
-/* 302 */     this.boardred.setSuffix(ChatColor.RED + this.cred + ChatColor.RED + "%");
-/* 303 */     objective.getScore(ChatColor.WHITE + ChatColor.BLACK).setScore(12);
+				onlineCounter.addEntry(ChatColor.BLACK + "" + ChatColor.WHITE);
+				onlineCounter.setPrefix("  �eJoueurs connect�s: ");
+				
+				if (Bukkit.getOnlinePlayers().size() == 0) {
+				    onlineCounter.setSuffix(ChatColor.AQUA + "0");
+				} else {
+				    onlineCounter.setSuffix("" + ChatColor.DARK_RED + Bukkit.getOnlinePlayers().size()+ "  (" + ChatColor.BLUE+taille_blue+ ChatColor.GRAY+"|"+ChatColor.RED+taille_red+ ChatColor.GRAY+")");
+				}
+				
+				objective.getScore(ChatColor.BLACK + "" + ChatColor.WHITE).setScore(14);
+				
+				boardblue.addEntry(ChatColor.WHITE + "" + ChatColor.WHITE);
+				boardblue.setPrefix("  �eTNT bleu: ");
+				boardblue.setSuffix(""+ ChatColor.BLUE + cblue + ChatColor.BLUE + "%" );
+				objective.getScore(ChatColor.WHITE + "" + ChatColor.WHITE).setScore(13);
+				
+				boardred.addEntry(ChatColor.WHITE + "" + ChatColor.BLACK);
+				boardred.setPrefix("  �eTNT rouge: ");
+				boardred.setSuffix(""+ ChatColor.RED + cred + ChatColor.RED + "%" );
+				objective.getScore(ChatColor.WHITE + "" + ChatColor.BLACK).setScore(12);
 /*     */   }
 /*     */ 
 /*     */   
@@ -628,7 +628,7 @@
 /*     */   
 /*     */   public void eliminate(Player player) {
 /* 630 */     Joueur joueur = this.listeJoueurs.stream()
-/* 631 */       .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 631 */       .filter(p -> player.getName().equals(p.getPlayer().getName()))
 /* 632 */       .findAny()
 /* 633 */       .orElse(null);
 /*     */     
@@ -668,7 +668,7 @@
 /*     */   
 /*     */   public void respawn(Player player) {
 /* 670 */     Joueur joueur = this.listeJoueurs.stream()
-/* 671 */       .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 671 */       .filter(p -> player.getName().equals(p.getPlayer().getName()))
 /* 672 */       .findAny()
 /* 673 */       .orElse(null);
 /*     */     
@@ -721,35 +721,37 @@
 /*     */   }
 /*     */ 
 /*     */   
-/*     */   public void ajoutjoueurscoreboard(Joueur joueur, Equipe equipe) {
+/*     */   @SuppressWarnings("deprecation")
+public void ajoutjoueurscoreboard(Joueur joueur, Equipe equipe) {
 /* 725 */     if (equipe == this.Equipe_bleu) {
-/* 726 */       this.BlueTeamSC.addPlayer((OfflinePlayer)joueur.getPlayer());
+/* 726 */       this.BlueTeamSC.addPlayer(joueur.getPlayer());
 /*     */     }
 /* 728 */     else if (equipe == this.Equipe_rouge) {
-/* 729 */       this.RedTeamSC.addPlayer((OfflinePlayer)joueur.getPlayer());
+/* 729 */       this.RedTeamSC.addPlayer(joueur.getPlayer());
 /*     */     }
 /* 731 */     else if (equipe == this.Equipe_vert) {
-/* 732 */       this.GreenTeamSC.addPlayer((OfflinePlayer)joueur.getPlayer());
+/* 732 */       this.GreenTeamSC.addPlayer(joueur.getPlayer());
 /*     */     }
 /* 734 */     else if (equipe == this.Equipe_jaune) {
-/* 735 */       this.YellowTeamSC.addPlayer((OfflinePlayer)joueur.getPlayer());
+/* 735 */       this.YellowTeamSC.addPlayer(joueur.getPlayer());
 /*     */     } 
 /*     */   }
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   public void deletejoueurscoreboard(Joueur joueur, Equipe equipe) {
+/*     */   @SuppressWarnings("deprecation")
+public void deletejoueurscoreboard(Joueur joueur, Equipe equipe) {
 /* 742 */     if (equipe == this.Equipe_bleu) {
-/* 743 */       this.BlueTeamSC.removePlayer((OfflinePlayer)joueur.getPlayer());
+/* 743 */       this.BlueTeamSC.removePlayer(joueur.getPlayer());
 /*     */     }
 /* 745 */     else if (equipe == this.Equipe_rouge) {
-/* 746 */       this.RedTeamSC.removePlayer((OfflinePlayer)joueur.getPlayer());
+/* 746 */       this.RedTeamSC.removePlayer(joueur.getPlayer());
 /*     */     }
 /* 748 */     else if (equipe == this.Equipe_vert) {
-/* 749 */       this.GreenTeamSC.removePlayer((OfflinePlayer)joueur.getPlayer());
+/* 749 */       this.GreenTeamSC.removePlayer(joueur.getPlayer());
 /*     */     }
 /* 751 */     else if (equipe == this.Equipe_jaune) {
-/* 752 */       this.YellowTeamSC.removePlayer((OfflinePlayer)joueur.getPlayer());
+/* 752 */       this.YellowTeamSC.removePlayer(joueur.getPlayer());
 /*     */     } 
 /*     */   }
 /*     */ 

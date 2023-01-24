@@ -67,8 +67,8 @@
 /*  67 */     Player player = event.getPlayer();
 /*     */ 
 /*     */     
-/*  70 */     Joueur joueur = new Joueur(player, player.getName(), this.main.Sans_Equipe, this.main.list_kits.get(0), this.main.list_kits.get(0));
-/*  71 */     this.main.listeConnecte.add(joueur);
+/*  70 */     Joueur joueur = new Joueur(player, player.getName(), main.Sans_Equipe, main.list_kits.get(0), main.list_kits.get(0));
+/*  71 */     main.listeConnecte.add(joueur);
 /*     */ 
 /*     */     
 /*  74 */     player.setInvulnerable(false);
@@ -81,20 +81,20 @@
 /*     */ 
 /*     */     
 /*  83 */     player.getInventory().clear();
-/*  84 */     player.setScoreboard(this.main.board);
+/*  84 */     player.setScoreboard(main.board);
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */     
-/*  90 */     if (!this.main.isState(EtatPartie.FinJeu)) {
+/*  90 */     if (!main.isState(EtatPartie.FinJeu)) {
 /*     */       
-/*  92 */       this.main.listeJoueurs.add(joueur);
-/*  93 */       if (this.main.listeJoueurs.size() == 1) {
+/*  92 */       main.listeJoueurs.add(joueur);
+/*  93 */       if (main.listeJoueurs.size() == 1) {
 /*     */         
-/*  95 */         this.main.world = ((Joueur)this.main.listeJoueurs.get(0)).getPlayer().getWorld();
+/*  95 */         main.world = ((Joueur)main.listeJoueurs.get(0)).getPlayer().getWorld();
 /*     */         
-/*  97 */         CreateWorld createWorld = new CreateWorld(this.main);
+/*  97 */         CreateWorld createWorld = new CreateWorld(main);
 /*  98 */         createWorld.CreationWorld();
 /*     */       } 
 /*     */ 
@@ -137,11 +137,11 @@
 /*     */ 
 /*     */ 
 /*     */       
-/* 140 */       if (this.main.isState(EtatPartie.JeuEnCours)) {
+/* 140 */       if (main.isState(EtatPartie.JeuEnCours)) {
 /* 141 */         player.setGameMode(GameMode.ADVENTURE);
 /* 142 */         player.setInvisible(true);
 /* 143 */         player.sendMessage("§6[§eTntWars§6] §eLe jeux a déjà démarrer mais vous pouvez rejoindre une équipe! ");
-/* 144 */         player.teleport(this.main.map_en_cours.LocationSalleMort);
+/* 144 */         player.teleport(main.map_en_cours.LocationSalleMort);
 /* 145 */         event.setJoinMessage(null);
 /*     */ 
 /*     */ 
@@ -150,8 +150,8 @@
 /*     */ 
 /*     */ 
 /*     */         
-/* 153 */         TaskRejoindPartieEnCours cycle = new TaskRejoindPartieEnCours(this.main, joueur);
-/* 154 */         cycle.runTaskTimer((Plugin)this.main, 0L, 20L);
+/* 153 */         TaskRejoindPartieEnCours cycle = new TaskRejoindPartieEnCours(main, joueur);
+/* 154 */         cycle.runTaskTimer((Plugin)main, 0L, 20L);
 /*     */       } 
 /*     */ 
 /*     */ 
@@ -163,19 +163,19 @@
 /*     */ 
 /*     */ 
 /*     */       
-/* 166 */       if (this.main.isState(EtatPartie.AttenteJoueur) || this.main.isState(EtatPartie.Lancement)) {
+/* 166 */       if (main.isState(EtatPartie.AttenteJoueur) || main.isState(EtatPartie.Lancement)) {
 /* 167 */         player.teleport(new Location(player.getWorld(), 6.0D, 1.0D, 1.0D));
 /*     */         
 /* 169 */         player.setGameMode(GameMode.ADVENTURE);
-/* 170 */         event.setJoinMessage("§6[§eTntWars§6] §6" + player.getName() + " §evient de se connecter à la partie.   §5<§d" + this.main.listeJoueurs.size() + "§5/§d" + Bukkit.getMaxPlayers() + "§5>");
+/* 170 */         event.setJoinMessage("§6[§eTntWars§6] §6" + player.getName() + " §evient de se connecter à la partie.   §5<§d" + main.listeJoueurs.size() + "§5/§d" + Bukkit.getMaxPlayers() + "§5>");
 /*     */ 
 /*     */         
-/* 173 */         if (this.main.isState(EtatPartie.AttenteJoueur) && this.main.listeJoueurs.size() >= 2) {
+/* 173 */         if (main.isState(EtatPartie.AttenteJoueur) && main.listeJoueurs.size() >= 2) {
 /*     */           
-/* 175 */           this.main.setState(EtatPartie.Lancement);
+/* 175 */           main.setState(EtatPartie.Lancement);
 /*     */           
-/* 177 */           TaskLancementPartie start = new TaskLancementPartie(this.main);
-/* 178 */           start.runTaskTimer((Plugin)this.main, 0L, 20L);
+/* 177 */           TaskLancementPartie start = new TaskLancementPartie(main);
+/* 178 */           start.runTaskTimer(main, 0L, 20L);
 /*     */         } 
 /*     */       } 
 /*     */ 
@@ -183,10 +183,10 @@
 /*     */ 
 /*     */ 
 /*     */       
-/* 186 */       if (this.main.isState(EtatPartie.Prejeu)) {
+/* 186 */       if (main.isState(EtatPartie.Prejeu)) {
 /*     */         
 /* 188 */         player.setInvisible(false);
-/* 189 */         player.teleport(this.main.map_en_cours.getLocationVisite());
+/* 189 */         player.teleport(main.map_en_cours.getLocationVisite());
 /*     */ 
 /*     */ 
 /*     */ 
@@ -194,7 +194,7 @@
 /*     */ 
 /*     */         
 /* 196 */         player.setGameMode(GameMode.ADVENTURE);
-/* 197 */         event.setJoinMessage("§6[§eTntWars§6] §6" + player.getName() + " §evient de se connecter à la partie.   §5<§d" + this.main.listeJoueurs.size() + "§5/§d" + Bukkit.getMaxPlayers() + "§5>");
+/* 197 */         event.setJoinMessage("§6[§eTntWars§6] §6" + player.getName() + " §evient de se connecter à la partie.   §5<§d" + main.listeJoueurs.size() + "§5/§d" + Bukkit.getMaxPlayers() + "§5>");
 /*     */       } 
 /*     */     } 
 /*     */ 
@@ -214,7 +214,7 @@
 /*     */ 
 /*     */ 
 /*     */     
-/* 217 */     if (this.main.isState(EtatPartie.FinJeu)) {
+/* 217 */     if (main.isState(EtatPartie.FinJeu)) {
 /* 218 */       player.setGameMode(GameMode.SPECTATOR);
 /* 219 */       player.sendMessage("§6[§eTntWars§6] §eLe jeu est terminé, revenez pour la partie suivante !");
 /*     */     } 
@@ -230,28 +230,28 @@
 /*     */   @EventHandler
 /*     */   public void onQuit(PlayerQuitEvent event) {
 /* 232 */     Player player = event.getPlayer();
-/* 233 */     Joueur joueur = this.main.listeJoueurs.stream()
-/* 234 */       .filter(p -> paramPlayer.getName().equals(p.getNom()))
+/* 233 */     Joueur joueur = main.listeJoueurs.stream()
+/* 234 */       .filter(p -> player.getName().equals(p.getNom()))
 /* 235 */       .findAny()
 /* 236 */       .orElse(null);
 /*     */     
-/* 238 */     this.main.listeJoueurs.remove(joueur);
-/* 239 */     this.main.listeConnecte.remove(joueur);
+/* 238 */     main.listeJoueurs.remove(joueur);
+/* 239 */     main.listeConnecte.remove(joueur);
 /* 240 */     player.setPlayerListName(player.getName());
 /* 241 */     event.setQuitMessage(String.valueOf(player.getName()) + " est partie.");
 /*     */ 
 /*     */     
-/* 244 */     boolean stillPlayer = Fonctions.stillPlayer(this.main, joueur.getEquipe().getCouleur());
+/* 244 */     boolean stillPlayer = Fonctions.stillPlayer(main, joueur.getEquipe().getCouleur());
 /* 245 */     if (!stillPlayer) {
-/* 246 */       Tnt tnt = this.main.listTnt.stream()
-/* 247 */         .filter(t -> t.getEquipe().getCouleur().equals(paramJoueur.getEquipe().getCouleur()))
+/* 246 */       Tnt tnt = main.listTnt.stream()
+/* 247 */         .filter(t -> t.getEquipe().getCouleur().equals(joueur.getEquipe().getCouleur()))
 /* 248 */         .findFirst()
 /* 249 */         .get();
 /*     */       
 /* 251 */       tnt.setEtat(EtatTNT.Explose);
 /*     */     } 
 /*     */     
-/* 254 */     this.main.CheckWin();
+/* 254 */     main.CheckWin();
 /*     */   }
 /*     */ 
 /*     */ 
@@ -263,23 +263,23 @@
 /* 263 */     Block block_against = event.getBlockAgainst();
 /* 264 */     Player player = event.getPlayer();
 /*     */     
-/* 266 */     Joueur joueur = this.main.listeJoueurs.stream()
-/* 267 */       .filter(p -> paramPlayer.getName().equals(p.getNom()))
+/* 266 */     Joueur joueur = main.listeJoueurs.stream()
+/* 267 */       .filter(p -> player.getName().equals(p.getNom()))
 /* 268 */       .findAny()
 /* 269 */       .orElse(null);
 /*     */     
-/* 271 */     if (!this.main.isState(EtatPartie.JeuEnCours)) {
+/* 271 */     if (!main.isState(EtatPartie.JeuEnCours)) {
 /* 272 */       event.setCancelled(true);
 /*     */       return;
 /*     */     } 
-/* 275 */     if (this.main.AllowBlockPoserCasser.contains(block_placed.getType())) {
+/* 275 */     if (main.AllowBlockPoserCasser.contains(block_placed.getType())) {
 /* 276 */       if (block_replaced.getType() != Material.AIR) {
 /* 277 */         event.setCancelled(true);
 /*     */         return;
 /*     */       } 
-/* 280 */       if (this.main.ListWool.contains(block_placed.getType()) && 
+/* 280 */       if (main.ListWool.contains(block_placed.getType()) && 
 /* 281 */         joueur.getEquipe().getLaine() == block_placed.getType() && 
-/* 282 */         this.main.ListTacticien.contains(block_against.getType()) && 
+/* 282 */         main.ListTacticien.contains(block_against.getType()) && 
 /* 283 */         block_against.getType() != joueur.getEquipe().getBlockTactique()) {
 /* 284 */         event.setCancelled(true);
 /*     */         
@@ -297,11 +297,11 @@
 /*     */   
 /*     */   @EventHandler
 /*     */   public void onBreak(BlockBreakEvent event) {
-/* 300 */     if (!this.main.isState(EtatPartie.JeuEnCours)) {
+/* 300 */     if (!main.isState(EtatPartie.JeuEnCours)) {
 /* 301 */       event.setCancelled(true);
 /*     */       return;
 /*     */     } 
-/* 304 */     if (this.main.AllowBlockPoserCasser.contains(event.getBlock().getType())) {
+/* 304 */     if (main.AllowBlockPoserCasser.contains(event.getBlock().getType())) {
 /*     */       return;
 /*     */     }
 /* 307 */     event.setCancelled(true);
@@ -318,8 +318,8 @@
 /* 318 */     Inventory inv = event.getInventory();
 /* 319 */     Player player = (Player)event.getWhoClicked();
 /*     */     
-/* 321 */     Joueur joueur = this.main.listeJoueurs.stream()
-/* 322 */       .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 321 */     Joueur joueur = main.listeJoueurs.stream()
+/* 322 */       .filter(p -> player.getName().equals(p.getPlayer().getName()))
 /* 323 */       .findAny()
 /* 324 */       .orElse(null);
 /*     */ 
@@ -337,10 +337,10 @@
 /* 337 */     if (inv.contains(Material.RED_WOOL)) {
 /* 338 */       if (current.getType() == Material.RED_WOOL) {
 /* 339 */         player.closeInventory();
-/* 340 */         this.main.RejoindEquipe(joueur, this.main.Equipe_rouge, this.main.map_en_cours.getNbEquipe());
+/* 340 */         main.RejoindEquipe(joueur, main.Equipe_rouge, main.map_en_cours.getNbEquipe());
 /* 341 */       } else if (current.getType() == Material.BLUE_WOOL) {
 /* 342 */         player.closeInventory();
-/* 343 */         this.main.RejoindEquipe(joueur, this.main.Equipe_bleu, this.main.map_en_cours.getNbEquipe());
+/* 343 */         main.RejoindEquipe(joueur, main.Equipe_bleu, main.map_en_cours.getNbEquipe());
 /*     */       } 
 /*     */     }
 /*     */ 
@@ -351,8 +351,8 @@
 /*     */ 
 /*     */ 
 /*     */       
-/* 354 */       Kit kit = this.main.list_kits.stream()
-/* 355 */         .filter(k -> k.getItemSelection().getType().equals(paramItemStack.getType()))
+/* 354 */       Kit kit = main.list_kits.stream()
+/* 355 */         .filter(k -> k.getItemSelection().getType().equals(current.getType()))
 /* 356 */         .findFirst()
 /* 357 */         .get();
 /*     */ 
@@ -375,12 +375,12 @@
 /* 375 */       Player player = event.getPlayer();
 /* 376 */       Player victim = (Player)event.getRightClicked();
 /*     */       
-/* 378 */       Joueur joueur = this.main.listeJoueurs.stream()
-/* 379 */         .filter(p -> paramPlayer.getName().equals(p.getNom()))
+/* 378 */       Joueur joueur = main.listeJoueurs.stream()
+/* 379 */         .filter(p -> player.getName().equals(p.getNom()))
 /* 380 */         .findAny()
 /* 381 */         .orElse(null);
-/* 382 */       Joueur joueur_victime = this.main.listeJoueurs.stream()
-/* 383 */         .filter(p -> paramPlayer.getName().equals(p.getNom()))
+/* 382 */       Joueur joueur_victime = main.listeJoueurs.stream()
+/* 383 */         .filter(p -> player.getName().equals(p.getNom()))
 /* 384 */         .findAny()
 /* 385 */         .orElse(null);
 /*     */ 
@@ -389,7 +389,7 @@
 /* 389 */       if (joueur.getEquipe() == joueur_victime.getEquipe())
 /*     */       {
 /* 391 */         if (player.getInventory().getItemInMainHand().getType() == Material.GLISTERING_MELON_SLICE) {
-/* 392 */           if (joueur_victime.getKit() != this.main.list_kits.get(3)) {
+/* 392 */           if (joueur_victime.getKit() != main.list_kits.get(3)) {
 /* 393 */             if (joueur_victime.getPlayer().getHealth() > (joueur_victime.getKit().getPointVie() - 3.0F)) {
 /* 394 */               victim.setHealth(joueur_victime.getKit().getPointVie());
 /*     */             } else {
@@ -411,7 +411,7 @@
 /* 411 */         player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
 /*     */ 
 /*     */         
-/* 414 */         this.main.SpawnTeleportation(joueur);
+/* 414 */         main.SpawnTeleportation(joueur);
 /*     */ 
 /*     */ 
 /*     */         
@@ -513,8 +513,8 @@
 /* 513 */     Block block = event.getClickedBlock();
 /*     */ 
 /*     */     
-/* 516 */     Joueur joueur = this.main.listeJoueurs.stream()
-/* 517 */       .filter(p -> paramPlayer.getName().equals(p.getNom()))
+/* 516 */     Joueur joueur = main.listeJoueurs.stream()
+/* 517 */       .filter(p -> player2.getName().equals(p.getNom()))
 /* 518 */       .findAny()
 /* 519 */       .orElse(null);
 /*     */ 
@@ -582,7 +582,7 @@
 /*     */       
 /* 583 */       int emplacement = 0;
 /*     */       
-/* 585 */       for (Kit kit : this.main.list_kits) {
+/* 585 */       for (Kit kit : main.list_kits) {
 /*     */         
 /* 587 */         ItemStack customironsword = new ItemStack(kit.getItemSelection().getType(), 1);
 /* 588 */         ItemMeta customIS = customironsword.getItemMeta();
@@ -631,8 +631,8 @@
 /*     */       
 /* 632 */       if (event.getClickedBlock().getType() == Material.TNT && event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 /*     */         
-/* 634 */         Tnt tnt = this.main.listTnt.stream()
-/* 635 */           .filter(t -> t.getLocation().equals(paramBlock.getLocation()))
+/* 634 */         Tnt tnt = main.listTnt.stream()
+/* 635 */           .filter(t -> t.getLocation().equals(block.getLocation()))
 /* 636 */           .findFirst()
 /* 637 */           .get();
 /*     */ 
@@ -642,16 +642,16 @@
 /*     */         {
 /* 643 */           if (tnt.getEtat() == EtatTNT.Eteinte)
 /*     */           {
-/* 645 */             if (tnt.getVie() < this.main.Avancement_Max_Global_TNT) {
+/* 645 */             if (tnt.getVie() < main.Avancement_Max_Global_TNT) {
 /* 646 */               tnt.setVie(tnt.getVie() + 1);
 /*     */ 
 /*     */ 
 /*     */               
-/* 650 */               if (tnt.getVie() == this.main.Avancement_Max_Global_TNT) {
+/* 650 */               if (tnt.getVie() == main.Avancement_Max_Global_TNT) {
 /* 651 */                 Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT " + tnt.getEquipe().getCouleur() + " §ea été allumée!");
 /* 652 */                 tnt.setEtat(EtatTNT.Allume);
-/* 653 */                 TimerAllumage start = new TimerAllumage(this.main, tnt.getEquipe().getCouleur());
-/* 654 */                 start.runTaskTimer((Plugin)this.main, 0L, 20L);
+/* 653 */                 TimerAllumage start = new TimerAllumage(main, tnt.getEquipe().getCouleur());
+/* 654 */                 start.runTaskTimer((Plugin)main, 0L, 20L);
 /*     */               } 
 /*     */             } 
 /*     */           }
@@ -668,8 +668,8 @@
 /*     */     {
 /* 669 */       if (event.getClickedBlock().getType() == Material.TNT && event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 /*     */         
-/* 671 */         Tnt tnt = this.main.listTnt.stream()
-/* 672 */           .filter(t -> t.getLocation().equals(paramBlock.getLocation()))
+/* 671 */         Tnt tnt = main.listTnt.stream()
+/* 672 */           .filter(t -> t.getLocation().equals(block.getLocation()))
 /* 673 */           .findFirst()
 /* 674 */           .get();
 /*     */ 
@@ -695,27 +695,27 @@
 /*     */ 
 /*     */ 
 /*     */     
-/* 698 */     if (it.getType() == Material.AMETHYST_SHARD && joueur.getKit() == this.main.list_kits.get(6)) {
-/* 699 */       if (joueur.getEquipe() == this.main.Equipe_bleu) {
+/* 698 */     if (it.getType() == Material.AMETHYST_SHARD && joueur.getKit() == main.list_kits.get(6)) {
+/* 699 */       if (joueur.getEquipe() == main.Equipe_bleu) {
 /* 700 */         if (player.getInventory().getItemInMainHand().getType() == Material.AMETHYST_SHARD) {
 /* 701 */           player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
 /*     */         }
-/* 703 */         player.teleport(this.main.map_en_cours.getLocationSpawnEquipeArray(1));
+/* 703 */         player.teleport(main.map_en_cours.getLocationSpawnEquipeArray(1));
 /*     */       } 
-/* 705 */       if (joueur.getEquipe() == this.main.Equipe_rouge) {
+/* 705 */       if (joueur.getEquipe() == main.Equipe_rouge) {
 /* 706 */         if (player.getInventory().getItemInMainHand().getType() == Material.AMETHYST_SHARD) {
 /* 707 */           player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
 /*     */         }
-/* 709 */         player.teleport(this.main.map_en_cours.getLocationSpawnEquipeArray(0));
+/* 709 */         player.teleport(main.map_en_cours.getLocationSpawnEquipeArray(0));
 /*     */       } 
 /*     */     } 
 /*     */ 
 /*     */ 
 /*     */     
-/* 715 */     if (it.getType() == Material.BLACK_BANNER && joueur.getKit() == this.main.list_kits.get(5)) {
+/* 715 */     if (it.getType() == Material.BLACK_BANNER && joueur.getKit() == main.list_kits.get(5)) {
 /* 716 */       player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
-/* 717 */       TimerInvisibility start = new TimerInvisibility(this.main, player);
-/* 718 */       start.runTaskTimer((Plugin)this.main, 0L, 20L);
+/* 717 */       TimerInvisibility start = new TimerInvisibility(main, player);
+/* 718 */       start.runTaskTimer((Plugin)main, 0L, 20L);
 /*     */     } 
 /*     */   }
 /*     */ 
@@ -748,8 +748,8 @@
 /*     */ 
 /*     */ 
 /*     */     
-/* 751 */     Joueur joueur = this.main.listeJoueurs.stream()
-/* 752 */       .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 751 */     Joueur joueur = main.listeJoueurs.stream()
+/* 752 */       .filter(p -> pl.getName().equals(p.getPlayer().getName()))
 /* 753 */       .findAny()
 /* 754 */       .orElse(null);
 /*     */     
@@ -757,7 +757,7 @@
 /* 757 */     Block under = (new Location(pl.getWorld(), l.getX(), l.getY() - 1.0D, l.getZ())).getBlock();
 /*     */ 
 /*     */     
-/* 760 */     if (this.main.ListTacticien.contains(under.getType()) && 
+/* 760 */     if (main.ListTacticien.contains(under.getType()) && 
 /* 761 */       joueur.getEquipe().getBlockTactique() != under.getType()) {
 /* 762 */       under.setType(Material.AIR);
 /*     */     }
@@ -770,7 +770,7 @@
 /*     */   public void onPlayerDrop(PlayerDropItemEvent event) {
 /* 771 */     Item item = event.getItemDrop();
 /*     */     
-/* 773 */     if (!this.main.ListWool.contains(item.getItemStack().getType())) {
+/* 773 */     if (!main.ListWool.contains(item.getItemStack().getType())) {
 /* 774 */       event.setCancelled(true);
 /*     */     }
 /*     */   }
@@ -783,12 +783,12 @@
 /* 783 */     Block block = event.getBlock();
 /* 784 */     Player player = event.getPlayer();
 /*     */     
-/* 786 */     Joueur joueur = this.main.listeJoueurs.stream()
-/* 787 */       .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 786 */     Joueur joueur = main.listeJoueurs.stream()
+/* 787 */       .filter(p -> player.getName().equals(p.getPlayer().getName()))
 /* 788 */       .findAny()
 /* 789 */       .orElse(null);
 /*     */     
-/* 791 */     if (this.main.ListTacticien.contains(block.getType()))
+/* 791 */     if (main.ListTacticien.contains(block.getType()))
 /*     */     {
 /*     */       
 /* 794 */       event.setInstaBreak(true);

@@ -55,7 +55,7 @@
 /*  55 */     if (event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) || event.getCause().equals(EntityDamageEvent.DamageCause.BLOCK_EXPLOSION)) {
 /*  56 */       Player player = (Player)victim;
 /*  57 */       Joueur joueur = this.main.listeJoueurs.stream()
-/*  58 */         .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/*  58 */         .filter(p -> player.getName().equals(p.getPlayer().getName()))
 /*  59 */         .findAny()
 /*  60 */         .orElse(null);
 /*  61 */       if (joueur.getKit() == this.main.list_kits.get(2)) {
@@ -138,7 +138,7 @@
 /* 138 */     Material m = e.getPlayer().getLocation().getBlock().getType();
 /*     */     
 /* 140 */     Joueur joueur = this.main.listeJoueurs.stream()
-/* 141 */       .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 141 */       .filter(p -> pl.getName().equals(p.getPlayer().getName()))
 /* 142 */       .findAny()
 /* 143 */       .orElse(null);
 /*     */     
@@ -169,7 +169,7 @@
 /* 169 */     if (victim instanceof Player) {
 /* 170 */       Player players = (Player)victim;
 /* 171 */       Joueur joueur_victime = this.main.listeJoueurs.stream()
-/* 172 */         .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 172 */         .filter(p -> players.getName().equals(p.getPlayer().getName()))
 /* 173 */         .findAny()
 /* 174 */         .orElse(null);
 /*     */ 
@@ -185,7 +185,7 @@
 /* 185 */           Player killer_arrow = (Player)arrow.getShooter();
 /*     */           
 /* 187 */           Joueur joueur_killer = this.main.listeJoueurs.stream()
-/* 188 */             .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 188 */             .filter(p -> killer_arrow.getName().equals(p.getPlayer().getName()))
 /* 189 */             .findAny()
 /* 190 */             .orElse(null);
 /*     */           
@@ -211,7 +211,7 @@
 /* 211 */           Player killer_fireball = (Player)fireball.getShooter();
 /*     */           
 /* 213 */           Joueur joueur_killer = this.main.listeJoueurs.stream()
-/* 214 */             .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 214 */             .filter(p -> killer_fireball.getName().equals(p.getPlayer().getName()))
 /* 215 */             .findAny()
 /* 216 */             .orElse(null);
 /*     */ 
@@ -238,7 +238,7 @@
 /* 238 */           Player killer_snowball = (Player)snowball.getShooter();
 /*     */           
 /* 240 */           Joueur joueur_killer = this.main.listeJoueurs.stream()
-/* 241 */             .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 241 */             .filter(p -> killer_snowball.getName().equals(p.getPlayer().getName()))
 /* 242 */             .findAny()
 /* 243 */             .orElse(null);
 /*     */ 
@@ -361,7 +361,7 @@
 /* 361 */       if (damager instanceof Player) {
 /*     */         
 /* 363 */         Joueur joueur_killer = this.main.listeJoueurs.stream()
-/* 364 */           .filter(p -> paramEntity.getName().equals(p.getPlayer().getName()))
+/* 364 */           .filter(p -> damager.getName().equals(p.getPlayer().getName()))
 /* 365 */           .findAny()
 /* 366 */           .orElse(null);
 /*     */         
@@ -551,7 +551,7 @@
 /* 551 */         if (damager instanceof Player) {
 /* 552 */           Player killer_parjoueur = (Player)damager;
 /* 553 */           Joueur joueur_killer = this.main.listeJoueurs.stream()
-/* 554 */             .filter(p -> paramPlayer.getName().equals(p.getPlayer().getName()))
+/* 554 */             .filter(p -> killer_parjoueur.getName().equals(p.getPlayer().getName()))
 /* 555 */             .findAny()
 /* 556 */             .orElse(null);
 /*     */ 
