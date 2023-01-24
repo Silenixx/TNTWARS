@@ -1,9 +1,12 @@
  package fr.silenix.tntwars.entity;
  
  import java.util.ArrayList;
+
  import java.util.List;
- import org.bukkit.inventory.ItemStack;
- import org.bukkit.potion.PotionEffect;
+
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+
  
  
  

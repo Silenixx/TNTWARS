@@ -19,47 +19,47 @@
      this.main = main;
    }
    
-   public void CreationWorld() {
-     this.main.list_maps.add(
-         new Map(
-           2, 
-           "Sky", 
-           new Location(this.main.world, 431.0D, 132.0D, 7.0D), 
-           new ArrayList(Arrays.asList((Object[])new Location[] { new Location(this.main.world, 501.0D, 13.0D, 24.0D), new Location(this.main.world, 365.0D, 13.0D, 4.0D)
-               })), new ArrayList(Arrays.asList((Object[])new Location[] { new Location(this.main.world, 523.0D, 13.0D, 18.0D), new Location(this.main.world, 341.0D, 13.0D, 10.0D)
-               })), new Location(this.main.world, 501.0D, 13.0D, 24.0D), 
-           new Location(this.main.world, 221.0D, -66.0D, -114.0D), 
-           new Location(this.main.world, 644.0D, 103.0D, 141.0D)));
-     this.main.list_maps.add(
-         new Map(
-           2, 
-           "Chateau", 
-           new Location(this.main.world, 30.0D, 167.0D, -315.0D), 
-           new ArrayList(Arrays.asList((Object[])new Location[] { new Location(this.main.world, 30.0D, 11.0D, -242.0D), new Location(this.main.world, 30.0D, 11.0D, -386.0D)
-               })), new ArrayList(Arrays.asList((Object[])new Location[] { new Location(this.main.world, 30.0D, 9.0D, -258.0D), new Location(this.main.world, 30.0D, 9.0D, -372.0D)
-               })), new Location(this.main.world, 31.0D, 13.0D, -320.0D), 
-           new Location(this.main.world, -55.0D, -21.0D, -442.0D), 
-           new Location(this.main.world, 103.0D, 125.0D, -205.0D)));
-     this.main.list_maps.add(
-         new Map(
-           2, 
-           "LushCave", 
-           new Location(this.main.world, -253.0D, 44.0D, -343.0D), 
-           new ArrayList(Arrays.asList((Object[])new Location[] { new Location(this.main.world, -282.0D, 22.0D, -319.0D), new Location(this.main.world, -274.0D, 23.0D, -227.0D)
-               })), new ArrayList(Arrays.asList((Object[])new Location[] { new Location(this.main.world, -320.0D, 25.0D, -315.0D), new Location(this.main.world, -266.0D, 23.0D, -200.0D)
-               })), new Location(this.main.world, -300.0D, 20.0D, -263.0D), 
-           new Location(this.main.world, -356.0D, 8.0D, -346.0D), 
-           new Location(this.main.world, -184.0D, 102.0D, -185.0D)));
-     this.main.list_maps.add(
-         new Map(
-           2, 
-           "Japon", 
-           new Location(this.main.world, 443.0D, 216.0D, -558.0D), 
-           new ArrayList(Arrays.asList((Object[])new Location[] { new Location(this.main.world, 404.0D, 65.0D, -602.0D), new Location(this.main.world, 410.0D, 64.0D, -514.0D)
-               })), new ArrayList(Arrays.asList((Object[])new Location[] { new Location(this.main.world, 434.0D, 76.0D, -642.0D), new Location(this.main.world, 428.0D, 71.0D, -487.0D)
-               })), new Location(this.main.world, 439.0D, 60.0D, -558.0D), 
-           new Location(this.main.world, 357.0D, 0.0D, -676.0D), 
-           new Location(this.main.world, 556.0D, 189.0D, -421.0D)));
+   public void Creationworld() {
+	   main.list_maps.add( 
+				new Map(
+				2,
+				"Sky",
+				new Location(main.world,431,132,7),
+				new ArrayList<Location>(Arrays.asList(new Location(main.world,501,13,24), new Location(main.world,365,13,4))),
+				new ArrayList<Location>(Arrays.asList(new Location(main.world,523,13,18), new Location(main.world,341,13,10))),
+				new Location(main.world,501,13,24),
+				new Location(main.world,221,-66,-114),
+				new Location(main.world,644,103,141)));
+		main.list_maps.add( 		
+				new Map(
+				2,
+				"Chateau",
+				new Location(main.world,30,167,-315),
+				new ArrayList<Location>(Arrays.asList(new Location(main.world,30,11,-242), new Location(main.world,30,11,-386))),
+				new ArrayList<Location>(Arrays.asList(new Location(main.world,30,9,-258), new Location(main.world,30,9,-372))),
+				new Location(main.world,31,13,-320),
+				new Location(main.world,-55,-21,-442),
+				new Location(main.world,103,125,-205)));
+		main.list_maps.add( 		
+				new Map(
+				2,
+				"LushCave",
+				new Location(main.world,-253,44,-343),
+				new ArrayList<Location>(Arrays.asList(new Location(main.world,-282,22,-319), new Location(main.world,-274,23,-227))),
+				new ArrayList<Location>(Arrays.asList(new Location(main.world,-320,25,-315), new Location(main.world,-266,23,-200))),
+				new Location(main.world,-300,20,-263),
+				new Location(main.world,-356,8,-346),
+				new Location(main.world,-184,102,-185)));
+		main.list_maps.add( 		
+				new Map(
+				2,
+				"Japon",
+				new Location(main.world,443,216,-558),
+				new ArrayList<Location>(Arrays.asList(new Location(main.world,404,65,-602), new Location(main.world,410,64,-514))),
+				new ArrayList<Location>(Arrays.asList(new Location(main.world,434,76,-642), new Location(main.world,428,71,-487))),
+				new Location(main.world,439,60,-558),
+				new Location(main.world,357,0,-676),
+				new Location(main.world,556,189,-421)));
    }
  }
 

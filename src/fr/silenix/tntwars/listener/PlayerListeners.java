@@ -95,7 +95,7 @@
          main.world = ((Joueur)main.listeJoueurs.get(0)).getPlayer().getWorld();
          
          CreateWorld createWorld = new CreateWorld(main);
-         createWorld.CreationWorld();
+         createWorld.Creationworld();
        } 
  
  
