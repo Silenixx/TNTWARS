@@ -28,19 +28,19 @@
      if (this.timer == 30) {
        Equipe gagnant = this.main.RenvoieGagnant();
        
-       Bukkit.broadcastMessage("§6[§eTntWars§6] §eVictoire de la team: " + gagnant.getCouleur());
-       Bukkit.broadcastMessage("§6[§eTntWars§6] §eRedemmarage du mode de jeu dans §6" + this.timer + " §esecondes.");
+       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Victoire de la team: " + gagnant.getCouleur());
+       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Redemmarage du mode de jeu dans §6" + this.timer + " §esecondes.");
      } 
      
      if (this.timer == 10 || this.timer == 5 || this.timer == 4 || this.timer == 3 || this.timer == 2) {
-       Bukkit.broadcastMessage("§6[§eTntWars§6] §eRedemmarage du mode de jeu dans §6" + this.timer + " §esecondes.");
+       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Redemmarage du mode de jeu dans §6" + this.timer + " §esecondes.");
      }
      
      if (this.timer == 1) {
-       Bukkit.broadcastMessage("§6[§eTntWars§6] §eRedemmarage du mode de jeu dans §61 §eseconde.");
+       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Redemmarage du mode de jeu dans §61 §eseconde.");
      }
      if (this.timer == 0) {
-       Bukkit.broadcastMessage("§6[§eTntWars§6] §eRedemmarage du mode de jeu.");
+       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Redemmarage du mode de jeu.");
        this.main.remiseazero();
        cancel();
      } 

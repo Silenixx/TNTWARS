@@ -22,7 +22,8 @@
  import org.bukkit.block.BlockState;
  import org.bukkit.enchantments.Enchantment;
  import org.bukkit.entity.Fireball;
- import org.bukkit.entity.Item;
+import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Item;
  import org.bukkit.entity.Player;
  import org.bukkit.event.EventHandler;
  import org.bukkit.event.Listener;
@@ -146,7 +147,14 @@
  
  
  
- 
+         ItemStack customcompasse = new ItemStack(Material.NETHER_STAR, 1);
+         ItemMeta customC2 = customcompasse.getItemMeta();
+         customC2.setDisplayName("Choisir le kit");
+         customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+         customC2.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
+         customC2.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
+         customcompasse.setItemMeta(customC2);
+         player.getInventory().setItem(4, customcompasse);
  
  
          
@@ -420,77 +428,60 @@
  
  
        
-       if (joueur.getEquipe() != joueur_victime.getEquipe())
-       {
-         if (player.getInventory().getItemInMainHand().getType() == Material.INK_SAC) {
- 
- 
-           
-           victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 300, 7));
- 
-           
+       
+       
+       if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.INK_SAC) {
+
+
+
+           victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*10, 7));
+
            return;
-         } 
        }
        
-       if (joueur.getEquipe() != joueur_victime.getEquipe())
-       {
-         if (player.getInventory().getItemInMainHand().getType() == Material.SHULKER_BOX) {
- 
- 
-           
-           victim.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 300, 7));
- 
-           
+       if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.SHULKER_BOX) {
+
+
+
+           victim.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 20*10, 7));
+
            return;
-         } 
        }
        
-       if (joueur.getEquipe() != joueur_victime.getEquipe())
-       {
-         if (player.getInventory().getItemInMainHand().getType() == Material.COBWEB) {
- 
- 
-           
-           victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 300, 7));
-           
+       if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.COBWEB) {
+
+
+
+           victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20*10, 7));
+
            return;
-         } 
        }
        
-       if (joueur.getEquipe() != joueur_victime.getEquipe())
-       {
-         if (player.getInventory().getItemInMainHand().getType() == Material.WITHER_ROSE) {
- 
- 
-           
-           victim.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 300, 7));
-           
+       if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.WITHER_ROSE) {
+
+
+
+           victim.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 20*10, 7));
+
            return;
-         } 
        }
        
-       if (joueur.getEquipe() != joueur_victime.getEquipe())
-       {
-         if (player.getInventory().getItemInMainHand().getType() == Material.CRIMSON_FUNGUS) {
- 
- 
-           
-           victim.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 300, 7));
-           
+       if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.CRIMSON_FUNGUS) {
+
+
+
+           victim.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20*10, 7));
+
            return;
-         } 
        }
        
-       if (joueur.getEquipe() != joueur_victime.getEquipe())
-       {
-         if (player.getInventory().getItemInMainHand().getType() == Material.PUFFERFISH) {
- 
- 
-           
-           victim.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 300, 7));
+       if(((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.PUFFERFISH) {
+
+
+
+           victim.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20*10, 7));
+
            return;
-         } 
        }
      } 
    }
@@ -611,9 +602,9 @@
      if (it.getType() == Material.FIRE_CHARGE) {
        Fireball f = (Fireball)player.launchProjectile(Fireball.class);
        f.setIsIncendiary(false);
-       f.setVelocity(f.getVelocity().multiply(50));
+       f.setVelocity(f.getVelocity().multiply(150));
        f.setBounce(false);
-       f.setIsIncendiary(false);
+
        player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
      } 
  

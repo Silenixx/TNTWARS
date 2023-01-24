@@ -662,6 +662,7 @@
      ItemMeta custombowW = custombow.getItemMeta();
 
      custombowW.addEnchant(Enchantment.ARROW_FIRE, 1, true);
+     custombowW.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
      custombow.setItemMeta(custombowW);
 
      Kit Pyro = new Kit(
@@ -672,8 +673,8 @@
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_pyro, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(custombow
-             )), null, 
+         new ArrayList<ItemStack>(Arrays.asList(custombow, new ItemStack(Material.ARROW))),
+         null, 
          true, 
          new ItemStack(Material.FLINT_AND_STEEL), 
          Arrays.asList( "§bEpee en pierre", "§bArmure fer", "§dPour les pyroman du dimanche "
@@ -824,8 +825,8 @@
          new ItemStack(Material.IRON_BOOTS), 
          new ItemStack(Material.IRON_SWORD), 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(customArbalette, new ItemStack(Material.ARROW)
-             )), null, 
+         new ArrayList<ItemStack>(Arrays.asList(customArbalette, new ItemStack(Material.ARROW,64),new ItemStack(Material.ARROW,64))),
+         null, 
          true, 
          new ItemStack(Material.CROSSBOW), 
          Arrays.asList( "btest\",\"btest\",\"dtest"

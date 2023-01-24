@@ -34,13 +34,13 @@
  
      
      if (this.timer == 10 || this.timer == 5 || this.timer == 4 || this.timer == 3 || this.timer == 2) {
-       this.player.sendMessage("§6[§eTntWars§6] §eRespawn dans §5" + this.timer + " §esecondes");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Respawn dans §5" + this.timer + " §esecondes");
      }
      else if (this.timer == 1) {
-       this.player.sendMessage("§6[§eTntWars§6] §eRespawn dans §51 §ebseconde");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Respawn dans §51 §ebseconde");
      }
      else if (this.timer == 0) {
-       this.player.sendMessage("§6[§eTntWars§6] §eRespawn en cours");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Respawn en cours");
        this.main.respawn(this.player);
        cancel();
      } 

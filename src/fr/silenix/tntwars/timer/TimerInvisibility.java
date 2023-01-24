@@ -31,7 +31,7 @@
      
      if (this.timer == 10) {
        this.player.setInvisible(true);
-       this.player.sendMessage("§6[§eTntWars§6] §eInvisible pendant 10 secondes");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Invisible pendant 10 secondes");
      } 
      if (this.timer == 0) {
        this.player.setInvisible(false);

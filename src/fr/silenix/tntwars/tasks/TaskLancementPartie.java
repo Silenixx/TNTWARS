@@ -27,7 +27,7 @@ public class TaskLancementPartie extends BukkitRunnable {
    
    public void run() {
      if (this.main.listeJoueurs.size() < 2) {
-       Bukkit.broadcastMessage("§6[§eTntWars§6] §eAnnulation de début de partie par manque de joueur");
+       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Annulation de début de partie par manque de joueur");
        cancel();
        for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
          Joueur joueur = this.main.listeJoueurs.get(i);
@@ -41,14 +41,14 @@ public class TaskLancementPartie extends BukkitRunnable {
        }
        
        if (this.timer == 35 || this.timer == 10 || this.timer == 5 || this.timer == 4 || this.timer == 3 || this.timer == 2 || this.timer == 1) {
-         Bukkit.broadcastMessage("§6[§eTntWars§6] §eTéléportation vers la carte de jeu dans §6" + this.timer + "§e secondes.");
+         Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Téléportation vers la carte de jeu dans §6" + this.timer + "§e secondes.");
        
        }
        else if (this.timer == 0) {
          Random random = new Random();
          int value_random_en_cours = random.nextInt(this.main.list_maps.size() - 1 + 1) + 1;
          this.main.map_en_cours = this.main.list_maps.get(value_random_en_cours - 1);
-         Bukkit.broadcastMessage("§6[§eTntWars§6] §ePour cette partie la map §6" + this.main.map_en_cours.Nom + "§e a été choisie.");
+         Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Pour cette partie la map §6" + this.main.map_en_cours.Nom + "§e a été choisie.");
          
          this.main.PutLocationInTnt(this.main.map_en_cours.getNbEquipe());
          
@@ -63,6 +63,7 @@ public class TaskLancementPartie extends BukkitRunnable {
          Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "killall pig world");
          Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "killall horse world");
          Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "killall wolf world");
+         Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "killall dog world");
          
          for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
            Joueur joueur = this.main.listeJoueurs.get(i);

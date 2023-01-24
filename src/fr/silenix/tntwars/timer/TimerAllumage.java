@@ -45,17 +45,17 @@
 /* 45 */       cancel();
 /*    */     }
 /* 47 */     else if (tnt.getTimer() == 30 && tnt.getEtat() == EtatTNT.Allume) {
-/* 48 */       Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §630 §bsecondes avant l'explosion de la TNT " + this.couleur + ".");
+/* 48 */       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Il reste §630 §esecondes avant l'explosion de la TNT " + this.couleur + ".");
 /* 49 */       for (int j = 0; j < this.main.listeJoueurs.size(); j++) {
 /* 50 */         Joueur joueur = this.main.listeJoueurs.get(j);
 /* 51 */         joueur.getPlayer().playSound(joueur.getPlayer().getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0F, 1.0F);
 /*    */       }
 /*    */     
 /* 54 */     } else if (tnt.getTimer() == 25 || tnt.getTimer() == 20 || tnt.getTimer() == 15 || tnt.getTimer() == 10 || tnt.getTimer() == 5 || tnt.getTimer() == 3 || tnt.getTimer() == 2) {
-/* 55 */       Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §6" + tnt.getTimer() + " §esecondes avant l'explosion de la TNT " + this.couleur + ".");
+/* 55 */       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Il reste §6" + tnt.getTimer() + " §esecondes avant l'explosion de la TNT " + this.couleur + ".");
 /*    */     }
 /* 57 */     else if (tnt.getTimer() == 1) {
-/* 58 */       Bukkit.broadcastMessage("§6[§eTntWars§6] §eIl reste §6" + tnt.getTimer() + " §eseconde avant l'explosion de la TNT " + this.couleur + ".");
+/* 58 */       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Il reste §6" + tnt.getTimer() + " §eseconde avant l'explosion de la TNT " + this.couleur + ".");
 /*    */     }
 /* 60 */     else if (tnt.getTimer() == 0) {
 /* 61 */       tnt.setEtat(EtatTNT.Explose);

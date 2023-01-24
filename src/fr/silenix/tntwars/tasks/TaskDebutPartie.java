@@ -18,7 +18,7 @@
    
    public void run() {
      if (this.main.listeJoueurs.size() < 2) {
-       Bukkit.broadcastMessage("§6[§eTntWars§6] §eAnnulation de début de partie par manque de joueur");
+       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Annulation de début de partie par manque de joueur");
        cancel();
        for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
          Joueur joueur = this.main.listeJoueurs.get(i);
@@ -32,10 +32,10 @@
          pls.getPlayer().setLevel(this.timer);
        }
        if (this.timer == 45 || this.timer == 30 || this.timer == 20 || this.timer == 10 || this.timer == 5 || this.timer == 4 || this.timer == 3 || this.timer == 2 || this.timer == 1) {
-         Bukkit.broadcastMessage("§6[§eTntWars§6] §eLancement de la partie dans §6" + this.timer + "§e secondes.");
+         Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Lancement de la partie dans §6" + this.timer + "§e secondes.");
        }
        else if (this.timer == 0) {
-         Bukkit.broadcastMessage("§6[§eTntWars§6] §eLancement de la partie! Que la meilleure équipe gagne!");
+         Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Lancement de la partie! Que la meilleure équipe gagne!");
          this.main.setState(EtatPartie.JeuEnCours);
          this.main.AutoAddTeam(this.main.map_en_cours.getNbEquipe());
          for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
