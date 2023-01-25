@@ -250,12 +250,12 @@
      
      ItemStack customAmethystShard = new ItemStack(Material.AMETHYST_SHARD, 3);
      ItemMeta customBP = customAmethystShard.getItemMeta();
-     customBP.setDisplayName("Camarade au spawn");
+     customBP.setDisplayName("Retour au spawn");
      customAmethystShard.setItemMeta(customBP);
      
      ItemStack customAMETHYST_CLUSTER= new ItemStack(Material.AMETHYST_CLUSTER, 3);
      ItemMeta customAmethyst = customAMETHYST_CLUSTER.getItemMeta();
-     customAmethyst.setDisplayName("Retour au spawn");
+     customAmethyst.setDisplayName("Camarade au spawn");
      customAMETHYST_CLUSTER.setItemMeta(customAmethyst);
 
      Kit Savior = new Kit(
@@ -574,8 +574,8 @@
      Kit Archer = new Kit(
          "Archer", 
          skull_archer, 
-         new ItemStack(Material.IRON_CHESTPLATE), 
-         new ItemStack(Material.IRON_LEGGINGS), 
+         new ItemStack(Material.CHAINMAIL_CHESTPLATE), 
+         new ItemStack(Material.CHAINMAIL_CHESTPLATE), 
          new ItemStack(Material.IRON_BOOTS), 
          customstonesword_archer, 
          Constantes.Vie_Global_Joueur, 

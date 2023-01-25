@@ -147,7 +147,7 @@ import org.bukkit.entity.Item;
  
  
  
-         ItemStack customcompasse = new ItemStack(Material.NETHER_STAR, 1);
+         ItemStack customcompasse = new ItemStack(Material.COMPASS, 1);
          ItemMeta customC2 = customcompasse.getItemMeta();
          customC2.setDisplayName("Choisir le kit");
          customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
@@ -258,8 +258,10 @@ import org.bukkit.entity.Item;
        
        tnt.setEtat(EtatTNT.Explose);
      } 
+     if (main.isState(EtatPartie.JeuEnCours)) {
+    	 main.CheckWin();
+     }
      
-     main.CheckWin();
    }
  
  
@@ -388,7 +390,7 @@ import org.bukkit.entity.Item;
          .findAny()
          .orElse(null);
        Joueur joueur_victime = main.listeJoueurs.stream()
-         .filter(p -> player.getName().equals(p.getNom()))
+         .filter(p -> victim.getName().equals(p.getNom()))
          .findAny()
          .orElse(null);
  

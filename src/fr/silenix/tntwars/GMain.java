@@ -211,7 +211,7 @@ import org.bukkit.Bukkit;
  
      
      if (isState(EtatPartie.AttenteJoueur) && this.listeJoueurs.size() >= 2 && !isState(EtatPartie.Lancement)) {
-       Bukkit.broadcastMessage("§6[§eTntWars§6] §eAssez de monde pour relancer une nouvelle partie.");
+       Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Assez de monde pour relancer une nouvelle partie.");
        setState(EtatPartie.Lancement);
        TaskLancementPartie start = new TaskLancementPartie(this);
        start.runTaskTimer(this, 0L, 20L);
@@ -279,13 +279,13 @@ import org.bukkit.Bukkit;
      
      objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-		objective.setDisplayName(ChatColor.GOLD + "�6-------- TNT WARS --------");
+		objective.setDisplayName(ChatColor.GOLD + "§6-------- TNT WARS --------");
 		
-		Score information = objective.getScore(ChatColor.GOLD + "� Informations de la Partie");
+		Score information = objective.getScore(ChatColor.GOLD + "§ Informations de la Partie");
 		information.setScore(15);
      
 		onlineCounter.addEntry(ChatColor.BLACK + "" + ChatColor.WHITE);
-		onlineCounter.setPrefix("  �eJoueurs connect�s: ");
+		onlineCounter.setPrefix("  §eJoueurs connectés: ");
 		
 		if (Bukkit.getOnlinePlayers().size() == 0) {
 		    onlineCounter.setSuffix(ChatColor.AQUA + "0");
@@ -296,12 +296,12 @@ import org.bukkit.Bukkit;
 		objective.getScore(ChatColor.BLACK + "" + ChatColor.WHITE).setScore(14);
 		
 		boardblue.addEntry(ChatColor.WHITE + "" + ChatColor.WHITE);
-		boardblue.setPrefix("  �eTNT bleu: ");
+		boardblue.setPrefix("  §eTNT bleu: ");
 		boardblue.setSuffix(""+ ChatColor.BLUE + cblue + ChatColor.BLUE + "%" );
 		objective.getScore(ChatColor.WHITE + "" + ChatColor.WHITE).setScore(13);
 		
 		boardred.addEntry(ChatColor.WHITE + "" + ChatColor.BLACK);
-		boardred.setPrefix("  �eTNT rouge: ");
+		boardred.setPrefix("  §eTNT rouge: ");
 		boardred.setSuffix(""+ ChatColor.RED + cred + ChatColor.RED + "%" );
 		objective.getScore(ChatColor.WHITE + "" + ChatColor.BLACK).setScore(12);
    }
@@ -699,7 +699,7 @@ import org.bukkit.Bukkit;
    
    public void RejoindEquipe(Joueur joueur, Equipe equipe, int NbEquipe) {
      if (joueur.getEquipe() == equipe) {
-       joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eVous etes d§ja " + equipe.getCouleur() + ".");
+       joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous etes d§ja " + equipe.getCouleur() + ".");
      }
      
      if (joueur.getEquipe() != equipe)
@@ -709,12 +709,12 @@ import org.bukkit.Bukkit;
          if (this.listeJoueurs.size() == 2 && NbEquipe == 2) {
            if (equipe == this.Equipe_bleu) {
              if (getSize(CouleurEquipe.Bleu.toString()) == 1 && getSize(CouleurEquipe.Jaune.toString()) == 0) {
-               joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les " + equipe.getCouleur() + " essayez une autre §quipe ou plus tard.");
+               joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre §quipe ou plus tard.");
                
                return;
              } 
            } else if (getSize(CouleurEquipe.Rouge.toString()) == 1 && getSize(CouleurEquipe.Bleu.toString()) == 0) {
-             joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les " + equipe.getCouleur() + " essaie les rouges ou plus tard.");
+             joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essaie les rouges ou plus tard.");
  
              
              return;
@@ -727,9 +727,9 @@ import org.bukkit.Bukkit;
          ajoutjoueurscoreboard(joueur, equipe);
  
          
-         joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eVous avez rejoinds l'équipe " + equipe.getCouleur() + ".");
+         joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoinds l'équipe " + equipe.getCouleur() + ".");
        } else {
-         joueur.getPlayer().sendMessage("§6[§eTntWars§6] §eTrop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");
+         joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");
        } 
      }
    }

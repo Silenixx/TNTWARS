@@ -24,16 +24,16 @@
    public void run() {
      if (this.timer == 3) {
        this.player.setInvulnerable(true);
-       this.player.sendMessage("§6[§eTntWars§6] §eImmortalité pendant 3 §bsecondes");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Immortalité pendant 3 §bsecondes");
      } 
      if (this.timer == 2) {
-       this.player.sendMessage("§6[§eTntWars§6] §eImmortalité pendant 2 §bsecondes");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Immortalité pendant 2 §bsecondes");
      }
      if (this.timer == 1) {
-       this.player.sendMessage("§6[§eTntWars§6] §eImmortalité pendant 1 §bseconde");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Immortalité pendant 1 §bseconde");
      }
      if (this.timer == 0) {
-       this.player.sendMessage("§6[§eTntWars§6] §eFin d'Immortalité");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Fin d'Immortalité");
        
        this.player.setInvulnerable(false);
        cancel();
