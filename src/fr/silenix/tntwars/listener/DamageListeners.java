@@ -209,11 +209,16 @@ import org.bukkit.event.EventHandler;
                event.setDamage(0.0D);
                event.setCancelled(true);
                return;
-             } 
+             }
+             else
+             {
+            	 
+            	 
+             }
              if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
                  event.setDamage(0.0D);
                  event.setCancelled(true);
-                 this.main.eliminate(joueur_victime.getPlayer());
+                 main.eliminate(joueur_victime.getPlayer());
                } 
              
           

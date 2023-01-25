@@ -549,6 +549,7 @@ import org.bukkit.inventory.Inventory;
          
          
          
+         
          if (player.getInventory().getItemInMainHand().getType() == Material.BONE) {
              player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
           }
