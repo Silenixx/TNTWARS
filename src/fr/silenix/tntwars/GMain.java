@@ -1,6 +1,7 @@
  package fr.silenix.tntwars;
  
  import Constante.Constantes;
+
  import Enum.CouleurEquipe;
  import Enum.EtatPartie;
  import Enum.EtatTNT;
@@ -30,7 +31,7 @@ import org.bukkit.Color;
 import org.bukkit.GameMode;
  import org.bukkit.Location;
  import org.bukkit.Material;
- import org.bukkit.OfflinePlayer;
+
  import org.bukkit.World;
  import org.bukkit.command.CommandSender;
  import org.bukkit.enchantments.Enchantment;
@@ -50,6 +51,9 @@ import org.bukkit.event.Listener;
  import org.bukkit.scoreboard.Scoreboard;
  import org.bukkit.scoreboard.ScoreboardManager;
  import org.bukkit.scoreboard.Team;
+
+import Command.CommandEliminate;
+
  
  
  
@@ -141,7 +145,8 @@ import org.bukkit.event.Listener;
      PluginManager pm = getServer().getPluginManager();
      
      setState(EtatPartie.AttenteJoueur);
- 
+     
+     getCommand("eliminate").setExecutor(new CommandEliminate(this));
  
  
  

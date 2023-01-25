@@ -28,11 +28,7 @@ import org.bukkit.event.EventHandler;
  
  
  
- 
- 
- 
- public class DamageListeners
-   implements Listener
+public class DamageListeners implements Listener
  {
    private GMain main;
    
@@ -194,35 +190,7 @@ import org.bukkit.event.EventHandler;
        Entity damager = event.getDamager();
  
  
-       if (damager instanceof Wolf) {
-    	   	Wolf wolf = (Wolf)damager;
-            Player possesseur = (Player)wolf.getOwner();
-             
-             Joueur joueur_killer = this.main.listeJoueurs.stream()
-               .filter(p -> possesseur.getName().equals(p.getPlayer().getName()))
-               .findAny()
-               .orElse(null);
-             
-             
-             
-             if (joueur_killer.getEquipe() == joueur_victime.getEquipe()) {
-               event.setDamage(0.0D);
-               event.setCancelled(true);
-               return;
-             }
-             else
-             {
-            	 
-            	 
-             }
-             if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
-                 event.setDamage(0.0D);
-                 event.setCancelled(true);
-                 main.eliminate(joueur_victime.getPlayer());
-               } 
-             
-          
-       } 
+       
        
        if (damager instanceof Arrow) {
          Arrow arrow = (Arrow)damager;

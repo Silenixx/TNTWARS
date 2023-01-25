@@ -61,9 +61,7 @@ public class TaskLancementPartie extends BukkitRunnable {
          
          Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "killall parrot world");
          Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "killall pig world");
-         Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "killall horse world");
-         Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "killall wolf world");
-         Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "killall dog world");
+
          
          for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
            Joueur joueur = this.main.listeJoueurs.get(i);

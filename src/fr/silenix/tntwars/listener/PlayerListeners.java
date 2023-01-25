@@ -4,7 +4,8 @@
  import Enum.EtatTNT;
  import Fonctions.CreateWorld;
  import Fonctions.Fonctions;
- import fr.silenix.tntwars.GMain;
+import Fonctions.IndexKit;
+import fr.silenix.tntwars.GMain;
  import fr.silenix.tntwars.entity.Joueur;
  import fr.silenix.tntwars.entity.Kit;
  import fr.silenix.tntwars.entity.Tnt;
@@ -22,11 +23,13 @@ import org.bukkit.GameMode;
  import org.bukkit.block.Block;
  import org.bukkit.block.BlockState;
  import org.bukkit.enchantments.Enchantment;
- import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Item;
- import org.bukkit.entity.Player;
+import org.bukkit.entity.Pig;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
 import org.bukkit.event.EventHandler;
  import org.bukkit.event.Listener;
@@ -247,6 +250,21 @@ import org.bukkit.inventory.Inventory;
        .findAny()
        .orElse(null);
      
+     
+     for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
+			if(entity instanceof Wolf) {
+				Wolf wolf = (Wolf) entity;
+				if(wolf.getOwner() != null) {
+					if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
+						wolf.setTarget(joueur.getPlayer());
+						
+					}
+				}
+				
+			
+			}
+		}
+     
      main.listeJoueurs.remove(joueur);
      main.listeConnecte.remove(joueur);
      player.setPlayerListName(player.getName());
@@ -449,7 +467,7 @@ import org.bukkit.inventory.Inventory;
 
 
 
-           victim.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 20*10, 7));
+           victim.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 20*10, 1));
 
            return;
        }
@@ -485,7 +503,7 @@ import org.bukkit.inventory.Inventory;
 
 
 
-           victim.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20*10, 7));
+           victim.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20*15, 8));
 
            return;
        }
@@ -523,17 +541,33 @@ import org.bukkit.inventory.Inventory;
      
      
      if(it.getType() == Material.SADDLE){
-        
+    	 
+         if(joueur.getKit() == main.list_kits.get(IndexKit.Chevalier))
+         {
+        	 
+        	 Horse horsebrown = (Horse) player.getWorld().spawn(player.getLocation(), Horse.class);
+	         horsebrown.setAdult();
+	         horsebrown.setTamed(true);
+	         horsebrown.setOwner(player);
+	         horsebrown.getInventory().setSaddle(new ItemStack(Material.SADDLE));
+	         horsebrown.setCustomName(joueur.getEquipe().getColor() + "Horse");
+	         horsebrown.setPassenger(player);
+         }
          
-         Horse horsebrown = (Horse) player.getWorld().spawn(player.getLocation(), Horse.class);
-         horsebrown.setAdult();
-         horsebrown.setTamed(true);
-         horsebrown.setOwner(player);
-         horsebrown.getInventory().setSaddle(new ItemStack(Material.SADDLE));
-         horsebrown.setCustomName(joueur.getEquipe().getColor() + "Horse");
-         horsebrown.setPassenger(player);
+         if(joueur.getKit() == main.list_kits.get(IndexKit.PigRider))
+         {
+        	 
+        	 Pig pig = (Pig) player.getWorld().spawn(player.getLocation(), Pig.class);
+        	 pig.setAdult();
+        	 pig.setSaddle(true);
+        	 pig.setCustomName(joueur.getEquipe().getColor() + "Pig");
+        	 pig.setPassenger(player);
+         }
+         
          
      }
+     
+     
      
      
      if(it.getType() == Material.BONE){
@@ -543,6 +577,7 @@ import org.bukkit.inventory.Inventory;
          wolf.setAdult();
          wolf.setTamed(true);
          wolf.setOwner(player);
+         
          
          //wolf.getInventory().setSaddle(new ItemStack(Material.SADDLE));
          wolf.setCustomName("Loup");
@@ -819,6 +854,14 @@ import org.bukkit.inventory.Inventory;
                Horse horse = (Horse) e.getVehicle();
               
                horse.remove();
+                   
+                  
+           }
+           
+           if(e.getVehicle() instanceof Pig) {
+               Pig pig = (Pig) e.getVehicle();
+              
+               pig.remove();
                    
                   
            }

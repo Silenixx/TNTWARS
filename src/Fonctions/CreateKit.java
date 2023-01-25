@@ -1047,7 +1047,7 @@
      ItemStack customblaze_Pecheur = new ItemStack(Material.TROPICAL_FISH, 1);
      ItemMeta customSSS_Pecheur = customblaze_Pecheur.getItemMeta();
      customSSS_Pecheur.setDisplayName("Kit Pêcheur");
-     customSSS_Pecheur.addEnchant(Enchantment.DAMAGE_ALL, 6, true);
+     customSSS_Pecheur.addEnchant(Enchantment.DAMAGE_ALL, 10, true);
      customblaze_Pecheur.setItemMeta(customSSS_Pecheur);
 
      ItemStack skull_pecheur = PlayerHead.customPlayerHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjkyMzUwYzlmMDk5M2VkNTRkYjJjNzExMzkzNjMyNTY4M2ZmYzIwMTA0YTliNjIyYWE0NTdkMzdlNzA4ZDkzMSJ9fX0=", 

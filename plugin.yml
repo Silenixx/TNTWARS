@@ -3,3 +3,7 @@ version: 1.0
 author: Silenix
 main: fr.silenix.tntwars.GMain
 api-version: 1.18
+commands:
+  eliminate:
+    description: Basic commande de kill
+    usage: /eliminate
