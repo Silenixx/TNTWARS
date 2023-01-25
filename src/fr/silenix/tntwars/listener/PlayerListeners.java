@@ -419,7 +419,7 @@ import org.bukkit.entity.Item;
          player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
  
          
-         main.SpawnTeleportation(joueur);
+         main.SpawnTeleportation(joueur_victime);
  
  
          
@@ -686,7 +686,7 @@ import org.bukkit.entity.Item;
  
  
  
-     
+     //TODO FACTEUR
      if (it.getType() == Material.AMETHYST_SHARD && joueur.getKit() == main.list_kits.get(6)) {
        if (joueur.getEquipe() == main.Equipe_bleu) {
          if (player.getInventory().getItemInMainHand().getType() == Material.AMETHYST_SHARD) {

@@ -640,8 +640,8 @@
          null, 
          customwoodsword_ghost, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.COOKED_BEEF, 64), new ItemStack(Material.COOKED_BEEF, 64)
-             )), null, 
+         null,
+         null, 
          false, 
          new ItemStack(Material.ENDER_EYE), 
          Arrays.asList( "§bépée en bois", "§bTotalement invisible", "§dLe kit Ghost vous rendra invisivle pour ", "§dinfiltrer les lignes enemies. Soyez discret et assasin."
@@ -777,7 +777,7 @@
              )), null, 
          true, 
          new ItemStack(Material.POTION), 
-         Arrays.asList( "§bEpée en fer", "§bArmure fer", "§dUn petit élixir, Monseigneur? "
+         Arrays.asList( "§bEpee en fer", "§bArmure fer", "§dUn petit élixir, Monseigneur? "
            ), "tnt.alchimiste");
      list_kits.add(Alchimiste);
 
