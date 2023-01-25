@@ -542,10 +542,11 @@ import org.bukkit.inventory.Inventory;
          Wolf wolf = (Wolf) player.getWorld().spawn(player.getLocation(), Wolf.class);
          wolf.setAdult();
          wolf.setTamed(true);
-         wolf.setTamed(false);
          wolf.setOwner(player);
+         
          //wolf.getInventory().setSaddle(new ItemStack(Material.SADDLE));
-         wolf.setCustomName(joueur.getEquipe().getColor() + "Loup");
+         wolf.setCustomName("Loup");
+         
          
          
          if (player.getInventory().getItemInMainHand().getType() == Material.BONE) {

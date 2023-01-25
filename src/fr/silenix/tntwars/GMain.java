@@ -34,8 +34,10 @@ import org.bukkit.GameMode;
  import org.bukkit.World;
  import org.bukkit.command.CommandSender;
  import org.bukkit.enchantments.Enchantment;
- import org.bukkit.entity.Player;
- import org.bukkit.event.Listener;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Wolf;
+import org.bukkit.event.Listener;
  import org.bukkit.inventory.ItemFlag;
  import org.bukkit.inventory.ItemStack;
  import org.bukkit.inventory.meta.ItemMeta;
@@ -646,6 +648,17 @@ import org.bukkit.GameMode;
        .filter(p -> player.getName().equals(p.getPlayer().getName()))
        .findAny()
        .orElse(null);
+     
+     for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
+		if(entity instanceof Wolf) {
+			Wolf wolf = (Wolf) entity;
+			if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
+				wolf.remove();
+			}
+			
+		}
+	}
+     
      
      player.setInvulnerable(true);
      player.setGameMode(GameMode.CREATIVE);

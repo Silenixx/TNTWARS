@@ -2,19 +2,22 @@
  
  import Enum.EtatPartie;
  import Fonctions.Fonctions;
- import fr.silenix.tntwars.GMain;
+import Fonctions.IndexKit;
+import fr.silenix.tntwars.GMain;
  import fr.silenix.tntwars.entity.Joueur;
  import java.util.ArrayList;
  import java.util.List;
  import org.bukkit.Bukkit;
  import org.bukkit.Material;
- import org.bukkit.block.Block;
+import org.bukkit.World;
+import org.bukkit.block.Block;
  import org.bukkit.entity.Arrow;
  import org.bukkit.entity.Entity;
  import org.bukkit.entity.Fireball;
  import org.bukkit.entity.Player;
  import org.bukkit.entity.Snowball;
- import org.bukkit.event.EventHandler;
+import org.bukkit.entity.Wolf;
+import org.bukkit.event.EventHandler;
  import org.bukkit.event.Listener;
  import org.bukkit.event.entity.EntityDamageByEntityEvent;
  import org.bukkit.event.entity.EntityDamageEvent;
@@ -166,6 +169,20 @@
        return;
      } 
      
+     
+     /*if (victim instanceof Wolf) {
+    	 
+    	 Player damager = (Player) event.getDamager();
+    	 
+    	 ((Wolf) victim).setTarget(damager);
+     }*/
+     
+     
+     
+     
+     
+     
+     
      if (victim instanceof Player) {
        Player players = (Player)victim;
        Joueur joueur_victime = this.main.listeJoueurs.stream()
@@ -177,7 +194,30 @@
        Entity damager = event.getDamager();
  
  
- 
+       if (damager instanceof Wolf) {
+    	   	Wolf wolf = (Wolf)damager;
+            Player possesseur = (Player)wolf.getOwner();
+             
+             Joueur joueur_killer = this.main.listeJoueurs.stream()
+               .filter(p -> possesseur.getName().equals(p.getPlayer().getName()))
+               .findAny()
+               .orElse(null);
+             
+             
+             
+             if (joueur_killer.getEquipe() == joueur_victime.getEquipe()) {
+               event.setDamage(0.0D);
+               event.setCancelled(true);
+               return;
+             } 
+             if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
+                 event.setDamage(0.0D);
+                 event.setCancelled(true);
+                 this.main.eliminate(joueur_victime.getPlayer());
+               } 
+             
+          
+       } 
        
        if (damager instanceof Arrow) {
          Arrow arrow = (Arrow)damager;
@@ -371,6 +411,32 @@
            event.setDamage(0.0D);
            this.main.eliminate(players);
          } 
+         
+         if (joueur_victime.getKit() == this.main.list_kits.get(IndexKit.DogMaster)) {
+             
+        	 
+				for(Entity entity : joueur_killer.getPlayer().getWorld().getEntities()) {
+					if(entity instanceof Wolf) {
+						Wolf wolf = (Wolf) entity;
+						if(wolf.getOwner() != null) {
+							if(wolf.getOwner().getName() == joueur_victime.getPlayer().getName()) {
+								wolf.setTarget(joueur_killer.getPlayer());
+								
+							}
+						}
+						
+					
+					}
+				}
+				if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
+		             event.setDamage(0.0D);
+		             event.setCancelled(true);
+		             this.main.eliminate(joueur_victime.getPlayer());
+		          } 
+ 				
+  
+ 				
+           }
  
          
          if (joueur_killer.getKit() == this.main.list_kits.get(39)) {
@@ -465,84 +531,8 @@
          } 
        } 
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
  
  
        
