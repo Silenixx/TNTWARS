@@ -329,8 +329,8 @@
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_chevalier, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.HORSE_SPAWN_EGG, 1), new ItemStack(Material.SADDLE, 1), new ItemStack(Material.WHEAT, 64), new ItemStack(Material.WHEAT, 64)
-             )), null, 
+         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.SADDLE, 1))),
+         null, 
          true, 
          new ItemStack(Material.SADDLE), 
          Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dUn cheval et vous voilà au moyen-age"
@@ -398,8 +398,8 @@
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_dog, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.BONE, 64), new ItemStack(Material.WOLF_SPAWN_EGG, 7)
-             )), null, 
+         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.BONE, 8))),
+         null, 
          true, 
          new ItemStack(Material.BONE), 
          Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dUne horde de loup, un vrai éleveur"

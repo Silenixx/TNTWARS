@@ -27,7 +27,8 @@ import org.bukkit.entity.Horse;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Item;
  import org.bukkit.entity.Player;
- import org.bukkit.event.EventHandler;
+import org.bukkit.entity.Wolf;
+import org.bukkit.event.EventHandler;
  import org.bukkit.event.Listener;
  import org.bukkit.event.block.Action;
  import org.bukkit.event.block.BlockBreakEvent;
@@ -524,10 +525,6 @@ import org.bukkit.inventory.Inventory;
      if(it.getType() == Material.SADDLE){
         
          
-
-
-
-         
          Horse horsebrown = (Horse) player.getWorld().spawn(player.getLocation(), Horse.class);
          horsebrown.setAdult();
          horsebrown.setTamed(true);
@@ -539,7 +536,22 @@ import org.bukkit.inventory.Inventory;
      }
      
      
-     
+     if(it.getType() == Material.BONE){
+        
+         
+         Wolf wolf = (Wolf) player.getWorld().spawn(player.getLocation(), Wolf.class);
+         wolf.setAdult();
+         wolf.setTamed(true);
+         wolf.setTamed(false);
+         wolf.setOwner(player);
+         //wolf.getInventory().setSaddle(new ItemStack(Material.SADDLE));
+         wolf.setCustomName(joueur.getEquipe().getColor() + "Loup");
+         
+         
+         if (player.getInventory().getItemInMainHand().getType() == Material.BONE) {
+             player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+          }
+     }
      
      
      
