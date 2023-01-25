@@ -14,7 +14,8 @@
  import fr.silenix.tntwars.timer.TimerInvisibility;
  import java.util.Arrays;
  import org.bukkit.Bukkit;
- import org.bukkit.GameMode;
+import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
  import org.bukkit.Location;
  import org.bukkit.Material;
  import org.bukkit.World;
@@ -22,6 +23,7 @@
  import org.bukkit.block.BlockState;
  import org.bukkit.enchantments.Enchantment;
  import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Horse;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Item;
  import org.bukkit.entity.Player;
@@ -39,7 +41,8 @@ import org.bukkit.entity.Item;
  import org.bukkit.event.player.PlayerJoinEvent;
  import org.bukkit.event.player.PlayerMoveEvent;
  import org.bukkit.event.player.PlayerQuitEvent;
- import org.bukkit.inventory.Inventory;
+import org.bukkit.event.vehicle.VehicleExitEvent;
+import org.bukkit.inventory.Inventory;
  import org.bukkit.inventory.ItemFlag;
  import org.bukkit.inventory.ItemStack;
  import org.bukkit.inventory.meta.ItemMeta;
@@ -497,6 +500,7 @@ import org.bukkit.entity.Item;
  
  
    
+   @SuppressWarnings("deprecation")
    @EventHandler
    public void onInteract(PlayerInteractEvent event) {
      Player player = event.getPlayer();
@@ -515,6 +519,30 @@ import org.bukkit.entity.Item;
      if (it == null) {
        return;
      }
+     
+     
+     if(it.getType() == Material.SADDLE){
+        
+         
+
+
+
+         
+         Horse horsebrown = (Horse) player.getWorld().spawn(player.getLocation(), Horse.class);
+         horsebrown.setAdult();
+         horsebrown.setTamed(true);
+         horsebrown.setOwner(player);
+         horsebrown.getInventory().setSaddle(new ItemStack(Material.SADDLE));
+         horsebrown.setCustomName(joueur.getEquipe().getColor() + "Horse");
+         horsebrown.setPassenger(player);
+         
+     }
+     
+     
+     
+     
+     
+     
      
      if (it.getType() == Material.COMPASS) {
  
@@ -769,7 +797,19 @@ import org.bukkit.entity.Item;
      }
    }
  
- 
+   @EventHandler
+   public void onPLayerDismount(VehicleExitEvent e) {
+       if(e.getExited() instanceof Player) {
+           
+           if(e.getVehicle() instanceof Horse) {
+               Horse horse = (Horse) e.getVehicle();
+              
+               horse.remove();
+                   
+                  
+           }
+       }
+   }
  
    
    @EventHandler

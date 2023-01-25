@@ -26,7 +26,8 @@ import java.util.Random;
 
 import org.bukkit.Bukkit;
  import org.bukkit.ChatColor;
- import org.bukkit.GameMode;
+import org.bukkit.Color;
+import org.bukkit.GameMode;
  import org.bukkit.Location;
  import org.bukkit.Material;
  import org.bukkit.OfflinePlayer;
@@ -63,11 +64,11 @@ import org.bukkit.Bukkit;
    public World world = null;
  
    
-   public Equipe Equipe_rouge = new Equipe("Rouge", false, Material.RED_WOOL, Material.RED_GLAZED_TERRACOTTA);
-   public Equipe Equipe_bleu = new Equipe("Bleu", false, Material.BLUE_WOOL, Material.BLUE_GLAZED_TERRACOTTA);
-   public Equipe Equipe_vert = new Equipe("Vert", false, Material.GREEN_WOOL, Material.GREEN_GLAZED_TERRACOTTA);
-   public Equipe Equipe_jaune = new Equipe("Jaune", false, Material.YELLOW_WOOL, Material.YELLOW_GLAZED_TERRACOTTA);
-   public Equipe Sans_Equipe = new Equipe("Sans Equipe", true, null, null);
+   public Equipe Equipe_rouge = new Equipe("Rouge", false, Material.RED_WOOL, Material.RED_GLAZED_TERRACOTTA,Color.RED);
+   public Equipe Equipe_bleu = new Equipe("Bleu", false, Material.BLUE_WOOL, Material.BLUE_GLAZED_TERRACOTTA,Color.BLUE);
+   public Equipe Equipe_vert = new Equipe("Vert", false, Material.GREEN_WOOL, Material.GREEN_GLAZED_TERRACOTTA,Color.GREEN);
+   public Equipe Equipe_jaune = new Equipe("Jaune", false, Material.YELLOW_WOOL, Material.YELLOW_GLAZED_TERRACOTTA,Color.YELLOW);
+   public Equipe Sans_Equipe = new Equipe("Sans Equipe", true, null, null, null);
    
    public Tnt tnt_rouge = new Tnt(this.Equipe_rouge, 0, EtatTNT.Eteinte, 30, 0, null);
    public Tnt tnt_bleu = new Tnt(this.Equipe_bleu, 0, EtatTNT.Eteinte, 30, 1, null);
