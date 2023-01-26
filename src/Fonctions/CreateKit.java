@@ -821,6 +821,8 @@
      ItemMeta customDS_Shield = customdiamondsword_Shield.getItemMeta();
      customDS_Shield.setDisplayName("Kit Shield");
      customdiamondsword_Shield.setItemMeta(customDS_Shield);
+     
+     
 
      ItemStack skull_shield = PlayerHead.customPlayerHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTQ5NDg2Zjg2NTI0NTgzZTA2YTJjZmNkZjhlZDhlZjdlNzk1OTA1N2ZkMWRlMWVjZTcyZDQxZTI4Nzg4ZGMifX19", 
          Arrays.asList( "test", "test"
@@ -1257,8 +1259,8 @@
              Arrays.asList( "test", "test"
                ), "test_autre");
 
-     Kit Spy = new Kit(
-         "Spy", 
+     Kit Assassin = new Kit(
+         "Assassin", 
          skull_Spy, 
          new ItemStack(Material.IRON_CHESTPLATE), 
          new ItemStack(Material.IRON_LEGGINGS), 
@@ -1271,7 +1273,7 @@
          new ItemStack(Material.BEACON), 
          Arrays.asList( "btest\",\"btest\",\"dtest"
            ), "tnt.spy");
-     list_kits.add(Spy);
+     list_kits.add(Assassin);
 
      
      

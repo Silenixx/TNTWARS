@@ -79,7 +79,7 @@ public class IndexKit {
   
   public static final int Teleporteur = 38;
   
-  public static final int Spy = 39;
+  public static final int Assassin = 39;
   
   public static final int Hasard = 40;
 }
