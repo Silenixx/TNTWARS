@@ -250,8 +250,8 @@ import org.bukkit.inventory.Inventory;
        .findAny()
        .orElse(null);
      
-     
-     for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
+     if(joueur.getKit() == main.list_kits.get(IndexKit.DogMaster)) {
+    	  for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
 			if(entity instanceof Wolf) {
 				Wolf wolf = (Wolf) entity;
 				if(wolf.getOwner() != null) {
@@ -264,22 +264,27 @@ import org.bukkit.inventory.Inventory;
 			
 			}
 		}
+     }
+    
      
      main.listeJoueurs.remove(joueur);
      main.listeConnecte.remove(joueur);
      player.setPlayerListName(player.getName());
      event.setQuitMessage(String.valueOf(player.getName()) + " est partie.");
  
+     if(joueur.getEquipe() != main.Sans_Equipe) {
+    	 boolean stillPlayer = Fonctions.stillPlayer(main, joueur.getEquipe().getCouleur());
+	     if (!stillPlayer) {
+	       Tnt tnt = main.listTnt.stream()
+	         .filter(t -> t.getEquipe().getCouleur().equals(joueur.getEquipe().getCouleur()))
+	         .findFirst()
+	         .get();
+	       
+	       tnt.setEtat(EtatTNT.Explose);
+	     } 
+     }
+    
      
-     boolean stillPlayer = Fonctions.stillPlayer(main, joueur.getEquipe().getCouleur());
-     if (!stillPlayer) {
-       Tnt tnt = main.listTnt.stream()
-         .filter(t -> t.getEquipe().getCouleur().equals(joueur.getEquipe().getCouleur()))
-         .findFirst()
-         .get();
-       
-       tnt.setEtat(EtatTNT.Explose);
-     } 
      if (main.isState(EtatPartie.JeuEnCours)) {
     	 main.CheckWin();
      }
