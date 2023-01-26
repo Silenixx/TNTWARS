@@ -426,49 +426,7 @@ import Command.CommandEliminate;
  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
  
    
    public void GamePlay(Joueur joueur) {
@@ -730,39 +688,39 @@ import Command.CommandEliminate;
  
    
    public void RejoindEquipe(Joueur joueur, Equipe equipe, int NbEquipe) {
-     if (joueur.getEquipe() == equipe) {
-       joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous etes d§ja " + equipe.getCouleur() + ".");
-     }
+	   if (joueur.getEquipe() == equipe) {
+		   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous etes déjà " + equipe.getCouleur() + ".");
+	   }	
      
-     if (joueur.getEquipe() != equipe)
-     {
-       if (this.listeJoueurs.size() / NbEquipe >= getSize(equipe.getCouleur())) {
-         
-         if (this.listeJoueurs.size() == 2 && NbEquipe == 2) {
-           if (equipe == this.Equipe_bleu) {
-             if (getSize(CouleurEquipe.Bleu.toString()) == 1 && getSize(CouleurEquipe.Jaune.toString()) == 0) {
-               joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre §quipe ou plus tard.");
+	   if (joueur.getEquipe() != equipe)
+	   {
+		   if (this.listeJoueurs.size() / NbEquipe >= getSize(equipe.getCouleur())) {
+			   if (this.listeJoueurs.size() == 2 && NbEquipe == 2) {
+				   if (equipe == this.Equipe_bleu) {
+					   if (getSize(CouleurEquipe.Bleu.toString()) == 1 && getSize(CouleurEquipe.Jaune.toString()) == 0) {
+						   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");
                
-               return;
-             } 
-           } else if (getSize(CouleurEquipe.Rouge.toString()) == 1 && getSize(CouleurEquipe.Bleu.toString()) == 0) {
-             joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essaie les rouges ou plus tard.");
+						   return;
+					   } 
+				   } else if (getSize(CouleurEquipe.Rouge.toString()) == 1 && getSize(CouleurEquipe.Bleu.toString()) == 0) {
+					   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essaie les rouges ou plus tard.");
  
              
-             return;
-           } 
-         }
+					   return;
+				   } 
+			   }
  
          
-         deletejoueurscoreboard(joueur, equipe);
-         joueur.setEquipe(equipe);
-         ajoutjoueurscoreboard(joueur, equipe);
+			   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
  
          
-         joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoinds l'équipe " + equipe.getCouleur() + ".");
-       } else {
-         joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");
-       } 
+			   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoinds l'équipe " + equipe.getCouleur() + ".");
+		   } 
+		   else {
+			   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");
+		   } 
      }
    }
  
