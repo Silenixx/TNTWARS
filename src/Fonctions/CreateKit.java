@@ -74,8 +74,8 @@
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_ender, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.ENDER_PEARL, 3), new ItemStack(Material.CHORUS_FRUIT, 10)
-             )), null, 
+         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.ENDER_PEARL, 3), new ItemStack(Material.CHORUS_FRUIT, 10))),
+         null, 
          true, 
          new ItemStack(Material.ENDER_PEARL), 
          Arrays.asList( "§bEp§e en fer", "§btest\",\"§dtest"
@@ -124,7 +124,7 @@
          customboot_creeper, 
          customdiamondsword_creeper, 
          Constantes.Vie_Global_Joueur, 
-         null, 
+         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.GUNPOWDER, 5), new ItemStack(Material.LEVER, 1))),
          null, 
          true, 
          new ItemStack(Material.GUNPOWDER), 
@@ -157,7 +157,7 @@
          null, 
          true, 
          new ItemStack(Material.END_CRYSTAL), 
-         Arrays.asList( "§bEpee en netherite\",\"§bPas d'armure", "§dUn coup d'§p§e et il est mort"
+         Arrays.asList( "§bEpee en netherite\",\"§bPas d'armure", "§dUn coup d'épée et il est mort"
            ), "tnt.oneshot");
      list_kits.add(OneShot);
 
@@ -368,7 +368,7 @@
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_pirate, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.PARROT_SPAWN_EGG, 3), new ItemStack(Material.WHEAT_SEEDS, 64), new ItemStack(Material.SPYGLASS), new ItemStack(Material.GOLDEN_APPLE, 2)
+         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.GOLD_INGOT, 3), new ItemStack(Material.SPYGLASS), new ItemStack(Material.GOLDEN_APPLE, 2)
              )), null, 
          true, 
          new ItemStack(Material.SPYGLASS), 

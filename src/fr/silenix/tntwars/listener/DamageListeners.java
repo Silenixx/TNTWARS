@@ -280,96 +280,6 @@ public class DamageListeners implements Listener
  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
        
        if (damager instanceof Player) {
          
@@ -527,15 +437,19 @@ public class DamageListeners implements Listener
            Bukkit.broadcastMessage(String.valueOf(killer_parjoueur.getDisplayName()) + " vient de tuer " + players.getDisplayName());
            killer_parjoueur.sendMessage("Tu viens de tuer " + players.getName());
            
-           if (joueur_killer.getKit() == this.main.list_kits.get(4)) {
-             killer_parjoueur.getInventory().addItem(new ItemStack[] { new ItemStack(Material.FIREWORK_ROCKET) });
+           if (joueur_killer.getKit() == this.main.list_kits.get(IndexKit.Elytra)) {
+        	   joueur_killer.getPlayer().getInventory().addItem(new ItemStack[] { new ItemStack(Material.FIREWORK_ROCKET) });
            }
-           if (joueur_killer.getKit() == this.main.list_kits.get(1)) {
-             killer_parjoueur.getInventory().addItem(new ItemStack[] { new ItemStack(Material.ENDER_PEARL) });
+           if (joueur_killer.getKit() == this.main.list_kits.get(IndexKit.Enderman)) {
+        	   joueur_killer.getPlayer().getInventory().addItem(new ItemStack[] { new ItemStack(Material.ENDER_PEARL) });
            }
-           if (joueur_killer.getKit() == this.main.list_kits.get(5)) {
-             killer_parjoueur.getInventory().addItem(new ItemStack[] { new ItemStack(Material.BLACK_BANNER) });
+           if (joueur_killer.getKit() == this.main.list_kits.get(IndexKit.Ninja)) {
+        	   joueur_killer.getPlayer().getInventory().addItem(new ItemStack[] { new ItemStack(Material.BLACK_BANNER) });
            }
+           
+           if (joueur_killer.getKit() == this.main.list_kits.get(IndexKit.Creeper)) {
+        	   joueur_killer.getPlayer().getInventory().addItem(new ItemStack[] { new ItemStack(Material.GUNPOWDER) });
+             }
  
            
            event.setDamage(0.0D);

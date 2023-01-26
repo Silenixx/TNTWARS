@@ -36,6 +36,7 @@ import org.bukkit.GameMode;
  import org.bukkit.command.CommandSender;
  import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
 import org.bukkit.event.Listener;
@@ -659,6 +660,13 @@ import Command.CommandEliminate;
 			Wolf wolf = (Wolf) entity;
 			if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
 				wolf.remove();
+			}
+			
+		}
+		if(entity instanceof Parrot) {
+			Parrot parrot = (Parrot) entity;
+			if(parrot.getOwner().getName() == joueur.getPlayer().getName()) {
+				parrot.remove();
 			}
 			
 		}

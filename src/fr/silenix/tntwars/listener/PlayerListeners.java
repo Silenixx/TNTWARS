@@ -28,6 +28,7 @@ import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Pig;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
@@ -265,6 +266,22 @@ import org.bukkit.inventory.Inventory;
 			}
 		}
      }
+     
+     if(joueur.getKit() == main.list_kits.get(IndexKit.Pirate)) {
+   	  for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
+			if(entity instanceof Wolf) {
+				Wolf wolf = (Wolf) entity;
+				if(wolf.getOwner() != null) {
+					if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
+						wolf.setTarget(joueur.getPlayer());
+						
+					}
+				}
+				
+			
+			}
+		}
+    }
     
      
      main.listeJoueurs.remove(joueur);
@@ -570,9 +587,22 @@ import org.bukkit.inventory.Inventory;
          }
          
          
+         
      }
      
+     if(it.getType() == Material.GOLD_INGOT){
+    	 if(joueur.getKit() == main.list_kits.get(IndexKit.Pirate))
+         {
+        	 
+        	 Parrot parrot = (Parrot) player.getWorld().spawn(player.getLocation(), Parrot.class);
+        	 parrot.setAdult();
+        	 parrot.setOwner(player);
+        	 parrot.setCustomName(joueur.getEquipe().getColor() + "Parrot");
+        	 
+         }
+     }
      
+    
      
      
      if(it.getType() == Material.BONE){
@@ -678,18 +708,28 @@ import org.bukkit.inventory.Inventory;
  
  
      
-     if (it.getType() == Material.GUNPOWDER) {
+     if (it.getType() == Material.LEVER) {
        World world = player.getWorld();
-       world.createExplosion(player.getLocation(), 7.0F, false, false);
+       world.createExplosion(player.getLocation(), 15, false, false);
+       player.sendMessage("Vous vous êtes sacrifié en faisant une énorme explosion");
+       main.eliminate(player);
      } 
+     if (it.getType() == Material.GUNPOWDER) {
+         World world = player.getWorld();
+         world.createExplosion(player.getTargetBlockExact(400).getLocation(), 2, false, false);
+         if (player.getInventory().getItemInMainHand().getType() == Material.GUNPOWDER) {
+             player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+          }
+       } 
      
      if (it.getType() == Material.FIRE_CHARGE) {
-       Fireball f = (Fireball)player.launchProjectile(Fireball.class);
-       f.setIsIncendiary(false);
-       f.setVelocity(f.getVelocity().multiply(150));
-       f.setBounce(false);
+    	 Fireball f = (Fireball)player.launchProjectile(Fireball.class);
+    	 f.setIsIncendiary(false);
+    	 f.setVelocity(f.getVelocity().multiply(150));
+    	 f.setBounce(false);
+    	 
 
-       player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+    	 player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
      } 
  
  
