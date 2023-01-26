@@ -69,16 +69,16 @@
      Kit Enderman = new Kit(
          "Enderman", 
          skull_enderman, 
-         new ItemStack(Material.LEATHER_CHESTPLATE), 
+         new ItemStack(Material.IRON_CHESTPLATE), 
          new ItemStack(Material.IRON_LEGGINGS), 
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_ender, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.ENDER_PEARL, 3), new ItemStack(Material.CHORUS_FRUIT, 10))),
+         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.ENDER_PEARL, 5), new ItemStack(Material.CHORUS_FRUIT, 10))),
          null, 
          true, 
          new ItemStack(Material.ENDER_PEARL), 
-         Arrays.asList( "§bEp§e en fer", "§btest\",\"§dtest"
+         Arrays.asList( "§bEp§e en fer", "§bArmure en fer\",\"§dIl a peur de l'eau!"
             ), "tnt.enderman");
      list_kits.add(Enderman);
 
@@ -128,7 +128,7 @@
          null, 
          true, 
          new ItemStack(Material.GUNPOWDER), 
-         Arrays.asList( "§bArmure en fer protection explosion", "§bEpee en fer", "§dIncarnez un creeper"
+         Arrays.asList( "§bArmure en fer protection explosion", "§bEpee en fer", "§dEnvoie une explosion avec GunPowder, kamikaze grâce au levier"
             ), "tnt.creeper");
      list_kits.add(Creeper);
 
@@ -186,7 +186,7 @@
              )), null, 
          true, 
          new ItemStack(Material.ELYTRA), 
-         Arrays.asList( "§bEpee en pierre\",\"§bUne paire d'élytre et une rocket", "§denvolez vous dans les cieux"
+         Arrays.asList( "§bEpee en pierre\",\"§bUne paire d'élytre et une rocket", "§dRécupere un rocket par meurtre"
            ), "tnt.elytra");
      list_kits.add(Elytra);
 
@@ -229,7 +229,7 @@
              )), null, 
          true, 
          new ItemStack(Material.BLACK_BANNER), 
-         Arrays.asList( "§btest\",\"btest\",\"dtest"
+         Arrays.asList( "§bPas d'armure, épée en netherite\",\"bPotion de vitesse et de jump\",\"dLes bannières rendent invisible 10s"
            ), "tnt.ninja");
      list_kits.add(Ninja);
 
@@ -270,7 +270,7 @@
              ), null, 
          true, 
          new ItemStack(Material.AMETHYST_SHARD), 
-         Arrays.asList( "§bEpee en pierre", "§bDe quoi retourner au spawn", "§dTéléportation"
+         Arrays.asList( "§bEpee en pierre et armure en fer", "§bAmethyste shard vous téléporte au spawn", "§dAmethyste cluster renvoie un ami au spawn!"
            ), "tnt.savior");
      list_kits.add(Savior);
 
@@ -402,7 +402,7 @@
          null, 
          true, 
          new ItemStack(Material.BONE), 
-         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dUne horde de loup, un vrai éleveur"
+         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dUne horde de loup!"
            ), "tnt.dogmaster");
      list_kits.add(DogMaster);
 
@@ -437,7 +437,7 @@
              )), null, 
          true, 
          new ItemStack(Material.TRIDENT), 
-         Arrays.asList( "§bUne épée en pierre et un tridant\",\"§bUne armure en fer", "§dQui vois je , Aquaman c'est toi?"
+         Arrays.asList( "§bUne épée en pierre et un trident\",\"§bUne armure en fer", "§dQui vois je , Aquaman c'est toi?"
            ), "tnt.trident");
      list_kits.add(Trident);
 
@@ -465,7 +465,7 @@
              )), null, 
          true, 
          new ItemStack(Material.INK_SAC), 
-         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dRendez aveugle vos adversaires"
+         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dL'encre aveugle vos ennemies"
            ), "tnt.squid");
      list_kits.add(Squid);
 
@@ -521,7 +521,7 @@
              )), null, 
          true, 
          new ItemStack(Material.SNOWBALL), 
-         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dRedenvez un enfant et faites une bataille de boule de neige"
+         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dLes boules de naige font des dégâts"
            ), "tnt.snowman");
      list_kits.add(SnowMan);
 
@@ -603,6 +603,7 @@
      ItemStack customblaze_sorcier = new ItemStack(Material.BLAZE_ROD, 1);
      ItemMeta customSSS_sorcier = customblaze_sorcier.getItemMeta();
      customSSS_sorcier.addEnchant(Enchantment.ARROW_INFINITE, 6, true);
+     customSSS_sorcier.addEnchant(Enchantment.KNOCKBACK, 6, true);
      customSSS_sorcier.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
      customblaze_sorcier.setItemMeta(customSSS_sorcier);
 
@@ -617,8 +618,8 @@
          new ArrayList<ItemStack>(Arrays.asList(customblaze_sorcier
              )), null, 
          true, 
-         new ItemStack(Material.BLAZE_ROD), 
-         Arrays.asList( "§bUne baguette magique\",\"§bUne armure en fer", "§dDevenez un vrai magicien \",\"§dle temps d'une partie"
+         new ItemStack(Material.END_ROD), 
+         Arrays.asList( "§bUne baguette magique knockback\",\"§bUne armure en fer", "§dDevenez un vrai magicien \",\"§dle temps d'une partie"
            ), "tnt.sorcier");
      list_kits.add(Sorcier);
 
@@ -737,7 +738,7 @@
          null, 
          true, 
          new ItemStack(Material.SHEARS), 
-         Arrays.asList( "§bEpée en fer", "§bArmure fer", "§dCa manque de déco ici! "
+         Arrays.asList( "§bEpée en fer", "§bArmure fer", "§dPlusieurs stacks de laine. "
            ), "tnt.builder");
      list_kits.add(Builder);
 
@@ -774,7 +775,8 @@
          customdiamondsword_alchi, 
          Constantes.Vie_Global_Joueur, 
          new ArrayList<ItemStack>(Arrays.asList(is
-             )), null, 
+             )), 
+         null, 
          true, 
          new ItemStack(Material.POTION), 
          Arrays.asList( "§bEpee en fer", "§bArmure fer", "§dUn petit élixir, Monseigneur? "
