@@ -582,7 +582,7 @@ import org.bukkit.inventory.Inventory;
         	 Pig pig = (Pig) player.getWorld().spawn(player.getLocation(), Pig.class);
         	 pig.setAdult();
         	 pig.setSaddle(true);
-        	 pig.setCustomName(joueur.getEquipe().getColor() + "Pig");
+        	 pig.setCustomName("Pig");
         	 pig.setPassenger(player);
          }
          
@@ -597,9 +597,12 @@ import org.bukkit.inventory.Inventory;
         	 Parrot parrot = (Parrot) player.getWorld().spawn(player.getLocation(), Parrot.class);
         	 parrot.setAdult();
         	 parrot.setOwner(player);
-        	 parrot.setCustomName(joueur.getEquipe().getColor() + "Parrot");
+        	 parrot.setCustomName("Parrot");
         	 
          }
+    	 if (player.getInventory().getItemInMainHand().getType() == Material.GOLD_INGOT) {
+             player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+          }
      }
      
     
@@ -710,13 +713,13 @@ import org.bukkit.inventory.Inventory;
      
      if (it.getType() == Material.LEVER) {
        World world = player.getWorld();
-       world.createExplosion(player.getLocation(), 15, false, false);
+       world.createExplosion(player.getLocation(), 25, false, false);
        player.sendMessage("Vous vous êtes sacrifié en faisant une énorme explosion");
        main.eliminate(player);
      } 
      if (it.getType() == Material.GUNPOWDER) {
          World world = player.getWorld();
-         world.createExplosion(player.getTargetBlockExact(400).getLocation(), 2, false, false);
+         world.createExplosion(player.getTargetBlockExact(400).getLocation(), 5, false, false);
          if (player.getInventory().getItemInMainHand().getType() == Material.GUNPOWDER) {
              player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
           }

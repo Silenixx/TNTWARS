@@ -849,7 +849,8 @@
      ItemStack customArbalette = new ItemStack(Material.CROSSBOW, 1);
      ItemMeta customDS_Arbalette = customArbalette.getItemMeta();
      customDS_Arbalette.setDisplayName("Kit Arbalette");
-     customDS_Arbalette.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
+     customDS_Arbalette.addEnchant(Enchantment.PIERCING, 4, true);
+     customDS_Arbalette.addEnchant(Enchantment.QUICK_CHARGE, 3, true);
      customArbalette.setItemMeta(customDS_Arbalette);
 
      ItemStack skull_arbalette = PlayerHead.customPlayerHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDgzMTgzMGE3YmQzYjFhYjA1YmViOThkYzJmOWZjNWVhNTUwYjNjZjY0OWZkOTRkNDgzZGE3Y2QzOWY3YzA2MyJ9fX0=", 

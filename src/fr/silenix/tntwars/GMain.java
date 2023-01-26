@@ -655,22 +655,27 @@ import Command.CommandEliminate;
        .findAny()
        .orElse(null);
      
-     for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
-		if(entity instanceof Wolf) {
-			Wolf wolf = (Wolf) entity;
-			if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
-				wolf.remove();
+     if(joueur.getKit() == list_kits.get(IndexKit.DogMaster) || joueur.getKit() == list_kits.get(IndexKit.Pirate)) {
+    	 for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
+		
+	    	 
+	    	 if(entity instanceof Wolf) {
+				Wolf wolf = (Wolf) entity;
+				if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
+					wolf.remove();
+				}
+				
 			}
-			
-		}
-		if(entity instanceof Parrot) {
-			Parrot parrot = (Parrot) entity;
-			if(parrot.getOwner().getName() == joueur.getPlayer().getName()) {
-				parrot.remove();
+			if(entity instanceof Parrot) {
+				Parrot parrot = (Parrot) entity;
+				if(parrot.getOwner().getName() == joueur.getPlayer().getName()) {
+					parrot.remove();
+				}
+				
 			}
-			
 		}
-	}
+     }
+     
      
      
      player.setInvulnerable(true);

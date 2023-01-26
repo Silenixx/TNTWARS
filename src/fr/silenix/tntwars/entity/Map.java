@@ -60,6 +60,9 @@
    public Location getLocationTntArray(int tnt) {
      return this.LocationTntArray.get(tnt);
    }
+   public ArrayList<Location> getLocationTntArray2() {
+     return this.LocationTntArray;
+   }
    public void setTntArray(ArrayList<Location> LocationtntArray) {
      this.LocationTntArray = LocationtntArray;
    }
