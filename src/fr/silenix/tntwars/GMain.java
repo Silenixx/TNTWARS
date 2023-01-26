@@ -71,11 +71,11 @@ import Command.CommandEliminate;
    public World world = null;
  
    
-   public Equipe Equipe_rouge = new Equipe("Rouge", false, Material.RED_WOOL, Material.RED_GLAZED_TERRACOTTA,Color.RED);
-   public Equipe Equipe_bleu = new Equipe("Bleu", false, Material.BLUE_WOOL, Material.BLUE_GLAZED_TERRACOTTA,Color.BLUE);
-   public Equipe Equipe_vert = new Equipe("Vert", false, Material.GREEN_WOOL, Material.GREEN_GLAZED_TERRACOTTA,Color.GREEN);
-   public Equipe Equipe_jaune = new Equipe("Jaune", false, Material.YELLOW_WOOL, Material.YELLOW_GLAZED_TERRACOTTA,Color.YELLOW);
-   public Equipe Sans_Equipe = new Equipe("Sans Equipe", true, null, null, null);
+   public Equipe Equipe_rouge = new Equipe("Rouge", false, Material.RED_WOOL, Material.RED_GLAZED_TERRACOTTA,Color.RED, ChatColor.RED);
+   public Equipe Equipe_bleu = new Equipe("Bleu", false, Material.BLUE_WOOL, Material.BLUE_GLAZED_TERRACOTTA,Color.BLUE, ChatColor.BLUE);
+   public Equipe Equipe_vert = new Equipe("Vert", false, Material.GREEN_WOOL, Material.GREEN_GLAZED_TERRACOTTA,Color.GREEN, ChatColor.GREEN);
+   public Equipe Equipe_jaune = new Equipe("Jaune", false, Material.YELLOW_WOOL, Material.YELLOW_GLAZED_TERRACOTTA,Color.YELLOW, ChatColor.YELLOW);
+   public Equipe Sans_Equipe = new Equipe("Sans Equipe", true, null, null, null, null);
    
    public Tnt tnt_rouge = new Tnt(this.Equipe_rouge, 0, EtatTNT.Eteinte, 30, 0, null);
    public Tnt tnt_bleu = new Tnt(this.Equipe_bleu, 0, EtatTNT.Eteinte, 30, 1, null);
@@ -716,7 +716,7 @@ import Command.CommandEliminate;
 			   ajoutjoueurscoreboard(joueur, equipe);
  
          
-			   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoinds l'équipe " + equipe.getCouleur() + ".");
+			   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
 		   } 
 		   else {
 			   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");

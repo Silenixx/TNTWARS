@@ -1,6 +1,7 @@
  package fr.silenix.tntwars.entity;
  
  import org.bukkit.Color;
+ import org.bukkit.ChatColor;
 import org.bukkit.Material;
  
  
@@ -14,13 +15,15 @@ import org.bukkit.Material;
    private Material laine;
    private Material BlockTactique;
    private Color Color;
+   private ChatColor ChatColor;
    
-   public Equipe(String Couleur, boolean IsAlive, Material laine, Material BlockTactique,Color Color) {
+   public Equipe(String Couleur, boolean IsAlive, Material laine, Material BlockTactique,Color Color, ChatColor chatcolor) {
      this.Couleur = Couleur;
      this.IsAlive = IsAlive;
      this.laine = laine;
      this.BlockTactique = BlockTactique;
      this.Color = Color;
+     this.ChatColor = chatcolor;
    }
    
    public String getCouleur() {
@@ -53,6 +56,15 @@ import org.bukkit.Material;
    public void setColor(Color Color) {
      this.Color = Color;
    }
+
+public ChatColor getChatColor() {
+	return ChatColor;
+}
+
+public void setChatColor(ChatColor chatColor) {
+	ChatColor = chatColor;
+}
+   
    
  }
 
