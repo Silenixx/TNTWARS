@@ -51,7 +51,7 @@
          null, 
          true, 
          new ItemStack(Material.DIAMOND_SWORD), 
-         Arrays.asList( "§bArmure en fer", "§bEp§e en diamant", "§dCe kit est fait pour les mordues de PVP.", "§dVous ferez partie des combattants majeurs de votre équipe."
+         Arrays.asList( "§bArmure en fer", "§bEpée en diamant", "§dCe kit est fait pour les mordues de PVP.", "§dVous ferez partie des combattants majeurs de votre équipe."
             ), "tnt.guerrier");
      list_kits.add(Guerrier);
 
@@ -78,7 +78,7 @@
          null, 
          true, 
          new ItemStack(Material.ENDER_PEARL), 
-         Arrays.asList( "§bEp§e en fer", "§bArmure en fer\",\"§dIl a peur de l'eau!"
+         Arrays.asList( "§bEpée en fer", "§bArmure en fer","§dIl a peur de l'eau!"
             ), "tnt.enderman");
      list_kits.add(Enderman);
 
@@ -128,7 +128,7 @@
          null, 
          true, 
          new ItemStack(Material.GUNPOWDER), 
-         Arrays.asList( "§bArmure en fer protection explosion", "§bEpee en fer", "§dEnvoie une explosion avec GunPowder, kamikaze grâce au levier"
+         Arrays.asList( "§bArmure en fer protection explosion", "§bEpée en fer", "§dEnvoie une explosion avec GunPowder, kamikaze grâce au levier"
             ), "tnt.creeper");
      list_kits.add(Creeper);
 
@@ -157,7 +157,7 @@
          null, 
          true, 
          new ItemStack(Material.END_CRYSTAL), 
-         Arrays.asList( "§bEpee en netherite\",\"§bPas d'armure", "§dUn coup d'épée et il est mort"
+         Arrays.asList( "§bEpee en netherite","§bPas d'armure", "§dUn coup d'épée et il est mort"
            ), "tnt.oneshot");
      list_kits.add(OneShot);
 
@@ -186,7 +186,7 @@
              )), null, 
          true, 
          new ItemStack(Material.ELYTRA), 
-         Arrays.asList( "§bEpee en pierre\",\"§bUne paire d'élytre et une rocket", "§dRécupere un rocket par meurtre"
+         Arrays.asList( "§bEpee en pierre","§bUne paire d'élytre et une rocket", "§dRécupere une rocket par meurtre"
            ), "tnt.elytra");
      list_kits.add(Elytra);
 
@@ -229,7 +229,7 @@
              )), null, 
          true, 
          new ItemStack(Material.BLACK_BANNER), 
-         Arrays.asList( "§bPas d'armure, épée en netherite\",\"bPotion de vitesse et de jump\",\"dLes bannières rendent invisible 10s"
+         Arrays.asList( "§bPas d'armure, épée en netherite","Potion de vitesse et de jump","dLes bannières rendent invisible 10s"
            ), "tnt.ninja");
      list_kits.add(Ninja);
 
@@ -297,11 +297,11 @@
          new ItemStack(Material.IRON_BOOTS), 
          customcarrot, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(customcarrot, customcarrot, customcarrot, customcarrot, customcarrot, new ItemStack(Material.SADDLE, 6), new ItemStack(Material.PIG_SPAWN_EGG, 6)
+         new ArrayList<ItemStack>(Arrays.asList(customcarrot, customcarrot, customcarrot, customcarrot, customcarrot, new ItemStack(Material.SADDLE, 1)
              )), null, 
          true, 
          new ItemStack(Material.CARROT_ON_A_STICK), 
-         Arrays.asList( "§bCanne à pêche carotte\",\"§bUne horde de cochons", "§dDevenez un véritable dresseur"
+         Arrays.asList( "§bCanne à pêche carotte","§bUne horde de cochons", "§dDevenez un véritable dresseur"
            ), "tnt.pigrider");
      list_kits.add(PigRider);
 
@@ -333,7 +333,7 @@
          null, 
          true, 
          new ItemStack(Material.SADDLE), 
-         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dUn cheval et vous voilà au moyen-age"
+         Arrays.asList( "§bUne épée en fer","§bUne armure en fer", "§dUn cheval et vous voilà au moyen-age"
            ), "tnt.chevalier");
      list_kits.add(Chevalier);
 
@@ -368,11 +368,11 @@
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_pirate, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.GOLD_INGOT, 3), new ItemStack(Material.SPYGLASS), new ItemStack(Material.GOLDEN_APPLE, 2)
+         new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.GOLD_INGOT, 3), new ItemStack(Material.SPYGLASS), new ItemStack(Material.GOLDEN_APPLE, 2), new ItemStack(Material.BIRCH_BOAT)
              )), null, 
          true, 
          new ItemStack(Material.SPYGLASS), 
-         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dL'apnée ca vous connait, ne seriez vous pas Jack Sparrow?"
+         Arrays.asList( "§bUne épée en fer","§bUne armure en fer", "§dL'apnée ca vous connait, ne seriez vous pas Jack Sparrow?"
            ), "tnt.pirate");
      list_kits.add(Pirate);
 
@@ -402,7 +402,7 @@
          null, 
          true, 
          new ItemStack(Material.BONE), 
-         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dUne horde de loup!"
+         Arrays.asList( "§bUne épée en fer","§bUne armure en fer", "§dUne horde de loup!"
            ), "tnt.dogmaster");
      list_kits.add(DogMaster);
 
@@ -437,7 +437,7 @@
              )), null, 
          true, 
          new ItemStack(Material.TRIDENT), 
-         Arrays.asList( "§bUne épée en pierre et un trident\",\"§bUne armure en fer", "§dQui vois je , Aquaman c'est toi?"
+         Arrays.asList( "§bUne épée en pierre et un trident","§bUne armure en fer", "§dQui vois je , Aquaman c'est toi?"
            ), "tnt.trident");
      list_kits.add(Trident);
 
@@ -465,7 +465,7 @@
              )), null, 
          true, 
          new ItemStack(Material.INK_SAC), 
-         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dL'encre aveugle vos ennemies"
+         Arrays.asList( "§bUne épée en fer","§bUne armure en fer", "§dL'encre aveugle vos ennemies"
            ), "tnt.squid");
      list_kits.add(Squid);
 
@@ -493,7 +493,7 @@
          null, 
          true, 
          new ItemStack(Material.DIAMOND_AXE), 
-         Arrays.asList( "§bUne épée en diamant\",\"§bUne armure en fer et chaine", "§dUne vrai brute, quel carnage!!"
+         Arrays.asList( "§bUne épée en diamant","§bUne armure en fer et chaine", "§dUne vrai brute, quel carnage!!"
            ), "tnt.barbare");
      list_kits.add(Barbare);
 
@@ -521,7 +521,7 @@
              )), null, 
          true, 
          new ItemStack(Material.SNOWBALL), 
-         Arrays.asList( "§bUne épée en fer\",\"§bUne armure en fer", "§dLes boules de naige font des dégâts"
+         Arrays.asList( "§bUne épée en fer","§bUne armure en fer", "§dLes boules de neige font des dégâts"
            ), "tnt.snowman");
      list_kits.add(SnowMan);
 
@@ -550,7 +550,7 @@
          null, 
          true, 
          new ItemStack(Material.DIAMOND_CHESTPLATE), 
-         Arrays.asList( "§bArmure en diamand", "§bépée en pierre", "§dCe kit n'est pas fait pour la ngociation.", "§dLancez vous dans le combat avec pour écraser vos énemies"
+         Arrays.asList( "§bArmure en diamand", "§bépée en pierre", "§dCe kit n'est pas fait pour la négociation.", "§dLancez-vous dans le combat avec pour écraser vos énemies"
            ), "tnt.tank");
      list_kits.add(Tank);
 
@@ -619,7 +619,7 @@
              )), null, 
          true, 
          new ItemStack(Material.END_ROD), 
-         Arrays.asList( "§bUne baguette magique knockback\",\"§bUne armure en fer", "§dDevenez un vrai magicien \",\"§dle temps d'une partie"
+         Arrays.asList( "§bUne baguette magique knockback","§bUne armure en fer", "§dDevenez un vrai magicien \",\"§dle temps d'une partie"
            ), "tnt.sorcier");
      list_kits.add(Sorcier);
 
@@ -645,7 +645,7 @@
          null, 
          false, 
          new ItemStack(Material.ENDER_EYE), 
-         Arrays.asList( "§bépée en bois", "§bTotalement invisible", "§dLe kit Ghost vous rendra invisivle pour ", "§dinfiltrer les lignes enemies. Soyez discret et assasin."
+         Arrays.asList( "§bépée en bois", "§bTotalement invisible", "§dLe kit Ghost vous rendra invisible pour ", "§dInfiltrer les lignes enemies. Soyez discret et assassin."
            ), "tnt.ghost");
      list_kits.add(Ghost);
 
@@ -709,7 +709,7 @@
          null, 
          true, 
          new ItemStack(Material.FLINT_AND_STEEL), 
-         Arrays.asList( "§bEpée en pierre", "§bArmure fer", "§dPour les pyroman du dimanche "
+         Arrays.asList( "§bEpée en pierre", "§bArmure fer", "§dPour les pyromanes du dimanche "
            ), "tnt.pyro");
      list_kits.add(Pyro);
 
@@ -842,7 +842,7 @@
              )), null, 
          true, 
          new ItemStack(Material.SHIELD), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.shield");
      list_kits.add(Shield);
 
@@ -873,7 +873,7 @@
          null, 
          true, 
          new ItemStack(Material.CROSSBOW), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.arbalette");
      list_kits.add(Arbalette);
 
@@ -901,7 +901,7 @@
              )), null, 
          true, 
          new ItemStack(Material.FIRE_CHARGE), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.ghast");
      list_kits.add(Ghast);
 
@@ -929,7 +929,7 @@
 		null, 
          true, 
          new ItemStack(Material.SHULKER_BOX), 
-         Arrays.asList( "bUne épée en Fer\",\"bUne armure en faire\",\"dEt de quoi faire leviter vos ennemies"
+         Arrays.asList( "bUne épée en Fer","bUne armure en faire","dEt de quoi faire leviter vos ennemies"
            ), "tnt.shulker");
      list_kits.add(Shulker);
 
@@ -956,7 +956,7 @@
              )), null, 
          true, 
          new ItemStack(Material.COBWEB), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.spider");
      list_kits.add(Spider);
 
@@ -983,7 +983,7 @@
              )), null, 
          true, 
          new ItemStack(Material.WITHER_SKELETON_SKULL), 
-         Arrays.asList( "bUne épée et armure en fer\",\"bEffet Whiter\",\"dLes coups d'épée vont lui faire mal!"
+         Arrays.asList( "bUne épée et armure en fer","bEffet Whiter","dLes coups d'épée vont lui faire mal!"
            ), "tnt.wither");
      list_kits.add(Wither);
 
@@ -1014,7 +1014,7 @@
          null, 
          true, 
          new ItemStack(Material.BAMBOO), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.pandaman");
      list_kits.add(PandaMan);
 
@@ -1041,7 +1041,7 @@
 		null, 
          true, 
          new ItemStack(Material.CRIMSON_FUNGUS), 
-         Arrays.asList( "b§test\",\"§btest\",\"§dtest"
+         Arrays.asList( "b§test","§btest","§dtest"
            ), "tnt.poison");
      list_kits.add(Poison);
 
@@ -1071,7 +1071,7 @@
              )), null, 
          true, 
          new ItemStack(Material.FISHING_ROD), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.pecheur");
      list_kits.add(Pecheur);
 
@@ -1099,7 +1099,7 @@
          null, 
          true, 
          new ItemStack(Material.FIREWORK_ROCKET), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.rocketman");
      list_kits.add(Rocketman);
 
@@ -1127,7 +1127,7 @@
              )), null, 
          true, 
          new ItemStack(Material.BLAZE_ROD), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.blaze");
      list_kits.add(Blaze);
 
@@ -1156,7 +1156,7 @@
              )), null, 
          true, 
          new ItemStack(Material.END_ROD), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.evocateur");
      list_kits.add(Evocateur);
 
@@ -1193,7 +1193,7 @@
 		null, 
          true, 
          new ItemStack(Material.ARROW), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.archer2");
      list_kits.add(Archer2);
 
@@ -1220,7 +1220,7 @@
          null, 
          true, 
          new ItemStack(Material.WHITE_GLAZED_TERRACOTTA), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.tacticien");
      list_kits.add(Tacticien);
 
@@ -1247,7 +1247,7 @@
          null, 
          true, 
          new ItemStack(Material.CLOCK), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.teleporteur");
      list_kits.add(Teleporteur);
 
@@ -1273,7 +1273,7 @@
          null, 
          true, 
          new ItemStack(Material.BEACON), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.spy");
      list_kits.add(Assassin);
 
@@ -1292,7 +1292,7 @@
          null, 
          true, 
          new ItemStack(Material.HEART_OF_THE_SEA), 
-         Arrays.asList( "btest\",\"btest\",\"dtest"
+         Arrays.asList( "btest","btest","dtest"
            ), "tnt.hasard");
      list_kits.add(Hasard);
 

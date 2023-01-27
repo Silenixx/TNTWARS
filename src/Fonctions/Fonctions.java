@@ -36,41 +36,41 @@
      if (rotation < 0.0D) {
        rotation += 360.0D;
      }
-     player.sendMessage(Double.toString(rotation));
+     //player.sendMessage(Double.toString(rotation));
      if (0.0D <= rotation && rotation < 22.5D) {
-       player.sendMessage("North");
+       //player.sendMessage("North");
        retour = rotation;
      } 
      if (22.5D <= rotation && rotation < 67.5D) {
-       player.sendMessage("NorthEast");
+       //player.sendMessage("NorthEast");
        retour = rotation;
      } 
      if (67.5D <= rotation && rotation < 112.5D) {
-       player.sendMessage("East");
+       //player.sendMessage("East");
        retour = rotation;
      } 
      if (112.5D <= rotation && rotation < 157.5D) {
-       player.sendMessage("SouthEast");
+       //player.sendMessage("SouthEast");
        retour = rotation;
      } 
      if (157.5D <= rotation && rotation < 202.5D) {
-       player.sendMessage("South");
+       //player.sendMessage("South");
        retour = rotation;
      } 
      if (202.5D <= rotation && rotation < 247.5D) {
-       player.sendMessage("SouthWest");
+       //player.sendMessage("SouthWest");
        retour = rotation;
      } 
      if (247.5D <= rotation && rotation < 292.5D) {
-       player.sendMessage("West");
+       //player.sendMessage("West");
        retour = rotation;
      } 
      if (292.5D <= rotation && rotation < 337.5D) {
-       player.sendMessage("NorthWest");
+       //player.sendMessage("NorthWest");
        retour = rotation;
      } 
      if (337.5D <= rotation && rotation <= 360.0D) {
-       player.sendMessage("North");
+       //player.sendMessage("North");
        retour = rotation;
      } 
      return retour;

@@ -618,6 +618,7 @@ import Command.CommandEliminate;
        .findAny()
        .orElse(null);
      
+     
      if(joueur.getKit() == list_kits.get(IndexKit.DogMaster) || joueur.getKit() == list_kits.get(IndexKit.Pirate)) {
     	 for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
 		
@@ -788,13 +789,13 @@ public void sethealth(Joueur joueur) {
         	   deletejoueurscoreboard(joueur, equipe);
 			   joueur.setEquipe(equipe);
 			   ajoutjoueurscoreboard(joueur, equipe);
-        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoint l'équipe " + equipe.getCouleur() + ".");
            }
            else if(lowest_case2 == nbr_bleu && equipe == Equipe_bleu) {
         	   deletejoueurscoreboard(joueur, equipe);
 			   joueur.setEquipe(equipe);
 			   ajoutjoueurscoreboard(joueur, equipe);
-        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoint l'équipe " + equipe.getCouleur() + ".");
            }
            else
            {
@@ -814,19 +815,19 @@ public void sethealth(Joueur joueur) {
         	   deletejoueurscoreboard(joueur, equipe);
 			   joueur.setEquipe(equipe);
 			   ajoutjoueurscoreboard(joueur, equipe);
-        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoint l'équipe " + equipe.getCouleur() + ".");
            }
            else if(lowest_case3 == nbr_bleu && equipe == Equipe_bleu) {
         	   deletejoueurscoreboard(joueur, equipe);
 			   joueur.setEquipe(equipe);
 			   ajoutjoueurscoreboard(joueur, equipe);
-        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoint l'équipe " + equipe.getCouleur() + ".");
            }
            else if(lowest_case3 == nbr_vert && equipe == Equipe_vert) {
         	   deletejoueurscoreboard(joueur, equipe);
 			   joueur.setEquipe(equipe);
 			   ajoutjoueurscoreboard(joueur, equipe);
-        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoint l'équipe " + equipe.getCouleur() + ".");
            }
            else
            {
@@ -847,25 +848,25 @@ public void sethealth(Joueur joueur) {
         	   deletejoueurscoreboard(joueur, equipe);
 			   joueur.setEquipe(equipe);
 			   ajoutjoueurscoreboard(joueur, equipe);
-        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoint l'équipe " + equipe.getCouleur() + ".");
            }
            else if(lowest_case4 == nbr_bleu && equipe == Equipe_bleu) {
         	   deletejoueurscoreboard(joueur, equipe);
 			   joueur.setEquipe(equipe);
 			   ajoutjoueurscoreboard(joueur, equipe);
-        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoint l'équipe " + equipe.getCouleur() + ".");
            }
            else if(lowest_case4 == nbr_vert && equipe == Equipe_vert) {
         	   deletejoueurscoreboard(joueur, equipe);
 			   joueur.setEquipe(equipe);
 			   ajoutjoueurscoreboard(joueur, equipe);
-        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoint l'équipe " + equipe.getCouleur() + ".");
            }
            else if(lowest_case4 == nbr_jaune && equipe == Equipe_jaune) {
         	   deletejoueurscoreboard(joueur, equipe);
 			   joueur.setEquipe(equipe);
 			   ajoutjoueurscoreboard(joueur, equipe);
-        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoint l'équipe " + equipe.getCouleur() + ".");
            }
            else
            {

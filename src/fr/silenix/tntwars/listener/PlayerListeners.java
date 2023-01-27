@@ -598,6 +598,7 @@ import org.bukkit.inventory.Inventory;
         	 parrot.setAdult();
         	 parrot.setOwner(player);
         	 parrot.setCustomName("Parrot");
+        	 parrot.setLootTable(null);
         	 
          }
     	 if (player.getInventory().getItemInMainHand().getType() == Material.GOLD_INGOT) {
@@ -638,7 +639,7 @@ import org.bukkit.inventory.Inventory;
        
        ItemStack customwoolteamblue = new ItemStack(Material.BLUE_WOOL, 1);
        ItemMeta customWTB = customwoolteamblue.getItemMeta();
-       customWTB.setDisplayName("Rejoindre l'§quipe bleu");
+       customWTB.setDisplayName("Rejoindre l'équipe bleu");
  
        
        customWTB.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
@@ -651,7 +652,7 @@ import org.bukkit.inventory.Inventory;
        
        ItemStack customwoolteamred = new ItemStack(Material.RED_WOOL, 1);
        ItemMeta customWTR = customwoolteamred.getItemMeta();
-       customWTR.setDisplayName("Rejoindre l'§quipe rouge");
+       customWTR.setDisplayName("Rejoindre l'équipe rouge");
  
        
        customWTR.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
@@ -747,8 +748,10 @@ import org.bukkit.inventory.Inventory;
      
      if (it.getType() == Material.BLAZE_POWDER)
      {
-       
-       if (event.getClickedBlock().getType() == Material.TNT && event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+    	 if (event.getClickedBlock() == null) {
+    		 return;
+    	 }
+    	 if (event.getClickedBlock().getType() == Material.TNT && event.getAction() == Action.RIGHT_CLICK_BLOCK) {
          
          Tnt tnt = main.listTnt.stream()
            .filter(t -> t.getLocation().equals(block.getLocation()))
@@ -785,7 +788,11 @@ import org.bukkit.inventory.Inventory;
      
      if (it.getType() == Material.FEATHER)
      {
-       if (event.getClickedBlock().getType() == Material.TNT && event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+       
+    	 if (event.getClickedBlock() == null) {
+    		 return;
+    	 }
+    	 if (event.getClickedBlock().getType() == Material.TNT && event.getAction() == Action.RIGHT_CLICK_BLOCK) {
          
          Tnt tnt = main.listTnt.stream()
            .filter(t -> t.getLocation().equals(block.getLocation()))

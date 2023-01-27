@@ -356,12 +356,12 @@ public class DamageListeners implements Listener
                
                if (vue_victim > vue_killer && vue_killer > vue_victim - 45.0D) {
                  event.setDamage(0.0D);
-                 joueur_victime.getPlayer().sendMessage(joueur_victime.getEquipe().getChatColor()+"Vous avez été assasiné par un assassin");
+                 joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
                  this.main.eliminate(players);
                } 
                if (vue_victim < vue_killer && vue_killer < vue_victim + 45.0D) {
                  event.setDamage(0.0D);
-                 joueur_victime.getPlayer().sendMessage(joueur_victime.getEquipe().getChatColor()+"Vous avez été assasiné par un assassin");
+                 joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
                  this.main.eliminate(players);
                } 
              } 
@@ -390,12 +390,12 @@ public class DamageListeners implements Listener
                
                if (vue_victim > vue_killer && vue_killer > vue_victim - 45.0D) {
                  event.setDamage(0.0D);
-                 joueur_victime.getPlayer().sendMessage(joueur_victime.getEquipe().getChatColor()+"Vous avez été assasiné par un assassin");
+                 joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
                  this.main.eliminate(players);
                } 
                if (vue_victim < vue_killer && vue_killer < vue_victim + 45.0D) {
                  event.setDamage(0.0D);
-                 joueur_victime.getPlayer().sendMessage(joueur_victime.getEquipe().getChatColor()+"Vous avez été assasiné par un assassin");
+                 joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
                  this.main.eliminate(players);
                
                }
@@ -408,12 +408,12 @@ public class DamageListeners implements Listener
              
              if (vue_victim > vue_killer && vue_killer > vue_victim - 45.0D) {
                event.setDamage(0.0D);
-               joueur_victime.getPlayer().sendMessage(joueur_victime.getEquipe().getChatColor()+"Vous avez été assasiné par un assassin");
+               joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
                this.main.eliminate(players);
              } 
              if (vue_victim < vue_killer && vue_killer < vue_victim + 45.0D) {
                event.setDamage(0.0D);
-               joueur_victime.getPlayer().sendMessage(joueur_victime.getEquipe().getChatColor()+"Vous avez été assasiné par un assassin");
+               joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
                this.main.eliminate(players);
              } 
            } 

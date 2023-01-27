@@ -36,7 +36,7 @@
  
      
      if (tnt.getEtat() == EtatTNT.Eteinte) {
-       Bukkit.broadcastMessage(String.valueOf(Constantes.PluginName) + " Explosion Tnt " + this.couleur + "  §e§vit§e.");
+       Bukkit.broadcastMessage(String.valueOf(Constantes.PluginName) + " Explosion Tnt " + this.couleur + "  §eévitée.");
        tnt.setVie(0);
        tnt.setTimer(30);
        cancel();
