@@ -597,7 +597,7 @@
      customDS_sorcier.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
      customdiamondsword_sorcier.setItemMeta(customDS_sorcier);
 
-     ItemStack customblaze_sorcier = new ItemStack(Material.BLAZE_ROD, 1);
+     ItemStack customblaze_sorcier = new ItemStack(Material.END_ROD, 1);
      ItemMeta customSSS_sorcier = customblaze_sorcier.getItemMeta();
      customSSS_sorcier.addEnchant(Enchantment.ARROW_INFINITE, 6, true);
      customSSS_sorcier.addEnchant(Enchantment.KNOCKBACK, 6, true);

@@ -19,10 +19,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
  import org.bukkit.Location;
  import org.bukkit.Material;
- import org.bukkit.World;
+import org.bukkit.Particle;
+import org.bukkit.World;
  import org.bukkit.block.Block;
  import org.bukkit.block.BlockState;
  import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Horse;
@@ -740,7 +742,36 @@ import org.bukkit.inventory.Inventory;
      } 
  
  
- 
+     /*if (it.getType() == Material.END_ROD) {
+    	 Arrow arrow = (Arrow)player.launchProjectile(Arrow.class);
+    	 
+    	 arrow.setVelocity(arrow.getVelocity().multiply(0.5));
+    	 arrow.setBounce(false);
+    	 arrow.setGravity(false);
+    	 
+    	 Bukkit.getWorld("world").spawnParticle(Particle.SMOKE_LARGE, arrow.getLocation(), 100, 1.0D, 1.0D, 1.0D);
+    	 Bukkit.getScheduler().scheduleSyncDelayedTask(main, new Runnable() {
+	    	 @Override
+	         public void run() {
+	    		 while(!arrow.isOnGround()) {
+	    			 Bukkit.getWorld("world").spawnParticle(Particle.SMOKE_NORMAL, arrow.getLocation(), 100, 1.0D, 1.0D, 1.0D);
+	    			 try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	    		 }
+	    		 
+	         }
+    	 }, (int)(20));
+    	 
+    	 if(arrow.isOnGround()) {
+    		 arrow.remove();
+    	 }
+    		 
+    	 
+     }*/ 
  
  
  
