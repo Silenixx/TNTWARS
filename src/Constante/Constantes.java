@@ -8,7 +8,7 @@
 		   + ""
 		   + " Lorsqu'une tnt explose l'équipe a perdu, pour allumer une tnt il suffit d'utiliser sur elle la poudre de Blaze fournit dans chaque Kit."
 		   + ""
-		   + " Une fois allumée la tnt mettra 30 seconde avant d'explmoser."
+		   + " Une fois allumée la tnt mettra 30 seconde avant d'exploser."
 		   + ""
 		   + " Pour désamorcer une tnt il faut utiliser la plume mais faite attention une tnt peut-être désamorcée que si elle est dans un état allumé."
 		   + ""

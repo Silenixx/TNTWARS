@@ -62,7 +62,7 @@ public class TimerScoreboard extends BukkitRunnable{
 					main.boardred.setSuffix(""+ ChatColor.RED + main.cred + ChatColor.RED + "%" );
 				}
 				if(main.tnt_rouge.getEtat()==EtatTNT.Allume) {
-					main.boardred.setSuffix(""+ ChatColor.RED + main.cred + ChatColor.RED + "%    " + ChatColor.RED + main.timered + ChatColor.RED + "s" );
+					main.boardred.setSuffix(""+ ChatColor.RED + main.cred + ChatColor.RED + "%    " + ChatColor.DARK_RED+" TNT ALLUMÉE "  + ChatColor.RED + main.timered + ChatColor.RED + "s" );
 				}
 				
 				
@@ -71,7 +71,7 @@ public class TimerScoreboard extends BukkitRunnable{
 					main.boardblue.setSuffix(""+ ChatColor.BLUE + main.cblue + ChatColor.BLUE + "%" );
 				}
 				if(main.tnt_bleu.getEtat()==EtatTNT.Allume) {
-					main.boardblue.setSuffix(""+ ChatColor.BLUE + main.cblue + ChatColor.BLUE + "%    " + ChatColor.BLUE + main.timeblue + ChatColor.BLUE + "s" );
+					main.boardblue.setSuffix(""+ ChatColor.BLUE + main.cblue + ChatColor.BLUE + "%    "+ ChatColor.DARK_RED+" TNT ALLUMÉE " + ChatColor.BLUE + main.timeblue + ChatColor.BLUE + "s" );
 				}
 			
 				if (main.isState(EtatPartie.JeuEnCours)) {

@@ -2,10 +2,12 @@
  
  import Constante.Constantes;
 
+
  import Enum.CouleurEquipe;
  import Enum.EtatPartie;
  import Enum.EtatTNT;
  import Fonctions.CreateKit;
+
 import Fonctions.IndexKit;
 import fr.silenix.tntwars.entity.Equipe;
  import fr.silenix.tntwars.entity.Joueur;
@@ -85,6 +87,7 @@ import Command.CommandEliminate;
    public Kit Sans_Kit = new Kit("Sans Kit", null, null, null, null, null, Constantes.Vie_Global_Joueur, null, null, true, new ItemStack(Material.ACACIA_BOAT), null, "tnt.sanskit");
    
    public ArrayList<Kit> list_kits;
+   public ArrayList<String> list_messages_morts;
    public ArrayList<Tnt> listTnt = new ArrayList<>();
    
    public ScoreboardManager manager;
@@ -155,7 +158,8 @@ import Command.CommandEliminate;
  
  
      
-     this.list_kits = CreateKit.CreationKit();
+     list_kits = CreateKit.CreationKit();
+     
  
      
      SetScoreboard();
@@ -265,7 +269,8 @@ import Command.CommandEliminate;
      this.boardblue = this.board.registerNewTeam("boardblue");
      this.boardred = this.board.registerNewTeam("boardred");
      
-     Objective objective = this.board.registerNewObjective("lol", "dummy");
+     @SuppressWarnings("deprecation")
+	Objective objective = this.board.registerNewObjective("lol", "dummy");
      
      this.RedTeamSC.setPrefix("§4[§cEquipe Rouge§4]§c ");
      this.BlueTeamSC.setPrefix("§1[§9Equipe Bleu§1]§9 ");
@@ -658,7 +663,8 @@ import Command.CommandEliminate;
  
  
    
-   public void sethealth(Joueur joueur) {
+   @SuppressWarnings("deprecation")
+public void sethealth(Joueur joueur) {
      if (isState(EtatPartie.JeuEnCours)) {
        joueur.getPlayer().setMaxHealth(joueur.getKit().getPointVie());
        joueur.getPlayer().setHealth(joueur.getKit().getPointVie());
@@ -686,9 +692,24 @@ import Command.CommandEliminate;
      GamePlay(joueur);
    }
  
-   
+   public static int getSmallest(int[] a, int total){  
+	   int temp;  
+	   for (int i = 0; i < total; i++)   
+	           {  
+	               for (int j = i + 1; j < total; j++)   
+	               {  
+	                   if (a[i] > a[j])   
+	                   {  
+	                       temp = a[i];  
+	                       a[i] = a[j];  
+	                       a[j] = temp;  
+	                   }  
+	               }  
+	           }  
+	          return a[0];  
+	   } 
    public void RejoindEquipe(Joueur joueur, Equipe equipe, int NbEquipe) {
-	   if (joueur.getEquipe() == equipe) {
+	   /*if (joueur.getEquipe() == equipe) {
 		   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous etes déjà " + equipe.getCouleur() + ".");
 	   }	
      
@@ -721,7 +742,144 @@ import Command.CommandEliminate;
 		   else {
 			   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");
 		   } 
-     }
+     }*/
+	   
+	  
+	   int nombreJoueur = listeJoueurs.size();
+	   
+	   
+	   
+	   int nbr_rouge = 0;
+	   int nbr_bleu = 0;
+	   int nbr_vert = 0;
+	   int nbr_jaune = 0;
+     
+	   for (Joueur joueurtri : this.listeJoueurs) {
+		   if (joueurtri.getEquipe().getCouleur() == "Rouge") {
+			   nbr_rouge++;
+		   }
+		   else if (joueurtri.getEquipe().getCouleur() == "Bleu") {
+			   nbr_bleu++;
+		   }
+		   else if (joueurtri.getEquipe().getCouleur() == "Vert" && NbEquipe>2) {
+			   nbr_vert++;
+		   }
+		   else if (joueurtri.getEquipe().getCouleur() == "Jaune" && NbEquipe>3) {
+			   nbr_jaune++;
+		   }
+	   } 
+
+		   
+		   
+
+	  /* int joueurParEquipe = nombreJoueur / NbEquipe;
+	   int JoueurRestant = nombreJoueur % NbEquipe;*/
+	   
+	   switch(NbEquipe){
+	   
+
+   
+       case 2:
+    	   int tab_case2[]={nbr_rouge,nbr_bleu};
+    	   int lowest_case2 = getSmallest(tab_case2,2);
+    	   
+    	   
+           if(lowest_case2 == nbr_rouge && equipe == Equipe_rouge) {
+        	   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+           }
+           else if(lowest_case2 == nbr_bleu && equipe == Equipe_bleu) {
+        	   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+           }
+           else
+           {
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");
+           }
+           break;
+   
+           
+           
+       case 3:
+    	   
+    	   int tab_case3[]={nbr_rouge,nbr_bleu,nbr_vert};
+    	   int lowest_case3 = getSmallest(tab_case3,3);
+    	   
+    	   
+           if(lowest_case3 == nbr_rouge && equipe == Equipe_rouge) {
+        	   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+           }
+           else if(lowest_case3 == nbr_bleu && equipe == Equipe_bleu) {
+        	   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+           }
+           else if(lowest_case3 == nbr_vert && equipe == Equipe_vert) {
+        	   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+           }
+           else
+           {
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");
+           }
+          
+           
+           break;
+           
+           
+           
+       case 4:
+    	   int tab_case4[]={nbr_rouge,nbr_bleu,nbr_vert,nbr_jaune};
+    	   int lowest_case4 = getSmallest(tab_case4,3);
+    	   
+    	   
+           if(lowest_case4 == nbr_rouge && equipe == Equipe_rouge) {
+        	   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+           }
+           else if(lowest_case4 == nbr_bleu && equipe == Equipe_bleu) {
+        	   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+           }
+           else if(lowest_case4 == nbr_vert && equipe == Equipe_vert) {
+        	   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+           }
+           else if(lowest_case4 == nbr_jaune && equipe == Equipe_jaune) {
+        	   deletejoueurscoreboard(joueur, equipe);
+			   joueur.setEquipe(equipe);
+			   ajoutjoueurscoreboard(joueur, equipe);
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Vous avez rejoind l'équipe " + equipe.getCouleur() + ".");
+           }
+           else
+           {
+        	   joueur.getPlayer().sendMessage(Constante.Constantes.PluginName + "Trop de monde chez les " + equipe.getCouleur() + " essayez une autre équipe ou plus tard.");
+           }
+          
+           
+           break;
+       default:
+           System.out.println("Choix incorrect");
+           break;
+	   }
+	   
+	   
    }
  
    

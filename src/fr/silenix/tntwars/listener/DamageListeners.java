@@ -8,7 +8,8 @@ import fr.silenix.tntwars.GMain;
  import java.util.ArrayList;
  import java.util.List;
  import org.bukkit.Bukkit;
- import org.bukkit.Material;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
  import org.bukkit.entity.Arrow;
@@ -87,11 +88,16 @@ public class DamageListeners implements Listener
      if (victim instanceof org.bukkit.block.data.type.Fire) {
        Player player = (Player)victim;
        if (player.getHealth() <= event.getDamage()) {
- 
+    	   Joueur joueur = this.main.listeJoueurs.stream()
+    		         .filter(p -> player.getName().equals(p.getPlayer().getName()))
+    		         .findAny()
+    		         .orElse(null);
  
          
          event.setDamage(0.0D);
-         this.main.eliminate(player);
+         //TODO message à retirer
+         Bukkit.broadcastMessage(joueur.getEquipe().getChatColor() + player.getName() + ChatColor.GRAY + " est mort brulé(e).");
+         main.eliminate(player);
        } 
      } 
    }
