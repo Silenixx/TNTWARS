@@ -48,7 +48,8 @@ import org.bukkit.event.Listener;
  import org.bukkit.plugin.Plugin;
  import org.bukkit.plugin.PluginManager;
  import org.bukkit.plugin.java.JavaPlugin;
- import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scoreboard.DisplaySlot;
  import org.bukkit.scoreboard.Objective;
  import org.bukkit.scoreboard.Score;
  import org.bukkit.scoreboard.Scoreboard;
@@ -533,6 +534,15 @@ import Command.CommandEliminate;
      
      sethealth(joueur);
      
+     if (joueur.getKit() == this.list_kits.get(IndexKit.Pyro)) {
+    	 Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect give " + joueur.getPlayer().getName() + " minecraft:fire_resistance 9999");
+     }
+     
+     if (joueur.getKit() == this.list_kits.get(IndexKit.Pirate)) {
+    	 Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect give " + joueur.getPlayer().getName() + " minecraft:water_breathing 9999");
+    	 Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect give " + joueur.getPlayer().getName() + " minecraft:dolphins_grace 9999");
+     }
+     
      if (!joueur.getKit().IsVisible()) {
        joueur.getPlayer().setInvisible(true);
      } else {
@@ -686,7 +696,17 @@ public void sethealth(Joueur joueur) {
      player.setGameMode(GameMode.SURVIVAL);
      player.setInvisible(false);
      SpawnTeleportation(joueur);
-     Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
+     if(player.hasPotionEffect(PotionEffectType.FIRE_RESISTANCE)) {
+    	  Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
+     }
+     
+     if(player.hasPotionEffect(PotionEffectType.WATER_BREATHING)) {
+   	  Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
+     }
+     if(player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE)) {
+      	  Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
+       }
+     
      
      TimerImmortality start = new TimerImmortality(this, joueur.getPlayer());
      start.runTaskTimer((Plugin)this, 0L, 20L);

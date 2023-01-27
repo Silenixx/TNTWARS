@@ -37,10 +37,10 @@
        this.player.sendMessage(Constante.Constantes.PluginName + "Respawn dans §5" + this.timer + " §esecondes");
      }
      else if (this.timer == 1) {
-       this.player.sendMessage(Constante.Constantes.PluginName + "Respawn dans §51 §ebseconde");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Respawn dans §51 §eseconde");
      }
      else if (this.timer == 0) {
-       this.player.sendMessage(Constante.Constantes.PluginName + "Respawn en cours");
+       this.player.sendMessage(Constante.Constantes.PluginName + "Respawn");
        this.main.respawn(this.player);
        cancel();
      } 

@@ -91,10 +91,16 @@ import org.bukkit.inventory.Inventory;
      
      player.getInventory().clear();
      player.setScoreboard(main.board);
+     
+     event.setJoinMessage(null);
+     
  
  
- 
- 
+     if (main.isState(EtatPartie.FinJeu)) {
+         player.setGameMode(GameMode.SPECTATOR);
+         event.setJoinMessage("§5[§d+§5] §d" + player.getName() );
+         player.sendMessage("§6[§eTntWars§6] §eLe jeu est terminé, revenez pour la partie suivante !");
+      } 
      
      if (!main.isState(EtatPartie.FinJeu)) {
        
@@ -144,14 +150,14 @@ import org.bukkit.inventory.Inventory;
  
  
  
- 
+       
        
        if (main.isState(EtatPartie.JeuEnCours)) {
          player.setGameMode(GameMode.ADVENTURE);
          player.setInvisible(true);
          player.sendMessage("§6[§eTntWars§6] §eLe jeux a déjà démarrer mais vous pouvez rejoindre une équipe! ");
          player.teleport(main.map_en_cours.LocationSalleMort);
-         event.setJoinMessage(null);
+         event.setJoinMessage("§5[§d+§5] §d" + player.getName() );
  
  
  
@@ -214,7 +220,7 @@ import org.bukkit.inventory.Inventory;
        } 
      } 
  
- 
+     
  
  
  
@@ -230,10 +236,7 @@ import org.bukkit.inventory.Inventory;
  
  
      
-     if (main.isState(EtatPartie.FinJeu)) {
-       player.setGameMode(GameMode.SPECTATOR);
-       player.sendMessage("§6[§eTntWars§6] §eLe jeu est terminé, revenez pour la partie suivante !");
-     } 
+     
    }
  
  
@@ -245,66 +248,66 @@ import org.bukkit.inventory.Inventory;
    
    @EventHandler
    public void onQuit(PlayerQuitEvent event) {
-     Player player = event.getPlayer();
-     Joueur joueur = main.listeJoueurs.stream()
-       .filter(p -> player.getName().equals(p.getNom()))
-       .findAny()
-       .orElse(null);
+	     Player player = event.getPlayer();
+	     Joueur joueur = main.listeJoueurs.stream()
+	     .filter(p -> player.getName().equals(p.getNom()))
+	     .findAny()
+	     .orElse(null);
      
-     if(joueur.getKit() == main.list_kits.get(IndexKit.DogMaster)) {
-    	  for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
-			if(entity instanceof Wolf) {
-				Wolf wolf = (Wolf) entity;
-				if(wolf.getOwner() != null) {
-					if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
-						wolf.setTarget(joueur.getPlayer());
-						
+	     if(joueur.getKit() == main.list_kits.get(IndexKit.DogMaster)) {
+	    	  for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
+				if(entity instanceof Wolf) {
+					Wolf wolf = (Wolf) entity;
+					if(wolf.getOwner() != null) {
+						if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
+							wolf.setTarget(joueur.getPlayer());
+							
+						}
 					}
-				}
+					
 				
-			
+				}
 			}
-		}
-     }
-     
-     if(joueur.getKit() == main.list_kits.get(IndexKit.Pirate)) {
-   	  for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
-			if(entity instanceof Wolf) {
-				Wolf wolf = (Wolf) entity;
-				if(wolf.getOwner() != null) {
-					if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
-						wolf.setTarget(joueur.getPlayer());
-						
+	     }
+	     
+	     if(joueur.getKit() == main.list_kits.get(IndexKit.Pirate)) {
+	   	  for(Entity entity : joueur.getPlayer().getWorld().getEntities()) {
+				if(entity instanceof Wolf) {
+					Wolf wolf = (Wolf) entity;
+					if(wolf.getOwner() != null) {
+						if(wolf.getOwner().getName() == joueur.getPlayer().getName()) {
+							wolf.setTarget(joueur.getPlayer());
+							
+						}
 					}
-				}
+					
 				
-			
+				}
 			}
-		}
-    }
+	    }
     
      
-     main.listeJoueurs.remove(joueur);
-     main.listeConnecte.remove(joueur);
-     player.setPlayerListName(player.getName());
-     event.setQuitMessage(String.valueOf(player.getName()) + " est partie.");
+     	main.listeJoueurs.remove(joueur);
+     	main.listeConnecte.remove(joueur);
+     	player.setPlayerListName(player.getName());
+     	event.setQuitMessage("§5[§d-§5] §d" + player.getName() );
  
-     if(joueur.getEquipe() != main.Sans_Equipe) {
-    	 boolean stillPlayer = Fonctions.stillPlayer(main, joueur.getEquipe().getCouleur());
-	     if (!stillPlayer) {
-	       Tnt tnt = main.listTnt.stream()
-	         .filter(t -> t.getEquipe().getCouleur().equals(joueur.getEquipe().getCouleur()))
-	         .findFirst()
-	         .get();
+     	if(joueur.getEquipe() != main.Sans_Equipe) {
+     		boolean stillPlayer = Fonctions.stillPlayer(main, joueur.getEquipe().getCouleur());
+     		if (!stillPlayer) {
+     			Tnt tnt = main.listTnt.stream()
+     					.filter(t -> t.getEquipe().getCouleur().equals(joueur.getEquipe().getCouleur()))
+     					.findFirst()
+     					.get();
 	       
-	       tnt.setEtat(EtatTNT.Explose);
-	     } 
-     }
+     			tnt.setEtat(EtatTNT.Explose);
+     		} 
+     	}
     
      
-     if (main.isState(EtatPartie.JeuEnCours)) {
-    	 main.CheckWin();
-     }
+     	if (main.isState(EtatPartie.JeuEnCours)) {
+     		main.CheckWin();
+     	}
      
    }
  
