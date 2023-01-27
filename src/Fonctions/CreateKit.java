@@ -1079,6 +1079,13 @@
      ItemMeta customDS_Rocketman = customdiamondsword_Rocketman.getItemMeta();
      customDS_Rocketman.setDisplayName("Kit Rocketman");
      customdiamondsword_Rocketman.setItemMeta(customDS_Rocketman);
+     
+     ItemStack customArbaletterocketman = new ItemStack(Material.CROSSBOW, 1);
+     ItemMeta customDS_Arbalette_rocketman = customArbaletterocketman.getItemMeta();
+     customDS_Arbalette_rocketman.setDisplayName("Kit Arbalette");
+     //customDS_Arbalette_rocketman.addEnchant(Enchantment.PIERCING, 4, true);
+     customDS_Arbalette_rocketman.addEnchant(Enchantment.QUICK_CHARGE, 3, true);
+     customArbaletterocketman.setItemMeta(customDS_Arbalette_rocketman);
 
      ItemStack skull_rocketman = PlayerHead.customPlayerHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjBkZGNiN2EwNjFmNTU1Njk2MmQwZWVmZGVhZTQ4OGQwNDZkYjNhYWJjZTYyMTRmNDA0MjRmNTgyYzY1Y2MwNSJ9fX0=", 
          Arrays.asList( "test", "test"
@@ -1092,7 +1099,7 @@
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_Rocketman, 
          Constantes.Vie_Global_Joueur, 
-         null, 
+         new ArrayList<ItemStack>(Arrays.asList(customArbaletterocketman,new ItemStack(Material.FIREWORK_ROCKET,64),new ItemStack(Material.FIREWORK_ROCKET,64))), 
          null, 
          true, 
          new ItemStack(Material.FIREWORK_ROCKET), 
