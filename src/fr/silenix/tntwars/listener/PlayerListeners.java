@@ -1,6 +1,7 @@
  package fr.silenix.tntwars.listener;
  
  import Enum.EtatPartie;
+
  import Enum.EtatTNT;
  import Fonctions.CreateWorld;
  import Fonctions.Fonctions;
@@ -16,10 +17,12 @@ import fr.silenix.tntwars.GMain;
  import java.util.Arrays;
  import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.GameMode;
  import org.bukkit.Location;
  import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.World;
  import org.bukkit.block.Block;
  import org.bukkit.block.BlockState;
@@ -33,6 +36,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Pig;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Wolf;
 import org.bukkit.event.EventHandler;
  import org.bukkit.event.Listener;
@@ -53,9 +57,10 @@ import org.bukkit.inventory.Inventory;
  import org.bukkit.inventory.ItemFlag;
  import org.bukkit.inventory.ItemStack;
  import org.bukkit.inventory.meta.ItemMeta;
- import org.bukkit.plugin.Plugin;
- import org.bukkit.potion.PotionEffect;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
  import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitScheduler;
  
  
  
@@ -540,7 +545,43 @@ import org.bukkit.inventory.Inventory;
  
  
  
- 
+   @EventHandler
+	 /*    */   public void onInter(PlayerInteractEvent e) {
+	 /* 34 */     Player p = e.getPlayer();
+	 /* 35 */     if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && 
+	 /* 36 */       e.getItem().getType() == Material.GOLDEN_HORSE_ARMOR) {
+	 /* 37 */       final Snowball s = (Snowball)p.launchProjectile(Snowball.class);
+	 /* 38 */       s.setVelocity(p.getLocation().getDirection().multiply(1.0D));
+	 /*    */       
+	 /* 40 */       final BukkitScheduler scheduler = Bukkit.getScheduler();
+	 /* 41 */       final int task = scheduler.scheduleSyncRepeatingTask(main, new Runnable()
+	 /*    */           {
+	 /*    */             public void run()
+	 /*    */             {
+	 /* 45 */               //s.getWorld().playEffect(s.getLocation(), Effect.HEART, 10);
+	 						Bukkit.getWorld("world").spawnParticle(Particle.SMOKE_NORMAL, s.getLocation(), 100, 1.0D, 1.0D, 1.0D);
+	 						if(s.isOnGround()) {
+	 							s.remove();
+	 						}
+	 /*    */             }
+	 /* 48 */           }, 0L, 0L);
+	 /* 49 */       s.getWorld().playSound(s.getLocation(), Sound.ENTITY_CHICKEN_EGG, 10.0F, 1.0F);
+	 /*    */       
+       /*scheduler.scheduleSyncDelayedTask((Plugin) this, new Runnable()
+           {
+             public void run()
+             {
+               for (int i = 0; i < 20; i++) {
+                 s.getWorld().playEffect(s.getLocation(), Effect.FLAME, 15);
+	 							Bukkit.getWorld("world").spawnParticle(Particle.FLAME, s.getLocation(), 15, 1.0D, 1.0D, 1.0D);
+               }
+               s.remove();
+               scheduler.cancelTask(task);
+             }
+           }, 20);
+	 						*/
+     } 
+  }
  
  
  
@@ -742,12 +783,21 @@ import org.bukkit.inventory.Inventory;
      } 
  
  
-     /*if (it.getType() == Material.END_ROD) {
-    	 Arrow arrow = (Arrow)player.launchProjectile(Arrow.class);
+     if (it.getType() == Material.END_ROD) {
+    	 
+    	 
+    	
+    	 
+    	 
+    	 
+    	 
+    	 /*Arrow arrow = (Arrow)player.launchProjectile(Arrow.class);
     	 
     	 arrow.setVelocity(arrow.getVelocity().multiply(0.5));
     	 arrow.setBounce(false);
     	 arrow.setGravity(false);
+    	 
+    	 
     	 
     	 Bukkit.getWorld("world").spawnParticle(Particle.SMOKE_LARGE, arrow.getLocation(), 100, 1.0D, 1.0D, 1.0D);
     	 Bukkit.getScheduler().scheduleSyncDelayedTask(main, new Runnable() {
@@ -768,10 +818,10 @@ import org.bukkit.inventory.Inventory;
     	 
     	 if(arrow.isOnGround()) {
     		 arrow.remove();
-    	 }
+    	 }*/
     		 
     	 
-     }*/ 
+     }
  
  
  
@@ -875,7 +925,7 @@ import org.bukkit.inventory.Inventory;
      if (it.getType() == Material.BLACK_BANNER && joueur.getKit() == main.list_kits.get(5)) {
        player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
        TimerInvisibility start = new TimerInvisibility(main, player);
-       start.runTaskTimer((Plugin)main, 0L, 20L);
+       start.runTaskTimer(main, 0L, 20L);
      } 
    }
  
