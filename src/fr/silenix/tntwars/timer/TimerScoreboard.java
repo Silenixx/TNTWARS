@@ -1,6 +1,7 @@
 package fr.silenix.tntwars.timer;
 
 import org.bukkit.Bukkit;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -29,7 +30,7 @@ public class TimerScoreboard extends BukkitRunnable{
 
 	
 
-	@Override
+	
 	public void run() {
 		
 		

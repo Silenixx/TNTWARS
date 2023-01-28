@@ -14,8 +14,13 @@ import fr.silenix.tntwars.GMain;
  import fr.silenix.tntwars.tasks.TaskRejoindPartieEnCours;
  import fr.silenix.tntwars.timer.TimerAllumage;
  import fr.silenix.tntwars.timer.TimerInvisibility;
- import java.util.Arrays;
- import org.bukkit.Bukkit;
+import fr.silenix.tntwars.timer.TimerSpell;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.GameMode;
@@ -543,30 +548,46 @@ import org.bukkit.scheduler.BukkitScheduler;
    }
  
  
- 
+
  
    @EventHandler
-	 /*    */   public void onInter(PlayerInteractEvent e) {
-	 /* 34 */     Player p = e.getPlayer();
-	 /* 35 */     if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && 
-	 /* 36 */       e.getItem().getType() == Material.GOLDEN_HORSE_ARMOR) {
-	 /* 37 */       final Snowball s = (Snowball)p.launchProjectile(Snowball.class);
-	 /* 38 */       s.setVelocity(p.getLocation().getDirection().multiply(1.0D));
-	 /*    */       
-	 /* 40 */       final BukkitScheduler scheduler = Bukkit.getScheduler();
-	 /* 41 */       final int task = scheduler.scheduleSyncRepeatingTask(main, new Runnable()
-	 /*    */           {
-	 /*    */             public void run()
-	 /*    */             {
-	 /* 45 */               //s.getWorld().playEffect(s.getLocation(), Effect.HEART, 10);
+   public void onInter(PlayerInteractEvent e) {
+     Player p = e.getPlayer();
+     if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && 
+       e.getItem().getType() == Material.GOLDEN_HORSE_ARMOR) {
+       final Snowball s = (Snowball)p.launchProjectile(Snowball.class);
+       s.setVelocity(/*p.getLocation().getDirection().multiply(1.0D)*/ s.getVelocity().multiply(1.40));
+       s.setGravity(false);
+       
+       
+       
+       TimerSpell start = new TimerSpell(main, s, p);
+       start.runTaskTimer((Plugin)main, 0L, 3L);
+       
+       
+       /*final BukkitScheduler scheduler = Bukkit.getScheduler();
+       
+       final int task = scheduler.scheduleSyncRepeatingTask(main, new Runnable()
+           {
+             public void run()
+             {
+              //s.getWorld().playEffect(s.getLocation(), Effect.HEART, 10);
+            	 
 	 						Bukkit.getWorld("world").spawnParticle(Particle.SMOKE_NORMAL, s.getLocation(), 100, 1.0D, 1.0D, 1.0D);
-	 						if(s.isOnGround()) {
+	 						if(s.isOnGround() || s.isDead()) {
 	 							s.remove();
+	 							
+	 							break;
 	 						}
-	 /*    */             }
-	 /* 48 */           }, 0L, 0L);
-	 /* 49 */       s.getWorld().playSound(s.getLocation(), Sound.ENTITY_CHICKEN_EGG, 10.0F, 1.0F);
-	 /*    */       
+             }
+          }, 0L, 0L);
+       
+       */
+       
+       
+       
+       //s.getWorld().playSound(s.getLocation(), Sound.ENTITY_CHICKEN_EGG, 10.0F, 1.0F);
+       
        /*scheduler.scheduleSyncDelayedTask((Plugin) this, new Runnable()
            {
              public void run()
@@ -580,7 +601,7 @@ import org.bukkit.scheduler.BukkitScheduler;
              }
            }, 20);
 	 						*/
-     } 
+    } 
   }
  
  
@@ -715,7 +736,27 @@ import org.bukkit.scheduler.BukkitScheduler;
  
  
  
- 
+     /*if (event.getItem().getType().equals(Material.LEGACY_GOLD_HOE))
+     {
+         if (event.getItem().getItemMeta().getDisplayName().equals(ChatColor.RED + "Particle Wand"))
+         {
+             if (event.getAction().equals(Action.RIGHT_CLICK_AIR))
+             {
+                     Set<Material> n = null;
+                     List<Block> list = event.getPlayer().getLineOfSight(n, 50);
+                     for (Block b : list)
+                     {
+                         if (b.getType() != Material.AIR)
+                         {
+                             break;
+                         }
+                        
+                         PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(EnumParticle.HEART, true, b.getX(), b.getY(), b.getZ(), 0, 0, 0, 1, 1);
+                         ((CraftPlayer) e.getPlayer()).getHandle().playerConnection.sendPacket(packet);
+                     }
+                 }
+         }
+     }*/
  
  
  
@@ -783,7 +824,7 @@ import org.bukkit.scheduler.BukkitScheduler;
      } 
  
  
-     if (it.getType() == Material.END_ROD) {
+     /*if (it.getType() == Material.END_ROD) {
     	 
     	 
     	
@@ -791,7 +832,7 @@ import org.bukkit.scheduler.BukkitScheduler;
     	 
     	 
     	 
-    	 /*Arrow arrow = (Arrow)player.launchProjectile(Arrow.class);
+    	 Arrow arrow = (Arrow)player.launchProjectile(Arrow.class);
     	 
     	 arrow.setVelocity(arrow.getVelocity().multiply(0.5));
     	 arrow.setBounce(false);
@@ -800,30 +841,19 @@ import org.bukkit.scheduler.BukkitScheduler;
     	 
     	 
     	 Bukkit.getWorld("world").spawnParticle(Particle.SMOKE_LARGE, arrow.getLocation(), 100, 1.0D, 1.0D, 1.0D);
-    	 Bukkit.getScheduler().scheduleSyncDelayedTask(main, new Runnable() {
-	    	 @Override
-	         public void run() {
-	    		 while(!arrow.isOnGround()) {
-	    			 Bukkit.getWorld("world").spawnParticle(Particle.SMOKE_NORMAL, arrow.getLocation(), 100, 1.0D, 1.0D, 1.0D);
-	    			 try {
-						Thread.sleep(500);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-	    		 }
-	    		 
-	         }
-    	 }, (int)(20));
+    	 
     	 
     	 if(arrow.isOnGround()) {
     		 arrow.remove();
-    	 }*/
+    	 }
     		 
     	 
-     }
+     }*/
  
- 
+     
+     
+
+
  
  
  
