@@ -18,7 +18,7 @@ import fr.silenix.tntwars.GMain;
 
 public class TimerRocket extends BukkitRunnable{
   private GMain main;
-  private int timer = 1;
+  private int timer = 2;
 
   private Player player;
   

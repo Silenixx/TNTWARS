@@ -70,7 +70,7 @@ public class DamageListeners implements Listener
      if (event.getCause() == EntityDamageEvent.DamageCause.VOID) {
        Player player = (Player)victim;
        event.setDamage(0.0D);
-       this.main.eliminate(player);
+       
      } 
  
      
@@ -238,6 +238,7 @@ public class DamageListeners implements Listener
            
            if (joueur_killer.getEquipe() == joueur_victime.getEquipe()) {
              event.setDamage(0.0D);
+            
              event.setCancelled(true);
  
  
@@ -268,12 +269,13 @@ public class DamageListeners implements Listener
                return;
              }
              if (joueur_killer.getEquipe() != joueur_victime.getEquipe()) {
-                 event.setDamage(14.5D);
+                 event.setDamage(11D);
                  
      
                  if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
     	             event.setDamage(0.0D);
     	             event.setCancelled(true);
+    	             Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
     	             this.main.eliminate(joueur_victime.getPlayer());
     	           }
             } 
@@ -306,6 +308,7 @@ public class DamageListeners implements Listener
 	           if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 	             event.setDamage(0.0D);
 	             event.setCancelled(true);
+	             Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
 	             this.main.eliminate(joueur_victime.getPlayer());
 	           } 
            }
@@ -315,6 +318,7 @@ public class DamageListeners implements Listener
 	           if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 	             event.setDamage(0.0D);
 	             event.setCancelled(true);
+	             Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
 	             this.main.eliminate(joueur_victime.getPlayer());
 	           } 
            }
@@ -367,6 +371,7 @@ public class DamageListeners implements Listener
 				if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 		             event.setDamage(0.0D);
 		             event.setCancelled(true);
+		             Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
 		             this.main.eliminate(joueur_victime.getPlayer());
 		          } 
  				
@@ -404,11 +409,13 @@ public class DamageListeners implements Listener
                if (vue_victim > vue_killer && vue_killer > vue_victim - 45.0D) {
                  event.setDamage(0.0D);
                  joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin " + joueur_victime.getEquipe().getChatColor() + joueur_killer.getPlayer());
+                 Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
                  this.main.eliminate(players);
                } 
                if (vue_victim < vue_killer && vue_killer < vue_victim + 45.0D) {
                  event.setDamage(0.0D);
                  joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
+                 Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
                  this.main.eliminate(players);
                } 
              } 
@@ -438,11 +445,13 @@ public class DamageListeners implements Listener
                if (vue_victim > vue_killer && vue_killer > vue_victim - 45.0D) {
                  event.setDamage(0.0D);
                  joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
+                 Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
                  this.main.eliminate(players);
                } 
                if (vue_victim < vue_killer && vue_killer < vue_victim + 45.0D) {
                  event.setDamage(0.0D);
                  joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
+                 Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
                  this.main.eliminate(players);
                
                }
@@ -456,11 +465,13 @@ public class DamageListeners implements Listener
              if (vue_victim > vue_killer && vue_killer > vue_victim - 45.0D) {
                event.setDamage(0.0D);
                joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
+               Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
                this.main.eliminate(players);
              } 
              if (vue_victim < vue_killer && vue_killer < vue_victim + 45.0D) {
                event.setDamage(0.0D);
                joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
+               Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + joueur_killer.getPlayer().getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
                this.main.eliminate(players);
              } 
            } 
