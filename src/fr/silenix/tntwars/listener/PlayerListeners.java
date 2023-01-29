@@ -914,6 +914,13 @@ import org.bukkit.scheduler.BukkitScheduler;
                if (tnt.getVie() == main.Avancement_Max_Global_TNT) {
                  Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT " + tnt.getEquipe().getCouleur() + " §ea été allumée!");
                  tnt.setEtat(EtatTNT.Allume);
+                 for(Joueur joueurs : main.listeJoueurs) {
+                	 if(joueurs.getEquipe() == tnt.getEquipe()) {
+                		 joueurs.getPlayer().sendTitle(ChatColor.DARK_RED + "TNT ALLUMÉE !", ChatColor.RED+"30 secondes pour la désamorcer");
+                	 }
+                	 
+                 }
+                 
                  TimerAllumage start = new TimerAllumage(main, tnt.getEquipe().getCouleur());
                  start.runTaskTimer((Plugin)main, 0L, 20L);
                } 
@@ -923,7 +930,7 @@ import org.bukkit.scheduler.BukkitScheduler;
        } 
      }
  
- 
+     
  
  
  

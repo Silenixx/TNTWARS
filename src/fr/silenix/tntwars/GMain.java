@@ -191,6 +191,11 @@ import Command.CommandEliminate;
      
      setState(EtatPartie.AttenteJoueur);
      
+     for(Joueur joueur : listeJoueurs) {
+    	 deletejoueurscoreboard(joueur, joueur.getEquipe());
+     }
+     
+     
      this.listeJoueurs.clear();
      int i;
      for (i = 0; i < this.listeConnecte.size(); i++) {
@@ -271,7 +276,7 @@ import Command.CommandEliminate;
      this.boardred = this.board.registerNewTeam("boardred");
      
      @SuppressWarnings("deprecation")
-	Objective objective = this.board.registerNewObjective("lol", "dummy");
+	 Objective objective = this.board.registerNewObjective("lol", "dummy");
      
      this.RedTeamSC.setPrefix("§4[§cEquipe Rouge§4]§c ");
      this.BlueTeamSC.setPrefix("§1[§9Equipe Bleu§1]§9 ");
@@ -296,16 +301,16 @@ import Command.CommandEliminate;
 
 		objective.setDisplayName(ChatColor.GOLD + "§6-------- TNT WARS --------");
 		
-		Score information = objective.getScore(ChatColor.GOLD + "§ Informations de la Partie");
+		Score information = objective.getScore(ChatColor.GOLD + "§6 Informations de la Partie");
 		information.setScore(15);
-     
+	 
 		onlineCounter.addEntry(ChatColor.BLACK + "" + ChatColor.WHITE);
 		onlineCounter.setPrefix("  §eJoueurs connectés: ");
 		
 		if (Bukkit.getOnlinePlayers().size() == 0) {
 		    onlineCounter.setSuffix(ChatColor.AQUA + "0");
 		} else {
-		    onlineCounter.setSuffix("" + ChatColor.DARK_RED + Bukkit.getOnlinePlayers().size()+ "  (" + ChatColor.BLUE+taille_blue+ ChatColor.GRAY+"|"+ChatColor.RED+taille_red+ ChatColor.GRAY+")");
+		    onlineCounter.setSuffix("" + ChatColor.DARK_RED + Bukkit.getOnlinePlayers().size()+ "  (" + ChatColor.BLUE + taille_blue + ChatColor.GRAY + "|"+ChatColor.RED + taille_red + ChatColor.GRAY+")");
 		}
 		
 		objective.getScore(ChatColor.BLACK + "" + ChatColor.WHITE).setScore(14);
@@ -684,7 +689,27 @@ public void sethealth(Joueur joueur) {
        joueur.getPlayer().setMaxHealth(20.0D);
        joueur.getPlayer().setHealth(20.0D);
        joueur.getPlayer().setFoodLevel(20);
-     } 
+     }
+     removeEffet(joueur.getPlayer());
+   }
+   
+   
+   public void removeEffet(Player player) {
+	   Joueur joueur = this.listeJoueurs.stream()
+		       .filter(p -> player.getName().equals(p.getPlayer().getName()))
+		       .findAny()
+		       .orElse(null);
+	   
+	   if(player.hasPotionEffect(PotionEffectType.FIRE_RESISTANCE)) {
+	    	  Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
+	     }
+	     
+	     if(player.hasPotionEffect(PotionEffectType.WATER_BREATHING)) {
+	   	  Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
+	     }
+	     if(player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE)) {
+	      	  Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
+	     }
    }
    
    public void respawn(Player player) {
@@ -696,17 +721,8 @@ public void sethealth(Joueur joueur) {
      player.setGameMode(GameMode.SURVIVAL);
      player.setInvisible(false);
      SpawnTeleportation(joueur);
-     if(player.hasPotionEffect(PotionEffectType.FIRE_RESISTANCE)) {
-    	  Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
-     }
      
-     if(player.hasPotionEffect(PotionEffectType.WATER_BREATHING)) {
-   	  Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
-     }
-     if(player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE)) {
-      	  Bukkit.dispatchCommand((CommandSender)Bukkit.getConsoleSender(), "effect clear " + joueur.getPlayer().getName());
-       }
-     
+     removeEffet(player);
      
      TimerImmortality start = new TimerImmortality(this, joueur.getPlayer());
      start.runTaskTimer((Plugin)this, 0L, 20L);

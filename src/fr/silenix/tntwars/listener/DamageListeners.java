@@ -341,9 +341,9 @@ public class DamageListeners implements Listener
            .findAny()
            .orElse(null);
          
-         if (joueur_killer.getKit() == this.main.list_kits.get(3)) {
-           Bukkit.broadcastMessage(String.valueOf(damager.getName()) + " vient de tuer " + players.getDisplayName());
-           damager.sendMessage(joueur_killer.getEquipe().getChatColor() + "Tu viens de tuer " + players.getName());
+         if (joueur_killer.getKit() == this.main.list_kits.get(IndexKit.OneShot)) {
+           Bukkit.broadcastMessage("Le OneShot " + joueur_killer.getEquipe().getChatColor() + damager.getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() +players.getName());
+           //damager.sendMessage(joueur_killer.getEquipe().getChatColor() + "Tu viens de tuer " + players.getName());
            event.setDamage(0.0D);
            this.main.eliminate(players);
          } 
@@ -403,7 +403,7 @@ public class DamageListeners implements Listener
                
                if (vue_victim > vue_killer && vue_killer > vue_victim - 45.0D) {
                  event.setDamage(0.0D);
-                 joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin "+joueur_victime.getEquipe().getChatColor()+joueur_killer.getPlayer());
+                 joueur_victime.getPlayer().sendMessage("Vous avez été assasiné par l'assassin " + joueur_victime.getEquipe().getChatColor() + joueur_killer.getPlayer());
                  this.main.eliminate(players);
                } 
                if (vue_victim < vue_killer && vue_killer < vue_victim + 45.0D) {
@@ -487,8 +487,8 @@ public class DamageListeners implements Listener
  
  
            
-           Bukkit.broadcastMessage(String.valueOf(killer_parjoueur.getDisplayName()) + " vient de tuer " + players.getDisplayName());
-           killer_parjoueur.sendMessage(joueur_killer.getEquipe().getChatColor() +"Tu viens de tuer " + players.getName());
+           Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + killer_parjoueur.getName() + ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor() + players.getDisplayName());
+           //killer_parjoueur.sendMessage(joueur_killer.getEquipe().getChatColor() +"Tu viens de tuer " + players.getName());
            
            if (joueur_killer.getKit() == this.main.list_kits.get(IndexKit.Elytra)) {
         	   joueur_killer.getPlayer().getInventory().addItem(new ItemStack[] { new ItemStack(Material.FIREWORK_ROCKET) });

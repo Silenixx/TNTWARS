@@ -999,7 +999,7 @@ import org.bukkit.inventory.meta.ItemMeta;
      ItemStack customblaze_PandaMan = new ItemStack(Material.BAMBOO, 1);
      ItemMeta customSSS_PandaMan = customblaze_PandaMan.getItemMeta();
      customSSS_PandaMan.setDisplayName("Kit PandaMan");
-     customSSS_PandaMan.addEnchant(Enchantment.DAMAGE_ALL, 6, true);
+     customSSS_PandaMan.addEnchant(Enchantment.DAMAGE_ALL, 11, true);
      customblaze_PandaMan.setItemMeta(customSSS_PandaMan);
 
      ItemStack skull_panda = PlayerHead.customPlayerHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRlOTk5NGQ5NzkyMTJmN2JhOTNmNDFkOWI5YTk3YmI4ODY4ODE0OWU3NmMyMmZiNWNhODNjOTE1OTI5YTFlNiJ9fX0=", 

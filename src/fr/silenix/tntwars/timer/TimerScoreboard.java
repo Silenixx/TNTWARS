@@ -63,7 +63,10 @@ public class TimerScoreboard extends BukkitRunnable{
 					main.boardred.setSuffix(""+ ChatColor.RED + main.cred + ChatColor.RED + "%" );
 				}
 				if(main.tnt_rouge.getEtat()==EtatTNT.Allume) {
-					main.boardred.setSuffix(""+ ChatColor.RED + main.cred + ChatColor.RED + "%    " + ChatColor.DARK_RED+" TNT ALLUMÉE "  + ChatColor.RED + main.timered + ChatColor.RED + "s" );
+					main.boardred.setSuffix(""+ ChatColor.RED + main.cred + ChatColor.RED + "% " + ChatColor.DARK_RED+" ALLUMÉE "  + ChatColor.RED + main.timered + ChatColor.RED + "s" );
+				}
+				if(main.tnt_rouge.getEtat()==EtatTNT.Explose) {
+					main.boardred.setSuffix(""+ ChatColor.RED + main.cred + ChatColor.RED + "% " + ChatColor.DARK_RED+" EXPLOSÉE "   );
 				}
 				
 				
@@ -72,9 +75,16 @@ public class TimerScoreboard extends BukkitRunnable{
 					main.boardblue.setSuffix(""+ ChatColor.BLUE + main.cblue + ChatColor.BLUE + "%" );
 				}
 				if(main.tnt_bleu.getEtat()==EtatTNT.Allume) {
-					main.boardblue.setSuffix(""+ ChatColor.BLUE + main.cblue + ChatColor.BLUE + "%    "+ ChatColor.DARK_RED+" TNT ALLUMÉE " + ChatColor.BLUE + main.timeblue + ChatColor.BLUE + "s" );
+					main.boardblue.setSuffix(""+ ChatColor.BLUE + main.cblue + ChatColor.BLUE + "% "+ ChatColor.DARK_RED+" ALLUMÉE " + ChatColor.BLUE + main.timeblue + ChatColor.BLUE + "s" );
 				}
-			
+				if(main.tnt_bleu.getEtat()==EtatTNT.Explose) {
+					main.boardblue.setSuffix(""+ ChatColor.BLUE + main.cblue + ChatColor.BLUE + "% " +  ChatColor.DARK_RED+" EXPLOSÉE "   );
+				}
+				
+				
+				
+				
+				
 				if (main.isState(EtatPartie.JeuEnCours)) {
 					for(Location location : main.map_en_cours.getLocationTntArray2()) {
 						if(location.getBlock().getType() != Material.TNT){
