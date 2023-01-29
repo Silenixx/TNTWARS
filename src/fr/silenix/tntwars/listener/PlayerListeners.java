@@ -627,28 +627,31 @@ import org.bukkit.scheduler.BukkitScheduler;
      
      
      if(it.getType() == Material.SADDLE){
+    	 if(!joueur.getPlayer().isInsideVehicle()) {
+    		 if(joueur.getKit() == main.list_kits.get(IndexKit.Chevalier))
+             {
+            	 
+            	 Horse horsebrown = (Horse) player.getWorld().spawn(player.getLocation(), Horse.class);
+    	         horsebrown.setAdult();
+    	         horsebrown.setTamed(true);
+    	         horsebrown.setOwner(player);
+    	         horsebrown.getInventory().setSaddle(new ItemStack(Material.SADDLE));
+    	         horsebrown.setCustomName(joueur.getEquipe().getColor() + "Horse");
+    	         horsebrown.setPassenger(player);
+             }
+             
+             if(joueur.getKit() == main.list_kits.get(IndexKit.PigRider))
+             {
+            	 
+            	 Pig pig = (Pig) player.getWorld().spawn(player.getLocation(), Pig.class);
+            	 pig.setAdult();
+            	 pig.setSaddle(true);
+            	 pig.setCustomName("Pig");
+            	 pig.setPassenger(player);
+             }
+    	 }
     	 
-         if(joueur.getKit() == main.list_kits.get(IndexKit.Chevalier))
-         {
-        	 
-        	 Horse horsebrown = (Horse) player.getWorld().spawn(player.getLocation(), Horse.class);
-	         horsebrown.setAdult();
-	         horsebrown.setTamed(true);
-	         horsebrown.setOwner(player);
-	         horsebrown.getInventory().setSaddle(new ItemStack(Material.SADDLE));
-	         horsebrown.setCustomName(joueur.getEquipe().getColor() + "Horse");
-	         horsebrown.setPassenger(player);
-         }
          
-         if(joueur.getKit() == main.list_kits.get(IndexKit.PigRider))
-         {
-        	 
-        	 Pig pig = (Pig) player.getWorld().spawn(player.getLocation(), Pig.class);
-        	 pig.setAdult();
-        	 pig.setSaddle(true);
-        	 pig.setCustomName("Pig");
-        	 pig.setPassenger(player);
-         }
          
          
          
