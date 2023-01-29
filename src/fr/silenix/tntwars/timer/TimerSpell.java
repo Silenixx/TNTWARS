@@ -17,9 +17,7 @@ import org.bukkit.scheduler.BukkitScheduler;
  
  
  
- public class TimerSpell
-   extends BukkitRunnable
- {
+ public class TimerSpell extends BukkitRunnable{
    private GMain main;
    private int timer = 10;
    private Snowball snowball;

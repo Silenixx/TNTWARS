@@ -268,7 +268,7 @@ public class DamageListeners implements Listener
                return;
              }
              if (joueur_killer.getEquipe() != joueur_victime.getEquipe()) {
-                 event.setDamage(5.0D);
+                 event.setDamage(14.5D);
                  
      
                  if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {

@@ -14,15 +14,20 @@ import fr.silenix.tntwars.GMain;
  import fr.silenix.tntwars.tasks.TaskRejoindPartieEnCours;
  import fr.silenix.tntwars.timer.TimerAllumage;
  import fr.silenix.tntwars.timer.TimerInvisibility;
+import fr.silenix.tntwars.timer.TimerRocket;
 import fr.silenix.tntwars.timer.TimerSpell;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Effect;
+import org.bukkit.FireworkEffect;
+import org.bukkit.FireworkEffect.Type;
 import org.bukkit.GameMode;
  import org.bukkit.Location;
  import org.bukkit.Material;
@@ -62,6 +67,7 @@ import org.bukkit.inventory.Inventory;
  import org.bukkit.inventory.ItemFlag;
  import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.CrossbowMeta;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
@@ -857,16 +863,18 @@ import org.bukkit.scheduler.BukkitScheduler;
      
      if (it.getType() == Material.CROSSBOW) {
     	 if (joueur.getKit() == main.list_kits.get(IndexKit.Rocketman)) {
-    		 joueur.getPlayer().getInventory().remove(Material.CROSSBOW);
-    		 ItemStack loadedCrossbow = new ItemStack(Material.CROSSBOW, 1);
-
-    		 CrossbowMeta meta = (CrossbowMeta) loadedCrossbow.getItemMeta();
-
-    		 meta.addChargedProjectile(new ItemStack(Material.FIREWORK_ROCKET, 1));
-
-    		 loadedCrossbow.setItemMeta(meta);
-
-    		 joueur.getPlayer().getInventory().addItem(loadedCrossbow);
+    		 if(joueur.getPlayer().getInventory().contains(Material.HEART_OF_THE_SEA)){
+    			 joueur.getPlayer().getInventory().remove(Material.HEART_OF_THE_SEA);
+	    		 
+    			 
+    			 
+    			 
+	    		 TimerRocket start = new TimerRocket(main, joueur.getPlayer());
+		         start.runTaskTimer((Plugin)main, 0L, 20L);  
+	    		 
+	    		 
+    		 }
+    		 
     	 }
      }
 

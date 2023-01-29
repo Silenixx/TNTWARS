@@ -4,11 +4,18 @@
  import fr.silenix.tntwars.entity.Kit;
  import java.util.ArrayList;
  import java.util.Arrays;
- import org.bukkit.Material;
- import org.bukkit.enchantments.Enchantment;
+import java.util.Random;
+
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.Material;
+import org.bukkit.FireworkEffect.Type;
+import org.bukkit.enchantments.Enchantment;
  import org.bukkit.inventory.ItemFlag;
  import org.bukkit.inventory.ItemStack;
- import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.CrossbowMeta;
+import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.inventory.meta.ItemMeta;
  import org.bukkit.inventory.meta.PotionMeta;
  import org.bukkit.potion.PotionEffect;
  import org.bukkit.potion.PotionEffectType;
@@ -1080,12 +1087,33 @@
      customDS_Rocketman.setDisplayName("Kit Rocketman");
      customdiamondsword_Rocketman.setItemMeta(customDS_Rocketman);
      
-     ItemStack customArbaletterocketman = new ItemStack(Material.CROSSBOW, 1);
-     ItemMeta customDS_Arbalette_rocketman = customArbaletterocketman.getItemMeta();
-     customDS_Arbalette_rocketman.setDisplayName("Kit Arbalette");
-     //customDS_Arbalette_rocketman.addEnchant(Enchantment.PIERCING, 4, true);
-     customDS_Arbalette_rocketman.addEnchant(Enchantment.QUICK_CHARGE, 3, true);
-     customArbaletterocketman.setItemMeta(customDS_Arbalette_rocketman);
+     
+     
+     
+     
+     
+     
+     ItemStack loadedCrossbow = new ItemStack(Material.CROSSBOW, 1);
+	 CrossbowMeta meta = (CrossbowMeta) loadedCrossbow.getItemMeta();
+	 meta.setDisplayName("Kit Arbalette");
+	 meta.addEnchant(Enchantment.QUICK_CHARGE, 3, true);
+	 ItemStack rocket = new ItemStack(Material.FIREWORK_ROCKET);
+	 FireworkMeta metarocket = (FireworkMeta) rocket.getItemMeta();
+	 metarocket.setPower(4);
+	 	Random chance = new Random();
+	 	Type type = Type.BALL_LARGE;
+	    if(chance.nextInt(100) < 50){
+	      type = Type.BALL;
+	    }
+	 FireworkEffect effect = FireworkEffect.builder().with(type).withColor(Color.fromRGB(chance.nextInt(255), chance.nextInt(255), chance.nextInt(255))).flicker(chance.nextBoolean()).trail(chance.nextBoolean()).build();
+	 metarocket.addEffect(effect);
+	 rocket.setItemMeta(metarocket);
+	 meta.addChargedProjectile(new ItemStack(rocket));
+	 loadedCrossbow.setItemMeta(meta);
+
+     
+     
+     
 
      ItemStack skull_rocketman = PlayerHead.customPlayerHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjBkZGNiN2EwNjFmNTU1Njk2MmQwZWVmZGVhZTQ4OGQwNDZkYjNhYWJjZTYyMTRmNDA0MjRmNTgyYzY1Y2MwNSJ9fX0=", 
          Arrays.asList( "test", "test"
@@ -1099,11 +1127,11 @@
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_Rocketman, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(customArbaletterocketman,new ItemStack(Material.FIREWORK_ROCKET,64),new ItemStack(Material.FIREWORK_ROCKET,64))), 
+         new ArrayList<ItemStack>(Arrays.asList(loadedCrossbow,new ItemStack(Material.HEART_OF_THE_SEA))), 
          null, 
          true, 
          new ItemStack(Material.FIREWORK_ROCKET), 
-         Arrays.asList( "§ePas finit"
+         Arrays.asList( "§bLes rockets font mal je vous le jure"
            ), "tnt.rocketman");
      list_kits.add(Rocketman);
 
