@@ -4,9 +4,11 @@
  import fr.silenix.tntwars.GMain;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
  
@@ -38,7 +40,7 @@ import org.bukkit.scheduler.BukkitScheduler;
 
  
             //s.getWorld().playEffect(s.getLocation(), Effect.HEART, 10);
-    player.sendMessage("" + snowball.getLocation().distance(player.getLocation()));
+   // player.sendMessage("" + snowball.getLocation().distance(player.getLocation()));
     
     
 	Bukkit.getWorld("world").spawnParticle(Particle.GLOW_SQUID_INK, snowball.getLocation(), 20, 0.05D, 0.05D, 0.05D);
@@ -49,7 +51,7 @@ import org.bukkit.scheduler.BukkitScheduler;
 	
 	if(snowball.isOnGround() || snowball.isDead() || snowball.isInWater() || snowball.getLocation().distance(player.getLocation()) > 80   ) {
 		snowball.remove();
-		
+		player.getInventory().addItem(new ItemStack(Material.HEART_OF_THE_SEA));
 		cancel();
 	}
 	

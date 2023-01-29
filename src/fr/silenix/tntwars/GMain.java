@@ -214,7 +214,7 @@ import Command.CommandEliminate;
        
        ItemStack customnetherstar = new ItemStack(Material.NETHER_STAR, 1);
        ItemMeta customNS = customnetherstar.getItemMeta();
-       customNS.setDisplayName("Selectionneur d'§quipe");
+       customNS.setDisplayName("Selectionneur d'équipe");
        customNS.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
        customNS.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
        customNS.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));

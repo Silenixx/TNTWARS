@@ -532,7 +532,7 @@
      ItemStack customironsword_tank = new ItemStack(Material.STONE_SWORD, 1);
      ItemMeta customIS_tank = customironsword_tank.getItemMeta();
      customIS_tank.setDisplayName("Kit Tank");
-     customIS_tank.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+     customIS_tank.addEnchant(Enchantment.DAMAGE_ALL, 3, true);
      customironsword_tank.setItemMeta(customIS_tank);
 
      Kit Tank = new Kit(
@@ -594,13 +594,13 @@
      ItemStack customdiamondsword_sorcier = new ItemStack(Material.IRON_SWORD, 1);
      ItemMeta customDS_sorcier = customdiamondsword_sorcier.getItemMeta();
      customDS_sorcier.setDisplayName("Kit Sorcier");
-     customDS_sorcier.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
+
      customdiamondsword_sorcier.setItemMeta(customDS_sorcier);
 
      ItemStack customblaze_sorcier = new ItemStack(Material.END_ROD, 1);
      ItemMeta customSSS_sorcier = customblaze_sorcier.getItemMeta();
      customSSS_sorcier.addEnchant(Enchantment.ARROW_INFINITE, 6, true);
-     customSSS_sorcier.addEnchant(Enchantment.KNOCKBACK, 6, true);
+
      customSSS_sorcier.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
      customblaze_sorcier.setItemMeta(customSSS_sorcier);
 
@@ -612,11 +612,11 @@
          new ItemStack(Material.IRON_BOOTS), 
          customdiamondsword_sorcier, 
          Constantes.Vie_Global_Joueur, 
-         new ArrayList<ItemStack>(Arrays.asList(customblaze_sorcier
-             )), null, 
+         new ArrayList<ItemStack>(Arrays.asList(customblaze_sorcier,new ItemStack(Material.HEART_OF_THE_SEA))), 
+        null, 
          true, 
          new ItemStack(Material.END_ROD), 
-         Arrays.asList( "§ePas finit"
+         Arrays.asList( "§bJetez des sorts avec votre baguette"
            ), "tnt.sorcier");
      list_kits.add(Sorcier);
 
@@ -1159,7 +1159,7 @@
          new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.NETHER_BRICK)
              )), null, 
          true, 
-         new ItemStack(Material.END_ROD), 
+         new ItemStack(Material.EMERALD), 
          Arrays.asList( "§ePas finit"
            ), "tnt.evocateur");
      list_kits.add(Evocateur);

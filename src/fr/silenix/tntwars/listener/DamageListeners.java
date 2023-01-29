@@ -15,7 +15,8 @@ import org.bukkit.block.Block;
  import org.bukkit.entity.Arrow;
  import org.bukkit.entity.Entity;
  import org.bukkit.entity.Fireball;
- import org.bukkit.entity.Player;
+import org.bukkit.entity.Firework;
+import org.bukkit.entity.Player;
  import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Wolf;
 import org.bukkit.event.EventHandler;
@@ -246,7 +247,38 @@ public class DamageListeners implements Listener
              return;
            } 
          } 
-       } 
+       }
+       
+       
+       if (damager instanceof Firework) {
+    	   Firework firework = (Firework)damager;
+           if (firework.getShooter() instanceof Player) {
+             Player killer_fireball = (Player)firework.getShooter();
+             
+             Joueur joueur_killer = this.main.listeJoueurs.stream()
+               .filter(p -> killer_fireball.getName().equals(p.getPlayer().getName()))
+               .findAny()
+               .orElse(null);
+   
+             
+             if (joueur_killer.getEquipe() == joueur_victime.getEquipe()) {
+               event.setDamage(0.0D);
+               event.setCancelled(true);
+   
+               return;
+             }
+             if (joueur_killer.getEquipe() != joueur_victime.getEquipe()) {
+                 event.setDamage(5.0D);
+                 
+     
+                 if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
+    	             event.setDamage(0.0D);
+    	             event.setCancelled(true);
+    	             this.main.eliminate(joueur_victime.getPlayer());
+    	           }
+            } 
+           } 
+         } 
  
  
  
@@ -269,12 +301,27 @@ public class DamageListeners implements Listener
              return;
            } 
            
-           event.setDamage(13.0D);
-           if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
-             event.setDamage(0.0D);
-             event.setCancelled(true);
-             this.main.eliminate(joueur_victime.getPlayer());
-           } 
+           if(joueur_killer.getKit() == main.list_kits.get(IndexKit.SnowMan)) {
+        	   event.setDamage(8.0D);
+	           if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
+	             event.setDamage(0.0D);
+	             event.setCancelled(true);
+	             this.main.eliminate(joueur_victime.getPlayer());
+	           } 
+           }
+           
+           if(joueur_killer.getKit() == main.list_kits.get(IndexKit.Sorcier)) {
+        	   event.setDamage(12.0D);
+	           if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
+	             event.setDamage(0.0D);
+	             event.setCancelled(true);
+	             this.main.eliminate(joueur_victime.getPlayer());
+	           } 
+           }
+           
+           
+           
+           
          } 
        } 
  

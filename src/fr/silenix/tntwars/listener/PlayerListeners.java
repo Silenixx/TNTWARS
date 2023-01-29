@@ -61,7 +61,8 @@ import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.inventory.Inventory;
  import org.bukkit.inventory.ItemFlag;
  import org.bukkit.inventory.ItemStack;
- import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.CrossbowMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
  import org.bukkit.potion.PotionEffectType;
@@ -550,19 +551,9 @@ import org.bukkit.scheduler.BukkitScheduler;
  
 
  
-   @EventHandler
-   public void onInter(PlayerInteractEvent e) {
-     Player p = e.getPlayer();
-     if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && 
-       e.getItem().getType() == Material.GOLDEN_HORSE_ARMOR) {
-       final Snowball s = (Snowball)p.launchProjectile(Snowball.class);
-       s.setVelocity(/*p.getLocation().getDirection().multiply(1.0D)*/ s.getVelocity().multiply(1.40));
-       s.setGravity(false);
-       
-       
-       
-       TimerSpell start = new TimerSpell(main, s, p);
-       start.runTaskTimer((Plugin)main, 0L, 3L);
+   /*@EventHandler
+   public void onInter(PlayerInteractEvent e) {*/
+     
        
        
        /*final BukkitScheduler scheduler = Bukkit.getScheduler();
@@ -601,8 +592,8 @@ import org.bukkit.scheduler.BukkitScheduler;
              }
            }, 20);
 	 						*/
-    } 
-  }
+    /*} 
+  }*/
  
  
  
@@ -824,15 +815,28 @@ import org.bukkit.scheduler.BukkitScheduler;
      } 
  
  
-     /*if (it.getType() == Material.END_ROD) {
+     if (it.getType() == Material.END_ROD) {
     	 
     	 
     	
+    	 Player p = event.getPlayer();
+         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && event.getItem().getType() == Material.END_ROD) {
+        	 if(p.getInventory().contains(Material.HEART_OF_THE_SEA)){
+        		 final Snowball s = (Snowball)p.launchProjectile(Snowball.class);
+        		 s.setVelocity(/*p.getLocation().getDirection().multiply(1.0D)*/ s.getVelocity().multiply(1.40));
+        		 s.setGravity(false);
+		         p.getInventory().remove(Material.HEART_OF_THE_SEA);
+		         TimerSpell start = new TimerSpell(main, s, p);
+		         start.runTaskTimer((Plugin)main, 0L, 3L);  
+		           
+		           
+        	 }
+        	 
+	           
+         }
     	 
     	 
-    	 
-    	 
-    	 Arrow arrow = (Arrow)player.launchProjectile(Arrow.class);
+    	 /*Arrow arrow = (Arrow)player.launchProjectile(Arrow.class);
     	 
     	 arrow.setVelocity(arrow.getVelocity().multiply(0.5));
     	 arrow.setBounce(false);
@@ -845,13 +849,26 @@ import org.bukkit.scheduler.BukkitScheduler;
     	 
     	 if(arrow.isOnGround()) {
     		 arrow.remove();
-    	 }
+    	 }*/
     		 
     	 
-     }*/
+     }
  
      
-     
+     if (it.getType() == Material.CROSSBOW) {
+    	 if (joueur.getKit() == main.list_kits.get(IndexKit.Rocketman)) {
+    		 joueur.getPlayer().getInventory().remove(Material.CROSSBOW);
+    		 ItemStack loadedCrossbow = new ItemStack(Material.CROSSBOW, 1);
+
+    		 CrossbowMeta meta = (CrossbowMeta) loadedCrossbow.getItemMeta();
+
+    		 meta.addChargedProjectile(new ItemStack(Material.FIREWORK_ROCKET, 1));
+
+    		 loadedCrossbow.setItemMeta(meta);
+
+    		 joueur.getPlayer().getInventory().addItem(loadedCrossbow);
+    	 }
+     }
 
 
  
