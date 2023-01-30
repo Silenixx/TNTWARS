@@ -7,7 +7,7 @@
  import Fonctions.Fonctions;
 import Fonctions.IndexKit;
 import fr.silenix.tntwars.GMain;
- import fr.silenix.tntwars.entity.Joueur;
+import fr.silenix.tntwars.entity.Joueur;
  import fr.silenix.tntwars.entity.Kit;
  import fr.silenix.tntwars.entity.Tnt;
  import fr.silenix.tntwars.tasks.TaskLancementPartie;
@@ -82,6 +82,8 @@ import org.bukkit.scheduler.BukkitScheduler;
  public class PlayerListeners
    implements Listener
  {
+	 
+	 
    private GMain main;
    
    public PlayerListeners(GMain main) {
@@ -95,7 +97,7 @@ import org.bukkit.scheduler.BukkitScheduler;
      Player player = event.getPlayer();
  
      
-     Joueur joueur = new Joueur(player, player.getName(), main.Sans_Equipe, main.list_kits.get(0), main.list_kits.get(0));
+     Joueur joueur = new Joueur(player, player.getName(), main.Sans_Equipe, main.list_kits.get(0), main.list_kits.get(0),0);
      main.listeConnecte.add(joueur);
  
      
@@ -124,12 +126,13 @@ import org.bukkit.scheduler.BukkitScheduler;
      if (!main.isState(EtatPartie.FinJeu)) {
        
        main.listeJoueurs.add(joueur);
-       if (main.listeJoueurs.size() == 1) {
-         
+       if (main.listeJoueurs.size() == 1 && main.isfirstJoueur) {
+        
          main.world = ((Joueur)main.listeJoueurs.get(0)).getPlayer().getWorld();
          
          CreateWorld createWorld = new CreateWorld(main);
          createWorld.Creationworld();
+         main.isfirstJoueur = false;
        } 
  
  
@@ -306,7 +309,9 @@ import org.bukkit.scheduler.BukkitScheduler;
 	    }
     
      
-     	main.listeJoueurs.remove(joueur);
+	    if(main.listeJoueurs.contains(joueur)) {
+	    	main.listeJoueurs.remove(joueur);
+     	}
      	main.listeConnecte.remove(joueur);
      	player.setPlayerListName(player.getName());
      	event.setQuitMessage("§5[§d-§5] §d" + player.getName() );

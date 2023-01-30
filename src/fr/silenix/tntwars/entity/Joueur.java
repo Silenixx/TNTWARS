@@ -12,17 +12,25 @@
    private Equipe Equipe;
    private Kit Kit;
    private Kit ProchainKit;
+   private int Money;
    
-   public Joueur(Player player, String Nom, Equipe equipe, Kit kit1, Kit ProchainKit) {
+   public Joueur(Player player, String Nom, Equipe equipe, Kit kit1, Kit ProchainKit, int money) {
      this.player = player;
      this.Nom = Nom;
      this.Equipe = equipe;
      this.Kit = kit1;
      this.ProchainKit = ProchainKit;
+     this.Money = money;
    }
  
  
    
+   public int getMoney() {
+	return Money;
+   }
+   public void setMoney(int money) {
+	Money = money;
+   }
    public Equipe getEquipe() {
      return this.Equipe;
    }

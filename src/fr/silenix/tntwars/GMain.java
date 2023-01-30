@@ -9,6 +9,7 @@
  import Fonctions.CreateKit;
 
 import Fonctions.IndexKit;
+import fr.silenix.tntwars.Bdd.DataBaseManager;
 import fr.silenix.tntwars.entity.Equipe;
  import fr.silenix.tntwars.entity.Joueur;
  import fr.silenix.tntwars.entity.Kit;
@@ -64,6 +65,9 @@ import Command.CommandEliminate;
  public class GMain
    extends JavaPlugin
  {
+	 
+   public boolean isfirstJoueur = true;	
+   public DataBaseManager dataBaseManager;
    public int Avancement_Max_Global_TNT = 50;
    
    public Team RedTeamSC;
@@ -153,8 +157,8 @@ import Command.CommandEliminate;
      
      getCommand("eliminate").setExecutor(new CommandEliminate(this));
  
- 
- 
+     this.dataBaseManager = new DataBaseManager();
+     
  
  
  
@@ -199,7 +203,7 @@ import Command.CommandEliminate;
      this.listeJoueurs.clear();
      int i;
      for (i = 0; i < this.listeConnecte.size(); i++) {
-       Joueur joueur_tempo = new Joueur(((Joueur)this.listeConnecte.get(i)).getPlayer(), ((Joueur)this.listeConnecte.get(i)).getPlayer().getName(), this.Sans_Equipe, this.list_kits.get(0), this.list_kits.get(0));
+       Joueur joueur_tempo = new Joueur(((Joueur)this.listeConnecte.get(i)).getPlayer(), ((Joueur)this.listeConnecte.get(i)).getPlayer().getName(), this.Sans_Equipe, this.list_kits.get(0), this.list_kits.get(0), 0);
        this.listeJoueurs.add(joueur_tempo);
      } 
      
