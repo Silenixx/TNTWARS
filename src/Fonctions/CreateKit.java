@@ -1214,7 +1214,7 @@ import org.bukkit.inventory.meta.ItemMeta;
            ), "test_autre");
 
      Kit Archer2 = new Kit(
-         "Archer 2", 
+         "Archer", 
          skull_archer2, 
          new ItemStack(Material.IRON_CHESTPLATE), 
          new ItemStack(Material.IRON_LEGGINGS), 
