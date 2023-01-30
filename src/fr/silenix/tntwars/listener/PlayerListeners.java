@@ -6,6 +6,7 @@ import Fonctions.CreateWorld;
 import Fonctions.Fonctions;
 import Fonctions.IndexKit;
 import fr.silenix.tntwars.GMain;
+import fr.silenix.tntwars.Bdd.RequeteSql;
 import fr.silenix.tntwars.entity.Joueur;
 import fr.silenix.tntwars.entity.Kit;
 import fr.silenix.tntwars.entity.Tnt;
@@ -71,8 +72,13 @@ public class PlayerListeners implements Listener {
 	public void onJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 
+		RequeteSql requete = new RequeteSql(main);
+		int money = requete.GetMoneyJoueur(player.getName());
+		
 		Joueur joueur = new Joueur(player, player.getName(), main.Sans_Equipe, main.list_kits.get(0),
-				main.list_kits.get(0), 0);
+				main.list_kits.get(0), money);
+		Bukkit.broadcastMessage(joueur.getNom() + "     money =  "+ money);
+		
 		main.listeConnecte.add(joueur);
 
 		player.setInvulnerable(false);

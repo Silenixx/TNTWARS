@@ -16,6 +16,16 @@ public class DataBaseManager {
 		
 	}
 	
+	
+	
+	public DbConnection getDbConnectionMoney() {
+		return dbConnectionMoney;
+	}
+
+
+
+
+
 	public void close() {
 		try {
 			this.dbConnectionMoney.close();
