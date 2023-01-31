@@ -45,7 +45,7 @@ public class CreateWorld {
 						new Location(main.world, 439, 60, -558), 
 						new Location(main.world, 357, 0, -676),
 						new Location(main.world, 556, 189, -421)));
-		/*main.list_maps.add(
+		main.list_maps.add(
 				new Map(
 						2, 
 						"Flower", 
@@ -59,7 +59,7 @@ public class CreateWorld {
 				new Map(
 						2, 
 						"Zen", 
-						new Location(main.world, -601, 176, -296),
+						new Location(main.world, -601, 176, 296),
 						new ArrayList<Location>(Arrays.asList(new Location(main.world, -513, 107, 300),new Location(main.world, -678, 107, 284))),
 						new ArrayList<Location>(Arrays.asList(new Location(main.world, -582, 111, 321),new Location(main.world, -609, 111, 263))),
 						new Location(main.world, -580, 101, 279), 
@@ -74,7 +74,7 @@ public class CreateWorld {
 						new ArrayList<Location>(Arrays.asList(new Location(main.world, -494, 99, 62),new Location(main.world, -494, 99 , -56))),
 						new Location(main.world, -494, 67, 4), 
 						new Location(main.world, -577, -22, -120),
-						new Location(main.world, -419, 196, -129)));*/
+						new Location(main.world, -419, 196, -129)));
 		
 		
 		
