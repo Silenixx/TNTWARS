@@ -413,7 +413,7 @@ public class CreateKit {
 		ItemStack customwoodsword_ghost = new ItemStack(Material.WOODEN_SWORD, 1);
 		ItemMeta customWS_ghost = customwoodsword_ghost.getItemMeta();
 		customWS_ghost.setDisplayName("Kit Ghost");
-		customWS_ghost.addEnchant(Enchantment.DAMAGE_ALL, 2, true);
+		customWS_ghost.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
 		customwoodsword_ghost.setItemMeta(customWS_ghost);
 
 		Kit Ghost = new Kit("Fantôme", null, null, null, null, customwoodsword_ghost, Constantes.Vie_Global_Joueur,

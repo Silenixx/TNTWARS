@@ -370,7 +370,40 @@ public class DamageListeners implements Listener {
 					}
 
 					if (joueur_killer.getKit() == main.list_kits.get(IndexKit.Sorcier)) {
-						event.setDamage(12.0D);
+						event.setDamage(8.0D);
+						if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
+							event.setDamage(0.0D);
+							event.setCancelled(true);
+							Bukkit.broadcastMessage(joueur_killer.getEquipe().getChatColor() + "["
+									+ joueur_killer.getKit().getNom() + "] " + joueur_killer.getPlayer().getName()
+									+ ChatColor.WHITE + " vient de tuer " + joueur_victime.getEquipe().getChatColor()
+									+ "[" + joueur_victime.getKit().getNom() + "] " + players.getDisplayName());
+							this.main.eliminate(joueur_victime.getPlayer());
+						}
+					}
+
+				}
+			}
+			if (damager instanceof Wolf) {
+				Wolf wolf = (Wolf) damager;
+				if (wolf.getOwner() instanceof Player) {
+					Player killer_snowball = (Player) wolf.getOwner();
+
+					Joueur joueur_killer = this.main.listeJoueurs.stream()
+							.filter(p -> killer_snowball.getName().equals(p.getPlayer().getName())).findAny()
+							.orElse(null);
+
+					
+
+					if (joueur_killer.getEquipe() == joueur_victime.getEquipe()) {
+						event.setDamage(0.0D);
+						event.setCancelled(true);
+
+						return;
+					}
+					if (joueur_killer.getEquipe() != joueur_victime.getEquipe()) {
+						event.setDamage(11D);
+
 						if (joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 							event.setDamage(0.0D);
 							event.setCancelled(true);
