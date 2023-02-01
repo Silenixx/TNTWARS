@@ -95,6 +95,16 @@ public class CreateWorld {
 						new Location(main.world, -252, 63, -596), 
 						new Location(main.world, -324, 38, -670),
 						new Location(main.world, -225, 104, -572)));
+		main.list_maps.add(
+				new Map(
+						2, 
+						"Pirate", 
+						new Location(main.world, 33, 176, -961),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, 56, 70, -906),new Location(main.world, 10, 70, -1016))),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, 31, 61, -925),new Location(main.world, 35, 61 , -997))),
+						new Location(main.world, 33, 64, -961), 
+						new Location(main.world, -26, 33, -1050),
+						new Location(main.world, 91, 121, -873)));
 		
 		
 		
