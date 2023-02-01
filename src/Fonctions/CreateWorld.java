@@ -75,6 +75,26 @@ public class CreateWorld {
 						new Location(main.world, -494, 67, 4), 
 						new Location(main.world, -577, -22, -120),
 						new Location(main.world, -419, 196, -129)));
+		main.list_maps.add(
+				new Map(
+						2, 
+						"Lego", 
+						new Location(main.world, -26, 225, -626),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, 12, 72, -673),new Location(main.world, -72, 72, -584))),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, 13, 90, -673),new Location(main.world, -73, 90 , -585))),
+						new Location(main.world, -33, 71, -635), 
+						new Location(main.world, -81, 70, -680),
+						new Location(main.world, -20, 141, -578)));
+		main.list_maps.add(
+				new Map(
+						2, 
+						"NewSchool", 
+						new Location(main.world, -276, 134, -620),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, -320, 66, -576),new Location(main.world, -232, 66, -664))),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, -300, 63, -596),new Location(main.world, -252, 63 , -644))),
+						new Location(main.world, -252, 63, -596), 
+						new Location(main.world, -324, 38, -670),
+						new Location(main.world, -225, 104, -572)));
 		
 		
 		
