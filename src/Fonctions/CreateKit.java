@@ -126,10 +126,10 @@ public class CreateKit {
 				new ItemStack(Material.IRON_BOOTS),
 				customdiamondsword_elytra,
 				Constantes.Vie_Global_Joueur,
-				new ArrayList<ItemStack>(Arrays.asList(new ItemStack(Material.FIREWORK_ROCKET,1))),
+				null,
 				null, true,
 				new ItemStack(Material.ELYTRA),
-				Arrays.asList("§bUne paire d'élytre et une rocket", "§bRécupere une rocket par meurtre"), "tnt.elytra");
+				Arrays.asList("§bUne paire d'élytre", "§bRécupere une rocket par kill"), "tnt.elytra");
 		list_kits.add(Elytra);
 
 		ItemStack customdiamondsword_Ninja = new ItemStack(Material.NETHERITE_SWORD, 1);

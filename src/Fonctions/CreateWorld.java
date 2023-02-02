@@ -105,6 +105,26 @@ public class CreateWorld {
 						new Location(main.world, 33, 64, -961), 
 						new Location(main.world, -26, 33, -1050),
 						new Location(main.world, 91, 121, -873)));
+		main.list_maps.add(
+				new Map(
+						2, 
+						"Ruines", 
+						new Location(main.world, 145, 200, -1409),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, 145, 81, -1311),new Location(main.world, 145, 81, -1507))),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, 145, 74, -1384),new Location(main.world, 145, 74 , -1434))),
+						new Location(main.world, 145, 86, -1474), 
+						new Location(main.world, 6, 32, -1561),
+						new Location(main.world, 280, 153, -1255 )));
+		main.list_maps.add(
+				new Map(
+						2, 
+						"Texas", 
+						new Location(main.world, -518, 255, -464),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, -479, 106, -420),new Location(main.world, -478, 106, -511))),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, -562, 106, -420),new Location(main.world, -560, 106 , -511))),
+						new Location(main.world, -529, 106, -422), 
+						new Location(main.world, -576, 82, -517),
+						new Location(main.world, -475, 172, -416)));
 		
 		
 		
