@@ -68,7 +68,7 @@ public class DamageListeners implements Listener {
 				}
 			}
 
-			if (event.getCause() == EntityDamageEvent.DamageCause.VOID) {
+			else if (event.getCause() == EntityDamageEvent.DamageCause.VOID) {
 
 				event.setDamage(0.0D);
 				main.eliminate(player);
@@ -76,7 +76,7 @@ public class DamageListeners implements Listener {
 						+ "] " + joueur_victime.getPlayer().getName() + ChatColor.WHITE + " est mort(e) dans le vide.");
 			}
 
-			if (event.getCause() == EntityDamageEvent.DamageCause.FALL
+			else if (event.getCause() == EntityDamageEvent.DamageCause.FALL
 					&& joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 
 				event.setDamage(0.0D);
@@ -84,7 +84,7 @@ public class DamageListeners implements Listener {
 				Bukkit.broadcastMessage(joueur_victime.getEquipe().getChatColor() + "[" + joueur_victime.getKit().getNom()
 						+ "] " + joueur_victime.getPlayer().getName() + ChatColor.WHITE + " est mort(e) de chute.");
 			}
-			if (event.getCause() == EntityDamageEvent.DamageCause.DROWNING
+			else if (event.getCause() == EntityDamageEvent.DamageCause.DROWNING
 					&& joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 
 				event.setDamage(0.0D);
@@ -92,7 +92,7 @@ public class DamageListeners implements Listener {
 				Bukkit.broadcastMessage(joueur_victime.getEquipe().getChatColor() + "[" + joueur_victime.getKit().getNom()
 						+ "] " + joueur_victime.getPlayer().getName() + ChatColor.WHITE + " est mort(e) noyé(e).");
 			}
-			if (event.getCause() == EntityDamageEvent.DamageCause.LAVA
+			else if (event.getCause() == EntityDamageEvent.DamageCause.LAVA
 					&& joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 
 				event.setDamage(0.0D);
@@ -100,7 +100,7 @@ public class DamageListeners implements Listener {
 				Bukkit.broadcastMessage(joueur_victime.getEquipe().getChatColor() + "[" + joueur_victime.getKit().getNom()
 						+ "] " + joueur_victime.getPlayer().getName() + ChatColor.WHITE + " est mort(e) dans la lave.");
 			}
-			if (event.getCause() == EntityDamageEvent.DamageCause.FIRE
+			else if (event.getCause() == EntityDamageEvent.DamageCause.FIRE
 					&& joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 
 				event.setDamage(0.0D);
@@ -108,7 +108,7 @@ public class DamageListeners implements Listener {
 				Bukkit.broadcastMessage(joueur_victime.getEquipe().getChatColor() + "[" + joueur_victime.getKit().getNom()
 						+ "] " + joueur_victime.getPlayer().getName() + ChatColor.WHITE + " est mort(e) brulé(e).");
 			}
-			if (event.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION
+			else if (event.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION
 					&& joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 
 				event.setDamage(0.0D);
@@ -116,7 +116,7 @@ public class DamageListeners implements Listener {
 				Bukkit.broadcastMessage(joueur_victime.getEquipe().getChatColor() + "[" + joueur_victime.getKit().getNom()
 						+ "] " + joueur_victime.getPlayer().getName() + ChatColor.WHITE + " est mort(e) de suffocation.");
 			}
-			if (event.getCause() == EntityDamageEvent.DamageCause.HOT_FLOOR
+			else if (event.getCause() == EntityDamageEvent.DamageCause.HOT_FLOOR
 					&& joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 
 				event.setDamage(0.0D);
@@ -125,7 +125,7 @@ public class DamageListeners implements Listener {
 						+ "] " + joueur_victime.getPlayer().getName() + ChatColor.WHITE
 						+ " est mort(e) d'un sol chaud. (really?)");
 			}
-			if (event.getCause() == EntityDamageEvent.DamageCause.POISON
+			else if (event.getCause() == EntityDamageEvent.DamageCause.POISON
 					&& joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 
 				event.setDamage(0.0D);
@@ -133,6 +133,16 @@ public class DamageListeners implements Listener {
 				Bukkit.broadcastMessage(joueur_victime.getEquipe().getChatColor() + "[" + joueur_victime.getKit().getNom()
 						+ "] " + joueur_victime.getPlayer().getName() + ChatColor.WHITE + " est mort(e) d'un poison.");
 			}
+			else
+			{
+				if(joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
+					event.setDamage(0.0D);
+					main.eliminate(player);
+					Bukkit.broadcastMessage(joueur_victime.getEquipe().getChatColor() + "[" + joueur_victime.getKit().getNom()
+							+ "] " + joueur_victime.getPlayer().getName() + ChatColor.WHITE + " est mort(e).");
+				}
+			}
+
 		}
 		
 

@@ -195,11 +195,11 @@ public class PlayerListeners implements Listener {
 
 		if (joueur.getKit() == main.list_kits.get(IndexKit.Pirate)) {
 			for (Entity entity : joueur.getPlayer().getWorld().getEntities()) {
-				if (entity instanceof Wolf) {
-					Wolf wolf = (Wolf) entity;
-					if (wolf.getOwner() != null) {
-						if (wolf.getOwner().getName() == joueur.getPlayer().getName()) {
-							wolf.setTarget(joueur.getPlayer());
+				if (entity instanceof Parrot) {
+					Parrot parrot = (Parrot) entity;
+					if (parrot.getOwner() != null) {
+						if (parrot.getOwner().getName() == joueur.getPlayer().getName()) {
+							parrot.setTarget(joueur.getPlayer());
 
 						}
 					}
