@@ -569,31 +569,15 @@ public class GMain extends JavaPlugin {
 		Joueur joueur = this.listeJoueurs.stream().filter(p -> player.getName().equals(p.getPlayer().getName()))
 				.findAny().orElse(null);
 
-		if (joueur.getKit() == list_kits.get(IndexKit.DogMaster) || joueur.getKit() == list_kits.get(IndexKit.Pirate)) {
-			for (Entity entity : joueur.getPlayer().getWorld().getEntities()) {
-
-				if (entity instanceof Wolf) {
-					Wolf wolf = (Wolf) entity;
-					if (wolf.getOwner().getName() == joueur.getPlayer().getName()) {
-						wolf.remove();
-					}
-
-				}
-				if (entity instanceof Parrot) {
-					Parrot parrot = (Parrot) entity;
-					if (parrot.getOwner().getName() == joueur.getPlayer().getName()) {
-						parrot.remove();
-					}
-
-				}
-			}
-		}
+		
+		
+		DeleteAnimals(joueur);
 
 		player.setInvulnerable(true);
 		player.setGameMode(GameMode.CREATIVE);
 		player.getInventory().clear();
 		player.teleport(this.map_en_cours.getLocationSalleMort());
-		player.sendMessage("vous etes mort");
+		//player.sendMessage("vous etes mort");
 		player.setInvisible(true);
 
 		ItemStack customcompasse = new ItemStack(Material.NETHER_STAR, 1);
@@ -836,6 +820,28 @@ public class GMain extends JavaPlugin {
 			this.GreenTeamSC.addPlayer(joueur.getPlayer());
 		} else if (equipe == this.Equipe_jaune) {
 			this.YellowTeamSC.addPlayer(joueur.getPlayer());
+		}
+	}
+	
+	public void DeleteAnimals(Joueur joueur) {
+		if (joueur.getKit() == list_kits.get(IndexKit.DogMaster) || joueur.getKit() == list_kits.get(IndexKit.Pirate)) {
+			for (Entity entity : joueur.getPlayer().getWorld().getEntities()) {
+
+				if (entity instanceof Wolf) {
+					Wolf wolf = (Wolf) entity;
+					if (wolf.getOwner().getName() == joueur.getPlayer().getName()) {
+						wolf.remove();
+					}
+
+				}
+				if (entity instanceof Parrot) {
+					Parrot parrot = (Parrot) entity;
+					if (parrot.getOwner().getName() == joueur.getPlayer().getName()) {
+						parrot.remove();
+					}
+
+				}
+			}
 		}
 	}
 

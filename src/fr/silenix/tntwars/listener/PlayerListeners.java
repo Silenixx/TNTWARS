@@ -22,11 +22,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.HumanEntity;
@@ -178,35 +178,7 @@ public class PlayerListeners implements Listener {
 		Joueur joueur = main.listeJoueurs.stream().filter(p -> player.getName().equals(p.getNom())).findAny()
 				.orElse(null);
 
-		if (joueur.getKit() == main.list_kits.get(IndexKit.DogMaster)) {
-			for (Entity entity : joueur.getPlayer().getWorld().getEntities()) {
-				if (entity instanceof Wolf) {
-					Wolf wolf = (Wolf) entity;
-					if (wolf.getOwner() != null) {
-						if (wolf.getOwner().getName() == joueur.getPlayer().getName()) {
-							wolf.setTarget(joueur.getPlayer());
-
-						}
-					}
-
-				}
-			}
-		}
-
-		if (joueur.getKit() == main.list_kits.get(IndexKit.Pirate)) {
-			for (Entity entity : joueur.getPlayer().getWorld().getEntities()) {
-				if (entity instanceof Parrot) {
-					Parrot parrot = (Parrot) entity;
-					if (parrot.getOwner() != null) {
-						if (parrot.getOwner().getName() == joueur.getPlayer().getName()) {
-							parrot.setTarget(joueur.getPlayer());
-
-						}
-					}
-
-				}
-			}
-		}
+		main.DeleteAnimals(joueur);
 
 		if (main.listeJoueurs.contains(joueur)) {
 			main.listeJoueurs.remove(joueur);
@@ -348,43 +320,62 @@ public class PlayerListeners implements Listener {
 
 			if (((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.INK_SAC) {
 
-				victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 10, 7));
-
+				if(!victim.hasPotionEffect(PotionEffectType.BLINDNESS)) {
+					victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 10, 7));
+					player.sendMessage("Vous avez aveuglé " +  victim.getName());
+					victim.sendMessage("Vous avez été aveuglé(e) par " +  player.getName());
+				}
 				return;
 			}
 
 			if (((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.SHULKER_BOX) {
 
-				victim.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 20 * 10, 1));
-
+				if(!victim.hasPotionEffect(PotionEffectType.LEVITATION)) {
+					victim.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 20 * 10, 1));
+					player.sendMessage("Vous avez lancé un sort de lévitation sur " + victim.getName());
+					victim.sendMessage("Vous avez reçu un sort de lévitation par " + player.getName());
+				}
+				
 				return;
 			}
 
 			if (((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.COBWEB) {
 
-				victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 10, 7));
-
+				if(!victim.hasPotionEffect(PotionEffectType.SLOW)) {
+					victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 10, 7));
+					player.sendMessage("Vous avez immobilisé " + victim.getName());
+					victim.sendMessage("Vous avez été imobilisé(e) par " +  player.getName());
+				}
 				return;
 			}
 
 			if (((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.WITHER_ROSE) {
 
-				victim.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 10, 7));
-
+				if(!victim.hasPotionEffect(PotionEffectType.WITHER)) {
+					victim.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 10, 7));
+					player.sendMessage("Vous avez maudit " +  victim.getName());
+					victim.sendMessage("Vous avez été maudit(e) par " +  player.getName());
+				}
 				return;
 			}
 
 			if (((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.CRIMSON_FUNGUS) {
 
-				victim.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20 * 10, 7));
-
+				if(!victim.hasPotionEffect(PotionEffectType.POISON)) {
+					victim.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20 * 10, 7));
+					player.sendMessage("Vous avez empoisonné " +  victim.getName());
+					victim.sendMessage("Vous avez été empoisonné(e) par " +  player.getName());
+				}
 				return;
 			}
 
 			if (((HumanEntity) player).getInventory().getItemInMainHand().getType() == Material.PUFFERFISH) {
 
-				victim.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20 * 15, 8));
-
+				if(!victim.hasPotionEffect(PotionEffectType.CONFUSION)) {
+					victim.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20 * 15, 8));
+					player.sendMessage("Vous avez rendu malade " +  victim.getName());
+					victim.sendMessage("Vous êtes tombé(e) malade à cause de " +  player.getName());
+				}
 				return;
 			}
 		}
@@ -638,6 +629,7 @@ public class PlayerListeners implements Listener {
 					if (tnt.getEtat() == EtatTNT.Eteinte) {
 						if (tnt.getVie() < main.Avancement_Max_Global_TNT) {
 							tnt.setVie(tnt.getVie() + 1);
+							joueur.getPlayer().playSound(joueur.getPlayer().getLocation(), Sound.ITEM_FLINTANDSTEEL_USE, 1, 1);
 
 							if (tnt.getVie() == main.Avancement_Max_Global_TNT) {
 								Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT "
@@ -766,7 +758,7 @@ public class PlayerListeners implements Listener {
 	@EventHandler
 	public void onBlockDamage(BlockDamageEvent event) {
 		Block block = event.getBlock();
-		Player player = event.getPlayer();
+		//Player player = event.getPlayer();
 
 		
 
