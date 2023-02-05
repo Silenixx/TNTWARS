@@ -1,6 +1,5 @@
 package fr.silenix.tntwars.timer;
 
-import fr.silenix.tntwars.GMain;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -10,13 +9,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class TimerSpell extends BukkitRunnable {
-	private GMain main;
-	private int timer = 10;
+	//private GMain main;
+	//private int timer = 10;
 	private Snowball snowball;
 	private Player player;
 
-	public TimerSpell(GMain main, Snowball snowball, Player player) {
-		this.main = main;
+	public TimerSpell(/*GMain main,*/ Snowball snowball, Player player) {
+		//this.main = main;
 		this.snowball = snowball;
 		this.player = player;
 	}

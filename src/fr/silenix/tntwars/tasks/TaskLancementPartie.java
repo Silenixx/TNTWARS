@@ -33,6 +33,7 @@ public class TaskLancementPartie extends BukkitRunnable {
 			for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
 				Joueur joueur = this.main.listeJoueurs.get(i);
 				joueur.getPlayer().setExp(0.0F);
+				joueur.getPlayer().setFlying(false);
 			}
 			this.main.setState(EtatPartie.AttenteJoueur);
 		} else if (this.main.isState(EtatPartie.Lancement)) {
@@ -76,6 +77,7 @@ public class TaskLancementPartie extends BukkitRunnable {
 					customC2.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
 					customcompasse.setItemMeta(customC2);
 					joueur.getPlayer().getInventory().setItem(8, customcompasse);
+					joueur.getPlayer().setFlying(true);
 				}
 				this.main.setState(EtatPartie.Prejeu);
 				TaskDebutPartie start = new TaskDebutPartie(this.main);

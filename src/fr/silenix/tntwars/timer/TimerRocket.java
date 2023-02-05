@@ -13,16 +13,14 @@ import org.bukkit.inventory.meta.CrossbowMeta;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import fr.silenix.tntwars.GMain;
-
 public class TimerRocket extends BukkitRunnable {
-	private GMain main;
+	//private GMain main;
 	private int timer = 2;
 
 	private Player player;
 
-	public TimerRocket(GMain main, Player player) {
-		this.main = main;
+	public TimerRocket(/*GMain main,*/ Player player) {
+		//this.main = main;
 
 		this.player = player;
 	}

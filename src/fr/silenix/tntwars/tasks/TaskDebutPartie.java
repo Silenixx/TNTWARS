@@ -24,6 +24,7 @@ public class TaskDebutPartie extends BukkitRunnable {
 				Joueur joueur = this.main.listeJoueurs.get(i);
 				joueur.getPlayer().teleport(new Location(joueur.getPlayer().getWorld(), 6.0D, 1.0D, 1.0D));
 				joueur.getPlayer().setExp(0.0F);
+				joueur.getPlayer().setFlying(false);
 			}
 			this.main.setState(EtatPartie.AttenteJoueur);
 		} else if (this.main.isState(EtatPartie.Prejeu)) {

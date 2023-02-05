@@ -111,9 +111,26 @@ public class GMain extends JavaPlugin {
 	public List<Joueur> listeJoueurs = new ArrayList<>();
 	public List<Joueur> listeConnecte = new ArrayList<>();
 
-	public List<Material> AllowBlockPoserCasser = new ArrayList<>(Arrays.asList(new Material[] { Material.RED_WOOL,
-			Material.BLUE_WOOL, Material.GREEN_WOOL, Material.YELLOW_WOOL, Material.RED_GLAZED_TERRACOTTA,
-			Material.BLUE_GLAZED_TERRACOTTA, Material.GREEN_GLAZED_TERRACOTTA, Material.YELLOW_GLAZED_TERRACOTTA }));
+	public List<Material> AllowBlockPoserCasser = new ArrayList<>(Arrays.asList(new Material[] { 
+			Material.RED_WOOL,
+			Material.BLUE_WOOL, 
+			Material.GREEN_WOOL, 
+			Material.YELLOW_WOOL, 
+			Material.RED_GLAZED_TERRACOTTA,
+			Material.BLUE_GLAZED_TERRACOTTA, 
+			Material.GREEN_GLAZED_TERRACOTTA, 
+			Material.YELLOW_GLAZED_TERRACOTTA 
+			}));
+	public List<String> list_efface = new ArrayList<>(Arrays.asList(new String[] { 
+			"minecraft:red_wool",
+			"minecraft:blue_wool", 
+			"minecraft:green_wool", 
+			"minecraft:yellow_wool", 
+			"minecraft:red_glazed_terracotta",
+			"minecraft:blue_glazed_terracotta", 
+			"minecraft:green_glazed_terracotta", 
+			"minecraft:yellow_glazed_terracotta" 
+			}));
 
 	public List<Material> ListTacticien = new ArrayList<>(Arrays.asList(new Material[] {
 
@@ -223,6 +240,16 @@ public class GMain extends JavaPlugin {
 				}
 			}
 		}
+		/*for(int i=0 ; i < list_efface.size(); i++) {
+			getServer().dispatchCommand(getServer().getConsoleSender(),
+				"fill " 
+				+ map_en_cours.getLocationMapBorne1().getBlockX() + " " + map_en_cours.getLocationMapBorne1().getBlockY() + " " + map_en_cours.getLocationMapBorne1().getBlockZ()
+				+ " " + map_en_cours.getLocationMapBorne2().getBlockX() + " " + map_en_cours.getLocationMapBorne2().getBlockY() + " " + map_en_cours.getLocationMapBorne2().getBlockZ()
+				+ " " + "air replace " + list_efface.get(i)
+				);
+		}*/
+
+		
 	}
 
 	public int getSize(String couleur) {
@@ -402,6 +429,7 @@ public class GMain extends JavaPlugin {
 	public void GamePlay(Joueur joueur) {
 		joueur.setKit(joueur.getProchainKit());
 		joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
+		joueur.getPlayer().setFlying(false);
 		joueur.getPlayer().getInventory().clear();
 
 		if (joueur.getKit() == this.list_kits.get(IndexKit.Hasard)) {
@@ -636,7 +664,7 @@ public class GMain extends JavaPlugin {
 
 		removeEffet(player);
 
-		TimerImmortality start = new TimerImmortality(this, joueur.getPlayer());
+		TimerImmortality start = new TimerImmortality(/*this,*/ joueur.getPlayer());
 		start.runTaskTimer((Plugin) this, 0L, 20L);
 		GamePlay(joueur);
 	}
@@ -691,7 +719,7 @@ public class GMain extends JavaPlugin {
 		 * " essayez une autre équipe ou plus tard."); } }
 		 */
 
-		int nombreJoueur = listeJoueurs.size();
+		//int nombreJoueur = listeJoueurs.size();
 
 		int nbr_rouge = 0;
 		int nbr_bleu = 0;

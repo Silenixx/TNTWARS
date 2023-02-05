@@ -1,6 +1,5 @@
 package fr.silenix.tntwars.timer;
 
-import fr.silenix.tntwars.GMain;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -9,10 +8,10 @@ public class TimerImmortality extends BukkitRunnable {
 
 	private Player player;
 
-	private GMain main;
+	/*private GMain main;*/
 
-	public TimerImmortality(GMain main, Player player) {
-		this.main = main;
+	public TimerImmortality(/*GMain main,**/ Player player) {
+		/*this.main = main;*/
 		this.player = player;
 	}
 

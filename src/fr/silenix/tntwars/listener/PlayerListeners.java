@@ -78,6 +78,7 @@ public class PlayerListeners implements Listener {
 		Joueur joueur = new Joueur(player, player.getName(), main.Sans_Equipe, main.list_kits.get(0),
 				main.list_kits.get(0), money);
 		Bukkit.broadcastMessage(joueur.getNom() + "     money =  "+ money);
+		joueur.getPlayer().setFlying(false);
 		
 		main.listeConnecte.add(joueur);
 
@@ -579,7 +580,7 @@ public class PlayerListeners implements Listener {
 					s.setVelocity(/* p.getLocation().getDirection().multiply(1.0D) */ s.getVelocity().multiply(1.40));
 					s.setGravity(false);
 					p.getInventory().remove(Material.HEART_OF_THE_SEA);
-					TimerSpell start = new TimerSpell(main, s, p);
+					TimerSpell start = new TimerSpell(/*main,*/ s, p);
 					start.runTaskTimer((Plugin) main, 0L, 3L);
 
 				}
@@ -608,7 +609,7 @@ public class PlayerListeners implements Listener {
 				if (joueur.getPlayer().getInventory().contains(Material.HEART_OF_THE_SEA)) {
 					joueur.getPlayer().getInventory().remove(Material.HEART_OF_THE_SEA);
 
-					TimerRocket start = new TimerRocket(main, joueur.getPlayer());
+					TimerRocket start = new TimerRocket(/*main,*/ joueur.getPlayer());
 					start.runTaskTimer((Plugin) main, 0L, 20L);
 
 				}

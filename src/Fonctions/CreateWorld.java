@@ -28,13 +28,16 @@ public class CreateWorld {
 						Arrays.asList(new Location(main.world, 30, 9, -258), new Location(main.world, 30, 9, -372))),
 				new Location(main.world, 31, 13, -320), new Location(main.world, -55, -21, -442),
 				new Location(main.world, 103, 125, -205)));
-		main.list_maps.add(new Map(2, "LushCave", new Location(main.world, -253, 44, -343),
-				new ArrayList<Location>(Arrays.asList(new Location(main.world, -282, 22, -319),
-						new Location(main.world, -274, 23, -227))),
-				new ArrayList<Location>(Arrays.asList(new Location(main.world, -320, 25, -315),
-						new Location(main.world, -266, 23, -200))),
-				new Location(main.world, -300, 20, -263), new Location(main.world, -356, 8, -346),
-				new Location(main.world, -184, 102, -185)));
+		main.list_maps.add(
+				new Map(
+						2, 
+						"LushCave", 
+						new Location(main.world, -253, 44, -343),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, -282, 22, -319),new Location(main.world, -274, 23, -227))),
+						new ArrayList<Location>(Arrays.asList(new Location(main.world, -320, 25, -315), new Location(main.world, -266, 23, -200))),
+						new Location(main.world, -300, 20, -263),
+						new Location(main.world, -356, 8, -346),
+						new Location(main.world, -184, 102, -185)));
 		main.list_maps.add(
 				new Map(
 						2, 
