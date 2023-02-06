@@ -4,6 +4,7 @@ import Constante.Constantes;
 import Enum.EtatPartie;
 import Enum.EtatTNT;
 import Fonctions.CreateKit;
+import Fonctions.Fonctions;
 import Fonctions.IndexKit;
 import fr.silenix.tntwars.Bdd.DataBaseManager;
 import fr.silenix.tntwars.entity.Equipe;
@@ -18,6 +19,8 @@ import fr.silenix.tntwars.timer.TimerImmortality;
 import fr.silenix.tntwars.timer.TimerRedemarrage;
 import fr.silenix.tntwars.timer.TimerRespawn;
 import fr.silenix.tntwars.timer.TimerScoreboard;
+import fr.silenix.tntwars.timer.TimerVictoire;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -157,6 +160,9 @@ public class GMain extends JavaPlugin {
 
 		TimerScoreboard cycle = new TimerScoreboard(this);
 		cycle.runTaskTimer((Plugin) this, 0L, 20L);
+		
+		TimerVictoire cycleVictoire = new TimerVictoire(this);
+		cycleVictoire.runTaskTimer((Plugin) this, 0L, 20L);
 
 		pm.registerEvents((Listener) new PlayerListeners(this), (Plugin) this);
 		pm.registerEvents((Listener) new DamageListeners(this), (Plugin) this);
@@ -278,8 +284,8 @@ public class GMain extends JavaPlugin {
 		@SuppressWarnings("deprecation")
 		Objective objective = this.board.registerNewObjective("lol", "dummy");
 
-		this.RedTeamSC.setPrefix("§4[§cEquipe Rouge§4]§c ");
-		this.BlueTeamSC.setPrefix("§1[§9Equipe Bleu§1]§9 ");
+		this.RedTeamSC.setPrefix("§4[§cRouge§4]§c ");
+		this.BlueTeamSC.setPrefix("§1[§9Bleu§1]§9 ");
 
 		this.BlueTeamSC.setDisplayName("Equipe Bleu");
 		this.RedTeamSC.setDisplayName("Equipe Rouge");
@@ -430,6 +436,7 @@ public class GMain extends JavaPlugin {
 		joueur.setKit(joueur.getProchainKit());
 		joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
 		joueur.getPlayer().setFlying(false);
+		joueur.getPlayer().setAllowFlight(false);
 		joueur.getPlayer().getInventory().clear();
 
 		if (joueur.getKit() == this.list_kits.get(IndexKit.Hasard)) {
@@ -516,7 +523,7 @@ public class GMain extends JavaPlugin {
 			}
 		}
 
-		sethealth(joueur);
+		sethealth(joueur,joueur.getKit());
 
 		if (joueur.getKit() == this.list_kits.get(IndexKit.Pyro)) {
 			Bukkit.dispatchCommand((CommandSender) Bukkit.getConsoleSender(),
@@ -553,30 +560,38 @@ public class GMain extends JavaPlugin {
 	}
 
 	public void CheckWin() {
-		int nombre_de_tnt_explose = 0;
-
-		if (this.tnt_rouge.getEtat() == EtatTNT.Explose) {
-			nombre_de_tnt_explose++;
-		}
-		if (this.tnt_bleu.getEtat() == EtatTNT.Explose) {
-			nombre_de_tnt_explose++;
-		}
-		if (this.tnt_jaune.getEtat() == EtatTNT.Explose) {
-			nombre_de_tnt_explose++;
-		}
-		if (this.tnt_vert.getEtat() == EtatTNT.Explose) {
-			nombre_de_tnt_explose++;
-		}
-		if (nombre_de_tnt_explose == this.map_en_cours.getNbEquipe() - 1) {
-			for (int i = 0; i < this.listeJoueurs.size(); i++) {
-				Joueur joueur = this.listeJoueurs.get(i);
-				joueur.getPlayer().setGameMode(GameMode.SPECTATOR);
+		if (isState(EtatPartie.JeuEnCours)) {
+			int nombre_de_tnt_explose = 0;
+			
+			if (this.tnt_rouge.getEtat() == EtatTNT.Explose) {
+				nombre_de_tnt_explose++;
 			}
-			setState(EtatPartie.FinJeu);
-			TimerRedemarrage cycle = new TimerRedemarrage(this);
-			cycle.runTaskTimer((Plugin) this, 0L, 20L);
+			if (this.tnt_bleu.getEtat() == EtatTNT.Explose) {
+				nombre_de_tnt_explose++;
+			}
+			if (this.tnt_jaune.getEtat() == EtatTNT.Explose) {
+				nombre_de_tnt_explose++;
+			}
+			if (this.tnt_vert.getEtat() == EtatTNT.Explose) {
+				nombre_de_tnt_explose++;
+			}
+			if (nombre_de_tnt_explose == this.map_en_cours.getNbEquipe() - 1) {
+				for (int i = 0; i < this.listeJoueurs.size(); i++) {
+					Joueur joueur = this.listeJoueurs.get(i);
+					joueur.getPlayer().setGameMode(GameMode.SPECTATOR);
+				}
+				setState(EtatPartie.FinJeu);
+				TimerRedemarrage cycle = new TimerRedemarrage(this);
+				cycle.runTaskTimer((Plugin) this, 0L, 20L);
+			}
+			
+			
+			
+			
 		}
+		
 	}
+	
 
 	public Equipe RenvoieGagnant() {
 		Equipe gagnant = null;
@@ -622,10 +637,10 @@ public class GMain extends JavaPlugin {
 	}
 
 	@SuppressWarnings("deprecation")
-	public void sethealth(Joueur joueur) {
+	public void sethealth(Joueur joueur, Kit kit) {
 		if (isState(EtatPartie.JeuEnCours)) {
-			joueur.getPlayer().setMaxHealth(joueur.getKit().getPointVie());
-			joueur.getPlayer().setHealth(joueur.getKit().getPointVie());
+			joueur.getPlayer().setMaxHealth(kit.getPointVie());
+			joueur.getPlayer().setHealth(kit.getPointVie());
 			joueur.getPlayer().setFoodLevel(20);
 		} else {
 			joueur.getPlayer().setMaxHealth(20.0D);

@@ -61,13 +61,9 @@ public class TimerScoreboard extends BukkitRunnable {
 						"" + ChatColor.BLUE + main.cblue + ChatColor.BLUE + "% " + ChatColor.DARK_RED + " EXPLOSÉE ");
 			}
 
-			if (main.isState(EtatPartie.JeuEnCours)) {
-				for (Location location : main.map_en_cours.getLocationTntArray2()) {
-					if (location.getBlock().getType() != Material.TNT) {
-						location.getBlock().setType(Material.TNT);
-					}
-				}
-			}
+			
+			
+			
 
 		}
 

@@ -51,7 +51,7 @@ public class TimerAllumage extends BukkitRunnable {
 					+ " §eseconde avant l'explosion de la TNT " + this.couleur + ".");
 		} else if (tnt.getTimer() == 0) {
 			tnt.setEtat(EtatTNT.Explose);
-			this.main.CheckWin();
+			main.CheckWin();
 
 			Bukkit.getWorld("world").spawnParticle(Particle.EXPLOSION_HUGE,
 					this.main.map_en_cours.getLocationTntArray(tnt.getIndex()), 100, 1.0D, 1.0D, 1.0D);

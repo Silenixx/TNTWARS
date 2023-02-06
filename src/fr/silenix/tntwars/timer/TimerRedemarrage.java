@@ -6,6 +6,8 @@ import fr.silenix.tntwars.entity.Joueur;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import Enum.EtatPartie;
+
 
 public class TimerRedemarrage extends BukkitRunnable {
 	private GMain main;
@@ -22,6 +24,7 @@ public class TimerRedemarrage extends BukkitRunnable {
 			Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Victoire de la team: " + gagnant.getCouleur());
 			Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Redemmarage du mode de jeu dans §6" + this.timer
 					+ " §esecondes.");
+			main.setState(EtatPartie.FinJeu);
 		}
 		for ( Joueur joueur : main.listeJoueurs) {
 			main.DeleteAnimals(joueur);

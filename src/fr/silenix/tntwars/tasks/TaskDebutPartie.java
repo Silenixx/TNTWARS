@@ -16,19 +16,21 @@ public class TaskDebutPartie extends BukkitRunnable {
 	}
 
 	public void run() {
-		if (this.main.listeJoueurs.size() < 2) {
+		if (main.listeJoueurs.size() < 2) {
 			Bukkit.broadcastMessage(
 					Constante.Constantes.PluginName + "Annulation de début de partie par manque de joueur");
 			cancel();
-			for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
-				Joueur joueur = this.main.listeJoueurs.get(i);
+			for (int i = 0; i < main.listeJoueurs.size(); i++) {
+				Joueur joueur = main.listeJoueurs.get(i);
 				joueur.getPlayer().teleport(new Location(joueur.getPlayer().getWorld(), 6.0D, 1.0D, 1.0D));
 				joueur.getPlayer().setExp(0.0F);
 				joueur.getPlayer().setFlying(false);
+				joueur.getPlayer().setAllowFlight(false);
+				
 			}
-			this.main.setState(EtatPartie.AttenteJoueur);
-		} else if (this.main.isState(EtatPartie.Prejeu)) {
-			for (Joueur pls : this.main.listeJoueurs) {
+			main.setState(EtatPartie.AttenteJoueur);
+		} else if (main.isState(EtatPartie.Prejeu)) {
+			for (Joueur pls : main.listeJoueurs) {
 				pls.getPlayer().setLevel(this.timer);
 			}
 			if (this.timer == 45 || this.timer == 30 || this.timer == 20 || this.timer == 10 || this.timer == 5
@@ -41,18 +43,18 @@ public class TaskDebutPartie extends BukkitRunnable {
 			} else if (this.timer == 0) {
 				Bukkit.broadcastMessage(
 						Constante.Constantes.PluginName + "Lancement de la partie! Que la meilleure équipe gagne!");
-				this.main.setState(EtatPartie.JeuEnCours);
-				this.main.AutoAddTeam(this.main.map_en_cours.getNbEquipe());
-				for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
-					Joueur joueur = this.main.listeJoueurs.get(i);
-					this.main.SpawnTeleportation(joueur);
+				main.setState(EtatPartie.JeuEnCours);
+				main.AutoAddTeam(main.map_en_cours.getNbEquipe());
+				for (int i = 0; i < main.listeJoueurs.size(); i++) {
+					Joueur joueur = main.listeJoueurs.get(i);
+					main.SpawnTeleportation(joueur);
 					joueur.getPlayer().getInventory().clear();
-					if (joueur.getProchainKit() == this.main.Sans_Kit) {
-						joueur.setProchainKit(this.main.list_kits.get(0));
+					if (joueur.getProchainKit() == main.Sans_Kit) {
+						joueur.setProchainKit(main.list_kits.get(0));
 					}
-					this.main.GamePlay(joueur);
+					main.GamePlay(joueur);
 				}
-				this.main.CheckWin();
+				//main.CheckWin();
 				cancel();
 			}
 		}

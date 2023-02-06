@@ -26,18 +26,20 @@ public class TaskLancementPartie extends BukkitRunnable {
 	}
 
 	public void run() {
-		if (this.main.listeJoueurs.size() < 2) {
+		if (main.listeJoueurs.size() < 2) {
 			Bukkit.broadcastMessage(
 					Constante.Constantes.PluginName + "Annulation de début de partie par manque de joueur");
 			cancel();
-			for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
-				Joueur joueur = this.main.listeJoueurs.get(i);
+			for (int i = 0; i < main.listeJoueurs.size(); i++) {
+				Joueur joueur = main.listeJoueurs.get(i);
 				joueur.getPlayer().setExp(0.0F);
 				joueur.getPlayer().setFlying(false);
+				joueur.getPlayer().setAllowFlight(false);
+				
 			}
-			this.main.setState(EtatPartie.AttenteJoueur);
-		} else if (this.main.isState(EtatPartie.Lancement)) {
-			for (Joueur pls : this.main.listeJoueurs) {
+			main.setState(EtatPartie.AttenteJoueur);
+		} else if (main.isState(EtatPartie.Lancement)) {
+			for (Joueur pls : main.listeJoueurs) {
 				pls.getPlayer().setLevel(this.timer);
 			}
 
@@ -48,26 +50,26 @@ public class TaskLancementPartie extends BukkitRunnable {
 
 			} else if (this.timer == 0) {
 				Random random = new Random();
-				int value_random_en_cours = random.nextInt(this.main.list_maps.size() - 1 + 1) + 1;
-				this.main.map_en_cours = this.main.list_maps.get(value_random_en_cours - 1);
+				int value_random_en_cours = random.nextInt(main.list_maps.size() - 1 + 1) + 1;
+				main.map_en_cours = main.list_maps.get(value_random_en_cours - 1);
 				Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Pour cette partie la map §6"
-						+ this.main.map_en_cours.Nom + "§e a été choisie.");
+						+ main.map_en_cours.Nom + "§e a été choisie.");
 
-				this.main.PutLocationInTnt(this.main.map_en_cours.getNbEquipe());
+				main.PutLocationInTnt(main.map_en_cours.getNbEquipe());
 
-				this.main.listTnt.add(this.main.tnt_rouge);
-				this.main.listTnt.add(this.main.tnt_bleu);
-				this.main.listTnt.add(this.main.tnt_vert);
-				this.main.listTnt.add(this.main.tnt_jaune);
+				if(!main.listTnt.contains(main.tnt_rouge)) main.listTnt.add(main.tnt_rouge);
+				if(!main.listTnt.contains(main.tnt_bleu)) main.listTnt.add(main.tnt_bleu);
+				if(!main.listTnt.contains(main.tnt_vert)) main.listTnt.add(main.tnt_vert);
+				if(!main.listTnt.contains(main.tnt_jaune)) main.listTnt.add(main.tnt_jaune);
 
-				this.main.efface_block();
+				main.efface_block();
 
 				Bukkit.dispatchCommand((CommandSender) Bukkit.getConsoleSender(), "killall parrot world");
 				Bukkit.dispatchCommand((CommandSender) Bukkit.getConsoleSender(), "killall pig world");
 
-				for (int i = 0; i < this.main.listeJoueurs.size(); i++) {
-					Joueur joueur = this.main.listeJoueurs.get(i);
-					joueur.getPlayer().teleport(this.main.map_en_cours.LocationVisite);
+				for (int i = 0; i < main.listeJoueurs.size(); i++) {
+					Joueur joueur = main.listeJoueurs.get(i);
+					joueur.getPlayer().teleport(main.map_en_cours.LocationVisite);
 
 					ItemStack customcompasse = new ItemStack(Material.COMPASS, 1);
 					ItemMeta customC2 = customcompasse.getItemMeta();
@@ -77,11 +79,12 @@ public class TaskLancementPartie extends BukkitRunnable {
 					customC2.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
 					customcompasse.setItemMeta(customC2);
 					joueur.getPlayer().getInventory().setItem(8, customcompasse);
+					joueur.getPlayer().setAllowFlight(true);
 					joueur.getPlayer().setFlying(true);
 				}
-				this.main.setState(EtatPartie.Prejeu);
-				TaskDebutPartie start = new TaskDebutPartie(this.main);
-				start.runTaskTimer((Plugin) this.main, 0L, 20L);
+				main.setState(EtatPartie.Prejeu);
+				TaskDebutPartie start = new TaskDebutPartie(main);
+				start.runTaskTimer((Plugin) main, 0L, 20L);
 				cancel();
 			}
 		}

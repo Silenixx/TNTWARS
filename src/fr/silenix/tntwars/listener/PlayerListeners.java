@@ -79,8 +79,12 @@ public class PlayerListeners implements Listener {
 				main.list_kits.get(0), money);
 		Bukkit.broadcastMessage(joueur.getNom() + "     money =  "+ money);
 		joueur.getPlayer().setFlying(false);
+		joueur.getPlayer().setAllowFlight(false);
+		
 		
 		main.listeConnecte.add(joueur);
+		
+		main.CheckWin();
 
 		player.setInvulnerable(false);
 		player.setExp(0.0F);
@@ -185,6 +189,7 @@ public class PlayerListeners implements Listener {
 			main.listeJoueurs.remove(joueur);
 		}
 		main.listeConnecte.remove(joueur);
+		
 		player.setPlayerListName(player.getName());
 		event.setQuitMessage("§5[§d-§5] §d" + player.getName());
 
@@ -199,10 +204,12 @@ public class PlayerListeners implements Listener {
 			}
 		}
 
-		if (main.isState(EtatPartie.JeuEnCours)) {
+		/*if (main.isState(EtatPartie.JeuEnCours)) {
 			main.CheckWin();
-		}
-
+		}*/
+		
+		main.CheckWin();
+		
 	}
 
 	@EventHandler
@@ -298,11 +305,15 @@ public class PlayerListeners implements Listener {
 
 			if (joueur.getEquipe() == joueur_victime.getEquipe()) {
 				if (player.getInventory().getItemInMainHand().getType() == Material.GLISTERING_MELON_SLICE) {
-					if (joueur_victime.getKit() != main.list_kits.get(3)) {
+					if (joueur_victime.getKit() != main.list_kits.get(IndexKit.OneShot)) {
 						if (joueur_victime.getPlayer().getHealth() > (joueur_victime.getKit().getPointVie() - 3.0F)) {
 							victim.setHealth(joueur_victime.getKit().getPointVie());
+							victim.playSound(victim.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+							player.playSound(victim.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
 						} else {
 							victim.setHealth(victim.getHealth() + 2.0D);
+							victim.playSound(victim.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 3, 3);
+							player.playSound(victim.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 3, 3);
 						}
 					}
 
