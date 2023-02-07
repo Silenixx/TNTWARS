@@ -135,7 +135,7 @@ public class DamageListeners implements Listener {
 			}
 			else
 			{
-				if(joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
+				if(event.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK && joueur_victime.getPlayer().getHealth() <= event.getDamage()) {
 					event.setDamage(0.0D);
 					main.eliminate(player);
 					Bukkit.broadcastMessage(joueur_victime.getEquipe().getChatColor() + "[" + joueur_victime.getKit().getNom()

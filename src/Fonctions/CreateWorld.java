@@ -87,7 +87,7 @@ public class CreateWorld {
 						new ArrayList<Location>(Arrays.asList(new Location(main.world, 13, 90, -673),new Location(main.world, -73, 90 , -585))),
 						new Location(main.world, -33, 71, -635), 
 						new Location(main.world, -81, 70, -680),
-						new Location(main.world, -20, 141, -578)));
+						new Location(main.world, 20, 141, -578)));
 		main.list_maps.add(
 				new Map(
 						2, 

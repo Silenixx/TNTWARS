@@ -169,7 +169,12 @@ public class PlayerListeners implements Listener {
 				player.setInvisible(false);
 				player.teleport(main.map_en_cours.getLocationVisite());
 
-				player.setGameMode(GameMode.ADVENTURE);
+				player.setGameMode(GameMode.SURVIVAL);
+				
+				joueur.getPlayer().setAllowFlight(true);
+				joueur.getPlayer().setFlying(true);
+				
+				
 				event.setJoinMessage(
 						"§6[§eTntWars§6] §6" + player.getName() + " §evient de se connecter à la partie.   §5<§d"
 								+ main.listeJoueurs.size() + "§5/§d" + Bukkit.getMaxPlayers() + "§5>");
@@ -185,6 +190,8 @@ public class PlayerListeners implements Listener {
 				.orElse(null);
 
 		main.DeleteAnimals(joueur);
+		
+		main.deletejoueurscoreboard(joueur, joueur.getEquipe());
 
 		if (main.listeJoueurs.contains(joueur)) {
 			main.listeJoueurs.remove(joueur);

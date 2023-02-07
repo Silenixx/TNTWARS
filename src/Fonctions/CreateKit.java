@@ -420,7 +420,7 @@ public class CreateKit {
 		customWS_ghost.addEnchant(Enchantment.DAMAGE_ALL, 2, true);
 		customwoodsword_ghost.setItemMeta(customWS_ghost);
 
-		Kit Ghost = new Kit("Fantôme", null, null, null, null, customwoodsword_ghost, 14,
+		Kit Ghost = new Kit("Fantôme", null, null, null, null, customwoodsword_ghost, 32,
 				null, null, false, new ItemStack(Material.ENDER_EYE),
 				Arrays.asList("§bVous serez totalement invisible"), "tnt.ghost");
 		list_kits.add(Ghost);

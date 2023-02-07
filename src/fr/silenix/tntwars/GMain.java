@@ -873,16 +873,22 @@ public class GMain extends JavaPlugin {
 
 				if (entity instanceof Wolf) {
 					Wolf wolf = (Wolf) entity;
-					if (wolf.getOwner().getName() == joueur.getPlayer().getName()) {
-						wolf.remove();
+					if (wolf.getOwner() != null) {
+						if (wolf.getOwner().getName() == joueur.getPlayer().getName()) {
+							wolf.remove();
+						}
 					}
+					
 
 				}
 				if (entity instanceof Parrot) {
 					Parrot parrot = (Parrot) entity;
-					if (parrot.getOwner().getName() == joueur.getPlayer().getName()) {
-						parrot.remove();
+					if (parrot.getOwner() != null) {
+						if (parrot.getOwner().getName() == joueur.getPlayer().getName()) {
+							parrot.remove();
+						}
 					}
+					
 
 				}
 			}
