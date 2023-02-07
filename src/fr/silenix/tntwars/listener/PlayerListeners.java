@@ -102,7 +102,8 @@ public class PlayerListeners implements Listener {
 		if (main.isState(EtatPartie.FinJeu)) {
 			player.setGameMode(GameMode.SPECTATOR);
 			event.setJoinMessage("§5[§d+§5] §d" + player.getName());
-			player.sendMessage("§6[§eTntWars§6] §eLe jeu est terminé, revenez pour la partie suivante !");
+			player.sendMessage("§6[§eTntWars§6] §eLe jeu est terminé, une partie va bientôt recommencer !");
+			player.teleport(main.map_en_cours.getLocationVisite());
 		}
 
 		if (!main.isState(EtatPartie.FinJeu)) {
@@ -180,7 +181,7 @@ public class PlayerListeners implements Listener {
 	@EventHandler
 	public void onQuit(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
-		Joueur joueur = main.listeJoueurs.stream().filter(p -> player.getName().equals(p.getNom())).findAny()
+		Joueur joueur = main.listeConnecte.stream().filter(p -> player.getName().equals(p.getNom())).findAny()
 				.orElse(null);
 
 		main.DeleteAnimals(joueur);
@@ -207,8 +208,12 @@ public class PlayerListeners implements Listener {
 		/*if (main.isState(EtatPartie.JeuEnCours)) {
 			main.CheckWin();
 		}*/
-		
-		main.CheckWin();
+		if(Bukkit.getOnlinePlayers().size() > 0) {
+			main.CheckWin();
+		}
+		if(Bukkit.getOnlinePlayers().size() == 0) {
+			main.remiseazero();
+		}
 		
 	}
 

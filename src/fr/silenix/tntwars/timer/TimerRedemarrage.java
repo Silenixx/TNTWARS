@@ -46,6 +46,12 @@ public class TimerRedemarrage extends BukkitRunnable {
 			this.main.remiseazero();
 			cancel();
 		}
+		
+		
+		if (Bukkit.getOnlinePlayers().size() == 0) {
+			main.remiseazero();
+			cancel();
+		}
 
 		this.timer--;
 	}

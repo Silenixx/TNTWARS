@@ -169,6 +169,7 @@ public class GMain extends JavaPlugin {
 	}
 
 	public void remiseazero() {
+		Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Redemmarage du mode de jeu fait");
 		this.tnt_rouge.setEtat(EtatTNT.Eteinte);
 		this.tnt_bleu.setEtat(EtatTNT.Eteinte);
 		this.tnt_vert.setEtat(EtatTNT.Eteinte);
@@ -284,8 +285,8 @@ public class GMain extends JavaPlugin {
 		@SuppressWarnings("deprecation")
 		Objective objective = this.board.registerNewObjective("lol", "dummy");
 
-		this.RedTeamSC.setPrefix("§4[§cRouge§4]§c ");
-		this.BlueTeamSC.setPrefix("§1[§9Bleu§1]§9 ");
+		this.RedTeamSC.setPrefix("§4[§cÉquipe Rouge§4]§c ");
+		this.BlueTeamSC.setPrefix("§1[§9Équipe Bleu§1]§9 ");
 
 		this.BlueTeamSC.setDisplayName("Equipe Bleu");
 		this.RedTeamSC.setDisplayName("Equipe Rouge");
