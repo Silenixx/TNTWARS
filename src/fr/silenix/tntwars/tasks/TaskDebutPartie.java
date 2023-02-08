@@ -1,10 +1,15 @@
 package fr.silenix.tntwars.tasks;
 
 import Enum.EtatPartie;
+import Enum.EtatTNT;
 import fr.silenix.tntwars.GMain;
 import fr.silenix.tntwars.entity.Joueur;
+
+import java.util.Collections;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class TaskDebutPartie extends BukkitRunnable {
@@ -26,6 +31,7 @@ public class TaskDebutPartie extends BukkitRunnable {
 				joueur.getPlayer().setExp(0.0F);
 				joueur.getPlayer().setFlying(false);
 				joueur.getPlayer().setAllowFlight(false);
+				if(joueur.getPlayer().getInventory().contains(Material.COMPASS)) joueur.getPlayer().getInventory().remove(Material.COMPASS);
 				
 			}
 			main.setState(EtatPartie.AttenteJoueur);
@@ -43,6 +49,9 @@ public class TaskDebutPartie extends BukkitRunnable {
 			} else if (this.timer == 0) {
 				Bukkit.broadcastMessage(
 						Constante.Constantes.PluginName + "Lancement de la partie! Que la meilleure équipe gagne!");
+				for (int i = 0; i < 5; i++) {
+					Collections.shuffle(main.listeJoueurs);
+				}
 				main.setState(EtatPartie.JeuEnCours);
 				main.AutoAddTeam(main.map_en_cours.getNbEquipe());
 				for (int i = 0; i < main.listeJoueurs.size(); i++) {
@@ -55,6 +64,10 @@ public class TaskDebutPartie extends BukkitRunnable {
 					main.GamePlay(joueur);
 				}
 				//main.CheckWin();
+				main.tnt_rouge.setEtat(EtatTNT.Eteinte);
+				main.tnt_bleu.setEtat(EtatTNT.Eteinte);
+				main.tnt_vert.setEtat(EtatTNT.Eteinte);
+				main.tnt_jaune.setEtat(EtatTNT.Eteinte);
 				cancel();
 			}
 		}

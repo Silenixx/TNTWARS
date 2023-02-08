@@ -38,7 +38,7 @@ public class DamageListeners implements Listener {
 	public void onDamage(EntityDamageEvent event) {
 		Entity victim = event.getEntity();
 
-		if (!this.main.isState(EtatPartie.JeuEnCours)) {
+		if (!this.main.isState(EtatPartie.JeuEnCours) ) {
 			event.setCancelled(true);
 
 			return;
@@ -49,6 +49,13 @@ public class DamageListeners implements Listener {
 			Player player = (Player) victim;
 			Joueur joueur_victime = this.main.listeJoueurs.stream()
 					.filter(p -> player.getName().equals(p.getPlayer().getName())).findAny().orElse(null);
+			
+			if (!main.listeJoueurs.contains(joueur_victime)){
+				event.setCancelled(true);
+
+				return;
+			}
+			
 			if (event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)
 					|| event.getCause().equals(EntityDamageEvent.DamageCause.BLOCK_EXPLOSION)) {
 
@@ -181,7 +188,7 @@ public class DamageListeners implements Listener {
 
 		Material m = e.getPlayer().getLocation().getBlock().getType();
 
-		Joueur joueur = this.main.listeJoueurs.stream().filter(p -> pl.getName().equals(p.getPlayer().getName()))
+		Joueur joueur = this.main.listeConnecte.stream().filter(p -> pl.getName().equals(p.getPlayer().getName()))
 				.findAny().orElse(null);
 
 		if (m == Material.WATER && joueur.getKit() == this.main.list_kits.get(1)) {

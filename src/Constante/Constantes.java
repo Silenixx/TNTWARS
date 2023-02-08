@@ -1,5 +1,13 @@
 package Constante;
 
+import java.util.Arrays;
+
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
 public final class Constantes {
 	public static final String PluginRules = "§6Bienvenue dans le TntWars. Le principe est simple, plusieurs équipes s'affrontent en protégeant la tnt de leur camp et tente de faire exploser celle de l'adversaire."
 			+ ""
@@ -12,4 +20,6 @@ public final class Constantes {
 	public static String PluginName = "§6[§eTntWars§6] §e";
 	public static int Avancement_Max_Global_TNT = 50;
 	public static int Vie_Global_Joueur = 40;
+	
+	
 }

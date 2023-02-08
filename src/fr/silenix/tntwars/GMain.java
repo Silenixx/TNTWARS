@@ -193,19 +193,19 @@ public class GMain extends JavaPlugin {
 
 		this.listeJoueurs.clear();
 		int i;
-		for (i = 0; i < this.listeConnecte.size(); i++) {
+		/*for (i = 0; i < this.listeConnecte.size(); i++) {
 			Joueur joueur_tempo = new Joueur(((Joueur) this.listeConnecte.get(i)).getPlayer(),
 					((Joueur) this.listeConnecte.get(i)).getPlayer().getName(), this.Sans_Equipe, this.list_kits.get(0),
 					this.list_kits.get(0), 0);
 			this.listeJoueurs.add(joueur_tempo);
-		}
+		}*/
 
-		for (i = 0; i < 5; i++) {
+		/*for (i = 0; i < 5; i++) {
 			Collections.shuffle(this.listeJoueurs);
-		}
+		}*/
 
-		for (i = 0; i < this.listeJoueurs.size(); i++) {
-			Joueur joueur = this.listeJoueurs.get(i);
+		for (i = 0; i < this.listeConnecte.size(); i++) {
+			Joueur joueur = this.listeConnecte.get(i);
 
 			joueur.getPlayer().setInvisible(false);
 			joueur.getPlayer().teleport(new Location(joueur.getPlayer().getWorld(), 6.0D, 1.0D, 1.0D));
@@ -213,23 +213,25 @@ public class GMain extends JavaPlugin {
 			joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
 			joueur.getPlayer().getInventory().clear();
 
-			ItemStack customnetherstar = new ItemStack(Material.NETHER_STAR, 1);
-			ItemMeta customNS = customnetherstar.getItemMeta();
-			customNS.setDisplayName("Selectionneur d'équipe");
-			customNS.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-			customNS.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
-			customNS.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
-			customnetherstar.setItemMeta(customNS);
-			joueur.getPlayer().getInventory().setItem(4, customnetherstar);
+			ItemStack customnWHITE_BANNER = new ItemStack(Material.WHITE_BANNER, 1);
+			ItemMeta customWB = customnWHITE_BANNER.getItemMeta();
+			customWB.setDisplayName("Rejoindre la partie");
+			customWB.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+			customWB.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
+			customWB.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
+			customnWHITE_BANNER.setItemMeta(customWB);
+			joueur.getPlayer().getInventory().setItem(0, customnWHITE_BANNER);
+			
+			
 		}
 
-		if (isState(EtatPartie.AttenteJoueur) && this.listeJoueurs.size() >= 2 && !isState(EtatPartie.Lancement)) {
+		/*if (isState(EtatPartie.AttenteJoueur) && this.listeJoueurs.size() >= 2 && !isState(EtatPartie.Lancement)) {
 			Bukkit.broadcastMessage(
 					Constante.Constantes.PluginName + "Assez de monde pour relancer une nouvelle partie.");
 			setState(EtatPartie.Lancement);
 			TaskLancementPartie start = new TaskLancementPartie(this);
 			start.runTaskTimer(this, 0L, 20L);
-		}
+		}*/
 	}
 
 	public void efface_block() {
@@ -261,8 +263,8 @@ public class GMain extends JavaPlugin {
 
 	public int getSize(String couleur) {
 		int nombre_joueur = 0;
-		for (int i = 0; i < this.listeJoueurs.size(); i++) {
-			Joueur joueur = this.listeJoueurs.get(i);
+		for (int i = 0; i < this.listeConnecte.size(); i++) {
+			Joueur joueur = this.listeConnecte.get(i);
 			if (joueur.getEquipe().getCouleur() == couleur) {
 				nombre_joueur++;
 			}
@@ -335,8 +337,10 @@ public class GMain extends JavaPlugin {
 	}
 
 	public void AutoAddTeam(int NbEquipe) {
-		int nombreJoueur = Bukkit.getOnlinePlayers().size();
-
+		//int nombreJoueurserveur = Bukkit.getOnlinePlayers().size();
+		
+		int nombreJoueur = listeJoueurs.size();
+		
 		ArrayList<Joueur> joureursSansEquipe = new ArrayList<>();
 
 		for (Joueur joueur : this.listeJoueurs) {
@@ -676,13 +680,15 @@ public class GMain extends JavaPlugin {
 
 		player.setGameMode(GameMode.SURVIVAL);
 		player.setInvisible(false);
-		SpawnTeleportation(joueur);
-
-		removeEffet(player);
-
-		TimerImmortality start = new TimerImmortality(/*this,*/ joueur.getPlayer());
-		start.runTaskTimer((Plugin) this, 0L, 20L);
-		GamePlay(joueur);
+		
+		if(joueur != null) {
+			SpawnTeleportation(joueur);
+			removeEffet(player);
+			TimerImmortality start = new TimerImmortality(/*this,*/ joueur.getPlayer());
+			start.runTaskTimer((Plugin) this, 0L, 20L);
+			GamePlay(joueur);
+		}
+		
 	}
 
 	public static int getSmallest(int[] a, int total) {

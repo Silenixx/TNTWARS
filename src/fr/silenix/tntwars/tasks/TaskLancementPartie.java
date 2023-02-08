@@ -35,6 +35,7 @@ public class TaskLancementPartie extends BukkitRunnable {
 				joueur.getPlayer().setExp(0.0F);
 				joueur.getPlayer().setFlying(false);
 				joueur.getPlayer().setAllowFlight(false);
+				if(joueur.getPlayer().getInventory().contains(Material.COMPASS)) joueur.getPlayer().getInventory().remove(Material.COMPASS);
 				
 			}
 			main.setState(EtatPartie.AttenteJoueur);

@@ -78,11 +78,26 @@ public class PlayerListeners implements Listener {
 		Joueur joueur = new Joueur(player, player.getName(), main.Sans_Equipe, main.list_kits.get(0),
 				main.list_kits.get(0), money);
 		Bukkit.broadcastMessage(joueur.getNom() + "     money =  "+ money);
+		main.listeConnecte.add(joueur);
+		
+		if (main.listeConnecte.size() == 1 && main.isfirstJoueur) {
+
+			main.world = ((Joueur) main.listeConnecte.get(0)).getPlayer().getWorld();
+
+			CreateWorld createWorld = new CreateWorld(main);
+			createWorld.Creationworld();
+			main.isfirstJoueur = false;
+		}
+		
+		player.teleport(new Location(player.getWorld(), 6.0D, 1.0D, 1.0D));
+
+		player.setGameMode(GameMode.ADVENTURE);
+		
 		joueur.getPlayer().setFlying(false);
 		joueur.getPlayer().setAllowFlight(false);
 		
 		
-		main.listeConnecte.add(joueur);
+		
 		
 		main.CheckWin();
 
@@ -96,90 +111,20 @@ public class PlayerListeners implements Listener {
 
 		player.getInventory().clear();
 		player.setScoreboard(main.board);
-
+ 
 		event.setJoinMessage(null);
+		
+		
+		ItemStack customnWHITE_BANNER = new ItemStack(Material.WHITE_BANNER, 1);
+		ItemMeta customWB = customnWHITE_BANNER.getItemMeta();
+		customWB.setDisplayName("Rejoindre la partie");
+		customWB.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+		customWB.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
+		customWB.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
+		customnWHITE_BANNER.setItemMeta(customWB);
+		player.getInventory().setItem(0, customnWHITE_BANNER);
 
-		if (main.isState(EtatPartie.FinJeu)) {
-			player.setGameMode(GameMode.SPECTATOR);
-			event.setJoinMessage("§5[§d+§5] §d" + player.getName());
-			player.sendMessage("§6[§eTntWars§6] §eLe jeu est terminé, une partie va bientôt recommencer !");
-			player.teleport(main.map_en_cours.getLocationVisite());
-		}
-
-		if (!main.isState(EtatPartie.FinJeu)) {
-
-			main.listeJoueurs.add(joueur);
-			if (main.listeJoueurs.size() == 1 && main.isfirstJoueur) {
-
-				main.world = ((Joueur) main.listeJoueurs.get(0)).getPlayer().getWorld();
-
-				CreateWorld createWorld = new CreateWorld(main);
-				createWorld.Creationworld();
-				main.isfirstJoueur = false;
-			}
-
-			ItemStack customnetherstars = new ItemStack(Material.NETHER_STAR, 1);
-			ItemMeta customNSs = customnetherstars.getItemMeta();
-			customNSs.setDisplayName("Choisir le kit");
-			customNSs.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-			customNSs.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
-			customNSs.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
-			customnetherstars.setItemMeta(customNSs);
-			player.getInventory().setItem(0, customnetherstars);
-
-			if (main.isState(EtatPartie.JeuEnCours)) {
-				player.setGameMode(GameMode.ADVENTURE);
-				player.setInvisible(true);
-				player.sendMessage("§6[§eTntWars§6] §eLe jeux a déjà démarrer mais vous pouvez rejoindre une équipe! ");
-				player.teleport(main.map_en_cours.LocationSalleMort);
-				event.setJoinMessage("§5[§d+§5] §d" + player.getName());
-
-				ItemStack customcompasse = new ItemStack(Material.COMPASS, 1);
-				ItemMeta customC2 = customcompasse.getItemMeta();
-				customC2.setDisplayName("Choisir le kit");
-				customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
-				customC2.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
-				customC2.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
-				customcompasse.setItemMeta(customC2);
-				player.getInventory().setItem(4, customcompasse);
-
-				TaskRejoindPartieEnCours cycle = new TaskRejoindPartieEnCours(main, joueur);
-				cycle.runTaskTimer((Plugin) main, 0L, 20L);
-			}
-
-			if (main.isState(EtatPartie.AttenteJoueur) || main.isState(EtatPartie.Lancement)) {
-				player.teleport(new Location(player.getWorld(), 6.0D, 1.0D, 1.0D));
-
-				player.setGameMode(GameMode.ADVENTURE);
-				event.setJoinMessage(
-						"§6[§eTntWars§6] §6" + player.getName() + " §evient de se connecter à la partie.   §5<§d"
-								+ main.listeJoueurs.size() + "§5/§d" + Bukkit.getMaxPlayers() + "§5>");
-
-				if (main.isState(EtatPartie.AttenteJoueur) && main.listeJoueurs.size() >= 2) {
-
-					main.setState(EtatPartie.Lancement);
-
-					TaskLancementPartie start = new TaskLancementPartie(main);
-					start.runTaskTimer(main, 0L, 20L);
-				}
-			}
-
-			if (main.isState(EtatPartie.Prejeu)) {
-
-				player.setInvisible(false);
-				player.teleport(main.map_en_cours.getLocationVisite());
-
-				player.setGameMode(GameMode.SURVIVAL);
-				
-				joueur.getPlayer().setAllowFlight(true);
-				joueur.getPlayer().setFlying(true);
-				
-				
-				event.setJoinMessage(
-						"§6[§eTntWars§6] §6" + player.getName() + " §evient de se connecter à la partie.   §5<§d"
-								+ main.listeJoueurs.size() + "§5/§d" + Bukkit.getMaxPlayers() + "§5>");
-			}
-		}
+		
 
 	}
 
@@ -298,7 +243,7 @@ public class PlayerListeners implements Listener {
 					.findFirst().get();
 
 			joueur.setProchainKit(kit);
-			player.sendMessage("§6[§eTntWars§6] §eKit " + kit.getNom() + " sélectionné");
+			player.sendMessage(Constante.Constantes.PluginName + "Kit " + kit.getNom() + " sélectionné");
 			player.closeInventory();
 		}
 	}
@@ -314,7 +259,13 @@ public class PlayerListeners implements Listener {
 					.orElse(null);
 			Joueur joueur_victime = main.listeJoueurs.stream().filter(p -> victim.getName().equals(p.getNom()))
 					.findAny().orElse(null);
-
+			
+			
+			if (!main.listeJoueurs.contains(joueur_victime) || !main.listeJoueurs.contains(joueur)){
+				event.setCancelled(true);
+				return;
+			}
+			
 			if (joueur.getEquipe() == joueur_victime.getEquipe()) {
 				if (player.getInventory().getItemInMainHand().getType() == Material.GLISTERING_MELON_SLICE) {
 					if (joueur_victime.getKit() != main.list_kits.get(IndexKit.OneShot)) {
@@ -442,18 +393,121 @@ public class PlayerListeners implements Listener {
 	@EventHandler
 	public void onInteract(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
-		Player player2 = event.getPlayer();
+		
 
 		ItemStack it = event.getItem();
 		Block block = event.getClickedBlock();
 
-		Joueur joueur = main.listeJoueurs.stream().filter(p -> player2.getName().equals(p.getNom())).findAny()
+		Joueur joueur = main.listeConnecte.stream().filter(p -> player.getName().equals(p.getNom())).findAny()
 				.orElse(null);
 
 		if (it == null) {
 			return;
 		}
+		
+		
+		
+		if (it.getType() == Material.WHITE_BANNER) {
+			
+			player.getInventory().remove(Material.WHITE_BANNER);
+			
+			if (main.isState(EtatPartie.FinJeu)) {
+				player.setGameMode(GameMode.SPECTATOR);
+				Bukkit.broadcastMessage("§5[§d+§5] §d" + player.getName());
+				player.sendMessage(Constante.Constantes.PluginName + "Le jeu est terminé, une partie va bientôt recommencer !");
+				player.teleport(main.map_en_cours.getLocationVisite());
+			}
 
+			if (!main.isState(EtatPartie.FinJeu)) {
+
+				
+				
+				
+				
+				
+				
+				
+				main.listeJoueurs.add(joueur);
+				
+
+				ItemStack customnetherstars = new ItemStack(Material.NETHER_STAR, 1);
+				ItemMeta customNSs = customnetherstars.getItemMeta();
+				customNSs.setDisplayName("Choisir le kit");
+				customNSs.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+				customNSs.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
+				customNSs.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
+				customnetherstars.setItemMeta(customNSs);
+				player.getInventory().setItem(0, customnetherstars);
+
+				
+				
+				
+				
+				
+				
+				if (main.isState(EtatPartie.JeuEnCours)) {
+					player.setGameMode(GameMode.ADVENTURE);
+					player.setInvisible(true);
+					player.sendMessage(Constante.Constantes.PluginName + "Le jeux a déjà démarrer veuillez choisir une équipe pour rejoindre! ");
+					player.teleport(main.map_en_cours.LocationSalleMort);
+					Bukkit.broadcastMessage("§5[§d+§5] §d" + player.getName());
+
+					ItemStack customcompasse = new ItemStack(Material.COMPASS, 1);
+					ItemMeta customC2 = customcompasse.getItemMeta();
+					customC2.setDisplayName("Choisir le kit");
+					customC2.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 200, true);
+					customC2.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
+					customC2.setLore(Arrays.asList(new String[] { "premiere ligne", "deuxieme", "troisieme" }));
+					customcompasse.setItemMeta(customC2);
+					player.getInventory().setItem(4, customcompasse);
+
+					TaskRejoindPartieEnCours cycle = new TaskRejoindPartieEnCours(main, joueur);
+					cycle.runTaskTimer((Plugin) main, 0L, 20L);
+				}
+				
+				
+				
+				
+				
+
+				if (main.isState(EtatPartie.AttenteJoueur) || main.isState(EtatPartie.Lancement)) {
+					
+					Bukkit.broadcastMessage(
+							Constante.Constantes.PluginName + "" + player.getName() + " §evient de rejoindre la partie.   §5<§d"
+									+ main.listeJoueurs.size() + "§5/§d" + Bukkit.getMaxPlayers() + "§5>");
+
+					if (main.isState(EtatPartie.AttenteJoueur) && main.listeJoueurs.size() >= 2) {
+
+						main.setState(EtatPartie.Lancement);
+
+						TaskLancementPartie start = new TaskLancementPartie(main);
+						start.runTaskTimer(main, 0L, 20L);
+					}
+				}
+				
+				
+				
+				
+
+				if (main.isState(EtatPartie.Prejeu)) {
+
+					player.setInvisible(false);
+					player.teleport(main.map_en_cours.getLocationVisite());
+
+					player.setGameMode(GameMode.SURVIVAL);
+					
+					joueur.getPlayer().setAllowFlight(true);
+					joueur.getPlayer().setFlying(true);
+					
+					
+					Bukkit.broadcastMessage(
+							Constante.Constantes.PluginName + " " + player.getName() + " §evient de rejoindre la partie.   §5<§d"
+									+ main.listeJoueurs.size() + "§5/§d" + Bukkit.getMaxPlayers() + "§5>");
+				}
+			}
+		}
+		
+		
 		if (it.getType() == Material.SADDLE) {
 			if (!joueur.getPlayer().isInsideVehicle()) {
 				if (joueur.getKit() == main.list_kits.get(IndexKit.Chevalier)) {
@@ -656,7 +710,7 @@ public class PlayerListeners implements Listener {
 							joueur.getPlayer().playSound(joueur.getPlayer().getLocation(), Sound.ITEM_FLINTANDSTEEL_USE, 1, 1);
 
 							if (tnt.getVie() == main.Avancement_Max_Global_TNT) {
-								Bukkit.broadcastMessage("§6[§eTntWars§6] §4Attention! §eLa TNT "
+								Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Attention! §eLa TNT "
 										+ tnt.getEquipe().getCouleur() + " §ea été allumée!");
 								tnt.setEtat(EtatTNT.Allume);
 								for (Joueur joueurs : main.listeJoueurs) {
@@ -692,7 +746,7 @@ public class PlayerListeners implements Listener {
 
 						if (tnt.getVie() == 0) {
 							Bukkit.broadcastMessage(
-									"§6[§eTntWars§6] §eLa TNT " + tnt.getEquipe().getCouleur() + " §ea été étteinte.");
+									Constante.Constantes.PluginName + "La TNT " + tnt.getEquipe().getCouleur() + " §ea été étteinte.");
 							tnt.setEtat(EtatTNT.Eteinte);
 						}
 					}
