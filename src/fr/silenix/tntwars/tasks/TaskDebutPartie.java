@@ -27,7 +27,7 @@ public class TaskDebutPartie extends BukkitRunnable {
 			cancel();
 			for (int i = 0; i < main.listeJoueurs.size(); i++) {
 				Joueur joueur = main.listeJoueurs.get(i);
-				joueur.getPlayer().teleport(new Location(joueur.getPlayer().getWorld(), 6.0D, 1.0D, 1.0D));
+				joueur.getPlayer().teleport(new Location(joueur.getPlayer().getWorld(), -828.0D, 76.0D, -321.0D, -90, 0));
 				joueur.getPlayer().setExp(0.0F);
 				joueur.getPlayer().setFlying(false);
 				joueur.getPlayer().setAllowFlight(false);

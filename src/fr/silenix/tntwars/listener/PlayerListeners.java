@@ -89,7 +89,7 @@ public class PlayerListeners implements Listener {
 			main.isfirstJoueur = false;
 		}
 		
-		player.teleport(new Location(player.getWorld(), 6.0D, 1.0D, 1.0D));
+		player.teleport(new Location(player.getWorld(), -828.0D, 76.0D, -321.0D, -90, 0));
 
 		player.setGameMode(GameMode.ADVENTURE);
 		

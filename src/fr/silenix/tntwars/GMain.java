@@ -189,6 +189,8 @@ public class GMain extends JavaPlugin {
 
 		for (Joueur joueur : listeJoueurs) {
 			deletejoueurscoreboard(joueur, joueur.getEquipe());
+			joueur.getPlayer().teleport(new Location(joueur.getPlayer().getWorld(), -828.0D, 76.0D, -321.0D, -90, 0));
+			
 		}
 
 		this.listeJoueurs.clear();
@@ -208,7 +210,7 @@ public class GMain extends JavaPlugin {
 			Joueur joueur = this.listeConnecte.get(i);
 
 			joueur.getPlayer().setInvisible(false);
-			joueur.getPlayer().teleport(new Location(joueur.getPlayer().getWorld(), 6.0D, 1.0D, 1.0D));
+			//joueur.getPlayer().teleport(new Location(joueur.getPlayer().getWorld(), 6.0D, 1.0D, 1.0D));
 			joueur.getPlayer().setInvulnerable(false);
 			joueur.getPlayer().setGameMode(GameMode.SURVIVAL);
 			joueur.getPlayer().getInventory().clear();
