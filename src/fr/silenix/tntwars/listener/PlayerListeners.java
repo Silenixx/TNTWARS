@@ -176,9 +176,15 @@ public class PlayerListeners implements Listener {
 		Block block_against = event.getBlockAgainst();
 		Player player = event.getPlayer();
 
-		Joueur joueur = main.listeJoueurs.stream().filter(p -> player.getName().equals(p.getNom())).findAny()
+		Joueur joueur = main.listeConnecte.stream().filter(p -> player.getName().equals(p.getNom())).findAny()
 				.orElse(null);
 
+		if(!main.listeJoueurs.contains(joueur)) {
+			if(main.list_joueur_casser_poser.contains(joueur.getPlayer().getName())){
+				return;
+			}
+		}
+		
 		if (!main.isState(EtatPartie.JeuEnCours)) {
 			event.setCancelled(true);
 			return;
@@ -205,6 +211,18 @@ public class PlayerListeners implements Listener {
 
 	@EventHandler
 	public void onBreak(BlockBreakEvent event) {
+		
+		Player player = event.getPlayer();
+
+		Joueur joueur = main.listeConnecte.stream().filter(p -> player.getName().equals(p.getNom())).findAny()
+				.orElse(null);
+		
+		if(!main.listeJoueurs.contains(joueur)) {
+			if(main.list_joueur_casser_poser.contains(joueur.getPlayer().getName())){
+				return;
+			}
+		}
+		
 		if (!main.isState(EtatPartie.JeuEnCours)) {
 			event.setCancelled(true);
 			return;
@@ -746,7 +764,7 @@ public class PlayerListeners implements Listener {
 
 						if (tnt.getVie() == 0) {
 							Bukkit.broadcastMessage(
-									Constante.Constantes.PluginName + "La TNT " + tnt.getEquipe().getCouleur() + " §ea été étteinte.");
+									Constante.Constantes.PluginName + "La TNT " + tnt.getEquipe().getCouleur() + " §ea été éteinte.");
 							tnt.setEtat(EtatTNT.Eteinte);
 						}
 					}

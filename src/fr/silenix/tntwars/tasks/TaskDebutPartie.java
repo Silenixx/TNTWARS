@@ -44,7 +44,7 @@ public class TaskDebutPartie extends BukkitRunnable {
 				Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Lancement de la partie dans §6" + this.timer
 						+ "§e secondes.");
 				if (this.timer == 30) {
-					Bukkit.broadcastMessage(Constante.Constantes.PluginName + Constante.Constantes.PluginRules);
+					Bukkit.broadcastMessage(Constante.Constantes.PluginName + "Bonne chance !");
 				}
 			} else if (this.timer == 0) {
 				Bukkit.broadcastMessage(

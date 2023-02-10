@@ -134,6 +134,11 @@ public class GMain extends JavaPlugin {
 			"minecraft:green_glazed_terracotta", 
 			"minecraft:yellow_glazed_terracotta" 
 			}));
+	public List<String> list_joueur_casser_poser = new ArrayList<>(Arrays.asList(new String[] { 
+			"Silenix",
+			"Elkomedien", 
+
+			}));
 
 	public List<Material> ListTacticien = new ArrayList<>(Arrays.asList(new Material[] {
 
